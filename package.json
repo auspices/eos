@@ -1,0 +1,49 @@
+{
+  "name": "@auspices/eos",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/auspices/eos",
+  "author": "@dzucconi",
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@storybook/addon-actions": "^5.3.14",
+    "@storybook/addon-info": "^5.3.14",
+    "@storybook/addon-links": "^5.3.14",
+    "@storybook/addons": "^5.3.14",
+    "@storybook/react": "^5.3.14",
+    "@types/styled-components": "^5.0.1",
+    "@types/styled-system": "^5.1.8",
+    "@types/styled-system__theme-get": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "react": "^16.13.0",
+    "react-docgen-typescript-loader": "^3.7.0",
+    "react-dom": "^16.13.0",
+    "storybook-states": "^1.0.1",
+    "styled-components": "^5.0.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@styled-system/theme-get": "^5.1.2",
+    "styled-reset": "^4.1.1",
+    "styled-system": "^5.1.5",
+    "use-debounce": "^3.3.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build:storybook": "build-storybook",
+    "lint": "eslint src --ext .tsx,.ts --fix",
+    "type:check": "tsc --noEmit"
+  }
+}
