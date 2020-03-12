@@ -1,8 +1,8 @@
 import React, { useReducer, useCallback, useEffect } from "react";
-import { useDebouncedCallback } from "use-debounce";
-import { omit } from "../lib/omit";
+import { Box } from "../Box";
 import { PillStack } from "../PillStack";
 import { KeyValueInput } from "../KeyValueInput";
+import { KeyValueEditorRemove } from "./KeyValueEditorRemove";
 
 export type KeyValueSchema = { key?: string; name: string; type: "string" }[];
 export type KeyValueData = Record<string, string>;
@@ -26,6 +26,7 @@ type State = {
 
 type Action =
   | { type: "ADD_FIELD"; payload: { name: string } }
+  | { type: "REMOVE_FIELD"; payload: { name: string } }
   | {
       type: "UPDATE_NAME";
       payload: { oldName: string; newName: string; index: number };
@@ -34,7 +35,11 @@ type Action =
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case "ADD_FIELD":
+    case "ADD_FIELD": {
+      if (state.schema.find(({ name }) => name === action.payload.name)) {
+        return state;
+      }
+
       return {
         ...state,
         edited: true,
@@ -46,11 +51,31 @@ const reducer = (state: State, action: Action): State => {
           }
         ]
       };
-    case "UPDATE_NAME":
+    }
+    case "REMOVE_FIELD": {
+      const { [action.payload.name]: removed, ...nextData } = state.data;
+      const nextSchema = state.schema.filter(
+        ({ name }) => name !== action.payload.name
+      );
+
       return {
         ...state,
         edited: true,
-        schema: state.schema.map((field, index) => {
+        schema: nextSchema,
+        data: nextData
+      };
+    }
+    case "UPDATE_NAME": {
+      const { [action.payload.oldName]: removed, ...filteredData } = state.data;
+      const nextData = {
+        ...filteredData,
+        ...(action.payload.newName !== ""
+          ? { [action.payload.newName]: state.data[action.payload.oldName] }
+          : {})
+      };
+
+      const nextSchema = state.schema
+        .map((field, index) => {
           if (index !== action.payload.index) return field;
 
           return {
@@ -58,12 +83,16 @@ const reducer = (state: State, action: Action): State => {
             name: action.payload.newName,
             type: field.type
           };
-        }),
-        data: {
-          ...omit(state.data, action.payload.oldName),
-          [action.payload.newName]: state.data[action.payload.oldName]
-        }
+        })
+        .filter(({ name }) => name !== "");
+
+      return {
+        ...state,
+        edited: true,
+        schema: nextSchema,
+        data: nextData
       };
+    }
     case "UPDATE_VALUE":
       return {
         ...state,
@@ -79,17 +108,13 @@ const reducer = (state: State, action: Action): State => {
 export type KeyValueEditorProps = {
   schema: KeyValueSchema;
   data: KeyValueData;
-  autoSaveWait?: number;
   onChange?(data: KeyValueData): void;
-  onSave?(data: KeyValueData): void;
 };
 
 export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
   schema: initialSchema,
   data: initialData,
-  onChange = () => {},
-  onSave = () => {},
-  autoSaveWait = 500
+  onChange = () => {}
 }) => {
   const [state, dispatch] = useReducer(reducer, {
     edited: false,
@@ -124,35 +149,42 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
     []
   );
 
-  const [handleSave] = useDebouncedCallback(
-    () => state.edited && onSave(state.data),
-    autoSaveWait
+  const handleRemove = useCallback(
+    (name: string) => () =>
+      dispatch({ type: "REMOVE_FIELD", payload: { name } }),
+    []
   );
 
-  useEffect(() => {
-    onChange(state.data);
-    handleSave();
-  }, [handleSave, onChange, state.data]);
+  useEffect(() => onChange(state.data), [onChange, state.data]);
 
   return (
     <PillStack>
       {state.schema.map((field, index) => (
-        <KeyValueInput
-          key={`kv:${index}`}
-          k={{
-            onChange: handleNameChange({ name: field.name, index }),
-            placeholder: "name",
-            defaultValue: field.name,
-            autoComplete: "off"
-          }}
-          v={{
-            onChange: handleValueChange(field.name),
-            placeholder: field.name,
-            defaultValue: state.data[field.name],
-            autoComplete: "off",
-            autoFocus: index === state.schema.length - 1
-          }}
-        />
+        <Box key={field.name + index} position="relative">
+          <KeyValueInput
+            k={{
+              onChange: handleNameChange({ name: field.name, index }),
+              placeholder: "name",
+              defaultValue: field.name,
+              autoComplete: "off"
+            }}
+            v={{
+              onChange: handleValueChange(field.name),
+              placeholder: field.name,
+              defaultValue: state.data[field.name],
+              autoComplete: "off",
+              autoFocus: index === state.schema.length - 1
+            }}
+          />
+
+          <KeyValueEditorRemove
+            position="absolute"
+            top={0}
+            right={0}
+            height="100%"
+            onClick={handleRemove(field.name)}
+          />
+        </Box>
       ))}
 
       <KeyValueInput

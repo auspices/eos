@@ -40,3 +40,17 @@ export const Styles = () => (
     </Stack>
   </Stack>
 );
+
+export const Complex = () => (
+  <Pill>
+    <Box>Title</Box>
+
+    <Box mx={4} color="lightgray">
+      999
+    </Box>
+
+    <Box flex="1" textAlign="right" color="gray" fontSize={0}>
+      Δ about 2 months ago
+    </Box>
+  </Pill>
+);

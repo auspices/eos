@@ -8,16 +8,30 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  position,
+  PositionProps,
+  layout,
+  LayoutProps,
+  color,
   compose
 } from "styled-system";
 
-export interface BoxProps
-  extends BorderProps,
-    FlexboxProps,
-    SpaceProps,
-    TypographyProps {}
+export type BoxProps = BorderProps &
+  FlexboxProps &
+  SpaceProps &
+  TypographyProps &
+  PositionProps &
+  LayoutProps;
 
-export const boxMixin = compose(border, flexbox, space, typography);
+export const boxMixin = compose(
+  border,
+  flexbox,
+  space,
+  typography,
+  position,
+  layout,
+  color
+);
 
 export const Box = styled.div<BoxProps>`
   ${boxMixin}
