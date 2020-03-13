@@ -2,19 +2,30 @@
   "name": "@auspices/eos",
   "version": "0.0.0",
   "main": "dist/index.js",
-  "repository": "https://github.com/auspices/eos",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auspices/eos.git"
+  },
   "author": "@dzucconi",
   "license": "MIT",
   "private": false,
   "scripts": {
     "build:storybook": "build-storybook",
+    "build": "yarn clean && tsc -p .",
+    "clean": "rm -rf dist",
     "lint": "eslint src --ext .tsx,.ts --fix",
+    "prepublishOnly": "yarn build",
     "storybook": "start-storybook -p 6006",
     "type:check": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "styled-components": ">=5.0.0"
   },
   "dependencies": {
     "@styled-system/theme-get": "^5.1.2",

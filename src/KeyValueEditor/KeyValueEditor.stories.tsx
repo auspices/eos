@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
-import { useDebounce } from "use-debounce";
 import { Box } from "../Box";
 import { Stack } from "../Stack";
 import {
@@ -41,7 +40,6 @@ export const Demo = () => {
   const schema = toSchema(initialData);
 
   const [changed, handleChange] = useState<KeyValueData>(initialData);
-  const [debounced] = useDebounce(changed, 500);
 
   return (
     <Stack spacing={4}>
@@ -52,7 +50,7 @@ export const Demo = () => {
       />
 
       <Box as="pre" fontFamily="mono" fontSize={0} p={4} borderTop="1px solid">
-        {JSON.stringify({ debounced, changed }, null, 2)}
+        {JSON.stringify({ changed }, null, 2)}
       </Box>
     </Stack>
   );
