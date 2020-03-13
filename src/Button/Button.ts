@@ -17,9 +17,34 @@ export const focusMixin = css`
 `;
 
 export const disabledMixin = css`
+  position: relative;
   cursor: default;
   pointer-events: none;
-  opacity: 0.75;
+  user-select: none;
+  opacity: 0.5;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+        to bottom right,
+        transparent calc(50% - 0.5px),
+        rgba(0, 0, 0, 0.25),
+        transparent calc(50% + 0.5px)
+      ),
+      linear-gradient(
+        to bottom left,
+        transparent calc(50% - 0.5px),
+        rgba(0, 0, 0, 0.25),
+        transparent calc(50% + 0.5px)
+      );
+  }
 `;
 
 export const Button = styled(Clickable)<ButtonProps>`
