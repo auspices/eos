@@ -3,7 +3,7 @@ import { Stack, StackProps } from "../Stack";
 import { Alert } from "../Alert";
 import { useAlerts } from "./useAlerts";
 
-export type AlertProps = Omit<StackProps, "spacing"> & {
+export type AlertsProps = Omit<StackProps, "spacing"> & {
   limit?: number;
   spacing?: number | string;
 };
@@ -16,7 +16,7 @@ const takeRight = <T,>(xs: T[], limit = 1) => {
   return xs.slice(xs.length - limit, xs.length);
 };
 
-export const Alerts: React.FC<AlertProps> = ({ limit = 5, ...rest }) => {
+export const Alerts: React.FC<AlertsProps> = ({ limit = 5, ...rest }) => {
   const { alerts } = useAlerts();
 
   return (

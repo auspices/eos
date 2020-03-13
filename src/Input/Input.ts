@@ -25,7 +25,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
 
 const systemProps = compose(border, flexbox, space, typography, layout);
 
-export const focusMixin = css`
+export const inputFocusMixin = css`
   outline: 0;
 
   ::placeholder {
@@ -36,9 +36,9 @@ export const focusMixin = css`
 export const Input = styled.input<InputProps>`
   ${systemProps}
 
-  ${({ focus }) => focus && focusMixin}
+  ${({ focus }) => focus && inputFocusMixin}
   &:focus {
-    ${focusMixin}
+    ${inputFocusMixin}
   }
 
   &:autofill {

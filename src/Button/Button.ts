@@ -7,16 +7,16 @@ export type ButtonProps = ClickableProps & {
   hover?: boolean;
 };
 
-export const hoverMixin = css`
+export const buttonHoverMixin = css`
   opacity: 0.5;
 `;
 
-export const focusMixin = css`
+export const buttonFocusMixin = css`
   outline: 0;
   text-decoration: underline;
 `;
 
-export const disabledMixin = css`
+export const buttonDisabledMixin = css`
   position: relative;
   cursor: default;
   pointer-events: none;
@@ -50,19 +50,19 @@ export const disabledMixin = css`
 export const Button = styled(Clickable)<ButtonProps>`
   cursor: pointer;
 
-  ${({ hover }) => hover && hoverMixin}
+  ${({ hover }) => hover && buttonHoverMixin}
   &:hover {
-    ${hoverMixin}
+    ${buttonHoverMixin}
   }
 
-  ${({ focus }) => focus && focusMixin}
+  ${({ focus }) => focus && buttonFocusMixin}
   &:focus {
-    ${focusMixin}
+    ${buttonFocusMixin}
   }
 
-  ${({ disabled }) => disabled && disabledMixin}
+  ${({ disabled }) => disabled && buttonDisabledMixin}
   &:disabled {
-    ${disabledMixin}
+    ${buttonDisabledMixin}
   }
 `;
 

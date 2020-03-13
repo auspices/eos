@@ -20,7 +20,7 @@ const THEMES = {
     `
 };
 
-export const Container = styled(Box)<{
+const Container = styled(Box)<{
   mode: "notification" | "error";
 }>`
   ${({ mode }) => THEMES[mode]}

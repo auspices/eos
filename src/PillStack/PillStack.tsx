@@ -4,9 +4,7 @@ import { Stack, StackProps } from "../Stack";
 
 export type PillStackProps = Omit<StackProps, "spacing">;
 
-export const Container = styled(Stack).attrs({ spacing: "-1px" })<
-  PillStackProps
->``;
+const Container = styled(Stack).attrs({ spacing: "-1px" })<PillStackProps>``;
 
 const STYLES = {
   vertical: {

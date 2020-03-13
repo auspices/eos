@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { States } from "storybook-states";
-import { Alerts, AlertProps, AlertsProvider, useAlerts } from ".";
+import { Alerts, AlertsProps, AlertsProvider, useAlerts } from ".";
 
 export default { title: "Alerts", component: Alerts };
 
@@ -21,7 +21,7 @@ const Example = () => {
   }, [count, sendError, sendNotification]);
 
   return (
-    <States<AlertProps> states={[{}, { limit: 2 }]}>
+    <States<AlertsProps> states={[{}, { limit: 2 }]}>
       <Alerts limit={5} />
     </States>
   );
