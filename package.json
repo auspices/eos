@@ -1,6 +1,6 @@
 {
   "name": "@auspices/eos",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -19,6 +19,7 @@
     "clean": "rm -rf dist",
     "lint": "eslint src --ext .tsx,.ts --fix",
     "prepublishOnly": "yarn build",
+    "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 6006",
     "type:check": "tsc --noEmit"
   },
@@ -54,6 +55,11 @@
     "storybook-states": "^1.0.1",
     "styled-components": "^5.0.1",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "semantic-release": "^17.0.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }
