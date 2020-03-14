@@ -75,7 +75,10 @@ export const AlertsProvider: React.FC = ({ children }) => {
     const id = generateId();
     dispatch({ type: "NOTIFICATION", payload: { id, body } });
     timeouts.current.push(
-      setTimeout(() => dispatch({ type: "RETRACT", payload: { id } }), ttl)
+      window.setTimeout(
+        () => dispatch({ type: "RETRACT", payload: { id } }),
+        ttl
+      )
     );
   }, []);
 
@@ -83,7 +86,10 @@ export const AlertsProvider: React.FC = ({ children }) => {
     const id = generateId();
     dispatch({ type: "ERROR", payload: { id, body } });
     timeouts.current.push(
-      setTimeout(() => dispatch({ type: "RETRACT", payload: { id } }), ttl)
+      window.setTimeout(
+        () => dispatch({ type: "RETRACT", payload: { id } }),
+        ttl
+      )
     );
   }, []);
 
