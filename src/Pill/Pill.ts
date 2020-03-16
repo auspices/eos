@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Box, BoxProps } from "../Box";
 
+export type PillProps = BoxProps;
+
 export const PILL = {
   fontFamily: "body",
   fontSize: 3,
@@ -11,7 +13,7 @@ export const PILL = {
   lineHeight: 2
 };
 
-export const Pill = styled(Box)<BoxProps>`
+export const Pill = styled(Box)<PillProps>`
   display: flex;
   color: black;
   align-items: center;

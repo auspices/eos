@@ -1,7 +1,6 @@
 import React from "react";
 import { States } from "storybook-states";
 import { PillStack, PillStackProps } from "./PillStack";
-import { Stack } from "../Stack";
 import { Pill } from "../Pill";
 import { Input } from "../Input";
 
@@ -27,7 +26,7 @@ export const Default = () => (
 
 export const Nested = () => (
   <States<PillStackProps> states={[{}]}>
-    <Stack spacing="-1px">
+    <PillStack>
       <PillStack direction="horizontal">
         <Pill>Title</Pill>
 
@@ -38,6 +37,12 @@ export const Nested = () => (
         <Input flex="1" placeholder="Input" />
       </PillStack>
 
+      <PillStack>
+        <Pill>Content</Pill>
+        <Pill>Content</Pill>
+        <Pill>Content</Pill>
+      </PillStack>
+
       <PillStack direction="horizontal">
         {["A", "Previous", 1, 2, 3, 4, 5, 6, "Next", "Ω"].map(x => (
           <Pill key={x} as="a" href="#example" flex="1">
@@ -45,6 +50,6 @@ export const Nested = () => (
           </Pill>
         ))}
       </PillStack>
-    </Stack>
+    </PillStack>
   </States>
 );

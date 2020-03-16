@@ -1,6 +1,6 @@
 import React from "react";
 import { States } from "storybook-states";
-import { PILL, Pill } from "./Pill";
+import { PILL, Pill, PillProps } from "./Pill";
 import { Stack } from "../Stack";
 import { Box } from "../Box";
 import { Input } from "../Input";
@@ -19,12 +19,7 @@ const Examples = () => (
 );
 
 export const _Pill = () => (
-  <States
-    states={[
-      {},
-      { as: "a", href: "#example", children: "The Shape of a Hole" }
-    ]}
-  >
+  <States<PillProps> states={[{}, { children: "The Shape of a Hole" }]}>
     <Pill>ADHD</Pill>
   </States>
 );
@@ -42,7 +37,7 @@ export const Styles = () => (
 );
 
 export const Complex = () => (
-  <Pill>
+  <Pill as="a">
     <Box>Title</Box>
 
     <Box mx={4} color="lightgray">

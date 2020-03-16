@@ -33,7 +33,7 @@ export const inputFocusMixin = css`
   }
 `;
 
-export const Input = styled.input<InputProps>`
+export const inputMixin = css<InputProps>`
   ${systemProps}
 
   ${({ focus }) => focus && inputFocusMixin}
@@ -46,6 +46,8 @@ export const Input = styled.input<InputProps>`
   }
 `;
 
-Input.defaultProps = {
-  ...PILL
-};
+export const Input = styled.input<InputProps>`
+  ${inputMixin}
+`;
+
+Input.defaultProps = { ...PILL };

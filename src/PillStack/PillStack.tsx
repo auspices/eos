@@ -37,17 +37,18 @@ export const PillStack: React.FC<PillStackProps> = ({
   ...rest
 }) => {
   const length = React.Children.count(children);
+
   return (
     <Container direction={direction} {...rest}>
-      {React.Children.map(children, (child, i) =>
-        React.cloneElement(child as React.ReactElement<any>, {
-          ...(i === 0 ? STYLES[direction || DEFAULT_DIRECTION].first : {}),
+      {React.Children.map(children, (child, i) => {
+        const style = STYLES[direction || DEFAULT_DIRECTION];
+
+        return React.cloneElement(child as React.ReactElement<any>, {
+          ...(i === 0 ? style.first : {}),
           borderRadius: 0,
-          ...(i === length - 1
-            ? STYLES[direction || DEFAULT_DIRECTION].last
-            : {})
-        })
-      )}
+          ...(i === length - 1 ? style.last : {})
+        });
+      })}
     </Container>
   );
 };
