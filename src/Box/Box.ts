@@ -21,8 +21,7 @@ export type BoxProps = BorderProps &
   SpaceProps &
   TypographyProps &
   PositionProps &
-  LayoutProps &
-  React.HTMLAttributes<HTMLDivElement>;
+  LayoutProps;
 
 export const boxMixin = compose(
   border,
