@@ -34,7 +34,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@babel/core": "7.8.7",
+    "@babel/core": "7.9.0",
     "@storybook/addon-actions": "5.3.17",
     "@storybook/addon-info": "5.3.17",
     "@storybook/addon-links": "5.3.17",
@@ -45,7 +45,7 @@
     "@types/styled-system__theme-get": "5.0.0",
     "@typescript-eslint/eslint-plugin": "2.24.0",
     "@typescript-eslint/parser": "2.24.0",
-    "babel-loader": "8.0.6",
+    "babel-loader": "8.1.0",
     "eslint": "6.8.0",
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "2.5.1",
