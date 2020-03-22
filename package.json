@@ -59,7 +59,7 @@
     "semantic-release": "17.0.4",
     "storybook-states": "1.0.2",
     "styled-components": "5.0.1",
-    "ts-loader": "6.2.1",
+    "ts-loader": "6.2.2",
     "typescript": "3.8.3"
   },
   "publishConfig": {
