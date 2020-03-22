@@ -14,8 +14,8 @@ export const KeyValueInput: React.FC<KeyValueInputProps> = ({
 }) => {
   return (
     <Stack direction="horizontal" {...rest}>
-      <Input flex="0.25" {...k} />
-      <Input flex="0.75" {...v} />
+      <Input flex={[1, 1, 0.25]} minWidth={0} {...k} />
+      <Input flex={[1, 1, 0.75]} minWidth={0} {...v} />
     </Stack>
   );
 };

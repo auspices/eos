@@ -13,7 +13,7 @@ export type PaginationProps = StackProps & {
 
 export const PAGINATION_DEFAULT_PAGE = 1;
 export const PAGINATION_DEFAULT_PER = 24;
-export const PAGINATION_DEFAULT_INTERVAL = 5;
+export const PAGINATION_DEFAULT_INTERVAL = 3;
 
 export const Pagination: React.FC<PaginationProps> = ({
   page = PAGINATION_DEFAULT_PAGE,
