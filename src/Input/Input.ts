@@ -34,6 +34,8 @@ export const inputFocusMixin = css`
 `;
 
 export const inputMixin = css<InputProps>`
+  appearance: none;
+  border-radius: 0;
   ${systemProps}
 
   ${({ focus }) => focus && inputFocusMixin}
