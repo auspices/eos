@@ -1,4 +1,3 @@
-// import styled from "styled-components";
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
