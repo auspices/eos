@@ -8,6 +8,7 @@ export * from "./Field";
 export * from "./GlobalStyles";
 export * from "./Grid";
 export * from "./hooks";
+export * from "./Image";
 export * from "./Input";
 export * from "./KeyValueEditor";
 export * from "./KeyValueInput";
