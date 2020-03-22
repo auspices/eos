@@ -1,6 +1,6 @@
 import React, { useReducer, useCallback, useEffect } from "react";
 import { Box } from "../Box";
-import { Stack } from "../Stack";
+import { Stack, StackProps } from "../Stack";
 import { KeyValueInput } from "../KeyValueInput";
 import { KeyValueEditorRemove } from "./KeyValueEditorRemove";
 
@@ -109,7 +109,7 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-export type KeyValueEditorProps = {
+export type KeyValueEditorProps = StackProps & {
   schema: KeyValueSchema;
   data: KeyValueData;
   onChange?(data: KeyValueData): void;
@@ -118,7 +118,8 @@ export type KeyValueEditorProps = {
 export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
   schema: initialSchema,
   data: initialData,
-  onChange = () => {}
+  onChange = () => {},
+  ...rest
 }) => {
   const [state, dispatch] = useReducer(reducer, {
     edited: false,
@@ -165,7 +166,7 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
   }, [onChange, state.data, state.edited]);
 
   return (
-    <Stack>
+    <Stack {...rest}>
       {state.schema.map((field, index) => (
         <Box key={field.name + index} position="relative">
           <KeyValueInput

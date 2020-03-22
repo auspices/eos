@@ -1,4 +1,4 @@
-import React, { useCallback, createRef } from "react";
+import React, { useCallback, createRef, isValidElement } from "react";
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
@@ -27,7 +27,7 @@ Container.defaultProps = {
 
 export const Pane = React.forwardRef(
   ({ children, onEnter, ...rest }: PaneProps, forwardedRef: React.Ref<any>) => {
-    const list = React.Children.toArray(children);
+    const list = React.Children.toArray(children).filter(isValidElement);
     const refs = list.map(() => createRef<HTMLElement | null>());
 
     const handleEnter = useCallback(
@@ -45,8 +45,8 @@ export const Pane = React.forwardRef(
 
     return (
       <Container ref={forwardedRef} {...rest}>
-        {React.Children.map(children, (child, i) => {
-          return React.cloneElement(child, {
+        {list.map((child, i) => {
+          return React.cloneElement(child as React.ReactElement<any>, {
             ref: refs[i],
             active: i === index
           });

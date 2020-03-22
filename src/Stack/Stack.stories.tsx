@@ -25,7 +25,7 @@ export const Default = () => (
 );
 
 export const Stacked = () => (
-  <States<StackProps> states={[{ spacing: "-1px" }]}>
+  <States<StackProps> states={[{ spacing: "-1px" }, { spacing: 3 }]}>
     <Stack spacing="-1px">
       <Input placeholder="one" width="100%" />
       <Input placeholder="two" width="100%" />
@@ -96,6 +96,16 @@ export const Nested = () => (
           </Pill>
         ))}
       </Stack>
+    </Stack>
+  </States>
+);
+
+export const Responsive = () => (
+  <States<StackProps> states={[{ direction: ["vertical", "horizontal"] }]}>
+    <Stack>
+      <Pill flex={1}>First</Pill>
+      <Pill flex={1}>Middle</Pill>
+      <Pill flex={1}>Last</Pill>
     </Stack>
   </States>
 );

@@ -43,7 +43,7 @@ export const Demo = () => {
 
   return (
     <States>
-      <Stack spacing={4}>
+      <Stack spacing={6}>
         <KeyValueEditor
           schema={schema}
           data={initialData}
