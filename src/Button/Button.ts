@@ -2,13 +2,15 @@ import styled, { css } from "styled-components";
 import { Clickable, ClickableProps } from "../Clickable";
 import { PILL } from "../Pill";
 
+export const BUTTON = { ...PILL };
+
 export type ButtonProps = ClickableProps & {
   focus?: boolean;
   hover?: boolean;
 };
 
 export const buttonHoverMixin = css`
-  opacity: 0.5;
+  color: gray;
 `;
 
 export const buttonFocusMixin = css`
@@ -18,36 +20,15 @@ export const buttonFocusMixin = css`
 
 export const buttonDisabledMixin = css`
   position: relative;
-  cursor: default;
+  color: lightgray;
   pointer-events: none;
   user-select: none;
-  opacity: 0.5;
-
-  &::before,
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(
-        to bottom right,
-        transparent calc(50% - 0.5px),
-        rgba(0, 0, 0, 0.25),
-        transparent calc(50% + 0.5px)
-      ),
-      linear-gradient(
-        to bottom left,
-        transparent calc(50% - 0.5px),
-        rgba(0, 0, 0, 0.25),
-        transparent calc(50% + 0.5px)
-      );
-  }
+  cursor: default;
+  text-decoration: line-through;
 `;
 
-export const Button = styled(Clickable)<ButtonProps>`
+export const buttonMixin = css<ButtonProps>`
+  display: inline-block;
   cursor: pointer;
 
   ${({ hover }) => hover && buttonHoverMixin}
@@ -66,4 +47,8 @@ export const Button = styled(Clickable)<ButtonProps>`
   }
 `;
 
-Button.defaultProps = { ...PILL };
+export const Button = styled(Clickable)<ButtonProps>`
+  ${buttonMixin}
+`;
+
+Button.defaultProps = { ...BUTTON };

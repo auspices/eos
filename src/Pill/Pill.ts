@@ -8,14 +8,15 @@ export const PILL = {
   fontSize: 3,
   py: 4,
   px: 6,
-  border: "1px solid",
-  borderRadius: 4,
-  lineHeight: 2
+  lineHeight: 2,
+  color: "black",
+  borderWidth: "1px",
+  borderStyle: "solid",
+  borderColor: "black"
 };
 
 export const Pill = styled(Box)<PillProps>`
   display: flex;
-  color: black;
   align-items: center;
 `;
 

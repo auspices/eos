@@ -16,7 +16,8 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "es5",
-    "types": ["react"]
+    "types": ["react"],
+    "downlevelIteration": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "src/**/*.stories.tsx"]

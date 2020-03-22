@@ -1,17 +1,21 @@
 import React, { useReducer, useCallback, useEffect } from "react";
 import { Box } from "../Box";
-import { PillStack } from "../PillStack";
+import { Stack } from "../Stack";
 import { KeyValueInput } from "../KeyValueInput";
 import { KeyValueEditorRemove } from "./KeyValueEditorRemove";
 
-export type KeyValueSchema = { key?: string; name: string; type: "string" }[];
+export type KeyValueSchema = {
+  key?: string;
+  name: string;
+  type: "string" | "number";
+}[];
 export type KeyValueData = Record<string, string>;
 
 export const toSchema = (data: KeyValueData): KeyValueSchema =>
   Object.keys(data).map(name => {
     const type = typeof data[name];
 
-    if (type !== "string") {
+    if (!(type === "string" || type === "number")) {
       throw new Error("Schema invalid");
     }
 
@@ -155,10 +159,13 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
     []
   );
 
-  useEffect(() => onChange(state.data), [onChange, state.data]);
+  useEffect(() => {
+    if (!state.edited) return;
+    onChange(state.data);
+  }, [onChange, state.data, state.edited]);
 
   return (
-    <PillStack>
+    <Stack>
       {state.schema.map((field, index) => (
         <Box key={field.name + index} position="relative">
           <KeyValueInput
@@ -195,7 +202,7 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
           autoComplete: "off"
         }}
       />
-    </PillStack>
+    </Stack>
   );
 };
 

@@ -13,7 +13,7 @@ import {
 export default { title: "KeyValueEditor", component: KeyValueEditor };
 
 export const Default = () => (
-  <States<Partial<KeyValueEditorProps>> states={[{}]}>
+  <States<Partial<KeyValueEditorProps>>>
     <KeyValueEditor
       schema={[
         { name: "foo", type: "string" },
@@ -42,16 +42,24 @@ export const Demo = () => {
   const [changed, handleChange] = useState<KeyValueData>(initialData);
 
   return (
-    <Stack spacing={4}>
-      <KeyValueEditor
-        schema={schema}
-        data={initialData}
-        onChange={handleChange}
-      />
+    <States>
+      <Stack spacing={4}>
+        <KeyValueEditor
+          schema={schema}
+          data={initialData}
+          onChange={handleChange}
+        />
 
-      <Box as="pre" fontFamily="mono" fontSize={0} p={4} borderTop="1px solid">
-        {JSON.stringify({ changed }, null, 2)}
-      </Box>
-    </Stack>
+        <Box
+          as="pre"
+          fontFamily="mono"
+          fontSize={0}
+          p={4}
+          borderTop="1px solid lightgray"
+        >
+          {JSON.stringify({ changed }, null, 2)}
+        </Box>
+      </Stack>
+    </States>
   );
 };
