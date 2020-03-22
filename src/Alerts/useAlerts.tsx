@@ -1,4 +1,5 @@
 import React, {
+  createContext,
   useContext,
   useReducer,
   useCallback,
@@ -56,7 +57,7 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-export const AlertsContext = React.createContext<{
+export const AlertsContext = createContext<{
   state: State;
   sendNotification(message: Message): void;
   sendError(message: Message): void;

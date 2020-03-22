@@ -1,8 +1,8 @@
 import React from "react";
-import { PillStack, PillStackProps } from "../PillStack";
+import { Stack, StackProps } from "../Stack";
 import { Input, InputProps } from "../Input";
 
-export type KeyValueInputProps = PillStackProps & {
+export type KeyValueInputProps = StackProps & {
   k: InputProps;
   v?: InputProps;
 };
@@ -13,10 +13,10 @@ export const KeyValueInput: React.FC<KeyValueInputProps> = ({
   ...rest
 }) => {
   return (
-    <PillStack direction="horizontal" {...rest}>
+    <Stack direction="horizontal" {...rest}>
       <Input flex="0.25" {...k} />
       <Input flex="0.75" {...v} />
-    </PillStack>
+    </Stack>
   );
 };
 

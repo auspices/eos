@@ -19,33 +19,37 @@ const Examples = () => (
 );
 
 export const _Pill = () => (
-  <States<PillProps> states={[{}, { children: "The Shape of a Hole" }]}>
+  <States<PillProps>>
     <Pill>ADHD</Pill>
   </States>
 );
 
 export const Styles = () => (
-  <Stack spacing={2}>
+  <States>
     <Stack spacing={2}>
-      <Examples />
-    </Stack>
+      <Stack spacing={2}>
+        <Examples />
+      </Stack>
 
-    <Stack spacing={2} direction="horizontal">
-      <Examples />
+      <Stack spacing={2} direction="horizontal">
+        <Examples />
+      </Stack>
     </Stack>
-  </Stack>
+  </States>
 );
 
 export const Complex = () => (
-  <Pill as="a">
-    <Box>Title</Box>
+  <States>
+    <Pill>
+      <Box>Title</Box>
 
-    <Box mx={4} color="lightgray">
-      999
-    </Box>
+      <Box mx={4} color="lightgray">
+        999
+      </Box>
 
-    <Box flex="1" textAlign="right" color="gray" fontSize={0}>
-      Δ about 2 months ago
-    </Box>
-  </Pill>
+      <Box flex="1" textAlign="right" color="lightgray" fontSize={0}>
+        Δ about 2 months ago
+      </Box>
+    </Pill>
+  </States>
 );

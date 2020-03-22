@@ -13,15 +13,28 @@ import {
   layout,
   LayoutProps,
   color,
-  compose
+  ColorProps,
+  compose,
+  style,
+  ResponsiveValue
 } from "styled-system";
+import { ColorProperty } from "csstype";
 
 export type BoxProps = BorderProps &
   FlexboxProps &
   SpaceProps &
   TypographyProps &
   PositionProps &
-  LayoutProps;
+  LayoutProps &
+  Omit<ColorProps, "color"> & {
+    textColor?: ResponsiveValue<ColorProperty>;
+  };
+
+const textColor = style({
+  prop: "textColor",
+  cssProperty: "color",
+  key: "colors"
+});
 
 export const boxMixin = compose(
   border,
@@ -30,7 +43,8 @@ export const boxMixin = compose(
   typography,
   position,
   layout,
-  color
+  color,
+  textColor
 );
 
 export const Box = styled.div<BoxProps>`
