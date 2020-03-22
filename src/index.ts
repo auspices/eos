@@ -1,5 +1,6 @@
 export * from "./Alert";
 export * from "./Alerts";
+export * from "./AspectRatioBox";
 export * from "./Box";
 export * from "./Button";
 export * from "./Clickable";
@@ -15,6 +16,7 @@ export * from "./Pane";
 export * from "./Pill";
 export * from "./Popper";
 export * from "./ProgressBar";
+export * from "./ResponsiveImage";
 export * from "./Stack";
 export * from "./theme";
 export * from "./Upload";
