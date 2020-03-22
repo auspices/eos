@@ -17,7 +17,8 @@ export const Page: React.FC<PageProps> = ({
   per,
   currentPage,
   children,
-  as = "a"
+  as = "a",
+  ...rest
 }) => (
   <Button
     flex="1"
@@ -31,6 +32,7 @@ export const Page: React.FC<PageProps> = ({
             search: `?page=${pageNumber}&per=${per}`
           }
         })}
+    {...rest}
   >
     {children}
   </Button>
