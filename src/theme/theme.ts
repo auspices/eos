@@ -28,7 +28,7 @@ export const THEME = {
     "8rem", // 9
     "16rem" // 10
   ],
-  breakpoints: ["30rem", "50rem", "64rem"]
+  breakpoints: ["20rem", "50rem", "64rem"]
 };
 
 export type Theme = typeof THEME;
