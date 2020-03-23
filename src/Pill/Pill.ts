@@ -9,10 +9,11 @@ export const PILL = {
   py: 4,
   px: 6,
   lineHeight: 2,
-  color: "black",
+  color: "primary",
   borderWidth: "1px",
   borderStyle: "solid",
-  borderColor: "black"
+  borderColor: "primary",
+  backgroundColor: "background"
 };
 
 export const Pill = styled(Box)<PillProps>`

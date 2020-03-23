@@ -55,7 +55,8 @@ export const Demo = () => {
           fontFamily="mono"
           fontSize={0}
           p={4}
-          borderTop="1px solid lightgray"
+          borderTop="1px solid"
+          borderColor="hint"
         >
           {JSON.stringify({ changed }, null, 2)}
         </Box>

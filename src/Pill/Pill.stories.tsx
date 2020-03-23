@@ -43,11 +43,11 @@ export const Complex = () => (
     <Pill>
       <Box>Title</Box>
 
-      <Box mx={4} color="lightgray">
+      <Box mx={4} color="tertiary">
         999
       </Box>
 
-      <Box flex="1" textAlign="right" color="lightgray" fontSize={0}>
+      <Box flex="1" textAlign="right" color="tertiary" fontSize={0}>
         Δ about 2 months ago
       </Box>
     </Pill>

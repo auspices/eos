@@ -2,11 +2,22 @@ import React from "react";
 import { DecoratorFn } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../../../src/GlobalStyles";
-import { THEME } from "../../../src/theme";
+import { useThemer, ThemerProvider } from "../../../src/Themer";
 
-export const themeDecorator: DecoratorFn = storyFn => (
-  <>
-    <GlobalStyles />
-    <ThemeProvider theme={THEME}>{storyFn()}</ThemeProvider>
-  </>
-);
+const Themed: React.FC = ({ children }) => {
+  const { theme } = useThemer();
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {children}
+    </ThemeProvider>
+  );
+};
+
+export const themeDecorator: DecoratorFn = storyFn => {
+  return (
+    <ThemerProvider>
+      <Themed>{storyFn()}</Themed>
+    </ThemerProvider>
+  );
+};

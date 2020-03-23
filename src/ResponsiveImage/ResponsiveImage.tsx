@@ -28,5 +28,5 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
 ResponsiveImage.displayName = "ResponsiveImage";
 
 ResponsiveImage.defaultProps = {
-  backgroundColor: "lightgray"
+  backgroundColor: "tertiary"
 };

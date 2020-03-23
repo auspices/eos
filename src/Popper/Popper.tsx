@@ -19,7 +19,8 @@ export const Popper: React.FC<PopperProps> = ({
   anchor,
   children,
   placement = "bottom-start",
-  onClose = () => {}
+  onClose = () => {},
+  ...rest
 }) => {
   const popperRef = useRef<PopperInstance | null>(null);
 
@@ -58,7 +59,7 @@ export const Popper: React.FC<PopperProps> = ({
 
   return (
     <>
-      {React.cloneElement(anchor, { ref: anchorRef })}
+      {React.cloneElement(anchor, { ref: anchorRef, ...rest })}
       {open && React.cloneElement(children, { ref: childrenRef })}
     </>
   );

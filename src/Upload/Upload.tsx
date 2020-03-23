@@ -9,6 +9,7 @@ export type UploadProps = PillProps & {
   progress: number;
   foregroundColor?: string;
   backgroundColor?: string;
+  progressBarColor?: string;
 };
 
 const Container = styled(Pill)`
@@ -25,6 +26,7 @@ export const Upload: React.FC<UploadProps> = ({
   borderColor,
   foregroundColor,
   backgroundColor,
+  progressBarColor,
   ...rest
 }) => {
   return (
@@ -35,7 +37,8 @@ export const Upload: React.FC<UploadProps> = ({
     >
       <ProgressBar
         progress={progress}
-        color={backgroundColor}
+        color={progressBarColor}
+        backgroundColor={backgroundColor}
         position="absolute"
         top={0}
         left={0}
@@ -53,6 +56,8 @@ export const Upload: React.FC<UploadProps> = ({
 Upload.displayName = "Upload";
 
 Upload.defaultProps = {
-  foregroundColor: "black",
-  backgroundColor: "lightgray"
+  foregroundColor: "primary",
+  borderColor: "primary",
+  backgroundColor: "background",
+  progressBarColor: "tertiary"
 };

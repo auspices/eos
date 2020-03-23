@@ -18,7 +18,7 @@ export const Default = () => (
       aspectHeight={400}
       maxHeight={200}
       maxWidth={200}
-      bg="lightgray"
+      bg="tertiary"
     />
   </States>
 );

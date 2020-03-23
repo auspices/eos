@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { themeGet } from "@styled-system/theme-get";
 import reset from "styled-reset";
 
 export const GlobalStyles = createGlobalStyle`
@@ -13,6 +14,11 @@ export const GlobalStyles = createGlobalStyle`
   *:after,
   *:before {
     box-sizing: inherit;
+  }
+
+  body {
+    color: ${themeGet("colors.primary")};
+    background-color: ${themeGet("colors.background")};
   }
 
   body,
