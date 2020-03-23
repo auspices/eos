@@ -22,6 +22,7 @@ export const Page: React.FC<PageProps> = ({
 }) => (
   <Button
     flex="1"
+    textAlign="center"
     as={as}
     disabled={pageNumber === currentPage}
     {...(as === "a"
