@@ -3,29 +3,56 @@ import React, {
   useContext,
   useState,
   useMemo,
-  useCallback
+  useCallback,
+  useEffect
 } from "react";
 import { THEME, SCHEMES, Theme, Scheme } from "../theme";
 
+const KEY = "auspices.eos.scheme";
 const DEFAULT_SCHEME: Scheme = "light";
 
+type Backend = {
+  get(): Scheme | null;
+  set(scheme: Scheme): void;
+};
+
+const DEFAULT_BACKEND: Backend = {
+  get: () => {
+    const saved = localStorage.getItem(KEY);
+    return isScheme(saved) ? saved : null;
+  },
+  set: (scheme: Scheme) => {
+    localStorage.setItem(KEY, scheme);
+  }
+};
+
 export const ThemeContext = createContext<{
+  key?: string;
   theme: Theme;
   scheme: Scheme;
   setScheme(scheme: Scheme): void;
   toggleScheme(): void;
 }>({
+  key: KEY,
   theme: THEME,
   scheme: DEFAULT_SCHEME,
   setScheme: () => {},
   toggleScheme: () => {}
 });
 
-export const ThemerProvider: React.FC<{ initialScheme?: Scheme }> = ({
+export const isScheme = (value: string | null): value is Scheme =>
+  !!value && Object.keys(SCHEMES).includes(value);
+
+export const ThemerProvider: React.FC<{
+  key?: string;
+  backend?: Backend;
+  initialScheme?: Scheme;
+}> = ({
   children,
-  initialScheme = DEFAULT_SCHEME
+  initialScheme = DEFAULT_SCHEME,
+  backend = DEFAULT_BACKEND
 }) => {
-  const [scheme, setScheme] = useState<Scheme>(initialScheme);
+  const [scheme, setScheme] = useState<Scheme>(backend.get() ?? initialScheme);
 
   const theme = useMemo(() => ({ ...THEME, colors: SCHEMES[scheme] }), [
     scheme
@@ -35,6 +62,8 @@ export const ThemerProvider: React.FC<{ initialScheme?: Scheme }> = ({
     () => setScheme(prevScheme => (prevScheme === "dark" ? "light" : "dark")),
     []
   );
+
+  useEffect(() => backend.set(scheme), [backend, scheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, scheme, setScheme, toggleScheme }}>
