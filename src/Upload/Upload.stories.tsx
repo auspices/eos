@@ -13,9 +13,10 @@ export const Default = () => (
       { progress: 25 },
       {
         progress: 50,
-        foregroundColor: "orange",
-        borderColor: "lime",
-        backgroundColor: "yellow"
+        foregroundColor: "blue",
+        borderColor: "blue",
+        backgroundColor: "yellow",
+        progressBarColor: "lime"
       }
     ]}
   >
@@ -34,37 +35,20 @@ export const Stacked = () => (
   </States>
 );
 
+const INVERTED = {
+  foregroundColor: "background",
+  borderColor: "background",
+  backgroundColor: "primary",
+  progressBarColor: "secondary"
+};
+
 export const Inverted = () => (
   <States>
-    <Stack backgroundColor="lightgray" p={4}>
-      <Upload
-        progress={0}
-        label="quiet.jpg"
-        foregroundColor="black"
-        backgroundColor="white"
-        borderColor="white"
-      />
-      <Upload
-        progress={25}
-        label="quiet.jpg"
-        foregroundColor="black"
-        backgroundColor="white"
-        borderColor="white"
-      />
-      <Upload
-        progress={66}
-        label="quiet.jpg"
-        foregroundColor="black"
-        backgroundColor="white"
-        borderColor="white"
-      />
-      <Upload
-        progress={4}
-        label="quiet.jpg"
-        foregroundColor="black"
-        backgroundColor="white"
-        borderColor="white"
-      />
+    <Stack backgroundColor="primary" p={4}>
+      <Upload progress={0} label="quiet.jpg" {...INVERTED} />
+      <Upload progress={25} label="quiet.jpg" {...INVERTED} />
+      <Upload progress={66} label="quiet.jpg" {...INVERTED} />
+      <Upload progress={4} label="quiet.jpg" {...INVERTED} />
     </Stack>
   </States>
 );

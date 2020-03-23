@@ -19,7 +19,10 @@ export const Space = () => (
 
 export const Color = () => (
   <States<BoxProps>
-    states={[{ textColor: "red" }, { backgroundColor: "beige" }]}
+    states={[
+      { textColor: "red" },
+      { backgroundColor: "beige", textColor: "red" }
+    ]}
   >
     <Box fontFamily="body">
       The earliest reference to a magnetic device used as a &ldquo;direction

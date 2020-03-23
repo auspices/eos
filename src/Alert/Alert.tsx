@@ -1,23 +1,27 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Box, BoxProps } from "../Box";
+import { themeGet } from "@styled-system/theme-get";
 
 export type AlertProps = BoxProps & {
   mode: "notification" | "error";
 };
 
 const THEMES = {
-  notification: `
-    background-color: lightgray;
-    &, a {
-      color: black;
-    }`,
-  error: `
-    background-color: red;
-    &, a {
-      color: white;
+  notification: css`
+    background-color: ${themeGet("colors.tertiary")};
+    &,
+    a {
+      color: ${themeGet("colors.primary")};
     }
-    `
+  `,
+  error: css`
+    background-color: ${themeGet("colors.danger")};
+    &,
+    a {
+      color: ${themeGet("colors.white")};
+    }
+  `
 };
 
 const Container = styled(Box)<{

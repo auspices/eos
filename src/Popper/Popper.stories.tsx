@@ -3,6 +3,7 @@ import { States } from "storybook-states";
 import { Popper, PopperProps } from ".";
 import { Pane, PaneOption } from "../Pane";
 import { Button } from "../Button";
+import { Pill } from "../Pill";
 import { Stack } from "../Stack";
 
 export default { title: "Popper", component: Popper };
@@ -26,7 +27,7 @@ enum Mode {
 
 export const MenuExample = () => {
   const [mode, setMode] = useState(Mode.Resting);
-  const [value, setValue] = useState("...");
+  const [value, setValue] = useState("await");
 
   const handleOpen = useCallback(() => setMode(Mode.Open), []);
   const handleClose = useCallback(() => setMode(Mode.Resting), []);
@@ -39,8 +40,9 @@ export const MenuExample = () => {
 
   return (
     <States<Partial<PopperProps>>>
-      <Stack spacing={3}>
-        <pre>{value}</pre>
+      <Stack>
+        <Pill>{value}</Pill>
+
         <Popper
           open={mode === Mode.Open}
           onClose={handleClose}

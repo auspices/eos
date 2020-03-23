@@ -1,8 +1,49 @@
+export type ColorScheme = {
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  hint: string;
+  danger: string;
+  background: string;
+  black: "black";
+  white: "white";
+};
+
+export const LIGHT: ColorScheme = {
+  primary: "black",
+  secondary: "gray",
+  tertiary: "lightgray",
+  hint: "whitesmoke",
+  danger: "red",
+  background: "white",
+  black: "black",
+  white: "white"
+};
+
+export const DARK: ColorScheme = {
+  primary: "white",
+  secondary: "gray",
+  tertiary: "dimgray",
+  hint: "#333",
+  danger: "red",
+  background: "black",
+  black: "black",
+  white: "white"
+};
+
+export const SCHEMES = {
+  dark: DARK,
+  light: LIGHT
+};
+
+export type Scheme = keyof typeof SCHEMES;
+
 export const THEME = {
   fonts: {
     body: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif',
-    mono: "Menlo, monospace"
+    mono: "Menlo, Monaco, Consolas, 'Courier New', monospace"
   },
+  colors: LIGHT,
   fontSizes: [
     "0.75rem", // 0 = 12px
     "0.875rem", // 1 = 14px

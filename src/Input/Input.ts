@@ -10,6 +10,8 @@ import {
   TypographyProps,
   layout,
   LayoutProps,
+  color,
+  ColorProps,
   compose
 } from "styled-system";
 import { PILL } from "../Pill";
@@ -19,11 +21,12 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
   FlexboxProps &
   TypographyProps &
   LayoutProps &
-  SpaceProps & {
+  SpaceProps &
+  ColorProps & {
     focus?: boolean;
   };
 
-const systemProps = compose(border, flexbox, space, typography, layout);
+const systemProps = compose(border, flexbox, space, typography, layout, color);
 
 export const inputFocusMixin = css`
   outline: 0;
@@ -53,4 +56,6 @@ export const Input = styled.input<InputProps>`
   ${inputMixin}
 `;
 
-Input.defaultProps = { ...PILL };
+Input.defaultProps = {
+  ...PILL
+};

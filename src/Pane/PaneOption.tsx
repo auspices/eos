@@ -10,12 +10,12 @@ export type PaneOptionProps = ClickableProps & {
 };
 
 export const paneOptionActiveMixin = css`
-  background-color: whitesmoke;
+  background-color: ${themeGet("colors.hint")};
   text-decoration: underline;
 `;
 
 export const paneOptionHoverMixin = css`
-  background-color: lightgray;
+  background-color: ${themeGet("colors.tertiary")};
 `;
 
 export const paneOptionFocusMixin = css`
@@ -25,8 +25,8 @@ export const paneOptionFocusMixin = css`
 
 export const paneOptionDisabledMixin = css`
   pointer-events: none;
-  color: gray;
-  background-color: whitesmoke;
+  color: ${themeGet("colors.seconadary")};
+  background-color: ${themeGet("colors.hint")};
   text-decoration: line-through;
 `;
 

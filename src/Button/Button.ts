@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
 import { PILL } from "../Pill";
 
@@ -10,7 +11,7 @@ export type ButtonProps = ClickableProps & {
 };
 
 export const buttonHoverMixin = css`
-  color: gray;
+  color: ${themeGet("colors.secondary")};
 `;
 
 export const buttonFocusMixin = css`
@@ -20,7 +21,7 @@ export const buttonFocusMixin = css`
 
 export const buttonDisabledMixin = css`
   position: relative;
-  color: lightgray;
+  color: ${themeGet("colors.tertiary")};
   pointer-events: none;
   user-select: none;
   cursor: default;

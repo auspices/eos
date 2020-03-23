@@ -15,5 +15,6 @@ export const Clickable = styled.button<ClickableProps>`
 Clickable.defaultProps = {
   fontFamily: "body",
   fontSize: 2,
-  lineHeight: 0
+  lineHeight: 0,
+  color: "primary"
 };

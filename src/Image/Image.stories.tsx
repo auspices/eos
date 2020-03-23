@@ -11,11 +11,6 @@ const MEDIUM_SRC =
 
 export const Default = () => (
   <States<Partial<ImageProps>> states={[{}, { srcs: [] }]}>
-    <Image
-      srcs={[SMALL_SRC, MEDIUM_SRC]}
-      width={225}
-      height={125}
-      bg="whitesmoke"
-    />
+    <Image srcs={[SMALL_SRC, MEDIUM_SRC]} width={225} height={125} bg="hint" />
   </States>
 );

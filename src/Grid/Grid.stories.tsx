@@ -9,7 +9,7 @@ export const Default = () => (
   <States<GridProps>>
     <Grid>
       {Array.from({ length: 12 }, (_, i) => (
-        <Box key={i} width="16rem" height="12rem" bg="lightgray" />
+        <Box key={i} width="16rem" height="12rem" bg="tertiary" />
       ))}
     </Grid>
   </States>

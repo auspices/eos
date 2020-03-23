@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { themeGet } from "@styled-system/theme-get";
 import { Clickable } from "../Clickable";
 
 export const KeyValueEditorRemove = styled(Clickable).attrs({
@@ -10,7 +11,7 @@ export const KeyValueEditorRemove = styled(Clickable).attrs({
 
     &::before,
     &::after {
-      background-color: black;
+      background-color: ${themeGet("colors.primary")};
     }
   }
 
@@ -23,7 +24,7 @@ export const KeyValueEditorRemove = styled(Clickable).attrs({
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: lightgray;
+    background-color: ${themeGet("colors.tertiary")};
     transition: background-color 250ms;
   }
 
@@ -38,7 +39,7 @@ export const KeyValueEditorRemove = styled(Clickable).attrs({
   &:hover {
     &::before,
     &::after {
-      background-color: black;
+      background-color: ${themeGet("colors.primary")};
     }
   }
 `;

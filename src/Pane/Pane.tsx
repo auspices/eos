@@ -10,12 +10,12 @@ export type PaneProps = StackProps & {
 };
 
 export const paneShadowMixin = css`
-  box-shadow: 0 0 ${themeGet("space.3")} 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 ${themeGet("space.3")} 0 ${themeGet("colors.tertiary")};
 `;
 
 const Container = styled(Stack)`
   overflow: hidden;
-  background-color: white;
+  background-color: ${themeGet("colors.background")};
   max-width: ${themeGet("space.10")};
   ${paneShadowMixin}
 `;

@@ -11,7 +11,11 @@ export const Default = () => (
       <PaneOption onClick={action("onClick")}>the enemy</PaneOption>
       <PaneOption onClick={action("onClick")}>is invisible</PaneOption>
       <PaneOption onClick={action("onClick")}>and insidious</PaneOption>
-      <PaneOption onClick={action("onClick")} borderTop="1px solid whitesmoke">
+      <PaneOption
+        onClick={action("onClick")}
+        borderTop="1px solid"
+        borderColor="hint"
+      >
         gathering strength
       </PaneOption>
       <PaneOption onClick={action("onClick")}>from the bonds</PaneOption>

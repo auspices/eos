@@ -20,4 +20,5 @@ export * from "./ProgressBar";
 export * from "./ResponsiveImage";
 export * from "./Stack";
 export * from "./theme";
+export * from "./Themer";
 export * from "./Upload";
