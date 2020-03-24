@@ -19,6 +19,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     color: ${themeGet("colors.primary")};
     background-color: ${themeGet("colors.background")};
+    -webkit-text-size-adjust: 100%;
   }
 
   body,
