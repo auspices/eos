@@ -17,6 +17,7 @@ export * from "./Pane";
 export * from "./Pill";
 export * from "./Popper";
 export * from "./ProgressBar";
+export * from "./Remove";
 export * from "./ResponsiveImage";
 export * from "./Stack";
 export * from "./theme";
