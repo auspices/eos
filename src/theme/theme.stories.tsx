@@ -14,10 +14,15 @@ export const Values = () => (
   </States>
 );
 
-const Scheme = ({ scheme }: { scheme: Scheme }) => {
+const Scheme = ({ scheme, ...rest }: { scheme: Scheme }) => {
   const palette = SCHEMES[scheme];
   return (
-    <Stack bg={palette.background} textColor={palette.primary}>
+    <Stack
+      bg={palette.background}
+      textColor={palette.primary}
+      flex="1"
+      {...rest}
+    >
       {Object.entries(palette).map(([name, value]) => (
         <Stack
           key={name}
@@ -34,8 +39,16 @@ const Scheme = ({ scheme }: { scheme: Scheme }) => {
             borderRight="1px solid"
             borderColor="secondary"
           />
-          <Box fontFamily="mono" fontSize={0}>
-            {name} = {value}
+          <Box>
+            {name}{" "}
+            <Box
+              as="span"
+              fontFamily="mono"
+              fontSize={0}
+              verticalAlign="middle"
+            >
+              &lt;{value}&gt;
+            </Box>
           </Box>
         </Stack>
       ))}
@@ -43,14 +56,11 @@ const Scheme = ({ scheme }: { scheme: Scheme }) => {
   );
 };
 
-export const LightColorScheme = () => (
+export const Colors = () => (
   <States>
-    <Scheme scheme="light" />
-  </States>
-);
-
-export const DarkColorScheme = () => (
-  <States>
-    <Scheme scheme="dark" />
+    <Stack direction="horizontal">
+      <Scheme scheme="light" />
+      <Scheme scheme="dark" />
+    </Stack>
   </States>
 );

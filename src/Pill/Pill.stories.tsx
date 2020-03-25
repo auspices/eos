@@ -7,16 +7,15 @@ import { Input } from "../Input";
 
 export default { title: "Pill" };
 
-const Examples = () => (
-  <>
-    {" "}
-    <Box {...PILL}>&lt;Box /&gt; with PILL</Box>
-    <Input {...PILL} placeholder="<Input /> with PILL" />
-    <Box {...PILL} as="pre">
-      {JSON.stringify(PILL, null, 2)}
-    </Box>
-  </>
-);
+const EXAMPLES = [
+  <Box key="a" {...PILL} flex="1">
+    &lt;Box /&gt; with PILL
+  </Box>,
+  <Input key="b" {...PILL} placeholder="<Input /> with PILL" flex="1" />,
+  <Box key="c" {...PILL} as="pre" flex="1">
+    {JSON.stringify(PILL, null, 2)}
+  </Box>
+];
 
 export const _Pill = () => (
   <States<PillProps>>
@@ -26,13 +25,11 @@ export const _Pill = () => (
 
 export const Styles = () => (
   <States>
-    <Stack spacing={2}>
-      <Stack spacing={2}>
-        <Examples />
-      </Stack>
+    <Stack spacing={3}>
+      <Stack spacing={3}>{EXAMPLES}</Stack>
 
-      <Stack spacing={2} direction="horizontal">
-        <Examples />
+      <Stack spacing={3} direction="horizontal">
+        {EXAMPLES}
       </Stack>
     </Stack>
   </States>
