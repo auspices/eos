@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { Stack, StackProps } from "../Stack";
 import { Input, InputProps } from "../Input";
 import { Pill } from "../Pill";
@@ -8,6 +9,10 @@ export type FieldProps = StackProps & {
   input: InputProps;
 };
 
+const Label = styled(Pill).attrs({ as: "label" })`
+  user-select: none;
+`;
+
 export const Field: React.FC<FieldProps> = ({
   label,
   input,
@@ -15,8 +20,11 @@ export const Field: React.FC<FieldProps> = ({
   ...rest
 }) => (
   <Stack direction={direction} {...rest}>
-    <Pill as="label">{label}</Pill>
-    <Input flex="1" {...input} />
+    <Label {...(direction === "horizontal" ? { maxWidth: "50%" } : {})}>
+      {label}
+    </Label>
+
+    <Input flex="1" minWidth={0} {...input} />
   </Stack>
 );
 
