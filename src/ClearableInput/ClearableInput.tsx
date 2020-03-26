@@ -1,21 +1,32 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
+import composeRefs from "@seznam/compose-react-refs";
 import { Input, InputProps } from "../Input";
-import { Box, BoxProps } from "../Box";
+import { Box, BoxSpatialProps } from "../Box";
 import { Clear } from "../Clear";
 
-export type ClearableInputProps = InputProps &
-  BoxProps & {
+export type ClearableInputProps = BoxSpatialProps &
+  Omit<InputProps, "onChange" | "value"> & {
+    onChange?(value: string): void;
     onClear?(): void;
+    value?: string;
   };
 
 export const ClearableInput = React.forwardRef(
   (
     {
+      m,
       mt,
       mr,
       mb,
       ml,
+      minWidth,
       width,
+      flex,
+      flexGrow,
+      flexShrink,
+      flexBasis,
+      // Above are spatial props for wrapper, remainder
+      // is split off into input
       value = "",
       onChange,
       onClear,
@@ -36,19 +47,36 @@ export const ClearableInput = React.forwardRef(
     }, [onClear]);
 
     const handleChange = useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(event);
-
-        setValue(event.currentTarget.value);
-      },
-      [onChange, setValue]
+      ({ currentTarget: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+        setValue(value),
+      [setValue]
     );
 
+    useEffect(() => onChange && onChange(controlledValue), [
+      onChange,
+      controlledValue
+    ]);
+
     return (
-      <Box position="relative" {...{ mt, mr, mb, ml, width }}>
+      <Box
+        position="relative"
+        {...{
+          m,
+          mt,
+          mr,
+          mb,
+          ml,
+          minWidth,
+          width,
+          flex,
+          flexGrow,
+          flexShrink,
+          flexBasis
+        }}
+      >
         <Input
           {...rest}
-          ref={forwardedRef}
+          ref={composeRefs(ref, forwardedRef)}
           width="100%"
           value={controlledValue}
           onChange={handleChange}

@@ -20,12 +20,14 @@ import {
 } from "styled-system";
 import { ColorProperty } from "csstype";
 
-export type BoxProps = BorderProps &
-  FlexboxProps &
+export type BoxSpatialProps = FlexboxProps &
   SpaceProps &
-  TypographyProps &
   PositionProps &
-  LayoutProps &
+  LayoutProps;
+
+export type BoxProps = BorderProps &
+  TypographyProps &
+  BoxSpatialProps &
   Omit<ColorProps, "color"> & {
     textColor?: ResponsiveValue<ColorProperty>;
   };
