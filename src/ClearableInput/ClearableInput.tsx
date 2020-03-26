@@ -3,12 +3,12 @@ import { Input, InputProps } from "../Input";
 import { Box, BoxProps } from "../Box";
 import { Clear } from "../Clear";
 
-export type SearchInputProps = InputProps &
+export type ClearableInputProps = InputProps &
   BoxProps & {
     onClear?(): void;
   };
 
-export const SearchInput = React.forwardRef(
+export const ClearableInput = React.forwardRef(
   (
     {
       mt,
@@ -20,7 +20,7 @@ export const SearchInput = React.forwardRef(
       onChange,
       onClear,
       ...rest
-    }: SearchInputProps,
+    }: ClearableInputProps,
     forwardedRef: React.Ref<HTMLInputElement>
   ) => {
     const ref = useRef<HTMLInputElement>(null);
@@ -70,4 +70,4 @@ export const SearchInput = React.forwardRef(
   }
 );
 
-SearchInput.displayName = "SearchInput";
+ClearableInput.displayName = "ClearableInput";

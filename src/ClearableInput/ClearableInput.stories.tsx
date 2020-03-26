@@ -1,13 +1,13 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
-import { SearchInput, SearchInputProps } from "./SearchInput";
+import { ClearableInput, ClearableInputProps } from "./ClearableInput";
 
-export default { title: "SearchInput", component: SearchInput };
+export default { title: "ClearableInput", component: ClearableInput };
 
 export const Default = () => (
-  <States<SearchInputProps> states={[{}, { value: "query" }]}>
-    <SearchInput
+  <States<ClearableInputProps> states={[{}, { value: "query" }]}>
+    <ClearableInput
       placeholder="search"
       onChange={action("onChange")}
       onClear={action("onClear")}
