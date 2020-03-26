@@ -34,6 +34,7 @@ export const PaneOption = styled(Clickable)<PaneOptionProps>`
   text-align: left;
   cursor: pointer;
   max-width: ${themeGet("space.10")};
+  text-decoration: none;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

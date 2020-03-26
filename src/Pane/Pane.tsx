@@ -46,9 +46,16 @@ export const Pane = React.forwardRef(
     return (
       <Container ref={forwardedRef} {...rest}>
         {list.map((child, i) => {
+          const {
+            props: { onClick }
+          } = child as React.ReactElement<any>;
           return React.cloneElement(child as React.ReactElement<any>, {
             ref: refs[i],
-            active: i === index
+            active: i === index,
+            onClick: (event: unknown) => {
+              onClick && onClick(event);
+              onEnter && onEnter();
+            }
           });
         })}
       </Container>

@@ -6,6 +6,7 @@ export * from "./Button";
 export * from "./Clear";
 export * from "./ClearableInput";
 export * from "./Clickable";
+export * from "./Dropdown";
 export * from "./Field";
 export * from "./GlobalStyles";
 export * from "./Grid";
