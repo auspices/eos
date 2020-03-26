@@ -10,7 +10,15 @@ export default { title: "Dropdown", component: Dropdown };
 
 export const Default = () => (
   <States<Partial<DropdownProps>>
-    states={[{}, { children: <PaneOption>alone</PaneOption> }]}
+    states={[
+      {},
+      {
+        // eslint-disable-next-line react/display-name
+        children: ({ handleClose }) => (
+          <PaneOption onClick={handleClose}>alone</PaneOption>
+        )
+      }
+    ]}
   >
     <Dropdown label="the past">
       <PaneOption as="a" href="#markov">
@@ -20,6 +28,7 @@ export const Default = () => (
       <PaneOption as="a" href="#insulation">
         scattered insulation
       </PaneOption>
+
       <PaneOption onClick={action("onClick")}>a speech act</PaneOption>
     </Dropdown>
   </States>
@@ -31,14 +40,25 @@ export const InContext = () => (
       <Button flex="1">within</Button>
 
       <Dropdown flex="1" label="the past">
-        <PaneOption as="a" href="#markov">
-          a markov blanket
-        </PaneOption>
+        {({ handleClose }) => [
+          <PaneOption key="a" as="a" href="#markov">
+            a markov blanket
+          </PaneOption>,
 
-        <PaneOption as="a" href="#insulation">
-          scattered insulation
-        </PaneOption>
-        <PaneOption onClick={action("onClick")}>a speech act</PaneOption>
+          <PaneOption key="b" as="a" href="#insulation">
+            scattered insulation
+          </PaneOption>,
+
+          <PaneOption
+            key="c"
+            onClick={() => {
+              action("onClick")("Click");
+              handleClose();
+            }}
+          >
+            a speech act
+          </PaneOption>
+        ]}
       </Dropdown>
 
       <Button flex="1">and throughout</Button>

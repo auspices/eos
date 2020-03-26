@@ -9,11 +9,23 @@ enum Mode {
   Active
 }
 
+export type DropdownPaneOptions =
+  | React.ReactElement<PaneOptionProps>
+  | React.ReactElement<PaneOptionProps>[];
+
+export type DropdownRenderProps = ({
+  handleClose
+}: {
+  handleClose(): void;
+}) => DropdownPaneOptions;
+
+export const isDropdownRenderProps = (
+  children: DropdownPaneOptions | DropdownRenderProps
+): children is DropdownRenderProps => typeof children === "function";
+
 export type DropdownProps = BoxProps & {
   label: string;
-  children:
-    | React.ReactElement<PaneOptionProps>
-    | React.ReactElement<PaneOptionProps>[];
+  children: DropdownPaneOptions | DropdownRenderProps;
 };
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -38,7 +50,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </Button>
         }
       >
-        <Pane onEnter={handleClose}>{children}</Pane>
+        <Pane onEnter={handleClose}>
+          {isDropdownRenderProps(children)
+            ? children({ handleClose })
+            : children}
+        </Pane>
       </Popper>
     </Box>
   );
