@@ -72,7 +72,7 @@ export const AlertsProvider: React.FC = ({ children }) => {
 
   const timeouts = useRef<number[]>([]);
 
-  const sendNotification = useCallback(({ body, ttl = 1000 }: Message) => {
+  const sendNotification = useCallback(({ body, ttl = 2500 }: Message) => {
     const id = generateId();
     dispatch({ type: "NOTIFICATION", payload: { id, body } });
     timeouts.current.push(
