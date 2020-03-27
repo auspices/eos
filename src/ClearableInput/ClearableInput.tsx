@@ -47,8 +47,9 @@ export const ClearableInput = React.forwardRef(
     }, [onClear]);
 
     const handleChange = useCallback(
-      ({ currentTarget: { value } }: React.ChangeEvent<HTMLInputElement>) =>
-        setValue(value),
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.currentTarget.value);
+      },
       [setValue]
     );
 
@@ -90,6 +91,7 @@ export const ClearableInput = React.forwardRef(
             right={4}
             backgroundColor="hint"
             borderRadius="50%"
+            type="reset"
             style={{ transform: "translateY(-50%)" }}
           />
         )}

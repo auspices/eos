@@ -21,21 +21,31 @@ export const Default = () => (
 export const InContext = () => {
   const [value, setValue] = useState("");
   const [cleared, setCleared] = useState(0);
+  const [submitted, setSubmitted] = useState("");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(value);
+  };
+
   return (
     <States<ClearableInputProps>>
       <Stack>
         <Pill>
-          value: {`<${value ?? ""}>`}, cleared: {cleared}
+          value: {`<${value ?? ""}>`}, submitted: {`<${submitted ?? ""}>`},
+          cleared: {cleared}
         </Pill>
-        <Stack direction="horizontal" flex="1" bg="red">
-          <ClearableInput
-            placeholder="find or create"
-            onChange={setValue}
-            onClear={() => setCleared(n => n + 1)}
-            flex="1"
-          />
-          <Button>add</Button>
-        </Stack>
+        <form onSubmit={handleSubmit}>
+          <Stack direction="horizontal" flex="1" bg="red">
+            <ClearableInput
+              placeholder="find or create"
+              onChange={setValue}
+              onClear={() => setCleared(n => n + 1)}
+              flex="1"
+            />
+            <Button>add</Button>
+          </Stack>
+        </form>
       </Stack>
     </States>
   );
