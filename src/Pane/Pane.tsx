@@ -1,8 +1,9 @@
-import React, { useCallback, createRef, isValidElement } from "react";
+import React, { useCallback, createRef, isValidElement, useRef } from "react";
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
 import { Stack, StackProps } from "../Stack";
+import composeRefs from "@seznam/compose-react-refs";
 
 export type PaneProps = StackProps & {
   children: React.ReactElement<any> | React.ReactElement<any>[];
@@ -27,6 +28,11 @@ Container.defaultProps = {
 
 export const Pane = React.forwardRef(
   ({ children, onEnter, ...rest }: PaneProps, forwardedRef: React.Ref<any>) => {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const composedRef = composeRefs(
+      ref,
+      forwardedRef
+    ) as React.MutableRefObject<any>;
     const list = React.Children.toArray(children).filter(isValidElement);
     const refs = list.map(() => createRef<HTMLElement | null>());
 
@@ -40,11 +46,12 @@ export const Pane = React.forwardRef(
 
     const { index } = useKeyboardListNavigation({
       list,
+      ref: composedRef,
       onEnter: handleEnter
     });
 
     return (
-      <Container ref={forwardedRef} {...rest}>
+      <Container ref={composedRef} {...rest}>
         {list.map((child, i) => {
           return React.cloneElement(child as React.ReactElement<any>, {
             ref: refs[i],

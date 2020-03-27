@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import { Box, BoxProps } from "../Box";
 import { Button } from "../Button";
 import { Popper } from "../Popper";
@@ -33,10 +33,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
   children,
   ...rest
 }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
   const [mode, setMode] = useState(Mode.Resting);
 
   const handleClose = useCallback(() => setMode(Mode.Resting), []);
   const handleClick = useCallback(() => setMode(Mode.Active), []);
+
+  useEffect(() => {
+    mode === Mode.Active && ref.current?.focus();
+  }, [mode]);
 
   return (
     <Box {...rest}>
@@ -50,7 +56,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </Button>
         }
       >
-        <Pane onEnter={handleClose}>
+        <Pane ref={ref} onEnter={handleClose}>
           {isDropdownRenderProps(children)
             ? children({ handleClose })
             : children}
