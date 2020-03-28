@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
-import { PILL } from "../Pill";
+import { PILL, pillFocusMixin } from "../Pill";
 
 export const BUTTON = { ...PILL };
 
@@ -17,6 +17,7 @@ export const buttonHoverMixin = css`
 export const buttonFocusMixin = css`
   outline: 0;
   text-decoration: underline;
+  ${pillFocusMixin}
 `;
 
 export const buttonDisabledMixin = css`

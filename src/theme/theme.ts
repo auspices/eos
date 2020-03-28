@@ -1,3 +1,13 @@
+export type Constants = {
+  black: "black";
+  white: "white";
+};
+
+export const CONSTANTS: Constants = {
+  black: "black",
+  white: "white"
+};
+
 export type ColorScheme = {
   primary: string;
   secondary: string;
@@ -5,10 +15,9 @@ export type ColorScheme = {
   hint: string;
   danger: string;
   background: string;
-  black: "black";
-  white: "white";
-  blue: string;
-};
+  accent: string;
+  external: string;
+} & Constants;
 
 export const LIGHT: ColorScheme = {
   primary: "black",
@@ -17,9 +26,9 @@ export const LIGHT: ColorScheme = {
   hint: "whitesmoke",
   danger: "red",
   background: "white",
-  black: "black",
-  white: "white",
-  blue: "blue"
+  accent: "#d3b000",
+  external: "blue",
+  ...CONSTANTS
 };
 
 export const DARK: ColorScheme = {
@@ -29,9 +38,9 @@ export const DARK: ColorScheme = {
   hint: "#333",
   danger: "red",
   background: "black",
-  black: "black",
-  white: "white",
-  blue: "dodgerblue"
+  accent: "#23cf00",
+  external: "dodgerblue",
+  ...CONSTANTS
 };
 
 export const SCHEMES = {

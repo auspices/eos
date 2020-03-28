@@ -181,8 +181,7 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
               onChange: handleValueChange(field.name),
               placeholder: field.name,
               defaultValue: state.data[field.name],
-              autoComplete: "off",
-              autoFocus: index === state.schema.length - 1
+              autoComplete: "off"
             }}
           />
 

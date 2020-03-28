@@ -16,27 +16,38 @@ import {
   ColorProps,
   compose,
   style,
-  ResponsiveValue
+  ResponsiveValue,
+  system
 } from "styled-system";
-import { ColorProperty } from "csstype";
+import { ColorProperty, TransitionProperty } from "csstype";
 
 export type BoxSpatialProps = FlexboxProps &
   SpaceProps &
   PositionProps &
   LayoutProps;
 
+export type TextColorProps = {
+  textColor?: ResponsiveValue<ColorProperty>;
+};
+
+export type TransitionProps = {
+  transition?: ResponsiveValue<TransitionProperty>;
+};
+
 export type BoxProps = BorderProps &
   TypographyProps &
   BoxSpatialProps &
-  Omit<ColorProps, "color"> & {
-    textColor?: ResponsiveValue<ColorProperty>;
-  };
+  Omit<ColorProps, "color"> &
+  TextColorProps &
+  TransitionProps;
 
 const textColor = style({
   prop: "textColor",
   cssProperty: "color",
   key: "colors"
 });
+
+const transition = system({ transition: true });
 
 export const boxMixin = compose(
   border,
@@ -46,7 +57,8 @@ export const boxMixin = compose(
   position,
   layout,
   color,
-  textColor
+  textColor,
+  transition
 );
 
 export const Box = styled.div<BoxProps>`

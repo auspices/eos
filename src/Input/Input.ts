@@ -14,7 +14,7 @@ import {
   ColorProps,
   compose
 } from "styled-system";
-import { PILL } from "../Pill";
+import { PILL, pillFocusMixin } from "../Pill";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
   BorderProps &
@@ -29,7 +29,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
 const systemProps = compose(border, flexbox, space, typography, layout, color);
 
 export const inputFocusMixin = css`
-  outline: 0;
+  ${pillFocusMixin};
 
   ::placeholder {
     text-decoration: underline;
@@ -40,7 +40,10 @@ export const inputMixin = css<InputProps>`
   appearance: none;
   border-radius: 0;
   margin: 0;
+  transition: box-shadow 250ms ease;
   ${systemProps}
+
+  background-color: transparent;
 
   ${({ focus }) => focus && inputFocusMixin}
   &:focus {
