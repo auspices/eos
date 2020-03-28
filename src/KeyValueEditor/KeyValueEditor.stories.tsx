@@ -12,41 +12,33 @@ import {
 
 export default { title: "KeyValueEditor", component: KeyValueEditor };
 
+const INITIAL_DATA = {
+  foo: "bar",
+  bar: "baz",
+  qux: "foo"
+};
+
+const INITIAL_SCHEMA = toSchema(INITIAL_DATA);
+
 export const Default = () => (
   <States<Partial<KeyValueEditorProps>>>
     <KeyValueEditor
-      schema={[
-        { name: "foo", type: "string" },
-        { name: "bar", type: "string" },
-        { name: "qux", type: "string" }
-      ]}
-      data={{
-        foo: "bar",
-        bar: "baz",
-        qux: "foo"
-      }}
+      schema={INITIAL_SCHEMA}
+      data={INITIAL_DATA}
       onChange={action("onChange")}
     />
   </States>
 );
 
 export const Demo = () => {
-  const initialData = {
-    foo: "bar",
-    bar: "baz",
-    qux: "foo"
-  };
-
-  const schema = toSchema(initialData);
-
-  const [changed, handleChange] = useState<KeyValueData>(initialData);
+  const [changed, handleChange] = useState<KeyValueData>(INITIAL_DATA);
 
   return (
     <States>
       <Stack spacing={6}>
         <KeyValueEditor
-          schema={schema}
-          data={initialData}
+          schema={INITIAL_SCHEMA}
+          data={INITIAL_DATA}
           onChange={handleChange}
         />
 

@@ -5,7 +5,7 @@ import { KeyValueInput } from "../KeyValueInput";
 import { Remove } from "../Remove";
 
 export type KeyValueSchema = {
-  key?: string;
+  key: string;
   name: string;
   type: "string" | "number";
 }[];
@@ -19,7 +19,7 @@ export const toSchema = (data: KeyValueData): KeyValueSchema =>
       throw new Error("Schema invalid");
     }
 
-    return { name, type };
+    return { key: name, name, type };
   });
 
 type State = {
@@ -50,6 +50,7 @@ const reducer = (state: State, action: Action): State => {
         schema: [
           ...state.schema,
           {
+            key: action.payload.name,
             name: action.payload.name,
             type: "string"
           }
@@ -123,7 +124,7 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
 }) => {
   const [state, dispatch] = useReducer(reducer, {
     edited: false,
-    schema: initialSchema.map(field => ({ key: field.name, ...field })),
+    schema: initialSchema,
     data: initialData
   });
 
@@ -168,7 +169,7 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
   return (
     <Stack {...rest}>
       {state.schema.map((field, index) => (
-        <Box key={field.name + index} position="relative">
+        <Box key={field.key} position="relative">
           <KeyValueInput
             k={{
               onChange: handleNameChange({ name: field.name, index }),
