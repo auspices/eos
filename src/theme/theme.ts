@@ -7,6 +7,7 @@ export type ColorScheme = {
   background: string;
   black: "black";
   white: "white";
+  blue: string;
 };
 
 export const LIGHT: ColorScheme = {
@@ -17,7 +18,8 @@ export const LIGHT: ColorScheme = {
   danger: "red",
   background: "white",
   black: "black",
-  white: "white"
+  white: "white",
+  blue: "blue"
 };
 
 export const DARK: ColorScheme = {
@@ -28,7 +30,8 @@ export const DARK: ColorScheme = {
   danger: "red",
   background: "black",
   black: "black",
-  white: "white"
+  white: "white",
+  blue: "dodgerblue"
 };
 
 export const SCHEMES = {
