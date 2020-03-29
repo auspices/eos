@@ -57,7 +57,7 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "3.0.0",
     "react": "16.13.1",
-    "react-docgen-typescript-loader": "3.7.1",
+    "react-docgen-typescript-loader": "3.7.2",
     "react-dom": "16.13.1",
     "semantic-release": "17.0.4",
     "storybook-states": "1.0.2",
