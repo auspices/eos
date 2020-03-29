@@ -10,9 +10,9 @@ enum Mode {
 }
 
 export const imgMixin = css`
+  display: block;
   max-width: 100%;
   max-height: 100%;
-  vertical-align: bottom;
   opacity: 0;
   transition: opacity 250ms;
 `;
