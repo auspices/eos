@@ -4,6 +4,7 @@ import { States } from "storybook-states";
 import { PaneOption } from "../Pane";
 import { Stack } from "../Stack";
 import { Button } from "../Button";
+import { Caret } from "../Caret";
 import { Dropdown, DropdownProps } from "./Dropdown";
 
 export default { title: "Dropdown", component: Dropdown };
@@ -12,6 +13,7 @@ export const Default = () => (
   <States<Partial<DropdownProps>>
     states={[
       {},
+      { open: true },
       {
         // eslint-disable-next-line react/display-name
         children: ({ handleClose }) => (
@@ -37,7 +39,10 @@ export const Default = () => (
 export const InContext = () => (
   <States>
     <Stack direction="horizontal">
-      <Button flex="1">within</Button>
+      <Button flex="1">
+        <Caret direction="left" mr={3} />
+        within
+      </Button>
 
       <Dropdown flex="1" label="the past">
         {({ handleClose }) => [

@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef, useEffect } from "react";
 import { Box, BoxProps } from "../Box";
 import { Button } from "../Button";
 import { Popper } from "../Popper";
+import { Caret } from "../Caret";
 import { Pane, PaneOptionProps } from "../Pane";
 
 enum Mode {
@@ -26,16 +27,18 @@ export const isDropdownRenderProps = (
 export type DropdownProps = BoxProps & {
   label: string;
   children: DropdownPaneOptions | DropdownRenderProps;
+  open?: boolean;
 };
 
 export const Dropdown: React.FC<DropdownProps> = ({
   label,
   children,
+  open = false,
   ...rest
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const [mode, setMode] = useState(Mode.Resting);
+  const [mode, setMode] = useState(open ? Mode.Active : Mode.Resting);
 
   const handleClose = useCallback(() => setMode(Mode.Resting), []);
   const handleClick = useCallback(() => setMode(Mode.Active), []);
@@ -51,8 +54,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
         open={mode === Mode.Active}
         onClose={handleClose}
         anchor={
-          <Button width="100%" onClick={handleClick}>
+          <Button
+            focus={mode === Mode.Active}
+            onClick={handleClick}
+            width="100%"
+          >
             {label}
+
+            <Caret ml={3} direction={mode === Mode.Active ? "up" : "down"} />
           </Button>
         }
       >

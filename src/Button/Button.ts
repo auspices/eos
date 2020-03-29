@@ -3,7 +3,12 @@ import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
 import { PILL, pillFocusMixin } from "../Pill";
 
-export const BUTTON = { ...PILL };
+export const BUTTON = {
+  ...PILL,
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center"
+};
 
 export type ButtonProps = ClickableProps & {
   focus?: boolean;
@@ -30,7 +35,6 @@ export const buttonDisabledMixin = css`
 `;
 
 export const buttonMixin = css<ButtonProps>`
-  display: inline-block;
   cursor: pointer;
 
   ${({ hover }) => hover && buttonHoverMixin}
