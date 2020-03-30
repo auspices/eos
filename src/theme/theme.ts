@@ -17,6 +17,7 @@ export type ColorScheme = {
   background: string;
   accent: string;
   external: string;
+  overlay: string;
 } & Constants;
 
 export const LIGHT: ColorScheme = {
@@ -28,6 +29,7 @@ export const LIGHT: ColorScheme = {
   background: "white",
   accent: "#d3b000",
   external: "blue",
+  overlay: "rgba(255, 255, 255, 0.9)",
   ...CONSTANTS
 };
 
@@ -40,6 +42,7 @@ export const DARK: ColorScheme = {
   background: "black",
   accent: "#23cf00",
   external: "dodgerblue",
+  overlay: "rgba(0, 0, 0, 0.9)",
   ...CONSTANTS
 };
 

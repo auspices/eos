@@ -35,6 +35,7 @@
     "@styled-system/theme-get": "^5.1.2",
     "csstype": "^2.6.9",
     "proportional-scale": "^2.1.1",
+    "react-focus-on": "^3.3.0",
     "styled-reset": "^4.1.2",
     "styled-system": "^5.1.5",
     "use-keyboard-list-navigation": "^1.5.0"

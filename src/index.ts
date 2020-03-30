@@ -16,6 +16,8 @@ export * from "./Image";
 export * from "./Input";
 export * from "./KeyValueEditor";
 export * from "./KeyValueInput";
+export * from "./Modal";
+export * from "./ModalDialog";
 export * from "./Pagination";
 export * from "./Pane";
 export * from "./Pill";
