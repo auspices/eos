@@ -30,21 +30,25 @@ export const Caret = styled(Box)<CaretProps>`
           return css`
             border-top: 1px solid;
             border-left: 1px solid;
+            margin-top: 25%;
           `;
         case "down":
           return css`
             border-right: 1px solid;
             border-bottom: 1px solid;
+            margin-top: -25%;
           `;
         case "left":
           return css`
             border-bottom: 1px solid;
             border-left: 1px solid;
+            margin-left: 25%;
           `;
         case "right":
           return css`
             border-top: 1px solid;
             border-right: 1px solid;
+            margin-left: -25%;
           `;
       }
     }}
