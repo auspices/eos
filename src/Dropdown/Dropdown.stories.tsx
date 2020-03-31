@@ -38,7 +38,7 @@ export const Default = () => (
 
 export const InContext = () => (
   <States>
-    <Stack direction="horizontal">
+    <Stack direction={["vertical", "vertical", "horizontal"]}>
       <Button flex="1">
         <Caret direction="left" mr={3} />
         within

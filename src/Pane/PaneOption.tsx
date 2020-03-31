@@ -33,7 +33,6 @@ export const paneOptionDisabledMixin = css`
 export const PaneOption = styled(Clickable)<PaneOptionProps>`
   text-align: left;
   cursor: pointer;
-  max-width: ${themeGet("space.10")};
   text-decoration: none;
   overflow: hidden;
   white-space: nowrap;
@@ -58,7 +57,7 @@ export const PaneOption = styled(Clickable)<PaneOptionProps>`
 `;
 
 PaneOption.defaultProps = {
-  fontSize: 0,
+  fontSize: [2, 2, 0, 0],
   py: 2,
   px: 3
 };
