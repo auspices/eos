@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { themeGet } from "@styled-system/theme-get";
 import { Pill, PillProps } from "../Pill";
 
 const incoming = keyframes`
@@ -23,12 +24,12 @@ const Container = styled(Pill)`
   &::after {
     content: "";
     position: absolute;
-    animation: ${incoming} 1.5s ease infinite;
     bottom: 0;
-    height: 2px;
-    background-color: black;
-    width: 50%;
     left: 0;
+    width: 50%;
+    height: 2px;
+    animation: ${incoming} 1.5s ease infinite;
+    background-color: ${themeGet("colors.primary")};
   }
 `;
 
