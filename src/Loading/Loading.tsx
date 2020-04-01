@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Pill, PillProps } from "../Pill";
 
@@ -17,28 +17,41 @@ const incoming = keyframes`
   }
 `;
 
-const Container = styled(Pill)`
+const Container = styled(Pill)<{ loading: boolean }>`
   position: relative;
   overflow: hidden;
 
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50%;
-    height: 2px;
-    animation: ${incoming} 1.5s ease infinite;
-    background-color: ${themeGet("colors.primary")};
-  }
+  ${({ loading }) =>
+    loading &&
+    css`
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: 2px;
+        animation: ${incoming} 1.5s ease infinite;
+        background-color: ${themeGet("colors.primary")};
+      }
+    `}
 `;
 
 export type LoadingProps = PillProps & {
   children?: React.ReactNode;
+  loading?: boolean;
 };
 
-export const Loading: React.FC<LoadingProps> = ({ children, ...rest }) => {
-  return <Container {...rest}>{children ?? <>&nbsp;</>}</Container>;
+export const Loading: React.FC<LoadingProps> = ({
+  children,
+  loading = true,
+  ...rest
+}) => {
+  return (
+    <Container loading={loading} {...rest}>
+      {children ?? <>&nbsp;</>}
+    </Container>
+  );
 };
 
 Loading.displayName = "Loading";

@@ -24,6 +24,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
   SpaceProps &
   ColorProps & {
     focus?: boolean;
+    hover?: boolean;
   };
 
 const systemProps = compose(border, flexbox, space, typography, layout, color);
@@ -31,6 +32,12 @@ const systemProps = compose(border, flexbox, space, typography, layout, color);
 export const inputFocusMixin = css`
   ${pillFocusMixin};
 
+  ::placeholder {
+    text-decoration: underline;
+  }
+`;
+
+export const inputHoverMixin = css`
   ::placeholder {
     text-decoration: underline;
   }
@@ -48,6 +55,11 @@ export const inputMixin = css<InputProps>`
   ${({ focus }) => focus && inputFocusMixin}
   &:focus {
     ${inputFocusMixin}
+  }
+
+  ${({ hover }) => hover && inputHoverMixin}
+  &:hover {
+    ${inputHoverMixin}
   }
 
   &:autofill {
