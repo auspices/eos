@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Box, BoxProps } from "../Box";
 import { Button } from "../Button";
 import { Popper } from "../Popper";
@@ -36,16 +36,25 @@ export const Dropdown: React.FC<DropdownProps> = ({
   open = false,
   ...rest
 }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-
   const [mode, setMode] = useState(open ? Mode.Active : Mode.Resting);
 
   const handleClose = useCallback(() => setMode(Mode.Resting), []);
   const handleClick = useCallback(() => setMode(Mode.Active), []);
 
+  const handleKeydown = useCallback(({ key }: KeyboardEvent) => {
+    switch (key) {
+      case "Escape":
+        setMode(Mode.Resting);
+        break;
+      default:
+        break;
+    }
+  }, []);
+
   useEffect(() => {
-    mode === Mode.Active && ref.current?.focus();
-  }, [mode]);
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, [handleKeydown]);
 
   return (
     <Box {...rest}>
@@ -65,7 +74,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </Button>
         }
       >
-        <Pane ref={ref} onEnter={handleClose}>
+        <Pane onEnter={handleClose}>
           {isDropdownRenderProps(children)
             ? children({ handleClose })
             : children}
