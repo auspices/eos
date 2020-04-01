@@ -25,6 +25,7 @@ export const Page: React.FC<PageProps> = ({
     textAlign="center"
     as={as}
     disabled={pageNumber === currentPage}
+    tabIndex={pageNumber === currentPage && -1}
     {...(as === "a"
       ? { href: `${href}?page=${pageNumber}&per=${per}` }
       : {
