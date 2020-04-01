@@ -28,6 +28,7 @@ export * from "./ProgressBar";
 export * from "./Remove";
 export * from "./ResponsiveImage";
 export * from "./Skeleton";
+export * from "./Spinner";
 export * from "./Stack";
 export * from "./theme";
 export * from "./Themer";
