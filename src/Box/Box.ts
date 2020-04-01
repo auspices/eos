@@ -39,7 +39,9 @@ export type BoxProps = BorderProps &
   BoxSpatialProps &
   Omit<ColorProps, "color"> &
   TextColorProps &
-  TransitionProps;
+  TransitionProps & {
+    children?: React.ReactNode;
+  };
 
 const textColor = style({
   prop: "textColor",
