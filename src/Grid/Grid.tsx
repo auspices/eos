@@ -10,7 +10,7 @@ const Container = styled(Box)`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(${themeGet("space.10")}, 1fr));
-  grid-auto-rows: 1fr;
+  grid-auto-rows: minmax(${themeGet("space.10")}, 1fr);
   grid-column-gap: ${themeGet("space.5")};
   grid-row-gap: ${themeGet("space.5")};
 `;
