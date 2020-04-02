@@ -50,11 +50,12 @@ export type ImageProps = Omit<
     srcs: string[];
     onError?(): void;
     onLoad?(): void;
+    onComplete?(): void;
   };
 
 export const Image = React.forwardRef(
   (
-    { srcs, alt, onError, onLoad, ...rest }: ImageProps,
+    { srcs, alt, onError, onLoad, onComplete, ...rest }: ImageProps,
     forwardedRef: React.Ref<HTMLImageElement>
   ) => {
     const [mode, setMode] = useState(Mode.Pending);
@@ -63,12 +64,14 @@ export const Image = React.forwardRef(
     const handleError = useCallback(() => {
       setMode(Mode.Error);
       onError && onError();
-    }, [onError]);
+      onComplete && onComplete();
+    }, [onComplete, onError]);
 
     const handleLoad = useCallback(() => {
       setMode(Mode.Loaded);
       onLoad && onLoad();
-    }, [onLoad]);
+      onComplete && onComplete();
+    }, [onComplete, onLoad]);
 
     useEffect(() => {
       if (ref.current?.complete) {
