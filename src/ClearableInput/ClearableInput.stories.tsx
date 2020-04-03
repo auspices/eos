@@ -36,7 +36,7 @@ export const InContext = () => {
           cleared: {cleared}
         </Pill>
         <form onSubmit={handleSubmit}>
-          <Stack direction="horizontal" flex="1" bg="red">
+          <Stack direction="horizontal" flex="1">
             <ClearableInput
               placeholder="find or create"
               onChange={setValue}
