@@ -21,27 +21,27 @@ export type ColorScheme = {
 } & Constants;
 
 export const LIGHT: ColorScheme = {
-  primary: "black",
-  secondary: "gray",
-  tertiary: "lightgray",
-  hint: "whitesmoke",
-  danger: "red",
-  background: "white",
-  accent: "#d3b000",
-  external: "blue",
+  primary: "#000000",
+  secondary: "#a0a0a0",
+  tertiary: "#c4c4c4",
+  hint: "#ededed",
+  danger: "#db0000",
+  background: "#ffffff",
+  accent: "#6fdd00",
+  external: "#0000d9",
   overlay: "rgba(255, 255, 255, 0.9)",
   ...CONSTANTS
 };
 
 export const DARK: ColorScheme = {
-  primary: "white",
-  secondary: "gray",
-  tertiary: "dimgray",
-  hint: "#333",
-  danger: "red",
-  background: "black",
+  primary: "#ffffff",
+  secondary: "#a0a0a0",
+  tertiary: "#6c6c6c",
+  hint: "#3f3f3f",
+  danger: "#ff3e3e",
+  background: "#000000",
   accent: "#23cf00",
-  external: "dodgerblue",
+  external: "#1c8bf2",
   overlay: "rgba(0, 0, 0, 0.9)",
   ...CONSTANTS
 };

@@ -21,7 +21,6 @@ export const buttonHoverMixin = css`
 
 export const buttonFocusMixin = css`
   outline: 0;
-  text-decoration: underline;
   ${pillFocusMixin}
 `;
 
@@ -36,6 +35,7 @@ export const buttonDisabledMixin = css`
 
 export const buttonMixin = css<ButtonProps>`
   cursor: pointer;
+  transition: ${PILL.transition}, color 200ms ease;
 
   ${({ hover }) => hover && buttonHoverMixin}
   &:hover {
