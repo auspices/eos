@@ -13,7 +13,7 @@ export const PILL = {
   color: "primary",
   borderWidth: "1px",
   borderStyle: "solid",
-  borderColor: "primary",
+  borderColor: "border",
   backgroundColor: "background",
   transition: "box-shadow 250ms ease"
 };

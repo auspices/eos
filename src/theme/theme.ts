@@ -10,6 +10,7 @@ export const CONSTANTS: Constants = {
 
 export type ColorScheme = {
   primary: string;
+  border: string;
   secondary: string;
   tertiary: string;
   hint: string;
@@ -22,9 +23,10 @@ export type ColorScheme = {
 
 export const LIGHT: ColorScheme = {
   primary: "#000000",
+  border: "#000000",
   secondary: "#a0a0a0",
   tertiary: "#c4c4c4",
-  hint: "#ededed",
+  hint: "#e1e1e1",
   danger: "#db0000",
   background: "#ffffff",
   accent: "#6fdd00",
@@ -35,6 +37,7 @@ export const LIGHT: ColorScheme = {
 
 export const DARK: ColorScheme = {
   primary: "#ffffff",
+  border: "#ffffff",
   secondary: "#a0a0a0",
   tertiary: "#6c6c6c",
   hint: "#3f3f3f",
