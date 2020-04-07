@@ -5,7 +5,7 @@ export type Constants = {
 
 export const CONSTANTS: Constants = {
   black: "black",
-  white: "white"
+  white: "white",
 };
 
 export type ColorScheme = {
@@ -18,21 +18,19 @@ export type ColorScheme = {
   background: string;
   accent: string;
   external: string;
-  overlay: string;
 } & Constants;
 
 export const LIGHT: ColorScheme = {
   primary: "#000000",
   border: "#000000",
-  secondary: "#a0a0a0",
-  tertiary: "#c4c4c4",
+  secondary: "#7a7a7a",
+  tertiary: "#b5b5b5",
   hint: "#e1e1e1",
   danger: "#db0000",
   background: "#ffffff",
   accent: "#6fdd00",
   external: "#0000d9",
-  overlay: "rgba(255, 255, 255, 0.9)",
-  ...CONSTANTS
+  ...CONSTANTS,
 };
 
 export const DARK: ColorScheme = {
@@ -45,13 +43,12 @@ export const DARK: ColorScheme = {
   background: "#000000",
   accent: "#23cf00",
   external: "#1c8bf2",
-  overlay: "rgba(0, 0, 0, 0.9)",
-  ...CONSTANTS
+  ...CONSTANTS,
 };
 
 export const SCHEMES = {
   dark: DARK,
-  light: LIGHT
+  light: LIGHT,
 };
 
 export type Scheme = keyof typeof SCHEMES;
@@ -59,7 +56,7 @@ export type Scheme = keyof typeof SCHEMES;
 export const THEME = {
   fonts: {
     body: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif',
-    mono: "Menlo, Monaco, Consolas, 'Courier New', monospace"
+    mono: "Menlo, Monaco, Consolas, 'Courier New', monospace",
   },
   colors: LIGHT,
   fontSizes: [
@@ -71,7 +68,7 @@ export const THEME = {
     "2rem", // 5 = 32px
     "3rem", // 6 = 48px
     "4rem", // 7 = 64px
-    "4.5rem" // 8 = 72px
+    "4.5rem", // 8 = 72px
   ],
   lineHeights: [1, 1.25, 1.33, 1.75],
   space: [
@@ -85,9 +82,9 @@ export const THEME = {
     "2rem", // 7
     "4rem", // 8
     "8rem", // 9
-    "16rem" // 10
+    "16rem", // 10
   ],
-  breakpoints: ["24rem", "50rem", "64rem"]
+  breakpoints: ["24rem", "50rem", "64rem"],
 };
 
 export type Theme = typeof THEME;

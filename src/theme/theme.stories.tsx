@@ -48,6 +48,9 @@ const Scheme = ({ scheme, ...rest }: { scheme: Scheme }) => {
               verticalAlign="middle"
             >
               &lt;{value}&gt;
+            </Box>{" "}
+            <Box as="span" textColor={value}>
+              {name}
             </Box>
           </Box>
         </Stack>
