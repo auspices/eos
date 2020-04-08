@@ -7,17 +7,18 @@ export type KeyValueInputProps = StackProps & {
   v?: InputProps;
 };
 
-export const KeyValueInput: React.FC<KeyValueInputProps> = ({
-  k,
-  v,
-  ...rest
-}) => {
-  return (
-    <Stack direction="horizontal" {...rest}>
-      <Input flex={[1, 1, 0.25]} minWidth={0} {...k} />
-      <Input flex={[1, 1, 0.75]} minWidth={0} {...v} />
-    </Stack>
-  );
-};
+export const KeyValueInput = React.forwardRef(
+  (
+    { k, v, ...rest }: KeyValueInputProps,
+    forwardedRef: React.Ref<HTMLInputElement>
+  ) => {
+    return (
+      <Stack direction="horizontal" {...rest}>
+        <Input flex={[1, 1, 0.25]} minWidth={0} {...k} />
+        <Input ref={forwardedRef} flex={[1, 1, 0.75]} minWidth={0} {...v} />
+      </Stack>
+    );
+  }
+);
 
 KeyValueInput.displayName = "KeyValueInput";

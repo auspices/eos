@@ -12,7 +12,7 @@ export type KeyValueSchema = {
 export type KeyValueData = Record<string, string>;
 
 export const toSchema = (data: KeyValueData): KeyValueSchema =>
-  Object.keys(data).map(name => {
+  Object.keys(data).map((name) => {
     const type = typeof data[name];
 
     if (!(type === "string" || type === "number")) {
@@ -26,6 +26,7 @@ type State = {
   edited: Boolean;
   schema: KeyValueSchema;
   data: KeyValueData;
+  nextKey: string;
 };
 
 type Action =
@@ -52,9 +53,10 @@ const reducer = (state: State, action: Action): State => {
           {
             key: action.payload.name,
             name: action.payload.name,
-            type: "string"
-          }
-        ]
+            type: "string",
+          },
+        ],
+        nextKey: `${new Date().getTime()}`,
       };
     }
     case "REMOVE_FIELD": {
@@ -67,7 +69,7 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         edited: true,
         schema: nextSchema,
-        data: nextData
+        data: nextData,
       };
     }
     case "UPDATE_NAME": {
@@ -76,7 +78,7 @@ const reducer = (state: State, action: Action): State => {
         ...filteredData,
         ...(action.payload.newName !== ""
           ? { [action.payload.newName]: state.data[action.payload.oldName] }
-          : {})
+          : {}),
       };
 
       const nextSchema = state.schema
@@ -86,7 +88,7 @@ const reducer = (state: State, action: Action): State => {
           return {
             key: field.key,
             name: action.payload.newName,
-            type: field.type
+            type: field.type,
           };
         })
         .filter(({ name }) => name !== "");
@@ -95,7 +97,7 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         edited: true,
         schema: nextSchema,
-        data: nextData
+        data: nextData,
       };
     }
     case "UPDATE_VALUE":
@@ -104,8 +106,8 @@ const reducer = (state: State, action: Action): State => {
         edited: true,
         data: {
           ...state.data,
-          [action.payload.key]: action.payload.value
-        }
+          [action.payload.key]: action.payload.value,
+        },
       };
   }
 };
@@ -116,96 +118,105 @@ export type KeyValueEditorProps = StackProps & {
   onChange?(data: KeyValueData): void;
 };
 
-export const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
-  schema: initialSchema,
-  data: initialData,
-  onChange = () => {},
-  ...rest
-}) => {
-  const [state, dispatch] = useReducer(reducer, {
-    edited: false,
+export const KeyValueEditor: React.FC<KeyValueEditorProps> = React.memo(
+  ({
     schema: initialSchema,
-    data: initialData
-  });
+    data: initialData,
+    onChange = () => {},
+    ...rest
+  }) => {
+    console.log("rendering KeyValueEditor");
 
-  const handleNameChange = useCallback(
-    ({ name: oldName, index }: { name: string; index: number }) => ({
-      target: { value: newName }
-    }: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch({ type: "UPDATE_NAME", payload: { oldName, newName, index } });
-    },
-    []
-  );
+    const [state, dispatch] = useReducer(reducer, {
+      edited: false,
+      schema: initialSchema,
+      data: initialData,
+      nextKey: `${new Date().getTime()}`,
+    });
 
-  const handleValueChange = useCallback(
-    (key: string) => ({
-      target: { value }
-    }: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch({ type: "UPDATE_VALUE", payload: { key, value } });
-    },
-    []
-  );
+    const handleNameChange = useCallback(
+      ({ name: oldName, index }: { name: string; index: number }) => ({
+        target: { value: newName },
+      }: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch({ type: "UPDATE_NAME", payload: { oldName, newName, index } });
+      },
+      []
+    );
 
-  const handleAddField = useCallback(
-    ({ target: { value: name } }: React.FocusEvent<HTMLInputElement>) => {
-      if (name === "") return;
+    const handleValueChange = useCallback(
+      (key: string) => ({
+        target: { value },
+      }: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch({ type: "UPDATE_VALUE", payload: { key, value } });
+      },
+      []
+    );
 
-      dispatch({ type: "ADD_FIELD", payload: { name } });
-    },
-    []
-  );
+    const handleAddField = useCallback(
+      ({ target: { value: name } }: React.FocusEvent<HTMLInputElement>) => {
+        if (name === "") return;
 
-  const handleRemove = useCallback(
-    (name: string) => () =>
-      dispatch({ type: "REMOVE_FIELD", payload: { name } }),
-    []
-  );
+        dispatch({ type: "ADD_FIELD", payload: { name } });
+      },
+      []
+    );
 
-  useEffect(() => {
-    if (!state.edited) return;
-    onChange(state.data);
-  }, [onChange, state.data, state.edited]);
+    const handleRemove = useCallback(
+      (name: string) => () =>
+        dispatch({ type: "REMOVE_FIELD", payload: { name } }),
+      []
+    );
 
-  return (
-    <Stack {...rest}>
-      {state.schema.map((field, index) => (
-        <Box key={field.key} position="relative">
-          <KeyValueInput
-            k={{
-              onChange: handleNameChange({ name: field.name, index }),
-              placeholder: "name",
-              defaultValue: field.name,
-              autoComplete: "off"
-            }}
-            v={{
-              onChange: handleValueChange(field.name),
-              placeholder: field.name,
-              defaultValue: state.data[field.name],
-              autoComplete: "off"
-            }}
-          />
+    useEffect(() => {
+      if (!state.edited) return;
 
-          <Remove
-            position="absolute"
-            top={0}
-            right={0}
-            bottom={0}
-            px={6}
-            onClick={handleRemove(field.name)}
-          />
-        </Box>
-      ))}
+      onChange(state.data);
+    }, [onChange, state.data, state.edited]);
 
-      <KeyValueInput
-        key={new Date().getTime()}
-        k={{
-          onBlur: handleAddField,
-          placeholder: "add field",
-          autoComplete: "off"
-        }}
-      />
-    </Stack>
-  );
-};
+    return (
+      <Stack {...rest}>
+        {state.schema.map((field, index) => (
+          <Box key={field.key} position="relative">
+            <KeyValueInput
+              k={{
+                onChange: handleNameChange({ name: field.name, index }),
+                placeholder: "name",
+                defaultValue: field.name,
+                autoComplete: "off",
+              }}
+              v={{
+                onChange: handleValueChange(field.name),
+                placeholder: field.name,
+                defaultValue: state.data[field.name],
+                autoComplete: "off",
+                autoFocus:
+                  state.schema.length > initialSchema.length &&
+                  index === state.schema.length - 1,
+              }}
+            />
+
+            <Remove
+              position="absolute"
+              top={0}
+              right={0}
+              bottom={0}
+              px={6}
+              onClick={handleRemove(field.name)}
+            />
+          </Box>
+        ))}
+
+        <KeyValueInput
+          key={state.nextKey}
+          k={{
+            onBlur: handleAddField,
+            placeholder: "add field",
+            autoComplete: "off",
+          }}
+        />
+      </Stack>
+    );
+  }
+);
 
 KeyValueEditor.displayName = "KeyValueEditor";
