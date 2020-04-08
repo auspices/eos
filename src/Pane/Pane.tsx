@@ -23,7 +23,7 @@ const Container = styled(Stack)`
 
 Container.defaultProps = {
   borderRadius: 4,
-  spacing: 0
+  spacing: 0,
 };
 
 export const Pane = React.forwardRef(
@@ -47,7 +47,8 @@ export const Pane = React.forwardRef(
     const { index } = useKeyboardListNavigation({
       list,
       ref: composedRef,
-      onEnter: handleEnter
+      onEnter: handleEnter,
+      waitForInteractive: true,
     });
 
     return (
@@ -55,7 +56,7 @@ export const Pane = React.forwardRef(
         {list.map((child, i) => {
           return React.cloneElement(child as React.ReactElement<any>, {
             ref: refs[i],
-            active: i === index
+            active: i === index,
           });
         })}
       </Container>
