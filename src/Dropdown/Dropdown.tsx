@@ -25,7 +25,7 @@ export const isDropdownRenderProps = (
 ): children is DropdownRenderProps => typeof children === "function";
 
 export type DropdownProps = BoxProps & {
-  label: string;
+  label: string | JSX.Element;
   children: DropdownPaneOptions | DropdownRenderProps;
   open?: boolean;
 };

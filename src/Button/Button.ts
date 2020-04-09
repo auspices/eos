@@ -36,6 +36,7 @@ export const buttonDisabledMixin = css`
 export const buttonMixin = css<ButtonProps>`
   cursor: pointer;
   transition: ${PILL.transition}, color 200ms ease;
+  min-width: 0;
 
   ${({ hover }) => hover && buttonHoverMixin}
   &:hover {
