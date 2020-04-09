@@ -9,7 +9,7 @@ export default { title: "ModalDialog", component: ModalDialog };
 
 enum Mode {
   Resting,
-  Modal
+  Modal,
 }
 
 export const Default = () => {

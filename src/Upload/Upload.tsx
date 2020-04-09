@@ -59,5 +59,5 @@ Upload.defaultProps = {
   foregroundColor: "primary",
   borderColor: "primary",
   backgroundColor: "background",
-  progressBarColor: "tertiary"
+  progressBarColor: "tertiary",
 };

@@ -14,7 +14,7 @@ const EXAMPLES = [
   <Input key="b" {...PILL} placeholder="<Input /> with PILL" flex="1" />,
   <Box key="c" {...PILL} as="pre" flex="1">
     {JSON.stringify(PILL, null, 2)}
-  </Box>
+  </Box>,
 ];
 
 export const _Pill = () => (

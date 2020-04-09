@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect, useEffect } from "react";
 import {
   createPopper,
   Instance as PopperInstance,
-  Placement
+  Placement,
 } from "@popperjs/core";
 import { useClickOutside } from "../hooks/useClickOutside";
 
@@ -42,10 +42,10 @@ export const Popper: React.FC<PopperProps> = ({
           {
             name: "offset",
             options: {
-              offset: [0, 8]
-            }
-          }
-        ]
+              offset: [0, 8],
+            },
+          },
+        ],
       });
 
       anchorRef.current.blur();

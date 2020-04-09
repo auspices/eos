@@ -16,7 +16,7 @@ export const Default = () => (
       { srcs: [] },
       { srcs: [], indicator: true },
       { srcs: [], placeholder: THUMB_SRC },
-      { srcs: [], placeholder: THUMB_SRC, indicator: true }
+      { srcs: [], placeholder: THUMB_SRC, indicator: true },
     ]}
   >
     <ResponsiveImage

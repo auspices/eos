@@ -17,7 +17,7 @@ export const Default = () => (
       { page: 20 },
       { per: 499 },
       { per: 500 },
-      { Page: AltPage }
+      { Page: AltPage },
     ]}
   >
     <Pagination page={1} per={25} total={500} href="#page" />

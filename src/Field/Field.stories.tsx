@@ -9,7 +9,7 @@ export const Default = () => (
     states={[
       { label: "label" },
       { label: "a slightly longer label" },
-      { direction: "vertical" }
+      { direction: "vertical" },
     ]}
   >
     <Field label="label" input={{ name: "value", placeholder: "value" }} />

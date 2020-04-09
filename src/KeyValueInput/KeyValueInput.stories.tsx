@@ -10,8 +10,8 @@ export const Default = () => (
       { k: { placeholder: "key a" }, v: { placeholder: "value a" } },
       {
         k: { placeholder: "b", defaultValue: "key b" },
-        v: { placeholder: "b", defaultValue: "value b" }
-      }
+        v: { placeholder: "b", defaultValue: "value b" },
+      },
     ]}
   >
     <KeyValueInput

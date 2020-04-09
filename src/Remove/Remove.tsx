@@ -60,5 +60,5 @@ export const Remove = styled(Clickable)<RemoveProps>`
 `;
 
 Remove.defaultProps = {
-  position: "relative"
+  position: "relative",
 };

@@ -6,7 +6,7 @@ import { boxMixin, Box, BoxProps } from "../Box";
 enum Mode {
   Pending,
   Error,
-  Loaded
+  Loaded,
 }
 
 export const imgMixin = css`
@@ -92,7 +92,7 @@ export const Image = React.forwardRef(
         src={src1x}
         {...(src2x
           ? {
-              srcSet: `${src1x} 1x, ${src2x} 2x`
+              srcSet: `${src1x} 1x, ${src2x} 2x`,
             }
           : {})}
         onError={handleError}

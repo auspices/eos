@@ -17,7 +17,7 @@ import {
   compose,
   style,
   ResponsiveValue,
-  system
+  system,
 } from "styled-system";
 import { ColorProperty, TransitionProperty } from "csstype";
 
@@ -46,7 +46,7 @@ export type BoxProps = BorderProps &
 const textColor = style({
   prop: "textColor",
   cssProperty: "color",
-  key: "colors"
+  key: "colors",
 });
 
 const transition = system({ transition: true });
@@ -69,5 +69,5 @@ export const Box = styled.div<BoxProps>`
 
 Box.defaultProps = {
   fontFamily: "body",
-  lineHeight: 2
+  lineHeight: 2,
 };

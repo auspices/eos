@@ -55,7 +55,7 @@ export const ClearableInput = React.forwardRef(
 
     useEffect(() => onChange && onChange(controlledValue), [
       onChange,
-      controlledValue
+      controlledValue,
     ]);
 
     return (
@@ -72,7 +72,7 @@ export const ClearableInput = React.forwardRef(
           flex,
           flexGrow,
           flexShrink,
-          flexBasis
+          flexBasis,
         }}
       >
         <Input

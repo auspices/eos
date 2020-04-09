@@ -1,4 +1,1 @@
-export const generateId = () =>
-  Math.random()
-    .toString(26)
-    .slice(2);
+export const generateId = () => Math.random().toString(26).slice(2);

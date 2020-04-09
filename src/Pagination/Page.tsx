@@ -31,8 +31,8 @@ export const Page: React.FC<PageProps> = ({
       : {
           to: {
             pathname: href,
-            search: `?page=${pageNumber}&per=${per}`
-          }
+            search: `?page=${pageNumber}&per=${per}`,
+          },
         })}
     {...rest}
   >

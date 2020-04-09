@@ -14,7 +14,7 @@ const Themed: React.FC = ({ children }) => {
   );
 };
 
-export const themeDecorator: DecoratorFn = storyFn => {
+export const themeDecorator: DecoratorFn = (storyFn) => {
   return (
     <ThemerProvider>
       <Themed>{storyFn()}</Themed>

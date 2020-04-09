@@ -40,7 +40,7 @@ export const InContext = () => {
             <ClearableInput
               placeholder="find or create"
               onChange={setValue}
-              onClear={() => setCleared(n => n + 1)}
+              onClear={() => setCleared((n) => n + 1)}
               flex="1"
             />
             <Button>add</Button>

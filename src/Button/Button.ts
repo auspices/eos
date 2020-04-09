@@ -7,7 +7,7 @@ export const BUTTON = {
   ...PILL,
   display: "inline-flex",
   alignItems: "center",
-  justifyContent: "center"
+  justifyContent: "center",
 };
 
 export type ButtonProps = ClickableProps & {

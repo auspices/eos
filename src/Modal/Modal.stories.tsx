@@ -8,7 +8,7 @@ export default { title: "Modal", component: Modal };
 
 enum Mode {
   Resting,
-  Modal
+  Modal,
 }
 
 export const Default = () => {

@@ -21,7 +21,7 @@ const THEMES = {
     a {
       color: ${themeGet("colors.white")};
     }
-  `
+  `,
 };
 
 const Container = styled(Box)<{

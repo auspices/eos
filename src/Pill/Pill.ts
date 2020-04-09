@@ -15,7 +15,7 @@ export const PILL = {
   borderStyle: "solid",
   borderColor: "border",
   backgroundColor: "background",
-  transition: "box-shadow 250ms ease"
+  transition: "box-shadow 250ms ease",
 };
 
 export const pillFocusMixin = css`

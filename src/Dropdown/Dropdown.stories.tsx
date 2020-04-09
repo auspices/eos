@@ -18,8 +18,8 @@ export const Default = () => (
         // eslint-disable-next-line react/display-name
         children: ({ handleClose }) => (
           <PaneOption onClick={handleClose}>alone</PaneOption>
-        )
-      }
+        ),
+      },
     ]}
   >
     <Dropdown label="the past">
@@ -62,7 +62,7 @@ export const InContext = () => (
             }}
           >
             a speech act
-          </PaneOption>
+          </PaneOption>,
         ]}
       </Dropdown>
 

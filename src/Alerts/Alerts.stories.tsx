@@ -10,7 +10,7 @@ const Example = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCount(n => n + 1);
+      setCount((n) => n + 1);
 
       Math.random() > 0.5
         ? sendNotification({ body: `Notification ${count}` })

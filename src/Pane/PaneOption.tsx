@@ -59,5 +59,5 @@ export const PaneOption = styled(Clickable)<PaneOptionProps>`
 PaneOption.defaultProps = {
   fontSize: [2, 2, 0, 0],
   py: 2,
-  px: 3
+  px: 3,
 };

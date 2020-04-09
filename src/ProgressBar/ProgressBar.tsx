@@ -42,5 +42,5 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 ProgressBar.displayName = "ProgressBar";
 
 ProgressBar.defaultProps = {
-  color: "secondary"
+  color: "secondary",
 };

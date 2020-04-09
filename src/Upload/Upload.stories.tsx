@@ -16,8 +16,8 @@ export const Default = () => (
         foregroundColor: "blue",
         borderColor: "blue",
         backgroundColor: "yellow",
-        progressBarColor: "lime"
-      }
+        progressBarColor: "lime",
+      },
     ]}
   >
     <Upload progress={0} label="quiet.jpg" />
@@ -39,7 +39,7 @@ const INVERTED = {
   foregroundColor: "background",
   borderColor: "background",
   backgroundColor: "primary",
-  progressBarColor: "secondary"
+  progressBarColor: "secondary",
 };
 
 export const Inverted = () => (

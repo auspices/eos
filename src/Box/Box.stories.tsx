@@ -21,7 +21,7 @@ export const Color = () => (
   <States<BoxProps>
     states={[
       { textColor: "red" },
-      { backgroundColor: "beige", textColor: "red" }
+      { backgroundColor: "beige", textColor: "red" },
     ]}
   >
     <Box fontFamily="body">

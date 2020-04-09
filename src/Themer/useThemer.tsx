@@ -4,7 +4,7 @@ import React, {
   useState,
   useMemo,
   useCallback,
-  useEffect
+  useEffect,
 } from "react";
 import { THEME, SCHEMES, Theme, Scheme } from "../theme";
 
@@ -23,7 +23,7 @@ const DEFAULT_BACKEND: Backend = {
   },
   set: (scheme: Scheme) => {
     localStorage.setItem(KEY, scheme);
-  }
+  },
 };
 
 export const ThemeContext = createContext<{
@@ -37,7 +37,7 @@ export const ThemeContext = createContext<{
   theme: THEME,
   scheme: DEFAULT_SCHEME,
   setScheme: () => {},
-  toggleScheme: () => {}
+  toggleScheme: () => {},
 });
 
 export const isScheme = (value: string | null): value is Scheme =>
@@ -50,16 +50,16 @@ export const ThemerProvider: React.FC<{
 }> = ({
   children,
   initialScheme = DEFAULT_SCHEME,
-  backend = DEFAULT_BACKEND
+  backend = DEFAULT_BACKEND,
 }) => {
   const [scheme, setScheme] = useState<Scheme>(backend.get() ?? initialScheme);
 
   const theme = useMemo(() => ({ ...THEME, colors: SCHEMES[scheme] }), [
-    scheme
+    scheme,
   ]);
 
   const toggleScheme = useCallback(
-    () => setScheme(prevScheme => (prevScheme === "dark" ? "light" : "dark")),
+    () => setScheme((prevScheme) => (prevScheme === "dark" ? "light" : "dark")),
     []
   );
 

@@ -10,7 +10,7 @@ export const Default = () => (
       { orientation: "horizontal" },
       { orientation: "vertical" },
       { textColor: "tertiary" },
-      { textColor: "danger", size: "5px", spacing: 2 }
+      { textColor: "danger", size: "5px", spacing: 2 },
     ]}
   >
     <Ellipsis />

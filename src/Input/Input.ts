@@ -12,7 +12,7 @@ import {
   LayoutProps,
   color,
   ColorProps,
-  compose
+  compose,
 } from "styled-system";
 import { PILL, pillFocusMixin } from "../Pill";
 
@@ -72,5 +72,5 @@ export const Input = styled.input<InputProps>`
 `;
 
 Input.defaultProps = {
-  ...PILL
+  ...PILL,
 };

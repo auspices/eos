@@ -21,7 +21,7 @@ export const AspectRatioBox: React.FC<AspectRatioBoxProps> = ({
     width: aspectWidth,
     height: aspectHeight,
     maxWidth,
-    maxHeight
+    maxHeight,
   });
 
   return (

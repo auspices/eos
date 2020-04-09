@@ -9,8 +9,8 @@ export type CaretProps = BoxProps & {
 
 export const Caret = styled(Box)<CaretProps>`
   position: relative;
-  width: ${props => themeGet(`space.${props.size}`)(props)};
-  height: ${props => themeGet(`space.${props.size}`)(props)};
+  width: ${(props) => themeGet(`space.${props.size}`)(props)};
+  height: ${(props) => themeGet(`space.${props.size}`)(props)};
   flex-shrink: 0;
 
   &::after {
@@ -57,5 +57,5 @@ export const Caret = styled(Box)<CaretProps>`
 
 Caret.defaultProps = {
   direction: "down",
-  size: 3
+  size: 3,
 };

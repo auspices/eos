@@ -4,7 +4,7 @@ import React, {
   useReducer,
   useCallback,
   useRef,
-  useEffect
+  useEffect,
 } from "react";
 import { generateId } from "./generateId";
 
@@ -34,9 +34,9 @@ const reducer = (state: State, action: Action): State => {
           ...state.alerts,
           {
             mode: "notification",
-            ...action.payload
-          }
-        ]
+            ...action.payload,
+          },
+        ],
       };
     case "ERROR":
       return {
@@ -45,14 +45,14 @@ const reducer = (state: State, action: Action): State => {
           ...state.alerts,
           {
             mode: "error",
-            ...action.payload
-          }
-        ]
+            ...action.payload,
+          },
+        ],
       };
     case "RETRACT":
       return {
         ...state,
-        alerts: state.alerts.filter(alert => alert.id !== action.payload.id)
+        alerts: state.alerts.filter((alert) => alert.id !== action.payload.id),
       };
   }
 };
@@ -64,7 +64,7 @@ export const AlertsContext = createContext<{
 }>({
   state: { alerts: [] },
   sendNotification: () => {},
-  sendError: () => {}
+  sendError: () => {},
 });
 
 export const AlertsProvider: React.FC = ({ children }) => {
@@ -112,7 +112,7 @@ export const useAlerts = () => {
   const {
     state: { alerts },
     sendNotification,
-    sendError
+    sendError,
   } = useContext(AlertsContext);
 
   return { alerts, sendNotification, sendError };

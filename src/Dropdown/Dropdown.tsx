@@ -7,7 +7,7 @@ import { Pane, PaneOptionProps } from "../Pane";
 
 enum Mode {
   Resting,
-  Active
+  Active,
 }
 
 export type DropdownPaneOptions =
@@ -15,7 +15,7 @@ export type DropdownPaneOptions =
   | React.ReactElement<PaneOptionProps>[];
 
 export type DropdownRenderProps = ({
-  handleClose
+  handleClose,
 }: {
   handleClose(): void;
 }) => DropdownPaneOptions;

@@ -26,7 +26,7 @@ const IPSUM = [
   "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
   "Praesentium, id in iste, sint voluptatem adipisci ratione repudiandae fugit, tenetur voluptates sunt.",
   "Excepturi, sapiente eveniet harum vitae molestiae perferendis dolor eligendi.",
-  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, id in iste, sint voluptatem adipisci ratione repudiandae fugit, tenetur voluptates sunt. Excepturi, sapiente eveniet harum vitae molestiae perferendis dolor eligendi."
+  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, id in iste, sint voluptatem adipisci ratione repudiandae fugit, tenetur voluptates sunt. Excepturi, sapiente eveniet harum vitae molestiae perferendis dolor eligendi.",
 ];
 
 const Cell = () => {

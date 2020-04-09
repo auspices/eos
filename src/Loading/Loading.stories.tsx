@@ -15,8 +15,8 @@ export const Default = () => (
         borderWidth: 0,
         px: 0,
         py: 0,
-        children: <Input value="input" focus flex={1} />
-      }
+        children: <Input value="input" focus flex={1} />,
+      },
     ]}
   >
     <Loading />

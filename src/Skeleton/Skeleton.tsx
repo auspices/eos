@@ -16,7 +16,7 @@ to {
 export type SkeletonProps = BoxProps;
 
 export const Skeleton = styled(Box)`
-  animation: ${props =>
+  animation: ${(props) =>
       pulse(
         themeGet("colors.secondary")(props),
         themeGet("colors.tertiary")(props)

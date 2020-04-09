@@ -22,7 +22,7 @@ export const SimpleExample = () => (
 
 enum Mode {
   Resting,
-  Open
+  Open,
 }
 
 export const MenuExample = () => {

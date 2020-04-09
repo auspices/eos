@@ -12,7 +12,7 @@ export const Default = () => (
     states={[
       { spacing: 0 },
       { spacing: 6 },
-      { spacing: 4, direction: "horizontal" }
+      { spacing: 4, direction: "horizontal" },
     ]}
   >
     <Stack spacing={0}>
@@ -54,7 +54,7 @@ export const PillDefault = () => (
   </States>
 );
 
-const SyntheticPill: React.FC<PillProps> = props => {
+const SyntheticPill: React.FC<PillProps> = (props) => {
   return <Pill {...props} />;
 };
 
@@ -90,7 +90,7 @@ export const Nested = () => (
       </Stack>
 
       <Stack direction="horizontal">
-        {["A", "Previous", 1, 2, 3, 4, 5, 6, "Next", "Ω"].map(x => (
+        {["A", "Previous", 1, 2, 3, 4, 5, 6, "Next", "Ω"].map((x) => (
           <Pill key={x} as="a" href="#example" flex="1">
             {x}
           </Pill>

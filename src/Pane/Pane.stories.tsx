@@ -32,7 +32,7 @@ export const Option = () => (
       { hover: true },
       { active: true },
       { focus: true },
-      { disabled: true }
+      { disabled: true },
     ]}
   >
     <PaneOption onClick={action("onClick")}>the enemy</PaneOption>

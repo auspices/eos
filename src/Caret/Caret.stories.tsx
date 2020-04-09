@@ -12,7 +12,7 @@ export const Default = () => (
       { direction: "left" },
       { direction: "right" },
       { textColor: "accent" },
-      { size: 8 }
+      { size: 8 },
     ]}
   >
     <Caret />

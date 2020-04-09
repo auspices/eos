@@ -48,7 +48,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       {/* Left surrounding pages */}
       {[...Array(interval).keys()]
-        .map(i =>
+        .map((i) =>
           page > i + 1 ? (
             <Page
               key={page - (i + 1)}
@@ -60,9 +60,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             >
               {page - (i + 1)}
             </Page>
-          ) : (
-            undefined
-          )
+          ) : undefined
         )
         .filter(Boolean)
         .reverse()}
@@ -73,7 +71,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       {/* Right surrounding pages */}
       {[...Array(interval).keys()]
-        .map(i =>
+        .map((i) =>
           totalPages - page + 1 > i + 1 ? (
             <Page
               key={page + (i + 1)}
@@ -85,9 +83,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             >
               {page + (i + 1)}
             </Page>
-          ) : (
-            undefined
-          )
+          ) : undefined
         )
         .filter(Boolean)}
 

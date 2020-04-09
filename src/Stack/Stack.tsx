@@ -25,12 +25,12 @@ export const Stack = React.forwardRef(
     const directions = ([] as Direction[]).concat(...[direction]);
 
     const spacingProps = {
-      mb: directions.map(d => [d === "vertical" ? spacing : 0]),
-      mr: directions.map(d => [d === "horizontal" ? spacing : 0])
+      mb: directions.map((d) => [d === "vertical" ? spacing : 0]),
+      mr: directions.map((d) => [d === "horizontal" ? spacing : 0]),
     };
 
     const flexDirection = directions.map(
-      d => ({ horizontal: "row", vertical: "column" }[d])
+      (d) => ({ horizontal: "row", vertical: "column" }[d])
     );
 
     return (
@@ -45,7 +45,7 @@ export const Stack = React.forwardRef(
       >
         {nodes.map((child, i) =>
           cloneElement(child, {
-            ...(i === nodes.length - 1 ? {} : spacingProps)
+            ...(i === nodes.length - 1 ? {} : spacingProps),
           })
         )}
       </Box>
@@ -55,7 +55,7 @@ export const Stack = React.forwardRef(
 
 Stack.defaultProps = {
   spacing: DEFAULT_STACK_SPACING,
-  direction: DEFAULT_STACK_DIRECTION
+  direction: DEFAULT_STACK_DIRECTION,
 };
 
 Stack.displayName = "Stack";
