@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { themeGet } from "@styled-system/theme-get";
-import { hexAlpha } from "../theme";
+import { themeGetHexAlpha } from "../theme";
 import { Box } from "../Box";
 import { Modal, ModalProps } from "../Modal";
 
@@ -17,8 +16,7 @@ const Overlay = styled(Box).attrs({
   alignItems: "center",
   justifyContent: "center",
 })`
-  background-color: ${(props) =>
-    hexAlpha(themeGet("colors.background")(props), 0.9)};
+  background-color: ${themeGetHexAlpha("colors.background", 0.9)};
 `;
 
 export const ModalDialog: React.FC<ModalDialogProps> = ({
