@@ -125,8 +125,6 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = React.memo(
     onChange = () => {},
     ...rest
   }) => {
-    console.log("rendering KeyValueEditor");
-
     const [state, dispatch] = useReducer(reducer, {
       edited: false,
       schema: initialSchema,
