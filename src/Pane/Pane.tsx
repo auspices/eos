@@ -4,7 +4,6 @@ import { themeGet } from "@styled-system/theme-get";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
 import { Stack, StackProps } from "../Stack";
 import composeRefs from "@seznam/compose-react-refs";
-import { themeGetHexAlpha } from "../theme";
 
 export type PaneProps = StackProps & {
   children: React.ReactElement<any> | React.ReactElement<any>[];
@@ -12,8 +11,7 @@ export type PaneProps = StackProps & {
 };
 
 export const paneShadowMixin = css`
-  box-shadow: 0 0 ${themeGet("space.3")} 0
-    ${themeGetHexAlpha("colors.primary", 0.2)};
+  box-shadow: 0 0 ${themeGet("space.3")} 0 ${themeGet("colors.tertiary")};
 `;
 
 const Container = styled(Stack)`
