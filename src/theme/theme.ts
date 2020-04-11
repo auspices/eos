@@ -58,6 +58,7 @@ export const THEME = {
     body: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif',
     mono: "Menlo, Monaco, Consolas, 'Courier New', monospace",
   },
+  scheme: "light",
   colors: LIGHT,
   fontSizes: [
     "0.75rem", // 0 = 12px

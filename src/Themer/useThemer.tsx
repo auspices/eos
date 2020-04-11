@@ -54,7 +54,7 @@ export const ThemerProvider: React.FC<{
 }) => {
   const [scheme, setScheme] = useState<Scheme>(backend.get() ?? initialScheme);
 
-  const theme = useMemo(() => ({ ...THEME, colors: SCHEMES[scheme] }), [
+  const theme = useMemo(() => ({ ...THEME, scheme, colors: SCHEMES[scheme] }), [
     scheme,
   ]);
 
