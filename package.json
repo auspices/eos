@@ -20,6 +20,7 @@
     "lint": "eslint src --ext .tsx,.ts --fix",
     "format": "prettier --write '**/*'",
     "prepublishOnly": "yarn build",
+    "scaffold": "ts-node src/scripts/scaffold.ts",
     "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 6006",
     "type:check": "tsc --noEmit",
@@ -49,6 +50,7 @@
     "@storybook/addon-viewport": "5.3.18",
     "@storybook/addons": "5.3.18",
     "@storybook/react": "5.3.18",
+    "@types/node": "^13.11.1",
     "@types/styled-components": "5.0.1",
     "@types/styled-system": "5.1.9",
     "@types/styled-system__theme-get": "5.0.0",
@@ -66,6 +68,7 @@
     "storybook-states": "1.0.2",
     "styled-components": "5.1.0",
     "ts-loader": "6.2.2",
+    "ts-node": "^8.8.2",
     "typescript": "3.8.3"
   },
   "publishConfig": {

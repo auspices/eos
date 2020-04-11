@@ -16,7 +16,7 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "es5",
-    "types": ["react"],
+    "types": ["react", "node"],
     "downlevelIteration": true
   },
   "include": ["src"],
