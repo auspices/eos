@@ -26,11 +26,10 @@ export const buttonFocusMixin = css`
 
 export const buttonDisabledMixin = css`
   position: relative;
-  color: ${themeGet("colors.tertiary")};
+  color: ${themeGet("colors.hint")};
   pointer-events: none;
   user-select: none;
   cursor: default;
-  text-decoration: line-through;
 `;
 
 export const buttonMixin = css<ButtonProps>`
