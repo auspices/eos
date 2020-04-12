@@ -58,9 +58,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    text-decoration: underline;
-    &:hover {
-      text-decoration: none;
-    }
+    text-decoration: none;
   }
 `;
