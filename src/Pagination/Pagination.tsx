@@ -32,19 +32,21 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <Stack direction="horizontal" {...rest}>
-      <Page pageNumber={1} currentPage={page} href={href} per={per}>
-        A
-      </Page>
+      <Stack direction="horizontal">
+        <Page pageNumber={1} currentPage={page} href={href} per={per}>
+          A
+        </Page>
 
-      <Page
-        pageNumber={prevPage}
-        currentPage={page}
-        rel="prev"
-        href={href}
-        per={per}
-      >
-        past
-      </Page>
+        <Page
+          pageNumber={prevPage}
+          currentPage={page}
+          rel="prev"
+          href={href}
+          per={per}
+        >
+          past
+        </Page>
+      </Stack>
 
       {/* Left surrounding pages */}
       {[...Array(interval).keys()]
@@ -87,19 +89,21 @@ export const Pagination: React.FC<PaginationProps> = ({
         )
         .filter(Boolean)}
 
-      <Page
-        pageNumber={nextPage}
-        currentPage={page}
-        href={href}
-        per={per}
-        rel="next"
-      >
-        next
-      </Page>
+      <Stack direction="horizontal">
+        <Page
+          pageNumber={nextPage}
+          currentPage={page}
+          href={href}
+          per={per}
+          rel="next"
+        >
+          next
+        </Page>
 
-      <Page pageNumber={totalPages} currentPage={page} href={href} per={per}>
-        Ω
-      </Page>
+        <Page pageNumber={totalPages} currentPage={page} href={href} per={per}>
+          Ω
+        </Page>
+      </Stack>
     </Stack>
   );
 };
