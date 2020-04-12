@@ -45,28 +45,47 @@ export const InContext = () => (
       </Button>
 
       <Dropdown flex="1" label="the past">
-        {({ handleClose }) => [
-          <PaneOption key="a" as="a" href="#markov">
-            a markov blanket
-          </PaneOption>,
+        {({ handleClose }) => (
+          <>
+            <PaneOption as="a" href="#markov">
+              a markov blanket
+            </PaneOption>
 
-          <PaneOption key="b" as="a" href="#insulation">
-            scattered insulation
-          </PaneOption>,
+            <PaneOption as="a" href="#insulation">
+              scattered insulation
+            </PaneOption>
 
-          <PaneOption
-            key="c"
-            onClick={() => {
-              action("onClick")("Click");
-              handleClose();
-            }}
-          >
-            a speech act
-          </PaneOption>,
-        ]}
+            <PaneOption
+              onClick={() => {
+                action("onClick")("Click");
+                handleClose();
+              }}
+            >
+              a speech act
+            </PaneOption>
+          </>
+        )}
       </Dropdown>
 
       <Button flex="1">and throughout</Button>
     </Stack>
+  </States>
+);
+
+export const NestedFragments = () => (
+  <States<Partial<DropdownProps>>>
+    <Dropdown label="the past">
+      <PaneOption as="a" href="#markov">
+        a markov blanket
+      </PaneOption>
+
+      <>
+        <PaneOption as="a" href="#insulation">
+          scattered insulation
+        </PaneOption>
+
+        <PaneOption onClick={action("onClick")}>a speech act</PaneOption>
+      </>
+    </Dropdown>
   </States>
 );

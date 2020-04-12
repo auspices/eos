@@ -1,8 +1,9 @@
-import React, { useCallback, createRef, isValidElement, useRef } from "react";
+import React, { useCallback, createRef, useRef } from "react";
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
 import { Stack, StackProps } from "../Stack";
+import { flattenChildren } from "../lib/flattenChildren";
 import composeRefs from "@seznam/compose-react-refs";
 
 export type PaneProps = StackProps & {
@@ -33,7 +34,7 @@ export const Pane = React.forwardRef(
       ref,
       forwardedRef
     ) as React.MutableRefObject<any>;
-    const list = React.Children.toArray(children).filter(isValidElement);
+    const list = flattenChildren(children);
     const refs = list.map(() => createRef<HTMLElement | null>());
 
     const handleEnter = useCallback(
@@ -55,6 +56,7 @@ export const Pane = React.forwardRef(
       <Container ref={composedRef} {...rest}>
         {list.map((child, i) => {
           return React.cloneElement(child as React.ReactElement<any>, {
+            key: i,
             ref: refs[i],
             active: i === index,
           });
