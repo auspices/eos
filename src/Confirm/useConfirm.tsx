@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { ModalDialog } from "../ModalDialog";
+import { Modal, ModalProps } from "../Modal";
 import { Confirm } from "./Confirm";
 
 enum Mode {
@@ -17,17 +17,18 @@ export const useConfirm = ({ onConfirm }: UseConfirm) => {
 
   const requestConfirmation = useCallback(() => setMode(Mode.Open), []);
   const handleCancel = useCallback(() => setMode(Mode.Resting), []);
+
   const handleConfirm = useCallback(() => {
     setMode(Mode.Confirmed);
     onConfirm();
   }, [onConfirm]);
 
-  const Confirmation = () => (
+  const Confirmation = (props: Omit<ModalProps, "onClose">) => (
     <>
       {mode === Mode.Open && (
-        <ModalDialog onClose={handleCancel}>
+        <Modal onClose={handleCancel} overlay {...props}>
           <Confirm onCancel={handleCancel} onConfirm={handleConfirm} />
-        </ModalDialog>
+        </Modal>
       )}
     </>
   );
