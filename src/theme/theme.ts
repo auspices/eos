@@ -24,7 +24,7 @@ export const LIGHT: ColorScheme = {
   primary: "#000000",
   border: "#000000",
   secondary: "#7a7a7a",
-  tertiary: "#b5b5b5",
+  tertiary: "#bfbfbf",
   hint: "#e1e1e1",
   danger: "#db0000",
   background: "#ffffff",
