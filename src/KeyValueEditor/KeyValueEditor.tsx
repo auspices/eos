@@ -3,6 +3,7 @@ import { Box } from "../Box";
 import { Stack, StackProps } from "../Stack";
 import { KeyValueInput } from "../KeyValueInput";
 import { Remove } from "../Remove";
+import { Tooltip } from "../Tooltip";
 
 export type KeyValueSchema = {
   key: string;
@@ -193,14 +194,16 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = React.memo(
               }}
             />
 
-            <Remove
-              position="absolute"
-              top={0}
-              right={0}
-              bottom={0}
-              px={6}
-              onClick={handleRemove(field.name)}
-            />
+            <Tooltip label={`remove ${field.name}`} placement="left">
+              <Remove
+                position="absolute"
+                top={0}
+                right={0}
+                bottom={0}
+                px={6}
+                onClick={handleRemove(field.name)}
+              />
+            </Tooltip>
           </Box>
         ))}
 

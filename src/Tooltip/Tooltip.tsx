@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback } from "react";
 import styled from "styled-components";
-import { Box } from "../Box";
+import { Box, BoxProps } from "../Box";
 import { Popper, Placement } from "../Popper";
 import { themeGet } from "../theme";
 
@@ -12,6 +12,7 @@ export const Tip = styled(Box).attrs({
 })`
   background-color: ${themeGet("colors.primary")};
   color: ${themeGet("colors.background")};
+  z-index: 1;
 `;
 
 enum Mode {
@@ -19,7 +20,7 @@ enum Mode {
   Active,
 }
 
-export type TooltipProps = {
+export type TooltipProps = BoxProps & {
   children: JSX.Element;
   label: string;
   placement?: Placement;
