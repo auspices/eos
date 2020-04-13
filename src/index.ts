@@ -35,3 +35,4 @@ export * from "./theme";
 export * from "./Themer";
 export * from "./Truncate";
 export * from "./Upload";
+export * from './Tooltip';
