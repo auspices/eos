@@ -14,6 +14,8 @@ export type PopperProps = {
   onClose?(): void;
 };
 
+export { Placement };
+
 export const Popper: React.FC<PopperProps> = ({
   open = false,
   anchor,
