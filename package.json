@@ -40,7 +40,7 @@
     "react-focus-on": "^3.3.0",
     "styled-reset": "^4.1.2",
     "styled-system": "^5.1.5",
-    "use-keyboard-list-navigation": "^1.5.0"
+    "use-keyboard-list-navigation": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
