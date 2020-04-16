@@ -66,3 +66,19 @@ export const Texts = () => (
     </Grid>
   </States>
 );
+
+export const Debug = () => (
+  <States<GridProps>
+    states={[
+      { cellSize: 7, cellGap: 2 },
+      { cellSize: "50px", cellGap: "5px" },
+      { cellSize: 9, cellGap: 4 },
+    ]}
+  >
+    <Grid>
+      {Array.from({ length: 30 }, (_, i) => (
+        <Box key={i} width="100%" height="100%" bg="tertiary" />
+      ))}
+    </Grid>
+  </States>
+);
