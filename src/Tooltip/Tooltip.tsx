@@ -24,12 +24,14 @@ export type TooltipProps = BoxProps & {
   children: JSX.Element;
   label: string;
   placement?: Placement;
+  distance?: number;
 };
 
 export const Tooltip: React.FC<TooltipProps> = ({
   label,
   children,
   placement,
+  distance,
 }) => {
   const [mode, setMode] = useState(Mode.Resting);
 
@@ -46,7 +48,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
   );
 
   return (
-    <Popper anchor={anchor} placement={placement} open={mode === Mode.Active}>
+    <Popper
+      anchor={anchor}
+      placement={placement}
+      distance={distance}
+      open={mode === Mode.Active}
+    >
       <Tip>{label}</Tip>
     </Popper>
   );

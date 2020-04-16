@@ -10,6 +10,7 @@ export type PopperProps = {
   open?: boolean;
   anchor: JSX.Element;
   children: JSX.Element;
+  distance?: number;
   placement?: Placement;
   onClose?(): void;
 };
@@ -20,6 +21,7 @@ export const Popper: React.FC<PopperProps> = ({
   open = false,
   anchor,
   children,
+  distance = 8,
   placement = "bottom-start",
   onClose = () => {},
   ...rest
@@ -44,7 +46,7 @@ export const Popper: React.FC<PopperProps> = ({
           {
             name: "offset",
             options: {
-              offset: [0, 8],
+              offset: [0, distance],
             },
           },
         ],
@@ -57,7 +59,7 @@ export const Popper: React.FC<PopperProps> = ({
     if (!open) {
       popperRef.current?.destroy();
     }
-  }, [open, placement]);
+  }, [open, placement, distance]);
 
   return (
     <>

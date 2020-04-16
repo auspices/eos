@@ -194,7 +194,11 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = React.memo(
               }}
             />
 
-            <Tooltip label={`remove ${field.name}`} placement="left">
+            <Tooltip
+              label={`remove ${field.name}`}
+              placement="left"
+              distance={0}
+            >
               <Remove
                 position="absolute"
                 top={0}
