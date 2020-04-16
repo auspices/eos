@@ -13,7 +13,6 @@ const Loading = styled(Spinner).attrs({ color: "secondary", size: 16 })`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* z-index: ; */
 `;
 
 const Placeholder = styled.div`
