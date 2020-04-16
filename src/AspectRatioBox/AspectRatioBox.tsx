@@ -25,7 +25,12 @@ export const AspectRatioBox: React.FC<AspectRatioBoxProps> = ({
   });
 
   return (
-    <Box position="relative" width="100%" maxWidth={`${width}px`} {...rest}>
+    <Box
+      position="relative"
+      width="100%"
+      style={{ maxWidth: `${width}px` }}
+      {...rest}
+    >
       <Box
         position="relative"
         width="100%"
