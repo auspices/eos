@@ -36,3 +36,4 @@ export * from "./Themer";
 export * from "./Truncate";
 export * from "./Upload";
 export * from './Tooltip';
+export * from './EmptyFrame';
