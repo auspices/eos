@@ -38,8 +38,8 @@ export const Pane = React.forwardRef(
     const refs = list.map(() => createRef<HTMLElement | null>());
 
     const handleEnter = useCallback(
-      (_element, _state, i: number) => {
-        refs[i].current?.click();
+      ({ index }: { index: number }) => {
+        refs[index].current?.click();
         onEnter && onEnter();
       },
       [onEnter, refs]
