@@ -24,12 +24,12 @@ const Wrapper = styled(Box)<{ overlay?: boolean }>`
 const Dialog = styled(Box).attrs({ role: "dialog" })``;
 
 export type ModalProps = BoxProps & {
-  onClose?(): void;
+  onClose(): void;
   overlay?: boolean;
 };
 
 export const Modal: React.FC<ModalProps> = ({
-  onClose = () => {},
+  onClose,
   children,
   overlay,
   ...rest
