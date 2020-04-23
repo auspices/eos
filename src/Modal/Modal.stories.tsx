@@ -36,3 +36,14 @@ export const Default = () => {
     </>
   );
 };
+
+export const Open = () => {
+  return (
+    <Modal overlay position="fixed" top={0} left={0}>
+      <Stack direction="horizontal">
+        <Button>door number one</Button>
+        <Button>door number two</Button>
+      </Stack>
+    </Modal>
+  );
+};
