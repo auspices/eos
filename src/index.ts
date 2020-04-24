@@ -37,3 +37,4 @@ export * from "./Truncate";
 export * from "./Upload";
 export * from './Tooltip';
 export * from './EmptyFrame';
+export * from './Plus';
