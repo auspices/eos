@@ -64,7 +64,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
         onClose={handleClose}
         anchor={
           <Button
-            focus={mode === Mode.Active}
             disabled={mode === Mode.Active}
             onClick={handleClick}
             width="100%"
