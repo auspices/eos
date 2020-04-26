@@ -50,7 +50,7 @@
     "@storybook/addon-viewport": "5.3.18",
     "@storybook/addons": "5.3.18",
     "@storybook/react": "5.3.18",
-    "@types/node": "13.13.3",
+    "@types/node": "13.13.4",
     "@types/react-dom": "16.9.6",
     "@types/styled-components": "5.1.0",
     "@types/styled-system": "5.1.9",
