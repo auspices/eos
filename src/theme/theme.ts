@@ -55,8 +55,9 @@ export type Scheme = keyof typeof SCHEMES;
 
 export const THEME = {
   fonts: {
-    body: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif',
-    mono: "Menlo, Monaco, Consolas, 'Courier New', monospace",
+    body:
+      'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    mono: `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
   },
   scheme: "light",
   colors: LIGHT,
