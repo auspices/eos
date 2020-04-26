@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Box, BoxProps } from "../Box";
 import { Popper, Placement } from "../Popper";
 import { themeGet } from "../theme";
+import { isTouch } from "../lib/isTouch";
 
 export const Tip = styled(Box).attrs({
   borderRadius: 4,
@@ -25,6 +26,7 @@ export type TooltipProps = BoxProps & {
   label: string;
   placement?: Placement;
   distance?: number;
+  forceForTouch?: boolean;
 };
 
 export const Tooltip: React.FC<TooltipProps> = ({
@@ -32,6 +34,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   children,
   placement,
   distance,
+  forceForTouch = false,
 }) => {
   const [mode, setMode] = useState(Mode.Resting);
 
@@ -47,12 +50,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
     [children, handleMouseOut, handleMouseOver]
   );
 
+  const isOpen = mode === Mode.Active && !(isTouch() && !forceForTouch);
+
   return (
     <Popper
       anchor={anchor}
       placement={placement}
       distance={distance}
-      open={mode === Mode.Active}
+      open={isOpen}
     >
       <Tip>{label}</Tip>
     </Popper>
