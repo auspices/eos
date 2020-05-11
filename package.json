@@ -51,7 +51,7 @@
     "@storybook/addons": "5.3.18",
     "@storybook/react": "5.3.18",
     "@types/node": "13.13.5",
-    "@types/react-dom": "16.9.7",
+    "@types/react-dom": "16.9.8",
     "@types/styled-components": "5.1.0",
     "@types/styled-system": "5.1.9",
     "@types/styled-system__theme-get": "5.0.0",
