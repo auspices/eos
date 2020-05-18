@@ -39,3 +39,4 @@ export * from './Tooltip';
 export * from './EmptyFrame';
 export * from './Plus';
 export * from './Mono';
+export * from './Select';

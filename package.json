@@ -22,6 +22,7 @@
     "prepublishOnly": "yarn build",
     "scaffold": "ts-node src/scripts/scaffold.ts",
     "semantic-release": "semantic-release",
+    "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
     "type:check": "tsc --noEmit",
     "unlink-all": "yalc remove --all && yarn --check-files"
