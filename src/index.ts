@@ -40,3 +40,4 @@ export * from './EmptyFrame';
 export * from './Plus';
 export * from './Mono';
 export * from './Select';
+export * from './Expandable';

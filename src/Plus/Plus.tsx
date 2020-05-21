@@ -5,6 +5,7 @@ import { Box, BoxProps } from "../Box";
 export type PlusProps = BoxProps & {
   size: number | string;
   strokeWidth?: string;
+  axis?: "horizontal" | "vertical" | "both";
 };
 
 export const Plus = styled(Box)<PlusProps>`
@@ -28,13 +29,24 @@ export const Plus = styled(Box)<PlusProps>`
 
   &::before {
     transform: translate(-50%, -50%);
+    ${({ axis }) =>
+      axis === "vertical" &&
+      css`
+        display: none;
+      `}
   }
 
   &::after {
     transform: translate(-50%, -50%) rotate(90deg);
+    ${({ axis }) =>
+      axis === "horizontal" &&
+      css`
+        display: none;
+      `}
   }
 `;
 
 Plus.defaultProps = {
   position: "relative",
+  axis: "both",
 };
