@@ -1,3 +1,3 @@
 export * from "./theme";
-export * from "./hexAlpha";
+export * from "./utils";
 export { themeGet } from "@styled-system/theme-get";

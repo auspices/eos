@@ -41,3 +41,4 @@ export * from './Plus';
 export * from './Mono';
 export * from './Select';
 export * from './Expandable';
+export * from './Tag';
