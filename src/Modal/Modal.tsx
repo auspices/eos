@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useCallback } from "react";
 import styled, { css } from "styled-components";
 import { createPortal } from "react-dom";
 import { FocusOn } from "react-focus-on";
-import { themeGetHexAlpha } from "../theme";
+import { color } from "../theme";
 import { Box, BoxProps } from "../Box";
 
 const Wrapper = styled(Box)<{ overlay?: boolean }>`
@@ -17,7 +17,7 @@ const Wrapper = styled(Box)<{ overlay?: boolean }>`
   ${({ overlay }) =>
     overlay &&
     css`
-      background-color: ${themeGetHexAlpha("colors.background", 0.9)};
+      background-color: ${color("background", 0.9)};
     `}
 `;
 

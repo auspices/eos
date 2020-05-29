@@ -1,16 +1,21 @@
 import { themeGet } from "@styled-system/theme-get";
+import { ColorScheme } from "./theme";
+
+export const color = (name: keyof ColorScheme, opacity?: number) => {
+  return (props: any) => {
+    const value = themeGet(`colors.${name}`)(props);
+    if (opacity === undefined) return value;
+    const { r, g, b } = hexToRgb(value);
+    return `rgba(${[r, g, b].join(",")}, ${opacity})`;
+  };
+};
 
 export const hexAlpha = (color: string, opacity: number) => {
   const clampedOpacity = Math.round(
     Math.min(Math.max(opacity || 1, 0), 1) * 255
   );
-
   return color + clampedOpacity.toString(16).toUpperCase();
 };
-
-export const themeGetHexAlpha = (path: string, opacity: number) => (
-  props: any
-) => hexAlpha(themeGet(path)(props), opacity);
 
 export const componentToHex = (value: number) => {
   const hex = value.toString(16);
@@ -64,11 +69,3 @@ export const colorHash = (string: string) => {
   const hex = "00000".substring(0, 6 - c.length) + c;
   return `#${hex}`;
 };
-
-// function intToRGB(i){
-//   var c = (i & 0x00FFFFFF)
-//       .toString(16)
-//       .toUpperCase();
-
-//   return "00000".substring(0, 6 - c.length) + c;
-// }
