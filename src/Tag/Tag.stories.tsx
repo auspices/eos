@@ -35,3 +35,11 @@ export const Truncated = () => (
     <Tag maxWidth="100px">{INPUT}</Tag>
   </States>
 );
+
+export const Linked = () => (
+  <States>
+    <Tag>
+      <a href="#">tgf12</a>
+    </Tag>
+  </States>
+);
