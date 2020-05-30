@@ -20,11 +20,11 @@ export const Field: React.FC<FieldProps> = ({
   ...rest
 }) => (
   <Stack direction={direction} {...rest}>
-    <Label {...(direction === "horizontal" ? { maxWidth: "50%" } : {})}>
+    <Label flex={[1, 1, 0.25]} minWidth={0}>
       {label}
     </Label>
 
-    <Input flex="1" minWidth={0} {...input} />
+    <Input flex={[1, 1, 0.75]} minWidth={0} {...input} />
   </Stack>
 );
 
