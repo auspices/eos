@@ -3,21 +3,18 @@ import styled from "styled-components";
 import { Stack, StackProps } from "../Stack";
 import { Input, InputProps } from "../Input";
 import { Pill } from "../Pill";
-import { Box } from "../Box";
 
-export type FieldProps = StackProps & {
-  label: React.ReactNode;
-  input: InputProps;
-};
+type RequiredProps = StackProps & { label: React.ReactNode };
+export type FieldProps = RequiredProps &
+  ({ input: InputProps } | { children: InputProps });
 
 const Label = styled(Pill).attrs({ as: "label" })`
   user-select: none;
 `;
 
-export const Field: React.FC<FieldProps> = ({
+const Container: React.FC<RequiredProps> = ({
+  direction,
   label,
-  input,
-  direction = "horizontal",
   children,
   ...rest
 }) => (
@@ -25,15 +22,25 @@ export const Field: React.FC<FieldProps> = ({
     <Label flex={[1, 1, 0.25]} minWidth={0}>
       {label}
     </Label>
-
-    {children ? (
-      <Box display="flex" flex={[1, 1, 0.75]} minWidth={0}>
-        {children}
-      </Box>
-    ) : (
-      <Input flex={[1, 1, 0.75]} minWidth={0} {...input} />
-    )}
+    {children}
   </Stack>
 );
+
+export const Field: React.FC<FieldProps> = ({
+  direction = "horizontal",
+  ...props
+}) => {
+  if ("input" in props) {
+    const { input, ...rest } = props;
+
+    return (
+      <Container direction={direction} {...rest}>
+        <Input flex={[1, 1, 0.75]} minWidth={0} {...input} />
+      </Container>
+    );
+  }
+
+  return <Container direction={direction} {...props} />;
+};
 
 Field.displayName = "Field";
