@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Stack, StackProps } from "../Stack";
 import { Input, InputProps } from "../Input";
 import { Pill } from "../Pill";
+import { Box } from "../Box";
 
 export type FieldProps = StackProps & {
   label: React.ReactNode;
@@ -17,6 +18,7 @@ export const Field: React.FC<FieldProps> = ({
   label,
   input,
   direction = "horizontal",
+  children,
   ...rest
 }) => (
   <Stack direction={direction} {...rest}>
@@ -24,7 +26,13 @@ export const Field: React.FC<FieldProps> = ({
       {label}
     </Label>
 
-    <Input flex={[1, 1, 0.75]} minWidth={0} {...input} />
+    {children ? (
+      <Box display="flex" flex={[1, 1, 0.75]} minWidth={0}>
+        {children}
+      </Box>
+    ) : (
+      <Input flex={[1, 1, 0.75]} minWidth={0} {...input} />
+    )}
   </Stack>
 );
 
