@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Box, BoxProps } from "../Box";
 import { getContrastTIQHex, themeGet, colorHash } from "../theme";
+import { overflowEllipsisMixin } from "../mixins";
 
 export type TagProps = Omit<BoxProps, "bg" | "backgroundColor" | "children"> & {
   bg?: string;
@@ -11,6 +12,8 @@ export type TagProps = Omit<BoxProps, "bg" | "backgroundColor" | "children"> & {
 
 export const Container = styled(Box)<{ bg: string }>`
   display: inline-block;
+  ${overflowEllipsisMixin}
+
   ${(props) => {
     const bg = themeGet(`colors.${props.bg}`, props.bg)(props);
     const color = getContrastTIQHex(bg);
