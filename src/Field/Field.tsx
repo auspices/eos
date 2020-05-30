@@ -23,7 +23,10 @@ const Container: React.FC<RequiredProps> = ({
     <Label flex={[1, 1, 0.25]} minWidth={0}>
       {label}
     </Label>
-    {children}
+
+    <Box display="flex" flex={[1, 1, 0.75]} minWidth={0}>
+      {children}
+    </Box>
   </Stack>
 );
 
@@ -36,7 +39,7 @@ export const Field: React.FC<FieldProps> = ({
 
     return (
       <Container direction={direction} {...rest}>
-        <Input flex={[1, 1, 0.75]} minWidth={0} {...input} />
+        <Input flex="1" {...input} />
       </Container>
     );
   }
@@ -45,9 +48,7 @@ export const Field: React.FC<FieldProps> = ({
 
   return (
     <Container direction={direction} {...rest}>
-      <Box flex={[1, 1, 0.75]} minWidth={0}>
-        {children}
-      </Box>
+      {children}
     </Container>
   );
 };
