@@ -1,36 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { Stack, StackProps } from "../Stack";
 import { Input, InputProps } from "../Input";
 import { Pill } from "../Pill";
-import { Box } from "../Box";
+import { Split, SplitProps } from "../Split";
 
-type RequiredProps = StackProps & { label: React.ReactNode };
+type RequiredProps = Omit<SplitProps, "children"> & { label: React.ReactNode };
+
 export type FieldProps = RequiredProps &
-  ({ input: InputProps } | { children: InputProps });
+  ({ input: InputProps } | { children: JSX.Element | string | null });
 
 const Label = styled(Pill).attrs({ as: "label" })`
   user-select: none;
 `;
 
-const Container: React.FC<RequiredProps> = ({
-  direction,
-  label,
-  children,
-  ...rest
-}) => (
-  <Stack direction={direction} {...rest}>
-    <Label flex={[1, 1, 0.25]} minWidth={0}>
-      {label}
-    </Label>
-
-    <Box display="flex" flex={[1, 1, 0.75]} minWidth={0}>
-      {children}
-    </Box>
-  </Stack>
-);
-
 export const Field: React.FC<FieldProps> = ({
+  label,
   direction = "horizontal",
   ...props
 }) => {
@@ -38,18 +22,20 @@ export const Field: React.FC<FieldProps> = ({
     const { input, ...rest } = props;
 
     return (
-      <Container direction={direction} {...rest}>
-        <Input flex="1" {...input} />
-      </Container>
+      <Split direction={direction} {...rest}>
+        <Label>{label}</Label>
+        <Input width="100%" {...input} />
+      </Split>
     );
   }
 
   const { children, ...rest } = props;
 
   return (
-    <Container direction={direction} {...rest}>
-      {children}
-    </Container>
+    <Split direction={direction} {...rest}>
+      <Label>{label}</Label>
+      <>{children}</>
+    </Split>
   );
 };
 

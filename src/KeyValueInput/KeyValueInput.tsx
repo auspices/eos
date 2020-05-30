@@ -1,8 +1,8 @@
 import React from "react";
-import { Stack, StackProps } from "../Stack";
 import { Input, InputProps } from "../Input";
+import { Split, SplitProps } from "../Split";
 
-export type KeyValueInputProps = StackProps & {
+export type KeyValueInputProps = Omit<SplitProps, "children"> & {
   k: InputProps;
   v?: InputProps;
 };
@@ -13,10 +13,10 @@ export const KeyValueInput = React.forwardRef(
     forwardedRef: React.Ref<HTMLInputElement>
   ) => {
     return (
-      <Stack direction="horizontal" {...rest}>
-        <Input flex={[1, 1, 0.25]} minWidth={0} {...k} />
-        <Input ref={forwardedRef} flex={[1, 1, 0.75]} minWidth={0} {...v} />
-      </Stack>
+      <Split direction="horizontal" {...rest}>
+        <Input width="100%" {...k} />
+        <Input ref={forwardedRef} width="100%" {...v} />
+      </Split>
     );
   }
 );

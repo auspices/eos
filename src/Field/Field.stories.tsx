@@ -3,6 +3,7 @@ import { States } from "storybook-states";
 import { Field, FieldProps } from "./Field";
 import { Button } from "../Button";
 import { Stack } from "../Stack";
+import { KeyValueInput } from "../KeyValueInput";
 
 export default { title: "Field", component: Field };
 
@@ -12,7 +13,6 @@ export const Default = () => (
       { label: "label" },
       { label: "a slightly longer label" },
       { direction: "vertical" },
-      { children: <Button flex="1">custom child</Button> },
     ]}
   >
     <Field label="label" input={{ name: "value", placeholder: "value" }} />
@@ -22,11 +22,15 @@ export const Default = () => (
 export const Stacked = () => (
   <States>
     <Stack>
-      <Field label="title">&nbsp;</Field>
+      <Field label="title">{null}</Field>
       <Field label="label" input={{ name: "value", placeholder: "value" }} />
       <Field label="label" input={{ name: "value", placeholder: "value" }} />
+      <KeyValueInput
+        k={{ placeholder: "key a" }}
+        v={{ placeholder: "value a" }}
+      />
       <Field label="ready?">
-        <Button flex="1">submit</Button>
+        <Button width="100%">submit</Button>
       </Field>
     </Stack>
   </States>
