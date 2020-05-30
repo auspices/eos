@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Stack, StackProps } from "../Stack";
 import { Input, InputProps } from "../Input";
 import { Pill } from "../Pill";
+import { Box } from "../Box";
 
 type RequiredProps = StackProps & { label: React.ReactNode };
 export type FieldProps = RequiredProps &
@@ -40,7 +41,15 @@ export const Field: React.FC<FieldProps> = ({
     );
   }
 
-  return <Container direction={direction} {...props} />;
+  const { children, ...rest } = props;
+
+  return (
+    <Container direction={direction} {...rest}>
+      <Box flex={[1, 1, 0.75]} minWidth={0}>
+        {children}
+      </Box>
+    </Container>
+  );
 };
 
 Field.displayName = "Field";
