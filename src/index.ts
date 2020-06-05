@@ -43,3 +43,4 @@ export * from './Select';
 export * from './Expandable';
 export * from './Tag';
 export * from './Split';
+export * from './Locus';
