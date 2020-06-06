@@ -12,7 +12,7 @@ export type LocusOption = {
 export type LocusProps = StackProps & {
   placeholder?: string;
   defaultOptions: LocusOption[];
-  onChange?(query: string): LocusOption[];
+  onChange(query: string): Promise<LocusOption[]>;
 };
 
 export const Locus: React.FC<LocusProps> = ({
@@ -38,17 +38,19 @@ export const Locus: React.FC<LocusProps> = ({
     ref,
     list: options,
     onEnter: handleEnter,
-    waitForInteractive: query === "",
+    waitForInteractive: query === "" || (query !== "" && !onChange),
   });
 
   const handleChange = useCallback(
     (query: string) => {
       setQuery(query);
+
       if (!onChange || query === "") {
         setOptions(defaultOptions);
         return;
       }
-      setOptions(onChange(query));
+
+      onChange(query).then(setOptions);
     },
     [defaultOptions, onChange]
   );
