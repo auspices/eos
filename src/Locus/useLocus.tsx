@@ -7,7 +7,7 @@ import React, {
   useRef,
 } from "react";
 import { Locus, LocusProps } from "./Locus";
-import { Modal } from "../Modal";
+import { Modal, ModalProps } from "../Modal";
 
 enum Mode {
   Resting,
@@ -25,11 +25,13 @@ export const LocusContext = createContext<{
   toggleMode: () => {},
 });
 
-export const LocusProvider: React.FC<{
-  children: React.ReactNode;
-  defaultOptions: LocusProps["defaultOptions"];
-  onChange?: LocusProps["onChange"];
-}> = ({ children, defaultOptions, onChange: defaultOnChange }) => {
+export const LocusProvider: React.FC<
+  ModalProps & {
+    children: React.ReactNode;
+    defaultOptions: LocusProps["defaultOptions"];
+    onChange?: LocusProps["onChange"];
+  }
+> = ({ children, defaultOptions, onChange: defaultOnChange, ...rest }) => {
   const [mode, setMode] = useState(Mode.Resting);
   const onChangeRef = useRef<LocusOnChange>(
     defaultOnChange ?? (() => Promise.resolve([]))
@@ -62,7 +64,7 @@ export const LocusProvider: React.FC<{
   return (
     <LocusContext.Provider value={{ mode, toggleMode, onChangeRef }}>
       {mode === Mode.Open && (
-        <Modal onClose={toggleMode}>
+        <Modal onClose={toggleMode} {...rest}>
           <Locus
             width={["90vw", "90vw", "50vw"]}
             defaultOptions={defaultOptions}
