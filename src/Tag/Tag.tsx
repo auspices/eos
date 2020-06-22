@@ -38,7 +38,7 @@ export const Tag: React.FC<TagProps> = ({
   const _bg = bg || backgroundColor || colorHash(onlyText(children));
 
   return (
-    <Container fontSize={1} borderRadius={4} px={3} py={2} bg={_bg} {...rest}>
+    <Container fontSize={1} borderRadius={4} px={3} py={1} bg={_bg} {...rest}>
       {children}
     </Container>
   );
