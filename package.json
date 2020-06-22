@@ -33,16 +33,16 @@
     "styled-components": ">=5.0.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.3.3",
+    "@popperjs/core": "^2.4.2",
     "@seznam/compose-react-refs": "^1.0.4",
     "@styled-system/theme-get": "^5.1.2",
     "csstype": "^2.6.10",
     "proportional-scale": "^3.0.0",
-    "react-children-utilities": "^2.1.1",
-    "react-focus-on": "^3.4.0",
-    "styled-reset": "^4.1.3",
+    "react-children-utilities": "^2.1.2",
+    "react-focus-on": "^3.4.1",
+    "styled-reset": "^4.1.6",
     "styled-system": "^5.1.5",
-    "use-keyboard-list-navigation": "^2.0.0"
+    "use-keyboard-list-navigation": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.10.3",
@@ -52,7 +52,7 @@
     "@storybook/addon-viewport": "5.3.19",
     "@storybook/addons": "5.3.19",
     "@storybook/react": "5.3.19",
-    "@types/node": "13.13.12",
+    "@types/node": "14.0.13",
     "@types/react-dom": "16.9.8",
     "@types/styled-components": "5.1.0",
     "@types/styled-system": "5.1.9",
@@ -69,7 +69,7 @@
     "react-docgen-typescript-loader": "3.7.2",
     "react-dom": "16.13.1",
     "semantic-release": "17.0.8",
-    "storybook-states": "1.0.2",
+    "storybook-states": "1.2.0",
     "styled-components": "5.1.1",
     "ts-loader": "7.0.5",
     "ts-node": "8.10.2",

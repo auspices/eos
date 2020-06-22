@@ -1537,10 +1537,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@popperjs/core@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.3.3.tgz#8731722aeb7330e8fd9eb5d424be6b98dea7d6da"
-  integrity sha512-yEvVC8RfhRPkD9TUn7cFcLcgoJePgZRAOR7T21rcRY5I8tpuhzeWfGa7We7tB14fe9R7wENdqUABcMdwD4SQLw==
+"@popperjs/core@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.2.tgz#7c6dc4ecef16149fd7a736710baa1b811017fdca"
+  integrity sha512-JlGTGRYHC2QK+DDbePyXdBdooxFq2+noLfWpRqJtkxcb/oYWzOF0kcbfvvbWrwevCC1l6hLUg1wHYT+ona5BWQ==
 
 "@reach/router@^1.2.1":
   version "1.3.3"
@@ -2278,10 +2278,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.5.tgz#3d03acd3b3414cf67faf999aed11682ed121f22b"
   integrity sha512-90hiq6/VqtQgX8Sp0EzeIsv3r+ellbGj4URKj5j30tLlZvRUpnAe9YbYnjl3pJM93GyXU0tghHhvXHq+5rnCKA==
 
-"@types/node@13.13.12":
-  version "13.13.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.12.tgz#9c72e865380a7dc99999ea0ef20fc9635b503d20"
-  integrity sha512-zWz/8NEPxoXNT9YyF2osqyA9WjssZukYpgI4UYZpOjcyqwIUqWGkcCionaEb9Ki+FULyPyvNFpg/329Kd2/pbw==
+"@types/node@14.0.13":
+  version "14.0.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.13.tgz#ee1128e881b874c371374c1f72201893616417c9"
+  integrity sha512-rouEWBImiRaSJsVA+ITTFM6ZxibuAlTuNOCyxVbwreu6k6+ujs7DfnU9o+PShFhET78pMBl3eH+AGSI5eOTkPA==
 
 "@types/node@>= 8":
   version "13.9.2"
@@ -5986,6 +5986,11 @@ focus-lock@^0.6.6:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.6.6.tgz#98119a755a38cfdbeda0280eaa77e307eee850c7"
   integrity sha512-Dx69IXGCq1qsUExWuG+5wkiMqVM/zGx/reXSJSLogECwp3x6KeNQZ+NAetgxEFpnC41rD8U3+jRCW68+LNzdtw==
+
+focus-lock@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.7.0.tgz#b2bfb0ca7beacc8710a1ff74275fe0dc60a1d88a"
+  integrity sha512-LI7v2mH02R55SekHYdv9pRHR9RajVNyIJ2N5IEkWbg7FT5ZmJ9Hw4mWxHeEUcd+dJo0QmzztHvDvWcc7prVFsw==
 
 for-in@^0.1.3:
   version "0.1.8"
@@ -10176,10 +10181,10 @@ react-addons-create-fragment@^15.6.2:
     loose-envify "^1.3.1"
     object-assign "^4.1.0"
 
-react-children-utilities@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-children-utilities/-/react-children-utilities-2.1.1.tgz#e6a82420bc9ffca02252528b4a271d607be0ccec"
-  integrity sha512-Z38/6EAp7LaqX3LDZzKjzoROwT0CHnZCEWaW1k+1ZE1k/m0w2zxm5V8Dpt9Kzqc4apd+tlRBNDV6DIjtR0W2SQ==
+react-children-utilities@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-children-utilities/-/react-children-utilities-2.1.2.tgz#942d94ce529eb264c50ce432349e279c8e449f7b"
+  integrity sha512-lcjFpja5hMLCZKYU1zwtXSZXGv0lHSOMYLI0EWIbitbnGnFnFjg0Py2T9Mrv6NIRA7MGVu3qCdl9UP/USLVE7w==
 
 react-clientside-effect@^1.2.2:
   version "1.2.2"
@@ -10283,7 +10288,7 @@ react-fast-compare@^2.0.4:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-focus-lock@^2.1.0, react-focus-lock@^2.2.1:
+react-focus-lock@^2.1.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.2.1.tgz#1d12887416925dc53481914b7cedd39494a3b24a"
   integrity sha512-47g0xYcCTZccdzKRGufepY8oZ3W1Qg+2hn6u9SHZ0zUB6uz/4K4xJe7yYFNZ1qT6m+2JDm82F6QgKeBTbjW4PQ==
@@ -10295,13 +10300,25 @@ react-focus-lock@^2.1.0, react-focus-lock@^2.2.1:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
-react-focus-on@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/react-focus-on/-/react-focus-on-3.4.0.tgz#af9080508d43690da4d1ddbf030a35aaf61c072b"
-  integrity sha512-Yxxc0zBHNK2Sh1QVamnyndpGSRwRATEcS4QO+bZU9oPYA6yENzznQumvwVqMXWm08WbuK8yCTjg75rsGSunfrw==
+react-focus-lock@^2.3.1:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.4.0.tgz#11235eff41f47567288d7ef574e5b006527739d5"
+  integrity sha512-mue/boxdfNhfxnQcZtEBvqwZ5XQxk0uRoAMwLGl8j6XolFV3UIlt6iGFBGqRdJsvVHhtyKC5i8fkLnBidxCTbA==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    focus-lock "^0.7.0"
+    prop-types "^15.6.2"
+    react-clientside-effect "^1.2.2"
+    use-callback-ref "^1.2.1"
+    use-sidecar "^1.0.1"
+
+react-focus-on@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/react-focus-on/-/react-focus-on-3.4.1.tgz#e184f3c44185e341598c5d9d44b2987ad459b240"
+  integrity sha512-KGRIl0iAu+1k1dcX7eQCXF5ZR/nl+XyXN5Ukw/OY80vLaK2b6vDzNqnX0HdYbY5xSUhIRUvMWEzSsdEyPjvk/Q==
   dependencies:
     aria-hidden "^1.1.1"
-    react-focus-lock "^2.2.1"
+    react-focus-lock "^2.3.1"
     react-remove-scroll "^2.3.0"
     react-style-singleton "^2.1.0"
     use-callback-ref "^1.2.3"
@@ -11582,10 +11599,10 @@ store2@^2.7.1:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.10.0.tgz#46b82bb91878daf1b0d56dec2f1d41e54d5103cf"
   integrity sha512-tWEpK0snS2RPUq1i3R6OahfJNjWCQYNxq0+by1amCSuw0mXtymJpzmZIeYpA1UAa+7B0grCpNYIbDcd7AgTbFg==
 
-storybook-states@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/storybook-states/-/storybook-states-1.0.2.tgz#a1387840fc87222dc281fdf97867315a7de86511"
-  integrity sha512-k4Rvra7/MlRwaYI/OUcFKFHdxNgObdvEtDDTmQ3hPeLxgjEtDvPPcwkgHWQVRj64x8wAHpqjwjYQe8sFvP/KKA==
+storybook-states@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/storybook-states/-/storybook-states-1.2.0.tgz#8c40aa6fc200d5e10e2ea08693968b96dd16e198"
+  integrity sha512-Kbsn7P/aCRIdX3V71woX0Q50NOKZ3519h5sM9cZd0grBGeIibCHRhjp6lMhFNjXI+xV7CNFHr/+5AFFh+TrvYw==
 
 stream-browserify@^2.0.1:
   version "2.0.2"
@@ -11847,10 +11864,10 @@ styled-components@5.1.1:
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
 
-styled-reset@^4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-4.1.3.tgz#88d1f70f0476c519c74dbbdd03514456e068ac15"
-  integrity sha512-i/RTBS14lMMJJQNbDn6bjTak4AtNZ2Wlte3GI2GSCj1k5LP6CXG9Em/M5k1Qw5mI17aOlCdati4yCfvNgSuttQ==
+styled-reset@^4.1.6:
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-4.1.6.tgz#c3f5927552d90f0d65e45bb654c24e2a68b669fb"
+  integrity sha512-ttktpWqPNk9MYRPgRTEwx1WLN3ALlXzAGyC1u6xbKOeNGDsN6AJ0z1O3BFYz7epkiMKlF50whlM/IT/IY+attQ==
 
 styled-system@^5.1.5:
   version "5.1.5"
@@ -12535,10 +12552,10 @@ use-callback-ref@^1.2.3:
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.3.tgz#9f939dfb5740807bbf9dd79cdd4e99d27e827756"
   integrity sha512-DPBPh1i2adCZoIArRlTuKRy7yue7QogtEnfv0AKrWsY+GA+4EKe37zhRDouNnyWMoNQFYZZRF+2dLHsWE4YvJA==
 
-use-keyboard-list-navigation@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/use-keyboard-list-navigation/-/use-keyboard-list-navigation-2.0.0.tgz#e16c33ce8c337e066febe00b251b55a9e4b79dfc"
-  integrity sha512-cGE9Bsbu4JevuwMls5mFMBow5ROgrhRnoVg6Owv1oXwS65NjECjkVsGS7W3U/9BGpDKeSL+zKuqcINpCzmHtCA==
+use-keyboard-list-navigation@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/use-keyboard-list-navigation/-/use-keyboard-list-navigation-2.0.1.tgz#a5ccf2c59e215aec03bfb8eba5ae85ef56ec8c79"
+  integrity sha512-uAIIA0m/oejL4E0qet8jVZZaM/95QlT6SEl5PxUEpKPLoWcSyufqy/S1U0/yx3bPHq4Ny3iBLB3ZN7T4agBKZQ==
   dependencies:
     map-cursor-to-max "^1.0.0"
 
