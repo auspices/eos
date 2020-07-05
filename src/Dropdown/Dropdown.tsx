@@ -67,6 +67,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             disabled={mode === Mode.Active}
             onClick={handleClick}
             width="100%"
+            type="button"
           >
             {label}
 
