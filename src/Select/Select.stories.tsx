@@ -1,4 +1,5 @@
 import React from "react";
+import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
 import { Select, SelectProps } from "./Select";
 
@@ -23,7 +24,7 @@ const OPTIONS = [
 export const Default = () => (
   <>
     <States<Partial<SelectProps>> states={[{}, { value: "honest" }]}>
-      <Select label="select" options={OPTIONS} />
+      <Select label="select" options={OPTIONS} onChange={action("onChange")} />
     </States>
   </>
 );

@@ -32,6 +32,7 @@ export const Select: React.FC<SelectProps> = ({
 
   const handleSelect = (selectedValue: SelectOption["value"]) => {
     setValue(selectedValue);
+    onChange && onChange(selectedValue);
   };
 
   return (
