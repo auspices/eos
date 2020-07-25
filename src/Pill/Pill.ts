@@ -5,16 +5,18 @@ import { Box, BoxProps } from "../Box";
 export type PillProps = BoxProps;
 
 export const PILL = {
+  alignItems: "center",
+  backgroundColor: "background",
+  borderColor: "border",
+  borderStyle: "solid",
+  borderWidth: "1px",
+  color: "primary",
+  display: "flex",
   fontFamily: "body",
   fontSize: 3,
-  py: 4,
-  px: 6,
   lineHeight: 2,
-  color: "primary",
-  borderWidth: "1px",
-  borderStyle: "solid",
-  borderColor: "border",
-  backgroundColor: "background",
+  px: 6,
+  py: 4,
   transition: "box-shadow 250ms ease",
 };
 
@@ -24,9 +26,6 @@ export const pillFocusMixin = css`
 `;
 
 export const Pill = styled(Box)<PillProps>`
-  display: flex;
-  align-items: center;
-
   &:focus {
     ${pillFocusMixin}
   }
