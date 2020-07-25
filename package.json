@@ -33,14 +33,14 @@
     "styled-components": ">=5.0.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.4.2",
+    "@popperjs/core": "^2.4.4",
     "@seznam/compose-react-refs": "^1.0.4",
     "@styled-system/theme-get": "^5.1.2",
-    "csstype": "^2.6.10",
-    "proportional-scale": "^3.0.0",
-    "react-children-utilities": "^2.1.2",
+    "csstype": "^2.6.11",
+    "proportional-scale": "^3.0.1",
+    "react-children-utilities": "^2.1.4",
     "react-focus-on": "^3.4.1",
-    "styled-reset": "^4.1.6",
+    "styled-reset": "^4.2.1",
     "styled-system": "^5.1.5",
     "use-keyboard-list-navigation": "^2.0.1"
   },
@@ -71,7 +71,7 @@
     "semantic-release": "17.1.1",
     "storybook-states": "1.2.0",
     "styled-components": "5.1.1",
-    "ts-loader": "7.0.5",
+    "ts-loader": "8.0.1",
     "ts-node": "8.10.2",
     "typescript": "3.9.7"
   },
