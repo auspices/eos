@@ -13,6 +13,7 @@ export const BUTTON = {
 export type ButtonProps = ClickableProps & {
   focus?: boolean;
   hover?: boolean;
+  selected?: boolean;
 };
 
 export const buttonHoverMixin = css`
@@ -22,6 +23,13 @@ export const buttonHoverMixin = css`
 export const buttonFocusMixin = css`
   outline: 0;
   ${pillFocusMixin}
+`;
+
+export const buttonSelectedMixin = css`
+  outline: 0;
+  box-shadow: inset 0 0 0 ${themeGet("space.1")} ${themeGet("colors.primary")};
+  text-decoration: underline;
+  pointer-events: none;
 `;
 
 export const buttonDisabledMixin = css`
@@ -53,6 +61,8 @@ export const buttonMixin = css<ButtonProps>`
   &:disabled {
     ${buttonDisabledMixin}
   }
+
+  ${({ selected }) => selected && buttonSelectedMixin}
 `;
 
 export const Button = styled(Clickable)<ButtonProps>`

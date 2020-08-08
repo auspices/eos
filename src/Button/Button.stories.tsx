@@ -8,7 +8,13 @@ export default { title: "Button", component: Button };
 
 export const Default = () => (
   <States<ButtonProps>
-    states={[{}, { hover: true }, { focus: true }, { disabled: true }]}
+    states={[
+      {},
+      { hover: true },
+      { focus: true },
+      { disabled: true },
+      { selected: true },
+    ]}
   >
     <Button onClick={action("onClick")}>Click</Button>
   </States>
