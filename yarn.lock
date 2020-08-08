@@ -4813,11 +4813,6 @@ csstype@^2.2.0, csstype@^2.5.7:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
   integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
 
-csstype@^2.6.11:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.11.tgz#452f4d024149ecf260a852b025e36562a253ffc5"
-  integrity sha512-l8YyEC9NBkSm783PFTvh0FmJy7s5pFKrDp49ZL7zBGX3fWkO+N4EEyan1qqp8cwPLDcD0OSdyY6hAMoxp34JFw==
-
 csstype@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.2.tgz#ee5ff8f208c8cd613b389f7b222c9801ca62b3f7"
@@ -10141,10 +10136,10 @@ property-information@^5.0.0:
   dependencies:
     xtend "^4.0.0"
 
-proportional-scale@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/proportional-scale/-/proportional-scale-3.0.1.tgz#321801b38dd00fa76708dd13697de9e211cdf04b"
-  integrity sha512-Jxf/kFvVqbOA0tgMJaU/ujX8idBY+vy39+13mRSWWTbFeZ5eSb6gT/a/AGeKwbboGYigFGinnshaTAUeJNNgfg==
+proportional-scale@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/proportional-scale/-/proportional-scale-4.0.0.tgz#888ecdb1e5e710645601bc4edc73d619bca28ff7"
+  integrity sha512-QW0HeiudSHjBQvGnJ35W/gQYaOP09gFSf+xsYSfMYE1DQ+g26aKRN0Hlvce06WeARCUQSlLE7a+jFVMN5feB4Q==
 
 proto-list@~1.2.1:
   version "1.2.4"
@@ -10362,10 +10357,10 @@ react-addons-create-fragment@^15.6.2:
     loose-envify "^1.3.1"
     object-assign "^4.1.0"
 
-react-children-utilities@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/react-children-utilities/-/react-children-utilities-2.1.4.tgz#283003c6385875c777c09153850d15ac21d38da6"
-  integrity sha512-5Mv96nLIxrdbbLtUx6GMn8u4GZ037G8q1349WQisKk8peM8mTFuAUkzzM9E/i8GEUYeAvKa1gASMOIW0W+k4kQ==
+react-children-utilities@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/react-children-utilities/-/react-children-utilities-2.1.5.tgz#80f9fd5358f2e0ba39b2519a799b5b2cc006045d"
+  integrity sha512-CLniy8wErElZAtgPFXUK/xk0Chr+gM57g4Rjg/u7smvuCoVE2GfeIkuoYZ+OwiW4ZMMMAEEL1z0Sn0NNhQLz5A==
 
 react-clientside-effect@^1.2.2:
   version "1.2.2"
