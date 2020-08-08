@@ -23,6 +23,7 @@ const Themed: React.FC = ({ children }) => {
             paddingTop: theme.space[3],
             fontFamily: theme.fonts.mono,
             fontSize: theme.fontSizes[0],
+            lineHeight: theme.lineHeights[2],
             color: theme.colors.secondary,
             borderTop: `1px dotted ${theme.colors.hint}`,
           },
