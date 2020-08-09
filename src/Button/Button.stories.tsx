@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
 import { Button, ButtonProps } from "./Button";
@@ -65,3 +65,25 @@ export const Link = () => (
     </Button>
   </States>
 );
+
+const Demo: React.FC = () => {
+  const [selected, setSelected] = useState(0);
+  return (
+    <Stack direction="horizontal">
+      <Button onClick={() => setSelected(0)} selected={selected === 0}>
+        first
+      </Button>
+      <Button onClick={() => setSelected(1)} selected={selected === 1}>
+        second
+      </Button>
+    </Stack>
+  );
+};
+
+export const Selected = () => {
+  return (
+    <States>
+      <Demo />
+    </States>
+  );
+};

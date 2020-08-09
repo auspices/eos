@@ -62,7 +62,14 @@ export const buttonMixin = css<ButtonProps>`
     ${buttonDisabledMixin}
   }
 
-  ${({ selected }) => selected && buttonSelectedMixin}
+  ${({ selected }) =>
+    selected &&
+    css`
+      ${buttonSelectedMixin}
+      &:focus {
+        ${buttonSelectedMixin}
+      }
+    `}
 `;
 
 export const Button = styled(Clickable)<ButtonProps>`
