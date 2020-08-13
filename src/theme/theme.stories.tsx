@@ -14,7 +14,7 @@ export const Values = () => (
   </States>
 );
 
-const Scheme = ({ scheme, ...rest }: { scheme: Scheme }) => {
+const Demo = ({ scheme, ...rest }: { scheme: Scheme }) => {
   const palette = SCHEMES[scheme];
   return (
     <Stack
@@ -62,8 +62,8 @@ const Scheme = ({ scheme, ...rest }: { scheme: Scheme }) => {
 export const Colors = () => (
   <States>
     <Stack direction="horizontal">
-      <Scheme scheme="light" />
-      <Scheme scheme="dark" />
+      <Demo scheme="light" />
+      <Demo scheme="dark" />
     </Stack>
   </States>
 );
