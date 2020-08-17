@@ -52,7 +52,7 @@
     "@storybook/addon-viewport": "6.0.10",
     "@storybook/addons": "6.0.10",
     "@storybook/react": "6.0.10",
-    "@types/node": "14.0.27",
+    "@types/node": "14.6.0",
     "@types/react-dom": "16.9.8",
     "@types/styled-components": "5.1.2",
     "@types/styled-system": "5.1.10",
