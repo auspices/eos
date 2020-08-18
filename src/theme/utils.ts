@@ -1,5 +1,5 @@
 import { themeGet } from "@styled-system/theme-get";
-import { ColorScheme } from "./theme";
+import { ColorScheme, SPACE_SCALE } from "./theme";
 
 export const color = (name: keyof ColorScheme, opacity?: number) => {
   return (props: any) => {
@@ -62,10 +62,14 @@ export const getContrastTIQHex = (value: string) => {
 
 export const colorHash = (string: string) => {
   let code = 0;
-  for (var i = 0; i < string.length; i++) {
+  for (let i = 0; i < string.length; i++) {
     code = string.charCodeAt(i) + ((code << 5) - code);
   }
   const c = (code & 0x00ffffff).toString(16).toUpperCase();
   const hex = "00000".substring(0, 6 - c.length) + c;
   return `#${hex}`;
+};
+
+export const space = (index: number) => {
+  return SPACE_SCALE[index];
 };

@@ -53,6 +53,37 @@ export const SCHEMES = {
 
 export type Scheme = keyof typeof SCHEMES;
 
+export const SPACE_SCALE = [
+  "0", // 0
+  "0.125rem", // 1
+  "0.25rem", // 2
+  "0.5rem", // 3
+  "0.75rem", // 4
+  "1rem", // 5
+  "1.5rem", // 6
+  "2rem", // 7
+  "4rem", // 8
+  "8rem", // 9
+  "16rem", // 10
+] as const;
+
+export const SPACE_SCALE_UNIT = "rem";
+
+export const FONT_SCALE = [
+  "0.75rem", // 0 = 12px
+  "0.875rem", // 1 = 14px
+  "1rem", // 2 = 16px (base)
+  "1.125rem", // 3 = 18px
+  "1.5rem", // 4 = 24px
+  "2rem", // 5 = 32px
+  "3rem", // 6 = 48px
+  "4rem", // 7 = 64px
+  "4.5rem", // 8 = 72px
+] as const;
+
+export const BASE_FONT_SIZE = FONT_SCALE[2];
+export const FONT_SCALE_UNIT = "rem";
+
 export const THEME = {
   fonts: {
     body:
@@ -61,31 +92,9 @@ export const THEME = {
   },
   scheme: "light",
   colors: LIGHT,
-  fontSizes: [
-    "0.75rem", // 0 = 12px
-    "0.875rem", // 1 = 14px
-    "1rem", // 2 = 16px (base)
-    "1.125rem", // 3 = 18px
-    "1.5rem", // 4 = 24px
-    "2rem", // 5 = 32px
-    "3rem", // 6 = 48px
-    "4rem", // 7 = 64px
-    "4.5rem", // 8 = 72px
-  ],
+  fontSizes: FONT_SCALE,
   lineHeights: [1, 1.25, 1.33, 1.75],
-  space: [
-    "0", // 0
-    "0.125rem", // 1
-    "0.25rem", // 2
-    "0.5rem", // 3
-    "0.75rem", // 4
-    "1rem", // 5
-    "1.5rem", // 6
-    "2rem", // 7
-    "4rem", // 8
-    "8rem", // 9
-    "16rem", // 10
-  ],
+  space: SPACE_SCALE,
   breakpoints: ["24rem", "50rem", "64rem"],
 };
 

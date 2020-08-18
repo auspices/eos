@@ -8,8 +8,13 @@ import { ClearableInput, ClearableInputProps } from "./ClearableInput";
 
 export default { title: "ClearableInput", component: ClearableInput };
 
+const LONG_EXAMPLE =
+  "We use vision to understand our environment - our agent does the same. Here we will see vision is dimensionality reduction - the process of reducing high dimensional data into a lower dimensional space.";
+
 export const Default = () => (
-  <States<ClearableInputProps> states={[{}, { value: "query" }]}>
+  <States<ClearableInputProps>
+    states={[{}, { value: "query" }, { value: LONG_EXAMPLE }]}
+  >
     <ClearableInput
       placeholder="search"
       onChange={action("onChange")}

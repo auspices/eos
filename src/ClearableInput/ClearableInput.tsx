@@ -3,6 +3,12 @@ import composeRefs from "@seznam/compose-react-refs";
 import { Input, InputProps } from "../Input";
 import { Box, BoxSpatialProps } from "../Box";
 import { Clear } from "../Clear";
+import { PILL } from "../Pill";
+import { space, SPACE_SCALE_UNIT } from "../theme";
+
+const CLEARABLE_BUTTON_WITH_MARGINS = `${
+  parseFloat(space(4)) * 2 + parseFloat(space(6))
+}${SPACE_SCALE_UNIT}`;
 
 export type ClearableInputProps = BoxSpatialProps &
   Omit<InputProps, "onChange" | "value"> & {
@@ -81,6 +87,9 @@ export const ClearableInput = React.forwardRef(
           width="100%"
           value={controlledValue}
           onChange={handleChange}
+          px={0}
+          pl={PILL.px}
+          pr={CLEARABLE_BUTTON_WITH_MARGINS}
         />
 
         {controlledValue && (
@@ -88,7 +97,8 @@ export const ClearableInput = React.forwardRef(
             onClick={handleClick}
             position="absolute"
             top="50%"
-            right={4}
+            right={0}
+            mx={4}
             backgroundColor="hint"
             borderRadius="50%"
             type="reset"
