@@ -14,6 +14,7 @@ export type ButtonProps = ClickableProps & {
   focus?: boolean;
   hover?: boolean;
   selected?: boolean;
+  highlighted?: boolean;
 };
 
 export const buttonHoverMixin = css`
@@ -40,6 +41,13 @@ export const buttonDisabledMixin = css`
   user-select: none;
   cursor: default;
   z-index: -1;
+`;
+
+export const buttonHighlightedMixin = css`
+  &::before {
+    content: "→\u00A0";
+    margin-left: -${themeGet("space.3")};
+  }
 `;
 
 export const buttonMixin = css<ButtonProps>`
@@ -70,6 +78,8 @@ export const buttonMixin = css<ButtonProps>`
         ${buttonSelectedMixin}
       }
     `}
+
+  ${({ highlighted }) => highlighted && buttonHighlightedMixin}
 `;
 
 export const Button = styled(Clickable)<ButtonProps>`
@@ -77,3 +87,5 @@ export const Button = styled(Clickable)<ButtonProps>`
 `;
 
 Button.defaultProps = { ...BUTTON };
+
+Button.displayName = "Button";

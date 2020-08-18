@@ -14,9 +14,10 @@ export const Default = () => (
       { focus: true },
       { disabled: true },
       { selected: true },
+      { highlighted: true },
     ]}
   >
-    <Button onClick={action("onClick")}>Click</Button>
+    <Button onClick={action("onClick")}>click</Button>
   </States>
 );
 
@@ -28,7 +29,9 @@ export const Stacked = () => (
       <Button flex="1" disabled>
         three
       </Button>
-      <Button flex="1">four</Button>
+      <Button flex="1" highlighted>
+        four
+      </Button>
     </Stack>
   </States>
 );
@@ -38,7 +41,7 @@ export const As = () => (
     states={[{}, { hover: true }, { focus: true }, { disabled: true }]}
   >
     <Button as="a" href="#foo">
-      Click
+      click
     </Button>
   </States>
 );
@@ -61,7 +64,7 @@ export const Link = () => (
     states={[{}, { hover: true }, { focus: true }, { disabled: true }]}
   >
     <Button as={RouterLink} to="/foo">
-      Click
+      click
     </Button>
   </States>
 );
