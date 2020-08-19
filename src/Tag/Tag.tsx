@@ -17,9 +17,7 @@ export const Container = styled(Box)<{ bg: string }>`
   display: inline-block;
   ${overflowEllipsisMixin}
 
-  > a,
-  > span,
-  > div {
+  > a {
     color: inherit;
     position: absolute;
     top: 0;
