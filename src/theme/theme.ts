@@ -74,11 +74,6 @@ export const FONT_SCALE = [
   "0.875rem", // 1 = 14px
   "1rem", // 2 = 16px (base)
   "1.125rem", // 3 = 18px
-  "1.5rem", // 4 = 24px
-  "2rem", // 5 = 32px
-  "3rem", // 6 = 48px
-  "4rem", // 7 = 64px
-  "4.5rem", // 8 = 72px
 ] as const;
 
 export const BASE_FONT_SIZE = FONT_SCALE[2];

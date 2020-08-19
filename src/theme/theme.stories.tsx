@@ -2,7 +2,7 @@ import React from "react";
 import { States } from "storybook-states";
 import { Box } from "../Box";
 import { Stack } from "../Stack";
-import { THEME, SCHEMES, Scheme } from "../theme";
+import { THEME, SCHEMES, FONT_SCALE, SPACE_SCALE, Scheme } from "../theme";
 
 export default { title: "Theme" };
 
@@ -64,6 +64,34 @@ export const Colors = () => (
     <Stack direction="horizontal">
       <Demo scheme="light" />
       <Demo scheme="dark" />
+    </Stack>
+  </States>
+);
+
+export const Typography = () => (
+  <States>
+    <Stack spacing={3}>
+      {FONT_SCALE.map((size, i) => (
+        <Box key={i} fontSize={i}>
+          fontSize: {i} = {size} - all their equipment and instruments are alive
+        </Box>
+      ))}
+    </Stack>
+  </States>
+);
+
+export const Spacing = () => (
+  <States>
+    <Stack spacing={3}>
+      {SPACE_SCALE.map((size, i) => (
+        <React.Fragment key={i}>
+          <Box fontSize={0}>
+            space: {i} = {size}
+          </Box>
+
+          <Box height={size} minWidth={size} bg="hint" />
+        </React.Fragment>
+      ))}
     </Stack>
   </States>
 );
