@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { onlyText } from "react-children-utilities";
 import { Box, BoxProps } from "../Box";
-import { getContrastTIQHex, themeGet, colorHash, color } from "../theme";
+import { getContrastTIQHex, themeGet, colorHash } from "../theme";
 import { overflowEllipsisMixin } from "../mixins";
 
 export type TagProps = Omit<BoxProps, "bg" | "backgroundColor" | "children"> & {
