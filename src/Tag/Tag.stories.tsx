@@ -38,8 +38,12 @@ export const Truncated = () => (
 
 export const Linked = () => (
   <States>
-    <Tag>
-      <a href="#">tgf12</a>
-    </Tag>
+    <Stack direction="horizontal" spacing={2}>
+      {INPUT.split(" ").map((word) => (
+        <Tag key={word}>
+          <a href="#">{word}</a>
+        </Tag>
+      ))}
+    </Stack>
   </States>
 );

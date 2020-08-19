@@ -2,9 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { onlyText } from "react-children-utilities";
 import { Box, BoxProps } from "../Box";
-import { getContrastTIQHex, themeGet, colorHash } from "../theme";
+import { getContrastTIQHex, themeGet, colorHash, color } from "../theme";
 import { overflowEllipsisMixin } from "../mixins";
-import { pillFocusMixin } from "../Pill";
 
 export type TagProps = Omit<BoxProps, "bg" | "backgroundColor" | "children"> & {
   bg?: string;
@@ -12,9 +11,15 @@ export type TagProps = Omit<BoxProps, "bg" | "backgroundColor" | "children"> & {
   children: string | JSX.Element;
 };
 
+const Placeholder = styled(Box)`
+  opacity: 0;
+  pointer-events: none;
+`;
+
 export const Container = styled(Box)<{ bg: string }>`
   position: relative;
   display: inline-block;
+  border: 1px solid transparent;
   ${overflowEllipsisMixin}
 
   > a {
@@ -27,10 +32,6 @@ export const Container = styled(Box)<{ bg: string }>`
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &:focus {
-      ${pillFocusMixin}
-    }
   }
 
   ${(props) => {
@@ -38,13 +39,14 @@ export const Container = styled(Box)<{ bg: string }>`
     const color = getContrastTIQHex(bg);
     return css`
       color: ${color};
+
+      &:focus-within {
+        background-color: ${color};
+        color: ${bg};
+        border: 1px solid ${bg};
+      }
     `;
   }}
-`;
-
-const Placeholder = styled(Box)`
-  opacity: 0;
-  pointer-events: none;
 `;
 
 export const Tag: React.FC<TagProps> = ({
@@ -62,7 +64,7 @@ export const Tag: React.FC<TagProps> = ({
       ) : (
         <>
           {children}
-          <Placeholder>{children}</Placeholder>
+          <Placeholder>{onlyText(children)}</Placeholder>
         </>
       )}
     </Container>
