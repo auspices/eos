@@ -38,10 +38,10 @@
     "@styled-system/theme-get": "^5.1.2",
     "@types/styled-system": "5.1.10",
     "@types/styled-system__theme-get": "5.0.0",
-    "csstype": "^3.0.2",
+    "csstype": "^3.0.3",
     "proportional-scale": "^4.0.0",
     "react-children-utilities": "^2.1.5",
-    "react-focus-on": "^3.4.1",
+    "react-focus-on": "^3.5.0",
     "styled-reset": "^4.2.2",
     "styled-system": "^5.1.5",
     "use-keyboard-list-navigation": "^2.0.1"
@@ -70,8 +70,8 @@
     "semantic-release": "17.1.1",
     "storybook-states": "1.2.0",
     "styled-components": "5.1.1",
-    "ts-node": "8.10.2",
-    "typescript": "3.9.7"
+    "ts-node": "9.0.0",
+    "typescript": "4.0.2"
   },
   "publishConfig": {
     "access": "public",
