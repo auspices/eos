@@ -8,8 +8,12 @@ import React, {
 } from "react";
 import { THEME, SCHEMES, Theme, Scheme } from "../theme";
 
+const PREFERS_DARK =
+  typeof window !== "undefined" &&
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches;
 const KEY = "auspices.eos.scheme";
-const DEFAULT_SCHEME: Scheme = "light";
+const DEFAULT_SCHEME: Scheme = PREFERS_DARK ? "dark" : "light";
 
 type Backend = {
   get(): Scheme | null;
