@@ -22,7 +22,6 @@ export * from "./KeyValueEditor";
 export * from "./KeyValueInput";
 export * from "./lib";
 export * from "./Loading";
-export * from "./Locus";
 export * from "./Modal";
 export * from "./Mono";
 export * from "./Pagination";
