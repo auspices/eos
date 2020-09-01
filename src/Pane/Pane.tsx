@@ -53,6 +53,8 @@ export const Pane = React.forwardRef(
     });
 
     return (
+      // TODO: Fix typing
+      // @ts-ignore
       <Container ref={composedRef} {...rest}>
         {list.map((child, i) => {
           return React.cloneElement(child as React.ReactElement<any>, {
