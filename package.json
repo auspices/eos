@@ -38,7 +38,7 @@
     "@styled-system/theme-get": "^5.1.2",
     "@types/styled-system": "5.1.10",
     "@types/styled-system__theme-get": "5.0.0",
-    "csstype": "3.0.2",
+    "csstype": "3.0.3",
     "proportional-scale": "^4.0.0",
     "react-children-utilities": "^2.1.5",
     "react-focus-on": "^3.5.0",
