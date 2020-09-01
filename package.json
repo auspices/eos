@@ -61,7 +61,7 @@
     "@typescript-eslint/parser": "4.0.1",
     "babel-loader": "8.1.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.8.0",
+    "eslint": "7.8.1",
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.0",
     "prettier": "2.1.1",
