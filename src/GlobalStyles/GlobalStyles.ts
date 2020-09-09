@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: ${ROOT_FONT_SIZE[1]};
   }
 
-  @media (max-width: ${themeGet("breakpoints.0")}) {
+  @media (max-width: ${themeGet("breakpoints.1")}) {
     html {
       font-size: ${ROOT_FONT_SIZE[0]};
     }

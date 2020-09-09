@@ -37,7 +37,9 @@ export const Stacked = () => (
 );
 
 export const PillDefault = () => (
-  <States<StackProps> states={[{}, { direction: "horizontal" }]}>
+  <States<StackProps>
+    states={[{}, { direction: ["vertical", "vertical", "horizontal"] }]}
+  >
     <Stack>
       <Pill>Title</Pill>
 
