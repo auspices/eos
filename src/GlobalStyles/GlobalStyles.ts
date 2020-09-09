@@ -1,13 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import reset from "styled-reset";
+import { ROOT_FONT_SIZE } from "../theme";
 
 export const GlobalStyles = createGlobalStyle`
   ${reset}
 
   html {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: ${ROOT_FONT_SIZE[1]};
+  }
+
+  @media (max-width: ${themeGet("breakpoints.0")}) {
+    html {
+      font-size: ${ROOT_FONT_SIZE[0]};
+    }
   }
 
   *,
