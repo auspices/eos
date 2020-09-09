@@ -12,8 +12,6 @@ const Wrapper = styled(Box)<{ overlay?: boolean }>`
   bottom: 0;
   left: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
   ${({ overlay }) =>
     overlay &&
     css`
@@ -60,6 +58,8 @@ export const Modal: React.FC<ModalProps> = ({
         ref={wrapperEl}
         onClick={handleClick}
         overlay={overlay}
+        alignItems="center"
+        justifyContent="center"
         {...rest}
       >
         <Dialog>{children}</Dialog>
