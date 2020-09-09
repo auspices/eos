@@ -19,7 +19,6 @@ import {
   ResponsiveValue,
   system,
 } from "styled-system";
-import { Property } from "csstype";
 
 export type BoxSpatialProps = FlexboxProps &
   SpaceProps &
@@ -27,11 +26,11 @@ export type BoxSpatialProps = FlexboxProps &
   LayoutProps;
 
 export type TextColorProps = {
-  textColor?: ResponsiveValue<Property.Color>;
+  textColor?: ResponsiveValue<string>;
 };
 
 export type TransitionProps = {
-  transition?: ResponsiveValue<Property.Transition>;
+  transition?: ResponsiveValue<string>;
 };
 
 export type BoxProps = BorderProps &

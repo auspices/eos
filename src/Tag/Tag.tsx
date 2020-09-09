@@ -16,7 +16,9 @@ const Placeholder = styled(Box)`
   pointer-events: none;
 `;
 
-export const Container = styled(Box)<{ bg: string }>`
+export const Container: typeof Box = styled(Box)<
+  Omit<BoxProps, "bg"> & { bg?: string }
+>`
   position: relative;
   display: inline-block;
   border: 1px solid transparent;

@@ -5,7 +5,7 @@ import { Popper, Placement } from "../Popper";
 import { themeGet } from "../theme";
 import { isTouch } from "../lib/isTouch";
 
-export const Tip = styled(Box).attrs({
+export const Tip: typeof Box = styled(Box).attrs({
   borderRadius: 4,
   fontSize: [2, 2, 1, 1],
   py: 2,

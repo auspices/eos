@@ -27,8 +27,8 @@ Container.defaultProps = {
   spacing: 0,
 };
 
-export const Pane = React.forwardRef(
-  ({ children, onEnter, ...rest }: PaneProps, forwardedRef: React.Ref<any>) => {
+export const Pane: React.ForwardRefExoticComponent<PaneProps> = React.forwardRef(
+  ({ children, onEnter, ...rest }, forwardedRef: React.Ref<any>) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const composedRef = composeRefs(
       ref,
