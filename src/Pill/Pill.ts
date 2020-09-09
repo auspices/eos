@@ -13,7 +13,7 @@ export const PILL = {
   color: "primary",
   display: "flex",
   fontFamily: "body",
-  fontSize: 3,
+  fontSize: [2, 2, 3],
   lineHeight: 2,
   px: 6,
   py: 4,

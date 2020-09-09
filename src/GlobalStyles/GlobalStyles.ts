@@ -8,13 +8,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    font-size: ${ROOT_FONT_SIZE[1]};
-  }
-
-  @media (max-width: ${themeGet("breakpoints.1")}) {
-    html {
-      font-size: ${ROOT_FONT_SIZE[0]};
-    }
+    font-size: ${ROOT_FONT_SIZE};
   }
 
   *,

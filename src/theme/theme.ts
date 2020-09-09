@@ -76,7 +76,7 @@ export const FONT_SCALE = [
   "1.125rem", // 3 = 18px
 ] as const;
 
-export const ROOT_FONT_SIZE = ["14px", "16px"];
+export const ROOT_FONT_SIZE = "16px";
 export const BASE_FONT_SIZE = FONT_SCALE[2];
 export const FONT_SCALE_UNIT = "rem";
 
