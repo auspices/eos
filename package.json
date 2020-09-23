@@ -33,17 +33,17 @@
     "styled-components": ">=5.0.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.4.4",
+    "@popperjs/core": "^2.5.1",
     "@seznam/compose-react-refs": "^1.0.4",
     "@styled-system/theme-get": "^5.1.2",
     "@types/styled-system": "5.1.10",
     "@types/styled-system__theme-get": "5.0.0",
     "proportional-scale": "^4.0.0",
-    "react-children-utilities": "^2.1.5",
+    "react-children-utilities": "^2.1.6",
     "react-focus-on": "^3.5.0",
-    "styled-reset": "^4.2.2",
+    "styled-reset": "^4.2.3",
     "styled-system": "^5.1.5",
-    "use-keyboard-list-navigation": "^2.0.1"
+    "use-keyboard-list-navigation": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.11.6",
