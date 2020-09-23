@@ -21,7 +21,6 @@ export const Container: typeof Box = styled(Box)<
 >`
   position: relative;
   display: inline-block;
-  border: 1px solid transparent;
   ${overflowEllipsisMixin}
 
   > a {
@@ -45,7 +44,6 @@ export const Container: typeof Box = styled(Box)<
       &:focus-within {
         background-color: ${color};
         color: ${bg};
-        border: 1px solid ${bg};
       }
     `;
   }}
