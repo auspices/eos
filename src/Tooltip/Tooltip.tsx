@@ -2,17 +2,17 @@ import React, { useState, useMemo, useCallback } from "react";
 import styled from "styled-components";
 import { Box, BoxProps } from "../Box";
 import { Popper, Placement } from "../Popper";
-import { themeGet } from "../theme";
 import { isTouch } from "../lib/isTouch";
 
 export const Tip: typeof Box = styled(Box).attrs({
+  position: "relative",
   borderRadius: 4,
   fontSize: [2, 2, 1, 1],
   py: 2,
   px: 4,
+  bg: "primary",
+  color: "background",
 })`
-  background-color: ${themeGet("colors.primary")};
-  color: ${themeGet("colors.background")};
   z-index: 1;
 `;
 
@@ -23,7 +23,7 @@ enum Mode {
 
 export type TooltipProps = BoxProps & {
   children: JSX.Element;
-  label: string;
+  label: JSX.Element | string;
   placement?: Placement;
   distance?: number;
   forceForTouch?: boolean;
