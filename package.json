@@ -37,7 +37,7 @@
     "@seznam/compose-react-refs": "^1.0.4",
     "@styled-system/theme-get": "^5.1.2",
     "@types/styled-system": "5.1.10",
-    "@types/styled-system__theme-get": "5.0.0",
+    "@types/styled-system__theme-get": "5.0.1",
     "proportional-scale": "^4.0.0",
     "react-children-utilities": "^2.1.6",
     "react-focus-on": "^3.5.0",
