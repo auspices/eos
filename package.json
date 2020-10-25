@@ -20,7 +20,6 @@
     "lint": "eslint src --ext .tsx,.ts --fix",
     "format": "prettier --write '**/*'",
     "prepublishOnly": "yarn build",
-    "scaffold": "ts-node src/scripts/scaffold.ts",
     "semantic-release": "semantic-release",
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
