@@ -89,6 +89,7 @@ export const THEME = {
   scheme: "light",
   colors: LIGHT,
   fontSizes: FONT_SCALE,
+  rootFontSize: ROOT_FONT_SIZE,
   lineHeights: [1, 1.25, 1.33, 1.75],
   space: SPACE_SCALE,
   breakpoints: ["24rem", "50rem", "64rem"],

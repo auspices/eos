@@ -1,14 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import reset from "styled-reset";
-import { ROOT_FONT_SIZE } from "../theme";
 
 export const GlobalStyles = createGlobalStyle`
   ${reset}
 
   html {
     box-sizing: border-box;
-    font-size: ${ROOT_FONT_SIZE};
+    font-size: ${themeGet("rootFontSize")};
   }
 
   *,
