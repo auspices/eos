@@ -4,6 +4,7 @@ export * from "./AspectRatioBox";
 export * from "./Box";
 export * from "./Button";
 export * from "./Caret";
+export * from "./Cell";
 export * from "./Clear";
 export * from "./ClearableInput";
 export * from "./Clickable";
