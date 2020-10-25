@@ -3,7 +3,7 @@ import composeRefs from "@seznam/compose-react-refs";
 import { Input, InputProps } from "../Input";
 import { Box, BoxSpatialProps } from "../Box";
 import { Clear } from "../Clear";
-import { PILL } from "../Pill";
+import { CELL } from "../Cell";
 import { space, SPACE_SCALE_UNIT } from "../theme";
 
 const CLEARABLE_BUTTON_WITH_MARGINS = `${
@@ -88,7 +88,7 @@ export const ClearableInput = React.forwardRef(
           value={controlledValue}
           onChange={handleChange}
           px={0}
-          pl={PILL.px}
+          pl={CELL.px}
           pr={CLEARABLE_BUTTON_WITH_MARGINS}
         />
 

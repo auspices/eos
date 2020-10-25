@@ -3,7 +3,7 @@ import { States } from "storybook-states";
 import { Popper, PopperProps } from ".";
 import { Pane, PaneOption } from "../Pane";
 import { Button } from "../Button";
-import { Pill } from "../Pill";
+import { Cell } from "../Cell";
 import { Stack } from "../Stack";
 
 export default { title: "Popper", component: Popper };
@@ -41,7 +41,7 @@ export const MenuExample = () => {
   return (
     <States<Partial<PopperProps>>>
       <Stack>
-        <Pill>{value}</Pill>
+        <Cell>{value}</Cell>
 
         <Popper
           open={mode === Mode.Open}

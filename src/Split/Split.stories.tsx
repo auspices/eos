@@ -1,7 +1,7 @@
 import React from "react";
 import { States } from "storybook-states";
 import { Split, SplitProps } from "./Split";
-import { Pill } from "../Pill";
+import { Cell } from "../Cell";
 import { Input } from "../Input";
 import { Button } from "../Button";
 
@@ -13,7 +13,7 @@ export const Default = () => (
       {},
       {
         children: [
-          <Pill key="left">label</Pill>,
+          <Cell key="left">label</Cell>,
           <Input key="right" placeholder="input" width="100%" />,
         ],
       },
@@ -36,8 +36,8 @@ export const Default = () => (
     ]}
   >
     <Split>
-      <Pill>left</Pill>
-      <Pill>right</Pill>
+      <Cell>left</Cell>
+      <Cell>right</Cell>
     </Split>
   </States>
 );

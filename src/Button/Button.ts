@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
-import { PILL, pillFocusMixin } from "../Pill";
+import { CELL, cellFocusMixin } from "../Cell";
 
 export const BUTTON = {
-  ...PILL,
+  ...CELL,
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -23,7 +23,7 @@ export const buttonHoverMixin = css`
 
 export const buttonFocusMixin = css`
   outline: 0;
-  ${pillFocusMixin}
+  ${cellFocusMixin}
 `;
 
 export const buttonSelectedMixin = css`
@@ -52,7 +52,7 @@ export const buttonHighlightedMixin = css`
 
 export const buttonMixin = css<ButtonProps>`
   cursor: pointer;
-  transition: ${PILL.transition}, color 200ms ease;
+  transition: ${CELL.transition}, color 200ms ease;
   min-width: 0;
 
   ${({ hover }) => hover && buttonHoverMixin}

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Box } from "../Box";
-import { Pill, PillProps } from "../Pill";
+import { Cell, CellProps } from "../Cell";
 import { ProgressBar } from "../ProgressBar";
 
-export type UploadProps = PillProps & {
+export type UploadProps = CellProps & {
   label: string;
   progress: number;
   foregroundColor?: string;
@@ -12,7 +12,7 @@ export type UploadProps = PillProps & {
   progressBarColor?: string;
 };
 
-const Container = styled(Pill)`
+const Container = styled(Cell)`
   position: relative;
 `;
 

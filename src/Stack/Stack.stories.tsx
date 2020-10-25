@@ -2,7 +2,7 @@ import React from "react";
 import { States } from "storybook-states";
 import { Stack, StackProps } from "./Stack";
 import { Input } from "../Input";
-import { Pill, PillProps } from "../Pill";
+import { Cell, CellProps } from "../Cell";
 import { Box } from "../Box";
 
 export default { title: "Stack", component: Stack };
@@ -29,44 +29,44 @@ export const Stacked = () => (
     <Stack spacing="-1px">
       <Input placeholder="one" width="100%" />
       <Input placeholder="two" width="100%" />
-      <Pill>not an input</Pill>
+      <Cell>not an input</Cell>
       <Input placeholder="three" width="100%" />
       <Input placeholder="four" width="100%" />
     </Stack>
   </States>
 );
 
-export const PillDefault = () => (
+export const CellDefault = () => (
   <States<StackProps>
     states={[{}, { direction: ["vertical", "vertical", "horizontal"] }]}
   >
     <Stack>
-      <Pill>Title</Pill>
+      <Cell>Title</Cell>
 
-      <Pill as="a" href="#example">
+      <Cell as="a" href="#example">
         Secondary
-      </Pill>
+      </Cell>
 
       <Input flex="1" placeholder="Input" />
 
-      <Pill as="a" href="#example">
+      <Cell as="a" href="#example">
         Go
-      </Pill>
+      </Cell>
     </Stack>
   </States>
 );
 
-const SyntheticPill: React.FC<PillProps> = (props) => {
-  return <Pill {...props} />;
+const SyntheticCell: React.FC<CellProps> = (props) => {
+  return <Cell {...props} />;
 };
 
 export const Synthetic = () => {
   return (
     <States>
       <Stack>
-        <SyntheticPill>Content</SyntheticPill>
-        <SyntheticPill>Content</SyntheticPill>
-        <SyntheticPill>Content</SyntheticPill>
+        <SyntheticCell>Content</SyntheticCell>
+        <SyntheticCell>Content</SyntheticCell>
+        <SyntheticCell>Content</SyntheticCell>
       </Stack>
     </States>
   );
@@ -76,26 +76,26 @@ export const Nested = () => (
   <States<StackProps>>
     <Stack>
       <Stack direction="horizontal">
-        <Pill>Title</Pill>
+        <Cell>Title</Cell>
 
-        <Pill as="a" href="#example">
+        <Cell as="a" href="#example">
           Secondary
-        </Pill>
+        </Cell>
 
         <Input flex="1" placeholder="Input" />
       </Stack>
 
       <Stack>
-        <SyntheticPill>Content</SyntheticPill>
-        <SyntheticPill>Content</SyntheticPill>
-        <SyntheticPill>Content</SyntheticPill>
+        <SyntheticCell>Content</SyntheticCell>
+        <SyntheticCell>Content</SyntheticCell>
+        <SyntheticCell>Content</SyntheticCell>
       </Stack>
 
       <Stack direction="horizontal">
         {["A", "Previous", 1, 2, 3, 4, 5, 6, "Next", "Ω"].map((x) => (
-          <Pill key={x} as="a" href="#example" flex="1">
+          <Cell key={x} as="a" href="#example" flex="1">
             {x}
-          </Pill>
+          </Cell>
         ))}
       </Stack>
     </Stack>
@@ -105,9 +105,9 @@ export const Nested = () => (
 export const Responsive = () => (
   <States<StackProps> states={[{ direction: ["vertical", "horizontal"] }]}>
     <Stack>
-      <Pill flex={1}>First</Pill>
-      <Pill flex={1}>Middle</Pill>
-      <Pill flex={1}>Last</Pill>
+      <Cell flex={1}>First</Cell>
+      <Cell flex={1}>Middle</Cell>
+      <Cell flex={1}>Last</Cell>
     </Stack>
   </States>
 );

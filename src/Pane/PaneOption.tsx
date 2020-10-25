@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
-import { pillFocusMixin } from "../Pill";
+import { cellFocusMixin } from "../Cell";
 
 export type PaneOptionProps = ClickableProps & {
   active?: boolean;
@@ -20,7 +20,7 @@ export const paneOptionHoverMixin = css`
 
 export const paneOptionFocusMixin = css`
   outline: 0;
-  ${pillFocusMixin}
+  ${cellFocusMixin}
 `;
 
 export const paneOptionDisabledMixin = css`
