@@ -11037,11 +11037,6 @@ react-addons-create-fragment@^15.6.2:
     loose-envify "^1.3.1"
     object-assign "^4.1.0"
 
-react-children-utilities@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/react-children-utilities/-/react-children-utilities-2.1.6.tgz#9d60e247a2165b90b4ad01455aed98ea72a919be"
-  integrity sha512-w98UfUMzg7eg008CNmz7VYuog//kcXTnB26r0rGc+7kzKQ1sP9Yry29sDj9AL/TQ9C/7UCkFadaHnNKYdyhL2A==
-
 react-clientside-effect@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-clientside-effect/-/react-clientside-effect-1.2.2.tgz#6212fb0e07b204e714581dd51992603d1accc837"
