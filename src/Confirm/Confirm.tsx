@@ -2,7 +2,7 @@ import React from "react";
 import { Box, BoxProps } from "../Box";
 import { Stack } from "../Stack";
 import { Button } from "../Button";
-import { Pill } from "../Pill";
+import { Cell } from "../Cell";
 
 export type ConfirmProps = BoxProps & {
   children?: string;
@@ -19,7 +19,7 @@ export const Confirm: React.FC<ConfirmProps> = ({
   return (
     <Box {...rest}>
       <Stack direction="vertical">
-        {children && <Pill>{children}</Pill>}
+        {children && <Cell>{children}</Cell>}
 
         <Stack direction="horizontal">
           <Button onClick={onCancel} color="secondary">

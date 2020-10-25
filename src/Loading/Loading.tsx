@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
-import { Pill, PillProps } from "../Pill";
+import { Cell, CellProps } from "../Cell";
 
 const incoming = keyframes`
   0% {
@@ -17,7 +17,7 @@ const incoming = keyframes`
   }
 `;
 
-const Container = styled(Pill)<{ loading: boolean }>`
+const Container = styled(Cell)<{ loading: boolean }>`
   position: relative;
   overflow: hidden;
 
@@ -37,7 +37,7 @@ const Container = styled(Pill)<{ loading: boolean }>`
     `}
 `;
 
-export type LoadingProps = PillProps & {
+export type LoadingProps = CellProps & {
   children?: React.ReactNode;
   loading?: boolean;
 };

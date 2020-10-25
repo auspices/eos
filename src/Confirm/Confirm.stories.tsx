@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
 import { Stack } from "../Stack";
-import { Pill } from "../Pill";
+import { Cell } from "../Cell";
 import { Button } from "../Button";
 import { Confirm, ConfirmProps, useConfirm } from ".";
 
@@ -26,9 +26,9 @@ export const Demo = () => {
   return (
     <States>
       <Stack>
-        <Pill as="pre" fontFamily="mono" fontSize={1}>
+        <Cell as="pre" fontFamily="mono" fontSize={1}>
           {JSON.stringify({ deleted, confirmed })}
-        </Pill>
+        </Cell>
 
         <Button onClick={requestConfirmation} disabled={deleted}>
           {deleted ? "deleted" : "click to delete"}

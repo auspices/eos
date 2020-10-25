@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
 import { Stack } from "../Stack";
 import { Button } from "../Button";
-import { Pill } from "../Pill";
+import { Cell } from "../Cell";
 import { ClearableInput, ClearableInputProps } from "./ClearableInput";
 
 export default { title: "ClearableInput", component: ClearableInput };
@@ -36,10 +36,10 @@ export const InContext = () => {
   return (
     <States<ClearableInputProps>>
       <Stack>
-        <Pill>
+        <Cell>
           value: {`<${value ?? ""}>`}, submitted: {`<${submitted ?? ""}>`},
           cleared: {cleared}
-        </Pill>
+        </Cell>
         <form onSubmit={handleSubmit}>
           <Stack direction="horizontal" flex="1">
             <ClearableInput

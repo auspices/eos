@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Input, InputProps } from "../Input";
-import { Pill } from "../Pill";
+import { Cell } from "../Cell";
 import { Split, SplitProps } from "../Split";
 
 type RequiredProps = Omit<SplitProps, "children"> & { label: React.ReactNode };
@@ -9,7 +9,7 @@ type RequiredProps = Omit<SplitProps, "children"> & { label: React.ReactNode };
 export type FieldProps = RequiredProps &
   ({ input: InputProps } | { children: JSX.Element | string | null });
 
-const Label = styled(Pill).attrs({ as: "label" })`
+const Label = styled(Cell).attrs({ as: "label" })`
   user-select: none;
 `;
 
