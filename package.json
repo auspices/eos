@@ -67,7 +67,7 @@
     "semantic-release": "17.3.0",
     "storybook-states": "1.2.0",
     "styled-components": "5.2.1",
-    "ts-node": "9.1.0",
+    "ts-node": "9.1.1",
     "typescript": "3.9.7"
   },
   "publishConfig": {
