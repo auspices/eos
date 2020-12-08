@@ -51,7 +51,7 @@
     "@storybook/addon-viewport": "6.1.10",
     "@storybook/addons": "6.1.10",
     "@storybook/react": "6.1.10",
-    "@types/node": "14.14.10",
+    "@types/node": "14.14.11",
     "@types/react-dom": "16.9.10",
     "@types/styled-components": "5.1.4",
     "@typescript-eslint/eslint-plugin": "4.9.1",
