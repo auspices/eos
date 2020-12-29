@@ -64,7 +64,7 @@
     "prettier": "2.2.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "semantic-release": "17.3.0",
+    "semantic-release": "17.3.1",
     "storybook-states": "1.2.0",
     "styled-components": "5.2.1",
     "ts-node": "9.1.1",
