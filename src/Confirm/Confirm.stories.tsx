@@ -17,10 +17,14 @@ export const Default = () => (
 export const Demo = () => {
   const [deleted, setDeleted] = useState(false);
 
-  const handleConfirm = useCallback(() => setDeleted(true), [setDeleted]);
+  const handleConfirm = useCallback(() => {
+    setDeleted(true);
+    action("onConfirm")();
+  }, [setDeleted]);
 
   const { requestConfirmation, confirmed, Confirmation } = useConfirm({
     onConfirm: handleConfirm,
+    onCancel: action("onCancel"),
   });
 
   return (
@@ -34,7 +38,7 @@ export const Demo = () => {
           {deleted ? "deleted" : "click to delete"}
         </Button>
 
-        <Confirmation />
+        <Confirmation>are you sure?</Confirmation>
       </Stack>
     </States>
   );
