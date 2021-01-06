@@ -32,14 +32,14 @@
     "styled-components": ">=5.0.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.5.1",
-    "@seznam/compose-react-refs": "^1.0.4",
+    "@popperjs/core": "^2.6.0",
+    "@seznam/compose-react-refs": "^1.0.5",
     "@styled-system/theme-get": "^5.1.2",
     "@types/styled-system": "5.1.10",
     "@types/styled-system__theme-get": "5.0.1",
     "proportional-scale": "^4.0.0",
-    "react-focus-on": "^3.5.0",
-    "styled-reset": "^4.2.3",
+    "react-focus-on": "^3.5.1",
+    "styled-reset": "^4.3.4",
     "styled-system": "^5.1.5",
     "use-keyboard-list-navigation": "^2.2.0"
   },
@@ -52,7 +52,7 @@
     "@storybook/addons": "6.1.11",
     "@storybook/react": "6.1.11",
     "@types/node": "14.14.20",
-    "@types/react-dom": "16.9.10",
+    "@types/react-dom": "17.0.0",
     "@types/styled-components": "5.1.7",
     "@typescript-eslint/eslint-plugin": "4.12.0",
     "@typescript-eslint/parser": "4.12.0",
@@ -62,13 +62,13 @@
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "prettier": "2.2.1",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "semantic-release": "17.3.1",
     "storybook-states": "1.2.0",
     "styled-components": "5.2.1",
     "ts-node": "9.1.1",
-    "typescript": "3.9.7"
+    "typescript": "4.1.3"
   },
   "publishConfig": {
     "access": "public",
