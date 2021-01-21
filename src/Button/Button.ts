@@ -30,6 +30,8 @@ export const buttonSelectedMixin = css`
   outline: 0;
   box-shadow: inset 0 0 0 ${themeGet("space.1")} ${themeGet("colors.primary")};
   text-decoration: underline;
+  color: ${themeGet("colors.primary")};
+  border-color: ${themeGet("colors.tertiary")};
 `;
 
 export const buttonDisabledMixin = css`
@@ -74,6 +76,9 @@ export const buttonMixin = css<ButtonProps>`
     css`
       ${buttonSelectedMixin}
       &:focus {
+        ${buttonSelectedMixin}
+      }
+      &:disabled {
         ${buttonSelectedMixin}
       }
     `}
