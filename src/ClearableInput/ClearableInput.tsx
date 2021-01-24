@@ -5,7 +5,6 @@ import { Box, BoxSpatialProps } from "../Box";
 import { Clear } from "../Clear";
 import { CELL } from "../Cell";
 import { space, SPACE_SCALE_UNIT } from "../theme";
-import { useUpdateEffect } from "../hooks/useUpdateEffect";
 
 const CLEARABLE_BUTTON_WITH_MARGINS = `${
   parseFloat(space(4)) * 2 + parseFloat(space(6))
@@ -49,21 +48,18 @@ export const ClearableInput = React.forwardRef(
       setValue("");
 
       onClear && onClear();
+      onChange && onChange("");
 
       if (ref.current) ref.current.focus();
-    }, [onClear]);
+    }, [onChange, onClear]);
 
     const handleChange = useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event.currentTarget.value);
+      ({ currentTarget: { value } }: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(value);
+        onChange && onChange(value);
       },
-      [setValue]
+      [onChange]
     );
-
-    useUpdateEffect(() => onChange && onChange(controlledValue), [
-      onChange,
-      controlledValue,
-    ]);
 
     return (
       <Box
