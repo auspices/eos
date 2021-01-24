@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import composeRefs from "@seznam/compose-react-refs";
 import { Input, InputProps } from "../Input";
 import { Box, BoxSpatialProps } from "../Box";
 import { Clear } from "../Clear";
 import { CELL } from "../Cell";
 import { space, SPACE_SCALE_UNIT } from "../theme";
+import { useUpdateEffect } from "../hooks/useUpdateEffect";
 
 const CLEARABLE_BUTTON_WITH_MARGINS = `${
   parseFloat(space(4)) * 2 + parseFloat(space(6))
@@ -59,7 +60,7 @@ export const ClearableInput = React.forwardRef(
       [setValue]
     );
 
-    useEffect(() => onChange && onChange(controlledValue), [
+    useUpdateEffect(() => onChange && onChange(controlledValue), [
       onChange,
       controlledValue,
     ]);
