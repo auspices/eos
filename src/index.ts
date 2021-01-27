@@ -14,6 +14,7 @@ export * from "./Ellipsis";
 export * from "./EmptyFrame";
 export * from "./Expandable";
 export * from "./Field";
+export * from "./File";
 export * from "./GlobalStyles";
 export * from "./Grid";
 export * from "./hooks";
