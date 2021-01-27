@@ -18,6 +18,7 @@ export default { title: "File", component: File };
 export const Images = () => (
   <States<Partial<FileProps>> states={[{}, { selected: true }]}>
     <File
+      width={225}
       name="in-an-age-of-affordable-beauty.jpg"
       onClick={action("onClick")}
       onDoubleClick={action("onDoubleClick")}
@@ -36,6 +37,7 @@ export const Images = () => (
 export const Texts = () => (
   <States<Partial<FileProps>> states={[{}, { selected: true }]}>
     <File
+      width={225}
       name="Lorem Ipsum"
       onClick={action("onClick")}
       onDoubleClick={action("onDoubleClick")}

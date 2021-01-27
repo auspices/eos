@@ -1,16 +1,14 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import { AspectRatioBox } from "../AspectRatioBox";
 import { Box } from "../Box";
 import { Clickable, ClickableProps } from "../Clickable";
 import { useClickOutside } from "../hooks";
 
 export type FileProps = ClickableProps & {
   name: string;
-  size?: number;
   selected?: boolean;
 };
-
-const DEFAULT_SIZE = 225;
 
 const Container = styled(Clickable)`
   &:focus {
@@ -24,8 +22,7 @@ const Label = styled(Box)`
 
 export const File: React.FC<FileProps> = ({
   name,
-  size = DEFAULT_SIZE,
-  selected: defaultSelected = false,
+  selected: defaultSelected,
   children,
   onMouseDown,
   ...rest
@@ -52,20 +49,22 @@ export const File: React.FC<FileProps> = ({
       {...rest}
     >
       <Box m={1}>
-        <Box
-          p={2}
-          width={size}
-          height={size}
-          bg={selected ? "hint" : "transparent"}
-          borderRadius={4}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="left"
-          overflow="hidden"
-        >
-          {children}
-        </Box>
+        <AspectRatioBox aspectWidth={1} aspectHeight={1} maxWidth="100%">
+          <Box
+            p={2}
+            bg={selected ? "hint" : "transparent"}
+            borderRadius={4}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="left"
+            overflow="hidden"
+            width="100%"
+            height="100%"
+          >
+            {children}
+          </Box>
+        </AspectRatioBox>
 
         <Box maxWidth="80%" mt={1} mx="auto" lineHeight={0} textAlign="center">
           <Label
@@ -82,4 +81,9 @@ export const File: React.FC<FileProps> = ({
       </Box>
     </Container>
   );
+};
+
+File.defaultProps = {
+  width: "100%",
+  selected: false,
 };
