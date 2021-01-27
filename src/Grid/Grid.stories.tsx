@@ -2,6 +2,8 @@ import React from "react";
 import { States } from "storybook-states";
 import { Grid, GridProps } from "./Grid";
 import { Box } from "../Box";
+import { File } from "../File";
+import { AspectRatioBox } from "../AspectRatioBox";
 
 export default { title: "Grid", component: Grid };
 
@@ -41,7 +43,9 @@ export const Default = () => (
   <States<GridProps>>
     <Grid>
       {Array.from({ length: 12 }, (_, i) => (
-        <Cell key={i} />
+        <File key={i} name="—">
+          <Cell />
+        </File>
       ))}
     </Grid>
   </States>
@@ -51,7 +55,9 @@ export const Images = () => (
   <States<GridProps>>
     <Grid>
       {Array.from({ length: 12 }, (_, i) => (
-        <Image key={i} />
+        <File key={i} name="in-an-age-of-affordable-beauty.jpg">
+          <Image />
+        </File>
       ))}
     </Grid>
   </States>
@@ -61,7 +67,9 @@ export const Texts = () => (
   <States<GridProps>>
     <Grid>
       {Array.from({ length: 30 }, (_, i) => (
-        <Text key={i} />
+        <File key={i} name="Lorem Ipsum">
+          <Text key={i} />
+        </File>
       ))}
     </Grid>
   </States>
@@ -77,7 +85,13 @@ export const Debug = () => (
   >
     <Grid>
       {Array.from({ length: 30 }, (_, i) => (
-        <Box key={i} width="100%" height="100%" bg="tertiary" />
+        <AspectRatioBox
+          key={i}
+          aspectWidth={1}
+          aspectHeight={1}
+          maxWidth="100%"
+          bg="tertiary"
+        />
       ))}
     </Grid>
   </States>
