@@ -2,11 +2,7 @@ import React from "react";
 import { scale, paddingBottom } from "proportional-scale";
 import { Box, BoxProps } from "../Box";
 
-type MaxDimensions =
-  | { maxWidth: number; maxHeight: number }
-  | { maxWidth: number }
-  | { maxHeight: number }
-  | { maxWidth: "100%" };
+type MaxDimensions = { maxWidth?: number | "100%"; maxHeight?: number };
 
 type AspectDimensions = {
   aspectWidth: number;
@@ -29,6 +25,7 @@ const responsiveScale = (args: AspectDimensions & MaxDimensions) => {
   }
 
   const { aspectWidth: width, aspectHeight: height, ...rest } = args;
+  // @ts-ignore
   const scaled = scale({ width, height, ...rest });
 
   return {
