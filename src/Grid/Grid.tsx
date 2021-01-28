@@ -27,7 +27,7 @@ const Container = styled(Box)<GridProps>`
 
 export const GridCell = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `;
 

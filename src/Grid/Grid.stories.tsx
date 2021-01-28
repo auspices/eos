@@ -36,7 +36,11 @@ const Cell = () => {
 };
 
 const Text = () => {
-  return <Box fontSize={0}>{sample(IPSUM)}</Box>;
+  return (
+    <Box fontSize={0} border="1px solid" width="100%" height="100%" p={2}>
+      {sample(IPSUM)}
+    </Box>
+  );
 };
 
 export const Default = () => (
@@ -55,7 +59,14 @@ export const Images = () => (
   <States<GridProps>>
     <Grid>
       {Array.from({ length: 12 }, (_, i) => (
-        <File key={i} name="in-an-age-of-affordable-beauty.jpg">
+        <File
+          key={i}
+          name={
+            Math.random() > 0.5
+              ? "beauty.jpg"
+              : "in-an-age-of-affordable-beauty.jpg"
+          }
+        >
           <Image />
         </File>
       ))}
@@ -67,7 +78,14 @@ export const Texts = () => (
   <States<GridProps>>
     <Grid>
       {Array.from({ length: 30 }, (_, i) => (
-        <File key={i} name="Lorem Ipsum">
+        <File
+          key={i}
+          name={
+            Math.random() > 0.5
+              ? "Lorem Ipsum"
+              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          }
+        >
           <Text key={i} />
         </File>
       ))}
