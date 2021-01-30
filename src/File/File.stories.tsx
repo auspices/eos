@@ -4,6 +4,7 @@ import { States } from "storybook-states";
 import { File, FileProps } from "./File";
 import { Image } from "../Image";
 import { Box } from "../Box";
+import { MultiSelect } from "../MultiSelect";
 
 const SMALL_SRC =
   "https://cancer.auspic.es/18ce4ecf818a90ce885477395b1b41b4ed2e892a/resize/200x110/95/https%3A%2F%2Fatlas-production.s3.amazonaws.com%2F1%2FGjuXydZpQOOhvIBR.jpg";
@@ -16,43 +17,47 @@ const LOREM =
 export default { title: "File", component: File };
 
 export const Images = () => (
-  <States<Partial<FileProps>> states={[{}, { selected: true }]}>
-    <File
-      width={225}
-      name="in-an-age-of-affordable-beauty.jpg"
-      onClick={action("onClick")}
-      onDoubleClick={action("onDoubleClick")}
-    >
-      <Image
-        srcs={[SMALL_SRC, MEDIUM_SRC]}
+  <MultiSelect>
+    <States<Partial<FileProps>> states={[{}, { selected: true }]}>
+      <File
         width={225}
-        height={125}
-        bg="hint"
-        borderRadius={2}
-      />
-    </File>
-  </States>
+        name="in-an-age-of-affordable-beauty.jpg"
+        onClick={action("onClick")}
+        onDoubleClick={action("onDoubleClick")}
+      >
+        <Image
+          srcs={[SMALL_SRC, MEDIUM_SRC]}
+          width={225}
+          height={125}
+          bg="hint"
+          borderRadius={2}
+        />
+      </File>
+    </States>
+  </MultiSelect>
 );
 
 export const Texts = () => (
-  <States<Partial<FileProps>> states={[{}, { selected: true }]}>
-    <File
-      width={225}
-      name="Lorem Ipsum"
-      onClick={action("onClick")}
-      onDoubleClick={action("onDoubleClick")}
-    >
-      <Box
-        height="100%"
-        fontSize={0}
-        p={3}
-        border="1px solid"
-        borderRadius={2}
-        borderColor="tertiary"
-        overflow="hidden"
+  <MultiSelect>
+    <States<Partial<FileProps>> states={[{}, { selected: true }]}>
+      <File
+        width={225}
+        name="Lorem Ipsum"
+        onClick={action("onClick")}
+        onDoubleClick={action("onDoubleClick")}
       >
-        {LOREM} {LOREM}
-      </Box>
-    </File>
-  </States>
+        <Box
+          height="100%"
+          fontSize={0}
+          p={3}
+          border="1px solid"
+          borderRadius={2}
+          borderColor="tertiary"
+          overflow="hidden"
+        >
+          {LOREM} {LOREM}
+        </Box>
+      </File>
+    </States>
+  </MultiSelect>
 );

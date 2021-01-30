@@ -6,7 +6,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import { generateId } from "./generateId";
+import { generateId } from "../util/generateId";
 
 type Body = string | JSX.Element;
 

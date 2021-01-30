@@ -1,13 +1,14 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { AspectRatioBox } from "../AspectRatioBox";
 import { Box } from "../Box";
 import { Clickable, ClickableProps } from "../Clickable";
-import { useClickOutside } from "../hooks";
+import { useMultiSelect } from "../MultiSelect";
 
 export type FileProps = ClickableProps & {
   name: string;
   selected?: boolean;
+  payload?: Record<string, any>;
 };
 
 const Container = styled(Clickable)`
@@ -22,23 +23,23 @@ const Label = styled(Box)`
 
 export const File: React.FC<FileProps> = ({
   name,
-  selected: defaultSelected,
+  selected: defaultSelected = false,
+  payload = {},
   children,
   onMouseDown,
   ...rest
 }) => {
-  const [selected, setSelected] = useState(defaultSelected);
-  const ref = useRef<HTMLButtonElement | null>(null);
-
-  useClickOutside(ref, () => {
-    setSelected(false);
-  });
+  const {
+    ref,
+    selected,
+    onMouseDown: multiSelectOnMouseDown,
+  } = useMultiSelect({ defaultSelected, payload });
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    setSelected(true);
     onMouseDown && onMouseDown(event);
+    multiSelectOnMouseDown(event);
   };
 
   return (
