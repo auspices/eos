@@ -31,7 +31,7 @@ export const Popper: React.FC<PopperProps> = ({
   const childrenRef = useRef<HTMLDivElement | null>(null);
   const anchorRef = useRef<HTMLButtonElement | null>(null);
 
-  useClickOutside(childrenRef, onClose);
+  useClickOutside({ ref: childrenRef, onClickOutside: onClose, when: open });
 
   useEffect(() => {
     const instance = popperRef.current;

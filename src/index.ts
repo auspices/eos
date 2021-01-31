@@ -27,6 +27,7 @@ export * from "./lib";
 export * from "./Loading";
 export * from "./Modal";
 export * from "./Mono";
+export * from "./MultiSelect";
 export * from "./Pagination";
 export * from "./Pane";
 export * from "./Pill";
