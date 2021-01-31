@@ -16,7 +16,7 @@ export const MultiSelectContext = createContext<{
 }>(INITIAL_VALUE);
 
 export type MultiSelectProps = {
-  onChange(selection: MultiSelectItem[], payload?: MultiSelectPayload): void;
+  onChange?(selection: MultiSelectItem[], payload?: MultiSelectPayload): void;
 };
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
