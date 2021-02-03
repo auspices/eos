@@ -4,6 +4,7 @@ import { Button } from "../Button";
 import { Popper } from "../Popper";
 import { Caret } from "../Caret";
 import { Pane, PaneOptionProps } from "../Pane";
+import { space } from "../theme";
 
 enum Mode {
   Resting,
@@ -75,7 +76,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </Button>
         }
       >
-        <Pane onEnter={handleClose}>
+        <Pane zIndex={1} minWidth={space(10)} onEnter={handleClose}>
           {isDropdownRenderProps(children)
             ? children({ handleClose })
             : children}

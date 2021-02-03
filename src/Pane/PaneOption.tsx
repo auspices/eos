@@ -10,16 +10,31 @@ export type PaneOptionProps = ClickableProps & {
   disabled?: boolean;
 };
 
-export const paneOptionActiveMixin = css`
-  background-color: ${themeGet("colors.hint")};
+export const paneOptionHoverMixin = css`
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: ${themeGet("colors.hint")};
+    border-radius: 4px;
+    z-index: -1;
+  }
 `;
 
-export const paneOptionHoverMixin = css`
-  background-color: ${themeGet("colors.hint")};
+export const paneOptionActiveMixin = css`
+  ${paneOptionHoverMixin}
 `;
 
 export const paneOptionFocusMixin = css`
   outline: 0;
+  background-color: ${themeGet("colors.hint")};
   ${cellFocusMixin}
 `;
 
@@ -59,6 +74,7 @@ export const PaneOption = styled(Clickable)<PaneOptionProps>`
 
 PaneOption.defaultProps = {
   fontSize: [2, 2, 1, 1],
-  py: 2,
+  py: 3,
   px: 4,
+  borderRadius: 4,
 };
