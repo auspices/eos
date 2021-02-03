@@ -22,6 +22,7 @@ export const Images = () => (
       <File
         width={225}
         name="in-an-age-of-affordable-beauty.jpg"
+        meta="225×125"
         onClick={action("onClick")}
         onDoubleClick={action("onDoubleClick")}
       >

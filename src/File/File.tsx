@@ -7,8 +7,9 @@ import { useMultiSelect } from "../MultiSelect";
 
 export type FileProps = ClickableProps & {
   name: string;
+  meta?: string;
   selected?: boolean;
-  payload?: Record<string, any>;
+  payload?: Record<string, unknown>;
 };
 
 const Container = styled(Clickable)`
@@ -23,6 +24,7 @@ const Label = styled(Box)`
 
 export const File: React.FC<FileProps> = ({
   name,
+  meta,
   selected: defaultSelected = false,
   payload = {},
   children,
@@ -78,6 +80,12 @@ export const File: React.FC<FileProps> = ({
           >
             {name}
           </Label>
+
+          {meta && (
+            <Box mt={2} fontSize={0} color="secondary">
+              {meta}
+            </Box>
+          )}
         </Box>
       </Box>
     </Container>
