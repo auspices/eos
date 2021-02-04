@@ -5,11 +5,12 @@ type Direction = "vertical" | "horizontal";
 export const DEFAULT_STACK_SPACING = "-1px";
 export const DEFAULT_STACK_DIRECTION: Direction = "vertical";
 
-export type StackProps = BoxProps & {
-  spacing?: number | string;
-  direction?: Direction | Direction[];
-  children?: React.ReactNode;
-};
+export type StackProps = BoxProps &
+  React.HTMLAttributes<HTMLDivElement> & {
+    spacing?: number | string;
+    direction?: Direction | Direction[];
+    children?: React.ReactNode;
+  };
 
 export const Stack = React.forwardRef<HTMLDivElement, StackProps>(
   (
