@@ -11,10 +11,10 @@ export type StackProps = BoxProps & {
   children?: React.ReactNode;
 };
 
-export const Stack: React.ForwardRefExoticComponent<StackProps> = React.forwardRef(
+export const Stack = React.forwardRef<HTMLDivElement, StackProps>(
   (
     { direction = DEFAULT_STACK_DIRECTION, spacing, children, ...rest },
-    forwardedRef: React.Ref<any>
+    forwardedRef
   ) => {
     const nodes = React.Children.toArray(children).filter(isValidElement);
     const directions = ([] as Direction[]).concat(...[direction]);
