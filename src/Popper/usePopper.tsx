@@ -3,6 +3,7 @@ import {
   createPopper,
   Instance as PopperInstance,
   Placement,
+  StrictModifiers,
 } from "@popperjs/core";
 import { useClickOutside } from "../hooks/useClickOutside";
 
@@ -10,6 +11,7 @@ export type UsePopper = {
   open?: boolean;
   distance?: number;
   placement?: Placement;
+  modifiers?: StrictModifiers[];
   onClose?(): void;
 };
 
@@ -17,6 +19,7 @@ export const usePopper = ({
   open = false,
   distance = 8,
   placement = "bottom-start",
+  modifiers = [],
   onClose = () => {},
 }: UsePopper) => {
   const popperRef = useRef<PopperInstance | null>(null);
@@ -41,6 +44,7 @@ export const usePopper = ({
               offset: [0, distance],
             },
           },
+          ...modifiers,
         ],
       });
 
