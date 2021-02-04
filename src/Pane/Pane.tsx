@@ -12,11 +12,10 @@ export type PaneProps = StackProps & {
 };
 
 export const paneShadowMixin = css`
-  box-shadow: 0 0 ${themeGet("space.3")} 0 ${themeGet("colors.tertiary")};
+  box-shadow: 0 0 ${themeGet("space.2")} 0 ${themeGet("colors.tertiary")};
 `;
 
 const Container = styled(Stack)`
-  overflow: hidden;
   background-color: ${themeGet("colors.background")};
   max-width: ${themeGet("space.10")};
   ${paneShadowMixin}
@@ -27,13 +26,10 @@ Container.defaultProps = {
   spacing: 0,
 };
 
-export const Pane: React.ForwardRefExoticComponent<PaneProps> = React.forwardRef(
-  ({ children, onEnter, ...rest }, forwardedRef: React.Ref<any>) => {
+export const Pane = React.forwardRef<HTMLDivElement, PaneProps>(
+  ({ children, onEnter, ...rest }, forwardedRef) => {
     const ref = useRef<HTMLDivElement | null>(null);
-    const composedRef = composeRefs(
-      ref,
-      forwardedRef
-    ) as React.MutableRefObject<any>;
+    const composedRef = composeRefs(ref, forwardedRef);
     const list = flattenChildren(children);
     const refs = list.map(() => createRef<HTMLElement | null>());
 
@@ -47,14 +43,12 @@ export const Pane: React.ForwardRefExoticComponent<PaneProps> = React.forwardRef
 
     const { index } = useKeyboardListNavigation({
       list,
-      ref: composedRef,
+      ref: composedRef as React.MutableRefObject<unknown>,
       onEnter: handleEnter,
       waitForInteractive: true,
     });
 
     return (
-      // TODO: Fix typing
-      // @ts-ignore
       <Container ref={composedRef} {...rest}>
         {list.map((child, i) => {
           return React.cloneElement(child as React.ReactElement<any>, {

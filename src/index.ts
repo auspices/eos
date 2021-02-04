@@ -15,6 +15,7 @@ export * from "./EmptyFrame";
 export * from "./Expandable";
 export * from "./Field";
 export * from "./File";
+export * from "./Flyout";
 export * from "./GlobalStyles";
 export * from "./Grid";
 export * from "./hooks";

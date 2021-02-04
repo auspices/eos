@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Box, BoxProps } from "../Box";
 import { Button } from "../Button";
-import { Popper } from "../Popper";
+import { usePopper } from "../Popper";
 import { Caret } from "../Caret";
 import { Pane, PaneOptionProps } from "../Pane";
 import { space } from "../theme";
@@ -34,10 +34,10 @@ export type DropdownProps = BoxProps & {
 export const Dropdown: React.FC<DropdownProps> = ({
   label,
   children,
-  open = false,
+  open: defaultOpen = false,
   ...rest
 }) => {
-  const [mode, setMode] = useState(open ? Mode.Active : Mode.Resting);
+  const [mode, setMode] = useState(defaultOpen ? Mode.Active : Mode.Resting);
 
   const handleClose = useCallback(() => setMode(Mode.Resting), []);
   const handleClick = useCallback(() => setMode(Mode.Active), []);
@@ -52,6 +52,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   }, []);
 
+  const { anchorRef, childrenRef, open } = usePopper({
+    open: mode === Mode.Active,
+    placement: "bottom",
+    onClose: handleClose,
+  });
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
@@ -59,29 +65,30 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <Box {...rest}>
-      <Popper
-        placement="bottom"
-        open={mode === Mode.Active}
-        onClose={handleClose}
-        anchor={
-          <Button
-            disabled={mode === Mode.Active}
-            onClick={handleClick}
-            width="100%"
-            type="button"
-          >
-            {label}
-
-            <Caret ml={3} direction={mode === Mode.Active ? "up" : "down"} />
-          </Button>
-        }
+      <Button
+        ref={anchorRef}
+        disabled={mode === Mode.Active}
+        onClick={handleClick}
+        width="100%"
+        type="button"
       >
-        <Pane zIndex={1} minWidth={space(10)} onEnter={handleClose}>
+        {label}
+
+        <Caret ml={3} direction={mode === Mode.Active ? "up" : "down"} />
+      </Button>
+
+      {open && (
+        <Pane
+          ref={childrenRef}
+          zIndex={1}
+          minWidth={space(10)}
+          onEnter={handleClose}
+        >
           {isDropdownRenderProps(children)
             ? children({ handleClose })
             : children}
         </Pane>
-      </Popper>
+      )}
     </Box>
   );
 };
