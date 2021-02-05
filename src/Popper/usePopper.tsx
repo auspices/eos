@@ -5,13 +5,14 @@ import {
   Placement,
   StrictModifiers,
 } from "@popperjs/core";
-import { useClickOutside } from "../hooks/useClickOutside";
+import { useClickOutside, UseClickOutside } from "../hooks/useClickOutside";
 
 export type UsePopper = {
   open?: boolean;
   distance?: number;
   placement?: Placement;
   modifiers?: StrictModifiers[];
+  type?: UseClickOutside["type"];
   onClose?(): void;
 };
 
@@ -20,13 +21,19 @@ export const usePopper = ({
   distance = 8,
   placement = "bottom-start",
   modifiers = [],
+  type = "click",
   onClose = () => {},
 }: UsePopper) => {
   const popperRef = useRef<PopperInstance | null>(null);
   const childrenRef = useRef<HTMLDivElement | null>(null);
   const anchorRef = useRef<HTMLButtonElement | null>(null);
 
-  useClickOutside({ ref: childrenRef, onClickOutside: onClose, when: open });
+  useClickOutside({
+    ref: childrenRef,
+    onClickOutside: onClose,
+    when: open,
+    type,
+  });
 
   useEffect(() => {
     const instance = popperRef.current;

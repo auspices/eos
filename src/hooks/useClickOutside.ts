@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from "react";
 
-type UseClickOutside = {
+export type UseClickOutside = {
   ref: React.RefObject<HTMLElement>;
   when: boolean;
   type?: keyof DocumentEventMap;
