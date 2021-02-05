@@ -113,7 +113,7 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-export type KeyValueEditorProps = StackProps & {
+export type KeyValueEditorProps = Omit<StackProps, "onChange"> & {
   schema: KeyValueSchema;
   data: KeyValueData;
   onChange?(data: KeyValueData): void;
