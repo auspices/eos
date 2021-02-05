@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect, useRef } from "react";
 import { usePopper } from "../Popper";
 import { Caret } from "../Caret";
 import { Pane, PaneOption, PaneOptionProps } from "../Pane";
-import { space } from "../theme";
 
 enum Mode {
   Resting,
@@ -120,7 +119,6 @@ export const Flyout: React.FC<FlyoutProps> = ({
         <Pane
           ref={childrenRef}
           zIndex={1}
-          minWidth={space(10)}
           onMouseEnter={handlePaneMouseEnter}
           onMouseLeave={handlePaneMouseLeave}
           onEnter={handleClose}
