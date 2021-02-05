@@ -6,10 +6,11 @@ import { Stack, StackProps } from "../Stack";
 import { flattenChildren } from "../lib/flattenChildren";
 import composeRefs from "@seznam/compose-react-refs";
 
-export type PaneProps = StackProps & {
-  children: React.ReactElement<any> | React.ReactElement<any>[];
-  onEnter?(): void;
-};
+export type PaneProps = StackProps &
+  React.HTMLAttributes<HTMLDivElement> & {
+    children: React.ReactElement<any> | React.ReactElement<any>[];
+    onEnter?(): void;
+  };
 
 export const paneShadowMixin = css`
   box-shadow: 0 0 ${themeGet("space.2")} 0 ${themeGet("colors.tertiary")};
