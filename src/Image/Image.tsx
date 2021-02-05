@@ -53,7 +53,9 @@ export type ImageProps = Omit<
     onComplete?(): void;
   };
 
-export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
+export const Image: React.ForwardRefExoticComponent<
+  ImageProps & { ref?: React.Ref<HTMLImageElement> }
+> = React.forwardRef(
   ({ srcs, alt, onError, onLoad, onComplete, ...rest }, forwardedRef) => {
     const [mode, setMode] = useState(Mode.Pending);
     const ref = React.useRef<HTMLImageElement>(null);

@@ -26,40 +26,40 @@ Container.defaultProps = {
   spacing: 0,
 };
 
-export const Pane = React.forwardRef<HTMLDivElement, PaneProps>(
-  ({ children, onEnter, ...rest }, forwardedRef) => {
-    const ref = useRef<HTMLDivElement | null>(null);
-    const composedRef = composeRefs(ref, forwardedRef);
-    const list = flattenChildren(children);
-    const refs = list.map(() => createRef<HTMLElement | null>());
+export const Pane: React.ForwardRefExoticComponent<
+  PaneProps & { ref?: React.Ref<HTMLDivElement> }
+> = React.forwardRef(({ children, onEnter, ...rest }, forwardedRef) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const composedRef = composeRefs(ref, forwardedRef);
+  const list = flattenChildren(children);
+  const refs = list.map(() => createRef<HTMLElement | null>());
 
-    const handleEnter = useCallback(
-      ({ index }: { index: number }) => {
-        refs[index].current?.click();
-        onEnter && onEnter();
-      },
-      [onEnter, refs]
-    );
+  const handleEnter = useCallback(
+    ({ index }: { index: number }) => {
+      refs[index].current?.click();
+      onEnter && onEnter();
+    },
+    [onEnter, refs]
+  );
 
-    const { index } = useKeyboardListNavigation({
-      list,
-      ref: composedRef as React.MutableRefObject<unknown>,
-      onEnter: handleEnter,
-      waitForInteractive: true,
-    });
+  const { index } = useKeyboardListNavigation({
+    list,
+    ref: composedRef as React.MutableRefObject<unknown>,
+    onEnter: handleEnter,
+    waitForInteractive: true,
+  });
 
-    return (
-      <Container ref={composedRef} {...rest}>
-        {list.map((child, i) => {
-          return React.cloneElement(child as React.ReactElement<any>, {
-            key: i,
-            ref: refs[i],
-            active: i === index,
-          });
-        })}
-      </Container>
-    );
-  }
-);
+  return (
+    <Container ref={composedRef} {...rest}>
+      {list.map((child, i) => {
+        return React.cloneElement(child as React.ReactElement<any>, {
+          key: i,
+          ref: refs[i],
+          active: i === index,
+        });
+      })}
+    </Container>
+  );
+});
 
 Pane.displayName = "Pane";

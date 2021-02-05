@@ -12,7 +12,9 @@ export type StackProps = BoxProps &
     children?: React.ReactNode;
   };
 
-export const Stack = React.forwardRef<HTMLDivElement, StackProps>(
+export const Stack: React.ForwardRefExoticComponent<
+  StackProps & { ref?: React.Ref<HTMLDivElement> }
+> = React.forwardRef(
   (
     { direction = DEFAULT_STACK_DIRECTION, spacing, children, ...rest },
     forwardedRef
