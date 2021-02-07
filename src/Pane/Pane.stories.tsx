@@ -16,6 +16,7 @@ export const Default = () => (
         onClick={action("onClick")}
         borderTop="1px solid"
         borderColor="hint"
+        disabled
       >
         gathering strength
       </PaneOption>

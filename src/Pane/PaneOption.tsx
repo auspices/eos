@@ -41,8 +41,6 @@ export const paneOptionFocusMixin = css`
 export const paneOptionDisabledMixin = css`
   pointer-events: none;
   color: ${themeGet("colors.secondary")};
-  background-color: ${themeGet("colors.hint")};
-  text-decoration: line-through;
 `;
 
 export const PaneOption = styled(Clickable)<PaneOptionProps>`
