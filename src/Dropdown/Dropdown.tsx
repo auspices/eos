@@ -38,18 +38,26 @@ export const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [mode, setMode] = useState(defaultOpen ? Mode.Active : Mode.Resting);
 
-  const handleClose = useCallback(() => setMode(Mode.Resting), []);
-  const handleMouseDown = useCallback(() => setMode(Mode.Active), []);
-
-  const handleKeydown = useCallback(({ key }: KeyboardEvent) => {
-    switch (key) {
-      case "Escape":
-        setMode(Mode.Resting);
-        break;
-      default:
-        break;
-    }
+  const handleClose = useCallback(() => {
+    setMode(Mode.Resting);
   }, []);
+
+  const handleOpen = useCallback(() => {
+    setMode(Mode.Active);
+  }, []);
+
+  const handleKeydown = useCallback(
+    ({ key }: KeyboardEvent) => {
+      switch (key) {
+        case "Escape":
+          handleClose();
+          break;
+        default:
+          break;
+      }
+    },
+    [handleClose]
+  );
 
   const { anchorRef, childrenRef, open } = usePopper({
     open: mode === Mode.Active,
@@ -68,7 +76,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <Button
         ref={anchorRef}
         disabled={mode === Mode.Active}
-        onMouseDown={handleMouseDown}
+        onMouseDown={handleOpen}
+        onClick={handleOpen}
         width="100%"
         type="button"
       >

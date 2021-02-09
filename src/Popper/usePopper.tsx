@@ -6,6 +6,7 @@ import {
   StrictModifiers,
 } from "@popperjs/core";
 import { useClickOutside, UseClickOutside } from "../hooks/useClickOutside";
+import { useUpdateEffect } from "../hooks";
 
 export type UsePopper = {
   open?: boolean;
@@ -62,7 +63,12 @@ export const usePopper = ({
     if (!open) {
       popperRef.current?.destroy();
     }
-  }, [open, placement, distance]);
+  }, [open, placement, distance, modifiers]);
+
+  useUpdateEffect(() => {
+    if (open) return;
+    anchorRef.current?.focus();
+  }, [open]);
 
   return { anchorRef, childrenRef, open };
 };
