@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
 import { Stack } from "../Stack";
 import { Divider } from "../Divider";
+import { Flyout } from "../Flyout";
 import { Pane, PaneProps, PaneOption, PaneOptionProps, PaneHeader } from ".";
 
 export default { title: "Pane", component: Pane };
@@ -51,5 +52,59 @@ export const Multiple = () => (
         <PaneOption>d</PaneOption>
       </Pane>
     </Stack>
+  </States>
+);
+
+const Demo: React.FC = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const handleDemoClick = (message: string) => () => {
+    action(message);
+  };
+
+  return (
+    <Stack spacing={3}>
+      <Pane ref={ref}>
+        <PaneHeader>header</PaneHeader>
+        <PaneOption>no onClick</PaneOption>
+        <PaneOption onClick={handleDemoClick("with click")}>
+          with onClick
+        </PaneOption>
+        <PaneOption
+          onClick={handleDemoClick("with click but disabled")}
+          disabled
+        >
+          disabled
+        </PaneOption>
+
+        <Divider />
+
+        <PaneOption as="a" href="#hello">
+          as a link
+        </PaneOption>
+
+        <Flyout label="flyout">
+          <PaneOption>example</PaneOption>
+          <PaneOption>example</PaneOption>
+          <PaneOption>example</PaneOption>
+        </Flyout>
+
+        <>
+          <PaneOption onClick={handleDemoClick("nested fragment #1")}>
+            nested fragment, element #1
+          </PaneOption>
+
+          <PaneOption onClick={handleDemoClick("nested fragment #2")}>
+            nested fragment, element #2
+          </PaneOption>
+        </>
+      </Pane>
+    </Stack>
+  );
+};
+
+export const Complex = () => (
+  <States>
+    <Demo />
   </States>
 );

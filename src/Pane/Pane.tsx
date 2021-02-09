@@ -1,4 +1,4 @@
-import React, { useCallback, createRef, useRef } from "react";
+import React, { createRef, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
@@ -10,7 +10,7 @@ import { Flyout } from "../Flyout";
 
 export type PaneProps = StackProps &
   React.HTMLAttributes<HTMLDivElement> & {
-    children: React.ReactElement<any> | React.ReactElement<any>[];
+    children: JSX.Element | JSX.Element[];
     onEnter?(): void;
   };
 
@@ -31,43 +31,54 @@ Container.defaultProps = {
 
 export const Pane: React.ForwardRefExoticComponent<
   PaneProps & { ref?: React.Ref<HTMLDivElement> }
-> = React.forwardRef(({ children, onEnter, ...rest }, forwardedRef) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const composedRef = composeRefs(ref, forwardedRef);
+> = React.forwardRef(
+  ({ children, onEnter = () => {}, ...rest }, forwardedRef) => {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const composedRef = composeRefs(ref, forwardedRef);
 
-  const list = flattenChildren(children);
-  const clickable = list.filter((element) => {
-    return element.type === PaneOption || element.type === Flyout;
-  });
+    const nodes = flattenChildren(children);
 
-  const refs = list.map(() => createRef<HTMLElement | null>());
+    const clickable = nodes.filter((element: JSX.Element) => {
+      const isAnchor = element.type === "a";
+      const isButton = element.type === "button";
+      const isSystem = element.type === PaneOption || element.type === Flyout;
+      const isClickable = !!element.props.onClick;
+      const isNotDisabled = !element.props.disabled;
 
-  const handleEnter = useCallback(
-    ({ index }: { index: number }) => {
-      refs[index].current?.click();
-      onEnter && onEnter();
-    },
-    [onEnter, refs]
-  );
+      return (isAnchor || isButton || isSystem || isClickable) && isNotDisabled;
+    });
 
-  const { index } = useKeyboardListNavigation({
-    list: clickable,
-    ref: composedRef as React.MutableRefObject<unknown>,
-    onEnter: handleEnter,
-    waitForInteractive: true,
-  });
+    const refs = clickable.map(() => createRef<HTMLElement | null>());
 
-  return (
-    <Container ref={composedRef} {...rest}>
-      {list.map((child, i) => {
-        return React.cloneElement(child as React.ReactElement<any>, {
-          key: i,
-          ref: refs[i],
-          active: index !== -1 && clickable.indexOf(child) === index,
-        });
-      })}
-    </Container>
-  );
-});
+    const { index } = useKeyboardListNavigation({
+      list: clickable,
+      ref: composedRef as React.MutableRefObject<unknown>,
+      waitForInteractive: true,
+      onEnter,
+    });
+
+    useEffect(() => {
+      refs[index]?.current?.focus();
+    }, [index, refs]);
+
+    return (
+      <Container ref={composedRef} {...rest}>
+        {nodes.map((child, i) => {
+          return React.cloneElement(child as React.ReactElement<any>, {
+            key: i,
+            ...(clickable.indexOf(child) !== -1
+              ? {
+                  ref: refs[clickable.indexOf(child)],
+                  onMouseEnter: () => {
+                    ref.current?.focus();
+                  },
+                }
+              : {}),
+          });
+        })}
+      </Container>
+    );
+  }
+);
 
 Pane.displayName = "Pane";

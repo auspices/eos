@@ -59,17 +59,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
     [handleClose]
   );
 
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, [handleKeydown]);
+
   const { anchorRef, childrenRef, open } = usePopper({
     open: mode === Mode.Active,
     placement: "bottom",
     type: "mousedown",
     onClose: handleClose,
   });
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeydown);
-    return () => window.removeEventListener("keydown", handleKeydown);
-  }, [handleKeydown]);
 
   return (
     <Box {...rest}>
