@@ -2,9 +2,11 @@ import React, { useCallback, createRef, useRef } from "react";
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
+import composeRefs from "@seznam/compose-react-refs";
 import { Stack, StackProps } from "../Stack";
 import { flattenChildren } from "../lib/flattenChildren";
-import composeRefs from "@seznam/compose-react-refs";
+import { PaneOption } from "./PaneOption";
+import { Flyout } from "../Flyout";
 
 export type PaneProps = StackProps &
   React.HTMLAttributes<HTMLDivElement> & {
@@ -34,7 +36,9 @@ export const Pane: React.ForwardRefExoticComponent<
   const composedRef = composeRefs(ref, forwardedRef);
 
   const list = flattenChildren(children);
-  const clickable = list.filter((element) => !!element.props.onClick);
+  const clickable = list.filter((element) => {
+    return element.type === PaneOption || element.type === Flyout;
+  });
 
   const refs = list.map(() => createRef<HTMLElement | null>());
 
@@ -59,7 +63,7 @@ export const Pane: React.ForwardRefExoticComponent<
         return React.cloneElement(child as React.ReactElement<any>, {
           key: i,
           ref: refs[i],
-          active: clickable.indexOf(child) === index,
+          active: index !== -1 && clickable.indexOf(child) === index,
         });
       })}
     </Container>
