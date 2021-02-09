@@ -2,24 +2,19 @@ import React from "react";
 import { action } from "@storybook/addon-actions";
 import { States } from "storybook-states";
 import { Stack } from "../Stack";
-import { Pane, PaneProps, PaneOption, PaneOptionProps } from ".";
+import { Divider } from "../Divider";
+import { Pane, PaneProps, PaneOption, PaneOptionProps, PaneHeader } from ".";
 
 export default { title: "Pane", component: Pane };
 
 export const Default = () => (
   <States<Partial<PaneProps>>>
     <Pane>
-      <PaneOption onClick={action("onClick")}>the enemy</PaneOption>
+      <PaneHeader>the enemy</PaneHeader>
       <PaneOption onClick={action("onClick")}>is invisible</PaneOption>
       <PaneOption onClick={action("onClick")}>and insidious</PaneOption>
-      <PaneOption
-        onClick={action("onClick")}
-        borderTop="1px solid"
-        borderColor="hint"
-        disabled
-      >
-        gathering strength
-      </PaneOption>
+      <Divider />
+      <PaneOption onClick={action("onClick")}>gathering strength</PaneOption>
       <PaneOption onClick={action("onClick")}>from the bonds</PaneOption>
       <PaneOption onClick={action("onClick")}>of human connection</PaneOption>
     </Pane>

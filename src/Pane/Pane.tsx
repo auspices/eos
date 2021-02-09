@@ -32,7 +32,10 @@ export const Pane: React.ForwardRefExoticComponent<
 > = React.forwardRef(({ children, onEnter, ...rest }, forwardedRef) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const composedRef = composeRefs(ref, forwardedRef);
+
   const list = flattenChildren(children);
+  const clickable = list.filter((element) => !!element.props.onClick);
+
   const refs = list.map(() => createRef<HTMLElement | null>());
 
   const handleEnter = useCallback(
@@ -44,7 +47,7 @@ export const Pane: React.ForwardRefExoticComponent<
   );
 
   const { index } = useKeyboardListNavigation({
-    list,
+    list: clickable,
     ref: composedRef as React.MutableRefObject<unknown>,
     onEnter: handleEnter,
     waitForInteractive: true,
@@ -56,7 +59,7 @@ export const Pane: React.ForwardRefExoticComponent<
         return React.cloneElement(child as React.ReactElement<any>, {
           key: i,
           ref: refs[i],
-          active: i === index,
+          active: clickable.indexOf(child) === index,
         });
       })}
     </Container>

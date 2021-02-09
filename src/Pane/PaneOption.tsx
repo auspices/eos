@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
 import { cellFocusMixin } from "../Cell";
+import { overflowEllipsisMixin } from "../mixins";
 
 export type PaneOptionProps = ClickableProps & {
   active?: boolean;
@@ -47,10 +48,8 @@ export const PaneOption = styled(Clickable)<PaneOptionProps>`
   text-align: left;
   cursor: pointer;
   text-decoration: none;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   transition: box-shadow 250ms ease;
+  ${overflowEllipsisMixin}
 
   ${({ active }) => active && paneOptionActiveMixin}
 
@@ -70,9 +69,13 @@ export const PaneOption = styled(Clickable)<PaneOptionProps>`
   }
 `;
 
-PaneOption.defaultProps = {
-  fontSize: [2, 2, 1, 1],
-  py: 3,
-  px: 4,
+export const PANE_OPTION = {
   borderRadius: 4,
+  color: "primary",
+  fontSize: [2, 2, 1, 1],
+  lineHeight: 0,
+  px: 4,
+  py: 3,
 };
+
+PaneOption.defaultProps = PANE_OPTION;
