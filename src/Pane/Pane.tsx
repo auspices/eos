@@ -67,12 +67,7 @@ export const Pane: React.ForwardRefExoticComponent<
           return React.cloneElement(child as React.ReactElement<any>, {
             key: i,
             ...(clickable.indexOf(child) !== -1
-              ? {
-                  ref: refs[clickable.indexOf(child)],
-                  onMouseEnter: () => {
-                    ref.current?.focus();
-                  },
-                }
+              ? { ref: refs[clickable.indexOf(child)] }
               : {}),
           });
         })}
