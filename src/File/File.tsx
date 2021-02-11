@@ -13,6 +13,8 @@ export type FileProps = ClickableProps & {
 };
 
 const Container = styled(Clickable)`
+  cursor: default;
+
   &:focus {
     outline: 0;
   }
