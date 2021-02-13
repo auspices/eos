@@ -42,23 +42,29 @@ export type DropdownProps = BoxProps & {
       }) => JSX.Element);
   children: DropdownPaneOptions | DropdownRenderProps;
   open?: boolean;
+  onOpen?(): void;
+  onClose?(): void;
 };
 
 export const Dropdown: React.FC<DropdownProps> = ({
   label,
   children,
   open: defaultOpen = false,
+  onOpen = () => {},
+  onClose = () => {},
   ...rest
 }) => {
   const [mode, setMode] = useState(defaultOpen ? Mode.Active : Mode.Resting);
 
   const handleClose = useCallback(() => {
     setMode(Mode.Resting);
-  }, []);
+    onClose();
+  }, [onClose]);
 
   const handleOpen = useCallback(() => {
     setMode(Mode.Active);
-  }, []);
+    onOpen();
+  }, [onOpen]);
 
   const handleKeydown = useCallback(
     ({ key }: KeyboardEvent) => {
