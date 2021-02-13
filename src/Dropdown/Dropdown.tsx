@@ -4,6 +4,11 @@ import { Button } from "../Button";
 import { usePopper } from "../Popper";
 import { Caret } from "../Caret";
 import { Pane, PaneOptionProps } from "../Pane";
+import styled from "styled-components";
+
+const Container = styled(Box)`
+  user-select: none;
+`;
 
 enum Mode {
   Resting,
@@ -25,7 +30,16 @@ export const isDropdownRenderProps = (
 ): children is DropdownRenderProps => typeof children === "function";
 
 export type DropdownProps = BoxProps & {
-  label: string | JSX.Element;
+  label:
+    | string
+    | JSX.Element
+    | ((anchorProps: {
+        open: boolean;
+        ref: React.MutableRefObject<HTMLButtonElement | null>;
+        disabled: boolean;
+        onMouseDown: () => void;
+        onClick: () => void;
+      }) => JSX.Element);
   children: DropdownPaneOptions | DropdownRenderProps;
   open?: boolean;
 };
@@ -79,16 +93,26 @@ export const Dropdown: React.FC<DropdownProps> = ({
   };
 
   return (
-    <Box {...rest}>
-      {typeof label === "string" ? (
-        <Button {...anchorProps} width="100%" type="button">
-          {label}
+    <Container {...rest}>
+      {(() => {
+        switch (typeof label) {
+          case "string":
+            return (
+              <Button {...anchorProps} width="100%" type="button">
+                {label}
 
-          <Caret ml={3} direction={mode === Mode.Active ? "up" : "down"} />
-        </Button>
-      ) : (
-        React.cloneElement(label, anchorProps)
-      )}
+                <Caret
+                  ml={3}
+                  direction={mode === Mode.Active ? "up" : "down"}
+                />
+              </Button>
+            );
+          case "function":
+            return label({ ...anchorProps, open: mode === Mode.Active });
+          default:
+            return React.cloneElement(label, anchorProps);
+        }
+      })()}
 
       {open && (
         <Pane ref={childrenRef} zIndex={1} onEnter={handleClose}>
@@ -97,7 +121,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             : children}
         </Pane>
       )}
-    </Box>
+    </Container>
   );
 };
 

@@ -93,7 +93,17 @@ export const NestedFragments = () => (
 
 export const CustomLabel = () => {
   return (
-    <States<Partial<DropdownProps>>>
+    <States<Partial<DropdownProps>>
+      states={[
+        {},
+        {
+          // eslint-disable-next-line react/display-name
+          label: ({ open, ...rest }) => (
+            <Button {...rest}>open: {open ? "yes" : "no"}</Button>
+          ),
+        },
+      ]}
+    >
       <Dropdown
         label={
           <Button px={0} py={0} borderRadius="50%" width={40} height={40}>
