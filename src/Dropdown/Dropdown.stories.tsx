@@ -5,6 +5,7 @@ import { PaneOption } from "../Pane";
 import { Stack } from "../Stack";
 import { Button } from "../Button";
 import { Caret } from "../Caret";
+import { Ellipsis } from "../Ellipsis";
 import { Dropdown, DropdownProps } from "./Dropdown";
 
 export default { title: "Dropdown", component: Dropdown };
@@ -89,3 +90,29 @@ export const NestedFragments = () => (
     </Dropdown>
   </States>
 );
+
+export const CustomLabel = () => {
+  return (
+    <States<Partial<DropdownProps>>>
+      <Dropdown
+        label={
+          <Button px={0} py={0} borderRadius="50%" width={40} height={40}>
+            <Ellipsis />
+          </Button>
+        }
+      >
+        <PaneOption as="a" href="#markov">
+          a markov blanket
+        </PaneOption>
+
+        <>
+          <PaneOption as="a" href="#insulation">
+            scattered insulation
+          </PaneOption>
+
+          <PaneOption onClick={action("onClick")}>a speech act</PaneOption>
+        </>
+      </Dropdown>
+    </States>
+  );
+};

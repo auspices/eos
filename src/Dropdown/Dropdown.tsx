@@ -71,20 +71,24 @@ export const Dropdown: React.FC<DropdownProps> = ({
     onClose: handleClose,
   });
 
+  const anchorProps = {
+    ref: anchorRef,
+    disabled: mode === Mode.Active,
+    onMouseDown: handleOpen,
+    onClick: handleOpen,
+  };
+
   return (
     <Box {...rest}>
-      <Button
-        ref={anchorRef}
-        disabled={mode === Mode.Active}
-        onMouseDown={handleOpen}
-        onClick={handleOpen}
-        width="100%"
-        type="button"
-      >
-        {label}
+      {typeof label === "string" ? (
+        <Button {...anchorProps} width="100%" type="button">
+          {label}
 
-        <Caret ml={3} direction={mode === Mode.Active ? "up" : "down"} />
-      </Button>
+          <Caret ml={3} direction={mode === Mode.Active ? "up" : "down"} />
+        </Button>
+      ) : (
+        React.cloneElement(label, anchorProps)
+      )}
 
       {open && (
         <Pane ref={childrenRef} zIndex={1} onEnter={handleClose}>
