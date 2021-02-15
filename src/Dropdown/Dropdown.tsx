@@ -3,7 +3,7 @@ import { Box, BoxProps } from "../Box";
 import { Button } from "../Button";
 import { usePopper } from "../Popper";
 import { Caret } from "../Caret";
-import { Pane, PaneOptionProps } from "../Pane";
+import { Pane } from "../Pane";
 import styled from "styled-components";
 
 const Container = styled(Box)`
@@ -15,9 +15,7 @@ enum Mode {
   Active,
 }
 
-export type DropdownPaneOptions =
-  | React.ReactElement<PaneOptionProps>
-  | React.ReactElement<PaneOptionProps>[];
+export type DropdownPaneOptions = React.ReactNode;
 
 export type DropdownRenderProps = ({
   handleClose,
