@@ -15,6 +15,7 @@ export const Default = () => (
       <PaneOption onClick={action("onClick")}>is invisible</PaneOption>
       <PaneOption onClick={action("onClick")}>and insidious</PaneOption>
       <Divider />
+      {false && <div>false example</div>}
       <PaneOption onClick={action("onClick")}>gathering strength</PaneOption>
       <PaneOption onClick={action("onClick")}>from the bonds</PaneOption>
       <PaneOption onClick={action("onClick")}>of human connection</PaneOption>

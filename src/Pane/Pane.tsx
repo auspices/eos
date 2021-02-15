@@ -10,7 +10,7 @@ import { Flyout } from "../Flyout";
 
 export type PaneProps = StackProps &
   React.HTMLAttributes<HTMLDivElement> & {
-    children: JSX.Element | JSX.Element[];
+    children: React.ReactNode;
     onEnter?(): void;
   };
 
