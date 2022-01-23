@@ -1,5 +1,6 @@
 import React from "react";
 import { States } from "storybook-states";
+import { Box } from "../Box";
 import { ResponsiveImage, ResponsiveImageProps } from "./ResponsiveImage";
 
 export default { title: "ResponsiveImage", component: ResponsiveImage };
@@ -17,6 +18,22 @@ export const Default = () => (
       { srcs: [], indicator: true },
       { srcs: [], placeholder: THUMB_SRC },
       { srcs: [], placeholder: THUMB_SRC, indicator: true },
+      {
+        placeholder: THUMB_SRC,
+        indicator: true,
+        children: (
+          <Box
+            position="absolute"
+            top={4}
+            right={4}
+            width={10}
+            height={10}
+            bg="accent"
+            borderRadius="50%"
+            zIndex={1}
+          />
+        ),
+      },
     ]}
   >
     <ResponsiveImage

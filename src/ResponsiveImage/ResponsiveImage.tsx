@@ -8,11 +8,12 @@ const Container = styled(AspectRatioBox)`
   overflow: hidden;
 `;
 
-const Loading = styled(Spinner).attrs({ color: "secondary", size: 16 })`
+const Loading = styled(Spinner).attrs({ color: "primary", size: 16 })`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
 `;
 
 const Placeholder = styled.div`
@@ -41,6 +42,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   backgroundColor,
   indicator,
   placeholder,
+  children,
   ...rest
 }) => {
   const [completed, setCompleted] = useState(false);
@@ -48,6 +50,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
 
   return (
     <Container
+      position="relative"
       aspectWidth={aspectWidth}
       aspectHeight={aspectHeight}
       maxWidth={maxWidth}
@@ -68,6 +71,8 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       )}
 
       {!completed && indicator && <Loading />}
+
+      {children}
     </Container>
   );
 };
