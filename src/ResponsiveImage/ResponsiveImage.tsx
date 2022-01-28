@@ -3,12 +3,13 @@ import styled from "styled-components";
 import { Image, ImageProps } from "../Image";
 import { AspectRatioBox, AspectRatioBoxProps } from "../AspectRatioBox";
 import { Spinner } from "../Spinner";
+import { useThemer } from "../Themer";
 
 const Container = styled(AspectRatioBox)`
   overflow: hidden;
 `;
 
-const Loading = styled(Spinner).attrs({ color: "primary", size: 16 })`
+const Loading = styled(Spinner).attrs({ size: 16 })`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,6 +49,8 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   const [completed, setCompleted] = useState(false);
   const handleComplete = useCallback(() => setCompleted(true), []);
 
+  const { scheme } = useThemer();
+
   return (
     <Container
       position="relative"
@@ -70,7 +73,9 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
         <Placeholder style={{ backgroundImage: `url(${placeholder})` }} />
       )}
 
-      {!completed && indicator && <Loading />}
+      {!completed && indicator && (
+        <Loading color={scheme === "light" ? "background" : "primary"} />
+      )}
 
       {children}
     </Container>
