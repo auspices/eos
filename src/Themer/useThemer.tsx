@@ -8,8 +8,10 @@ import React, {
 } from "react";
 import { THEME, SCHEMES, Theme, Scheme } from "../theme";
 
+const isServerSide = typeof window === "undefined";
+
 const PREFERS_DARK =
-  typeof window !== "undefined" &&
+  !isServerSide &&
   window.matchMedia &&
   window.matchMedia("(prefers-color-scheme: dark)").matches;
 const KEY = "auspices.eos.scheme";
@@ -22,10 +24,12 @@ type Backend = {
 
 const DEFAULT_BACKEND: Backend = {
   get: () => {
+    if (isServerSide) return null;
     const saved = localStorage.getItem(KEY);
     return isScheme(saved) ? saved : null;
   },
   set: (scheme: Scheme) => {
+    if (isServerSide) return;
     localStorage.setItem(KEY, scheme);
   },
 };
@@ -58,9 +62,10 @@ export const ThemerProvider: React.FC<{
 }) => {
   const [scheme, setScheme] = useState<Scheme>(backend.get() ?? initialScheme);
 
-  const theme = useMemo(() => ({ ...THEME, scheme, colors: SCHEMES[scheme] }), [
-    scheme,
-  ]);
+  const theme = useMemo(
+    () => ({ ...THEME, scheme, colors: SCHEMES[scheme] }),
+    [scheme]
+  );
 
   const toggleScheme = useCallback(
     () => setScheme((prevScheme) => (prevScheme === "dark" ? "light" : "dark")),
