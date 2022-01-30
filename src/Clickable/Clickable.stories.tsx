@@ -6,7 +6,13 @@ import { Clickable, ClickableProps } from "./Clickable";
 export default { title: "Clickable", component: Clickable };
 
 export const Default = () => (
-  <States<ClickableProps> states={[{ onClick: action("onClick") }]}>
+  <States<ClickableProps>
+    states={[
+      { onClick: action("onClick") },
+      { cursor: "pointer" },
+      { textDecoration: "underline" },
+    ]}
+  >
     <Clickable>Click</Clickable>
   </States>
 );

@@ -1,15 +1,22 @@
 import styled from "styled-components";
+import { compose, ResponsiveValue, system } from "styled-system";
 import { boxMixin, BoxProps } from "../Box";
 
+const cursor = system({ cursor: true });
+const textDecoration = system({ textDecoration: true });
+
 export type ClickableProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  BoxProps;
+  BoxProps & {
+    cursor?: ResponsiveValue<string>;
+    textDecoration?: ResponsiveValue<string>;
+  };
 
 export const Clickable = styled.button<ClickableProps>`
   appearance: none;
   padding: 0;
   border: 0;
   background-color: transparent;
-  ${boxMixin}
+  ${compose(boxMixin, cursor, textDecoration)}
 `;
 
 Clickable.defaultProps = {
