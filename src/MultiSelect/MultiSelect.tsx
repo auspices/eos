@@ -4,6 +4,7 @@ const INITIAL_VALUE = {
   selection: [],
   select: () => {},
   deselect: () => {},
+  isWrapped: false,
 };
 
 export type MultiSelectPayload = Record<string, unknown>;
@@ -13,6 +14,7 @@ export const MultiSelectContext = createContext<{
   selection: MultiSelectItem[];
   select(id: string, payload?: MultiSelectPayload): void;
   deselect(id: string, payload?: MultiSelectPayload): void;
+  isWrapped: boolean;
 }>(INITIAL_VALUE);
 
 export type MultiSelectProps = {
@@ -47,7 +49,9 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   };
 
   return (
-    <MultiSelectContext.Provider value={{ selection, select, deselect }}>
+    <MultiSelectContext.Provider
+      value={{ selection, select, deselect, isWrapped: true }}
+    >
       {children}
     </MultiSelectContext.Provider>
   );

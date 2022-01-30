@@ -16,6 +16,26 @@ const LOREM =
 
 export default { title: "File", component: File };
 
+export const Default = () => (
+  <States<Partial<FileProps>> states={[{}, { selected: true }]}>
+    <File
+      width={225}
+      name="in-an-age-of-affordable-beauty.jpg"
+      meta="225×125"
+      onClick={action("onClick")}
+      cursor="pointer"
+    >
+      <Image
+        srcs={[SMALL_SRC, MEDIUM_SRC]}
+        width={225}
+        height={125}
+        bg="hint"
+        borderRadius={2}
+      />
+    </File>
+  </States>
+);
+
 export const Images = () => (
   <MultiSelect>
     <States<Partial<FileProps>> states={[{}, { selected: true }]}>

@@ -16,9 +16,12 @@ export const useMultiSelect = ({
 
   const ref = useRef<HTMLButtonElement | null>(null);
 
-  const { selection, select: __select__, deselect: __deselect__ } = useContext(
-    MultiSelectContext
-  );
+  const {
+    selection,
+    select: __select__,
+    deselect: __deselect__,
+    isWrapped,
+  } = useContext(MultiSelectContext);
 
   // Handle default selections
   useEffect(() => {
@@ -66,12 +69,13 @@ export const useMultiSelect = ({
   });
 
   return {
-    ref,
-    id: id.current,
-    selection,
-    selected,
-    select,
     deselect,
+    id: id.current,
+    isWrapped,
     onMouseDown,
+    ref,
+    select,
+    selected,
+    selection,
   };
 };

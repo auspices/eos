@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AspectRatioBox } from "../AspectRatioBox";
 import { Box } from "../Box";
@@ -13,8 +13,6 @@ export type FileProps = ClickableProps & {
 };
 
 const Container = styled(Clickable)`
-  cursor: default;
-
   &:focus {
     outline: 0;
   }
@@ -33,10 +31,13 @@ export const File: React.FC<FileProps> = ({
   onMouseDown,
   ...rest
 }) => {
+  const [mode, setMode] = useState<"Default" | "Focused">("Default");
+
   const {
+    isWrapped,
+    onMouseDown: multiSelectOnMouseDown,
     ref,
     selected,
-    onMouseDown: multiSelectOnMouseDown,
   } = useMultiSelect({ defaultSelected, payload });
 
   const handleMouseDown = (
@@ -46,18 +47,30 @@ export const File: React.FC<FileProps> = ({
     multiSelectOnMouseDown(event);
   };
 
+  const handleFocus = () => {
+    setMode("Focused");
+  };
+
+  const handleBlur = () => {
+    setMode("Default");
+  };
+
+  const highlighted = isWrapped ? selected : mode === "Focused";
+
   return (
     <Container
       ref={ref}
       onMouseDown={handleMouseDown}
       display="inline-block"
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       {...rest}
     >
       <Box m={1}>
         <AspectRatioBox aspectWidth={1} aspectHeight={1} maxWidth="100%">
           <Box
             p={2}
-            bg={selected ? "hint" : "transparent"}
+            bg={highlighted ? "hint" : "transparent"}
             borderRadius={4}
             display="flex"
             alignItems="center"
@@ -78,7 +91,7 @@ export const File: React.FC<FileProps> = ({
             borderRadius={4}
             px={2}
             py={1}
-            bg={selected ? "hint" : "transparent"}
+            bg={highlighted ? "hint" : "transparent"}
           >
             {name}
           </Label>
