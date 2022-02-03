@@ -82,16 +82,20 @@ export const Image: React.ForwardRefExoticComponent<
       return <Placeholder {...rest} />;
     }
 
-    const [src1x, src2x] = srcs;
+    const [src1x, ...remainingSrcs] = srcs;
+
+    console.log(remainingSrcs);
 
     return (
       <Img
         ref={composeRefs(ref, forwardedRef)}
         mode={mode}
         src={src1x}
-        {...(src2x
+        {...(remainingSrcs
           ? {
-              srcSet: `${src1x} 1x, ${src2x} 2x`,
+              srcSet: `${src1x} 1x, ${remainingSrcs
+                .map((src, i) => `${src} ${i + 2}x`)
+                .join(", ")}`,
             }
           : {})}
         onError={handleError}

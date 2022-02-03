@@ -5,21 +5,21 @@ import { ResponsiveImage, ResponsiveImageProps } from "./ResponsiveImage";
 
 export default { title: "ResponsiveImage", component: ResponsiveImage };
 
-const THUMB_SRC =
-  "https://cancer.auspic.es/5dac0ae4b213a1353ac1a4539d5804725af1975d/resize/500x276/95/https%3A%2F%2Fatlas-production.s3.amazonaws.com%2F1%2FGjuXydZpQOOhvIBR.jpg";
-const MEDIUM_SRC =
-  "https://cancer.auspic.es/9cb5859cfe557b057045786f32c3323130522841/resize/900x498/95/https%3A%2F%2Fatlas-production.s3.amazonaws.com%2F1%2FGjuXydZpQOOhvIBR.jpg";
+const _1x =
+  "https://dynamic.atlas.auspic.es/eyJidWNrZXQiOiJhdGxhcy1wcm9kdWN0aW9uIiwia2V5IjoiMS83OVFOY3ZJeGVMMTE4SzVxLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIyNSwiaGVpZ2h0IjoxMjQsImZpdCI6Imluc2lkZSJ9LCJ3ZWJwIjp7InF1YWxpdHkiOjc1fSwianBlZyI6eyJxdWFsaXR5Ijo3NX0sInJvdGF0ZSI6bnVsbH19";
+const _2x =
+  "https://dynamic.atlas.auspic.es/eyJidWNrZXQiOiJhdGxhcy1wcm9kdWN0aW9uIiwia2V5IjoiMS83OVFOY3ZJeGVMMTE4SzVxLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQ1MCwiaGVpZ2h0IjoyNDgsImZpdCI6Imluc2lkZSJ9LCJ3ZWJwIjp7InF1YWxpdHkiOjc1fSwianBlZyI6eyJxdWFsaXR5Ijo3NX0sInJvdGF0ZSI6bnVsbH19";
 
 export const Default = () => (
   <States<Partial<ResponsiveImageProps>>
     states={[
-      { placeholder: THUMB_SRC, indicator: true },
+      { placeholder: _1x, indicator: true },
       { srcs: [] },
       { srcs: [], indicator: true },
-      { srcs: [], placeholder: THUMB_SRC },
-      { srcs: [], placeholder: THUMB_SRC, indicator: true },
+      { srcs: [], placeholder: _1x },
+      { srcs: [], placeholder: _1x, indicator: true },
       {
-        placeholder: THUMB_SRC,
+        placeholder: _1x,
         indicator: true,
         children: (
           <Box
@@ -37,7 +37,7 @@ export const Default = () => (
     ]}
   >
     <ResponsiveImage
-      srcs={[MEDIUM_SRC]}
+      srcs={[_1x, _2x]}
       aspectWidth={225}
       aspectHeight={125}
       maxWidth={400}

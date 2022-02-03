@@ -6,10 +6,10 @@ import { Image } from "../Image";
 import { Box } from "../Box";
 import { MultiSelect } from "../MultiSelect";
 
-const SMALL_SRC =
-  "https://cancer.auspic.es/18ce4ecf818a90ce885477395b1b41b4ed2e892a/resize/200x110/95/https%3A%2F%2Fatlas-production.s3.amazonaws.com%2F1%2FGjuXydZpQOOhvIBR.jpg";
-const MEDIUM_SRC =
-  "https://cancer.auspic.es/9cb5859cfe557b057045786f32c3323130522841/resize/900x498/95/https%3A%2F%2Fatlas-production.s3.amazonaws.com%2F1%2FGjuXydZpQOOhvIBR.jpg";
+const _1x =
+  "https://dynamic.atlas.auspic.es/eyJidWNrZXQiOiJhdGxhcy1wcm9kdWN0aW9uIiwia2V5IjoiMS83OVFOY3ZJeGVMMTE4SzVxLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIyNSwiaGVpZ2h0IjoxMjQsImZpdCI6Imluc2lkZSJ9LCJ3ZWJwIjp7InF1YWxpdHkiOjc1fSwianBlZyI6eyJxdWFsaXR5Ijo3NX0sInJvdGF0ZSI6bnVsbH19";
+const _2x =
+  "https://dynamic.atlas.auspic.es/eyJidWNrZXQiOiJhdGxhcy1wcm9kdWN0aW9uIiwia2V5IjoiMS83OVFOY3ZJeGVMMTE4SzVxLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQ1MCwiaGVpZ2h0IjoyNDgsImZpdCI6Imluc2lkZSJ9LCJ3ZWJwIjp7InF1YWxpdHkiOjc1fSwianBlZyI6eyJxdWFsaXR5Ijo3NX0sInJvdGF0ZSI6bnVsbH19";
 
 const LOREM =
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, tenetur ipsum voluptatibus doloremque quisquam odit eveniet quas. Minima, officiis corporis, explicabo maxime hic dolorem exercitationem odio deserunt repellendus sed ut.";
@@ -26,7 +26,7 @@ export const Default = () => (
       cursor="pointer"
     >
       <Image
-        srcs={[SMALL_SRC, MEDIUM_SRC]}
+        srcs={[_1x, _2x]}
         width={225}
         height={125}
         bg="hint"
@@ -47,7 +47,7 @@ export const Images = () => (
         onDoubleClick={action("onDoubleClick")}
       >
         <Image
-          srcs={[SMALL_SRC, MEDIUM_SRC]}
+          srcs={[_1x, _2x]}
           width={225}
           height={125}
           bg="hint"
