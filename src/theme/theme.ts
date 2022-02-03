@@ -74,6 +74,8 @@ export const FONT_SCALE = [
   "0.875rem", // 1 = 14px
   "1rem", // 2 = 16px (base)
   "1.125rem", // 3 = 18px
+  "1.5rem", // 4 = 24px
+  "2rem", // 5 = 32px
 ] as const;
 
 export const ROOT_FONT_SIZE = "16px";
@@ -82,8 +84,7 @@ export const FONT_SCALE_UNIT = "rem";
 
 export const THEME = {
   fonts: {
-    body:
-      'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    body: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     mono: `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
   },
   scheme: "light",

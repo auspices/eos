@@ -28,10 +28,39 @@ export const Styles = styled(Box)`
     }
   }
 
+  h1 {
+    font-size: ${themeGet("fontSizes.5")};
+  }
+
+  h2 {
+    font-size: ${themeGet("fontSizes.4")};
+  }
+
+  h3 {
+    font-size: ${themeGet("fontSizes.3")};
+  }
+
   hr {
     height: 1px;
     border: 0;
     background-color: ${themeGet("colors.primary")};
+  }
+
+  pre,
+  code {
+    font-family: ${themeGet("fonts.mono")};
+    font-size: ${themeGet("fontSizes.1")};
+  }
+
+  pre {
+    border: 1px solid ${themeGet("colors.hint")};
+    padding: ${themeGet("space.3")} ${themeGet("space.4")};
+    overflow-x: auto;
+  }
+
+  blockquote {
+    border-left: 2px solid ${themeGet("colors.hint")};
+    padding-left: ${themeGet("space.4")};
   }
 `;
 

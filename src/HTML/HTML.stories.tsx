@@ -27,7 +27,7 @@ export const Default = () => (
           </ul>
           <hr />
           <pre><code>this is a code block</code></pre>
-          <blockquote>This is a block quote</blockquote>
+          <blockquote>Here is a time-table of my daily acts. I rise at 7.18; am inspired from 10.23 to 11.47. I lunch at 12.11 and leave the table at 12.14. A healthy ride on horse-back round my domain follows from 1.19 pm to 2.53 pm. Another bout of inspiration from 3.12 to 4.7 pm. From 5 to 6.47 pm various occupations (fencing, reflection, immobility, visits, contemplation, dexterity, natation, etc.)</blockquote>
         `,
       },
       {
