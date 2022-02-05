@@ -59,10 +59,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
     onClose();
   }, [onClose]);
 
-  const handleOpen = useCallback(() => {
-    setMode(Mode.Active);
-    onOpen();
-  }, [onOpen]);
+  const handleOpen = useCallback(
+    (event: React.MouseEvent | null) => {
+      event?.preventDefault();
+      event?.stopPropagation();
+
+      setMode(Mode.Active);
+      onOpen();
+    },
+    [onOpen]
+  );
 
   const handleKeydown = useCallback(
     ({ key }: KeyboardEvent) => {
