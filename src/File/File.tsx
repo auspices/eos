@@ -6,8 +6,8 @@ import { Clickable, ClickableProps } from "../Clickable";
 import { useMultiSelect } from "../MultiSelect";
 
 export type FileProps = ClickableProps & {
-  name: string;
-  meta?: string;
+  name?: string | null;
+  meta?: string | null;
   selected?: boolean;
   payload?: Record<string, unknown>;
 };
@@ -85,16 +85,18 @@ export const File: React.FC<FileProps> = ({
         </AspectRatioBox>
 
         <Box maxWidth="80%" mt={1} mx="auto" lineHeight={0} textAlign="center">
-          <Label
-            as="span"
-            fontSize={0}
-            borderRadius={4}
-            px={2}
-            py={1}
-            bg={highlighted ? "hint" : "transparent"}
-          >
-            {name}
-          </Label>
+          {name && (
+            <Label
+              as="span"
+              fontSize={0}
+              borderRadius={4}
+              px={2}
+              py={1}
+              bg={highlighted ? "hint" : "transparent"}
+            >
+              {name}
+            </Label>
+          )}
 
           {meta && (
             <Box mt={2} fontSize={0} color="secondary">

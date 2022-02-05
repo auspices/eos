@@ -17,7 +17,7 @@ const LOREM =
 export default { title: "File", component: File };
 
 export const Default = () => (
-  <States<Partial<FileProps>> states={[{}, { selected: true }]}>
+  <States<Partial<FileProps>> states={[{}, { selected: true }, { name: null }]}>
     <File
       width={225}
       name="in-an-age-of-affordable-beauty.jpg"
