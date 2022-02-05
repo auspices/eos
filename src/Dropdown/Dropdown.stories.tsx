@@ -97,7 +97,6 @@ export const CustomLabel = () => {
       states={[
         {},
         {
-          // eslint-disable-next-line react/display-name
           label: ({ open, ...rest }) => (
             <Button {...rest}>open: {open ? "yes" : "no"}</Button>
           ),

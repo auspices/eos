@@ -35,8 +35,8 @@ export type DropdownProps = BoxProps & {
         open: boolean;
         ref: React.MutableRefObject<HTMLButtonElement | null>;
         disabled: boolean;
-        onMouseDown: () => void;
-        onClick: () => void;
+        onMouseDown: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+        onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
       }) => JSX.Element);
   children: DropdownPaneOptions | DropdownRenderProps;
   open?: boolean;
@@ -60,9 +60,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
   }, [onClose]);
 
   const handleOpen = useCallback(
-    (event: React.MouseEvent | null) => {
-      event?.preventDefault();
-      event?.stopPropagation();
+    (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+      event.preventDefault();
+      event.stopPropagation();
 
       setMode(Mode.Active);
       onOpen();
