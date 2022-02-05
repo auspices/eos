@@ -84,8 +84,6 @@ export const Image: React.ForwardRefExoticComponent<
 
     const [src1x, ...remainingSrcs] = srcs;
 
-    console.log(remainingSrcs);
-
     return (
       <Img
         ref={composeRefs(ref, forwardedRef)}
