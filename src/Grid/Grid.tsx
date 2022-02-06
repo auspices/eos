@@ -15,7 +15,7 @@ const Container = styled(Box)<GridProps>`
 
   ${({ cellSize, cellGap, ...rest }) => css`
     grid-template-columns: repeat(
-      auto-fit,
+      auto-fill,
       minmax(${themeGet(`space.${cellSize}`, cellSize)(rest)}, 1fr)
     );
     grid-column-gap: ${themeGet(`space.${cellGap}`, cellGap)(rest)};

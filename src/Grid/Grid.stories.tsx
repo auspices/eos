@@ -114,3 +114,23 @@ export const Debug = () => (
     </Grid>
   </States>
 );
+
+export const SparseItems = () => (
+  <States states={[{ amount: 1 }, { amount: 2 }, { amount: 3 }]}>
+    {({ amount }) => {
+      return (
+        <Grid>
+          {Array.from({ length: amount }, (_, i) => (
+            <AspectRatioBox
+              key={i}
+              aspectWidth={1}
+              aspectHeight={1}
+              maxWidth="100%"
+              bg="tertiary"
+            />
+          ))}
+        </Grid>
+      );
+    }}
+  </States>
+);
