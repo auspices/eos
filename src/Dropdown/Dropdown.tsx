@@ -5,6 +5,7 @@ import { usePopper } from "../Popper";
 import { Caret } from "../Caret";
 import { Pane } from "../Pane";
 import styled from "styled-components";
+import { Placement } from "@popperjs/core";
 
 const Container = styled(Box)`
   user-select: none;
@@ -40,6 +41,7 @@ export type DropdownProps = BoxProps & {
       }) => JSX.Element);
   children: DropdownPaneOptions | DropdownRenderProps;
   open?: boolean;
+  placement?: Placement;
   onOpen?(): void;
   onClose?(): void;
 };
@@ -48,6 +50,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   label,
   children,
   open: defaultOpen = false,
+  placement = "bottom",
   onOpen = () => {},
   onClose = () => {},
   ...rest
@@ -90,7 +93,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const { anchorRef, childrenRef, open } = usePopper({
     open: mode === Mode.Active,
-    placement: "bottom",
+    placement,
     type: "mousedown",
     onClose: handleClose,
   });

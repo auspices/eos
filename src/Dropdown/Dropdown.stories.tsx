@@ -21,6 +21,7 @@ export const Default = () => (
           <PaneOption onClick={handleClose}>alone</PaneOption>
         ),
       },
+      { placement: "top-end" },
     ]}
   >
     <Dropdown label="the past">
