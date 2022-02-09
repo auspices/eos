@@ -55,6 +55,7 @@ export const buttonMixin = css<ButtonProps>`
   transition: ${CELL.transition}, color 200ms ease;
   min-width: 0;
   user-select: none;
+  font-weight: normal;
 
   ${({ hover }) => hover && buttonHoverMixin}
   &:hover {
