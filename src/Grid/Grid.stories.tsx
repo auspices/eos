@@ -99,10 +99,11 @@ export const Debug = () => (
       { cellSize: 7, cellGap: 2 },
       { cellSize: "50px", cellGap: "5px" },
       { cellSize: 9, cellGap: 4 },
+      { cellSize: ["100px", "200px", "300px"], bg: ["red", "green", "blue"] },
     ]}
   >
     <Grid>
-      {Array.from({ length: 30 }, (_, i) => (
+      {Array.from({ length: 5 }, (_, i) => (
         <AspectRatioBox
           key={i}
           aspectWidth={1}

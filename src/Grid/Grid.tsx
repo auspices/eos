@@ -1,26 +1,59 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { grid, GridProps as SystemGridProps } from "styled-system";
+import {
+  grid,
+  GridProps as SystemGridProps,
+  ResponsiveValue,
+} from "styled-system";
 import { themeGet } from "@styled-system/theme-get";
 import { Box, BoxProps } from "../Box";
 
 export type GridProps = SystemGridProps &
   BoxProps & {
-    cellSize?: number | string;
+    cellSize?: ResponsiveValue<number | string>;
     cellGap?: number | string;
   };
 
 const Container = styled(Box)<GridProps>`
   display: grid;
 
-  ${({ cellSize, cellGap, ...rest }) => css`
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(${themeGet(`space.${cellSize}`, cellSize)(rest)}, 1fr)
-    );
-    grid-column-gap: ${themeGet(`space.${cellGap}`, cellGap)(rest)};
-    grid-row-gap: ${themeGet(`space.${cellGap}`, cellGap)(rest)};
-  `}
+  ${({ cellSize, cellGap, ...rest }) => {
+    if (Array.isArray(cellSize)) {
+      return css`
+        grid-column-gap: ${themeGet(`space.${cellGap}`, cellGap)(rest)};
+        grid-row-gap: ${themeGet(`space.${cellGap}`, cellGap)(rest)};
+
+        ${cellSize.map((cs, i) => {
+          if (i === 0) {
+            return css`
+              grid-template-columns: repeat(
+                auto-fill,
+                minmax(${themeGet(`space.${cs}`, cs)(rest)}, 1fr)
+              );
+            `;
+          }
+
+          return css`
+            @media (min-width: ${(props) => props.theme.breakpoints[i - 1]}) {
+              grid-template-columns: repeat(
+                auto-fill,
+                minmax(${themeGet(`space.${cs}`, cs)(rest)}, 1fr)
+              );
+            }
+          `;
+        })}
+      `;
+    }
+
+    return css`
+      grid-column-gap: ${themeGet(`space.${cellGap}`, cellGap)(rest)};
+      grid-row-gap: ${themeGet(`space.${cellGap}`, cellGap)(rest)};
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(${themeGet(`space.${cellSize}`, cellSize)(rest)}, 1fr)
+      );
+    `;
+  }}
 
   ${grid}
 `;
