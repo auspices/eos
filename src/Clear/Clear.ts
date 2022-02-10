@@ -37,6 +37,7 @@ export const Clear = styled(Remove)`
     width: ${themeGet("space.4")};
     height: 1px;
     background-color: ${themeGet("colors.secondary")};
+    transition: none;
   }
 
   ${({ hover }) => hover && clearHoverMixin}
