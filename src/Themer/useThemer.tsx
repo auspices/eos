@@ -10,12 +10,16 @@ import { THEME, SCHEMES, Theme, Scheme } from "../theme";
 
 const isServerSide = typeof window === "undefined";
 
-const PREFERS_DARK =
-  !isServerSide &&
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches;
+export const prefersDark = () => {
+  return (
+    !isServerSide &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
+};
+
 const KEY = "auspices.eos.scheme";
-const DEFAULT_SCHEME: Scheme = PREFERS_DARK ? "dark" : "light";
+const DEFAULT_SCHEME: Scheme = "light";
 
 type Backend = {
   get(): Scheme | null;
