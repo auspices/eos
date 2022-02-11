@@ -82,6 +82,13 @@ export const ROOT_FONT_SIZE = "16px";
 export const BASE_FONT_SIZE = FONT_SCALE[2];
 export const FONT_SCALE_UNIT = "rem";
 
+export const BREAKPOINTS_SCALE = [
+  "30em", // below 480px
+  "48em", // below 768px
+  "62em", // below 992px
+  "80em", // below 1200px
+];
+
 export const THEME = {
   fonts: {
     body: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
@@ -93,7 +100,7 @@ export const THEME = {
   rootFontSize: ROOT_FONT_SIZE,
   lineHeights: [1, 1.25, 1.33, 1.75],
   space: SPACE_SCALE,
-  breakpoints: ["24rem", "50rem", "64rem"],
+  breakpoints: BREAKPOINTS_SCALE,
 };
 
 export type Theme = typeof THEME;

@@ -3,6 +3,7 @@ import { States } from "storybook-states";
 import { Box } from "../Box";
 import { Stack } from "../Stack";
 import { THEME, SCHEMES, FONT_SCALE, SPACE_SCALE, Scheme } from "../theme";
+import { BREAKPOINTS_SCALE } from "./theme";
 
 export default { title: "Theme" };
 
@@ -84,14 +85,60 @@ export const Spacing = () => (
   <States>
     <Stack spacing={3}>
       {SPACE_SCALE.map((size, i) => (
-        <React.Fragment key={i}>
+        <Box key={i}>
           <Box fontSize={0}>
             space: {i} = {size}
           </Box>
 
           <Box height={size} minWidth={size} bg="hint" />
-        </React.Fragment>
+        </Box>
       ))}
     </Stack>
   </States>
 );
+
+export const Breakpoints = () => {
+  return (
+    <Box position="fixed" top={0} left={0} width="100%" height="100%" py={6}>
+      <Box mx={6}>
+        <Box fontSize={0} display={["block", "none", "none", "none", "none"]}>
+          {BREAKPOINTS_SCALE[0]}
+        </Box>
+
+        <Box fontSize={0} display={["none", "block", "none", "none", "none"]}>
+          {BREAKPOINTS_SCALE[1]}
+        </Box>
+
+        <Box fontSize={0} display={["none", "none", "block", "none", "none"]}>
+          {BREAKPOINTS_SCALE[2]}
+        </Box>
+
+        <Box fontSize={0} display={["none", "none", "none", "block", "none"]}>
+          {BREAKPOINTS_SCALE[3]}
+        </Box>
+
+        <Box fontSize={0} display={["none", "none", "none", "none", "block"]}>
+          Above {BREAKPOINTS_SCALE[3]}
+        </Box>
+      </Box>
+
+      <Box
+        my={6}
+        height={2}
+        bg={["red", "orange", "yellow", "green", "blue"]}
+      />
+
+      <Stack spacing={6}>
+        {BREAKPOINTS_SCALE.map((size, i) => (
+          <Box key={i}>
+            <Box mx={6} fontSize={0}>
+              breakpoint: {i} = {size}
+            </Box>
+
+            <Box height={2} width={size} bg="hint" />
+          </Box>
+        ))}
+      </Stack>
+    </Box>
+  );
+};
