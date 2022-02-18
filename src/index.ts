@@ -9,6 +9,7 @@ export * from "./Clear";
 export * from "./ClearableInput";
 export * from "./Clickable";
 export * from "./Confirm";
+export * from "./ContextMenu";
 export * from "./Divider";
 export * from "./Dropdown";
 export * from "./Ellipsis";
