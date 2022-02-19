@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { AspectRatioBox } from "../AspectRatioBox";
 import { Box } from "../Box";
 import { Clickable, ClickableProps } from "../Clickable";
@@ -18,8 +18,19 @@ const Container = styled(Clickable)`
   }
 `;
 
-const Label = styled(Box)`
+const hyphenate = css`
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+`;
+
+const Name = styled(Box)`
   box-decoration-break: clone;
+  ${hyphenate}
+`;
+
+const Meta = styled(Box)`
+  ${hyphenate}
 `;
 
 export const File: React.FC<FileProps> = ({
@@ -86,7 +97,7 @@ export const File: React.FC<FileProps> = ({
 
         <Box maxWidth="80%" mt={1} mx="auto" lineHeight={0} textAlign="center">
           {name && (
-            <Label
+            <Name
               as="span"
               fontSize={0}
               borderRadius={4}
@@ -95,13 +106,13 @@ export const File: React.FC<FileProps> = ({
               bg={highlighted ? "hint" : "transparent"}
             >
               {name}
-            </Label>
+            </Name>
           )}
 
           {meta && (
-            <Box mt={2} fontSize={0} color="secondary">
+            <Meta mt={2} fontSize={0} color="secondary">
               {meta}
-            </Box>
+            </Meta>
           )}
         </Box>
       </Box>
