@@ -24,7 +24,7 @@ export const Field: React.FC<FieldProps> = ({
     return (
       <Split direction={direction} {...rest}>
         <Label>{label}</Label>
-        <Input width="100%" {...input} />
+        <FieldInput width="100%" {...input} />
       </Split>
     );
   }
@@ -40,3 +40,11 @@ export const Field: React.FC<FieldProps> = ({
 };
 
 Field.displayName = "Field";
+
+const FieldInput = styled(Input)`
+  &[type="date"] {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100%;
+  }
+`;

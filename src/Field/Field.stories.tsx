@@ -13,6 +13,7 @@ export const Default = () => (
       { label: "label" },
       { label: "a slightly longer label" },
       { direction: "vertical" },
+      { label: "Date", input: { type: "date" } },
     ]}
   >
     <Field label="label" input={{ name: "value", placeholder: "value" }} />
