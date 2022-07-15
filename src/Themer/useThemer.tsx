@@ -59,6 +59,7 @@ export const ThemerProvider: React.FC<{
   key?: string;
   backend?: Backend;
   initialScheme?: Scheme;
+  children: React.ReactNode;
 }> = ({
   children,
   initialScheme = DEFAULT_SCHEME,

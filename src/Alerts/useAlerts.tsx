@@ -67,7 +67,11 @@ export const AlertsContext = createContext<{
   sendError: () => {},
 });
 
-export const AlertsProvider: React.FC = ({ children }) => {
+export type AlertsProviderProps = {
+  children: React.ReactNode;
+};
+
+export const AlertsProvider: React.FC<AlertsProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, { alerts: [] });
 
   const timeouts = useRef<number[]>([]);

@@ -5,7 +5,11 @@ import { StylesProvider } from "storybook-states";
 import { GlobalStyles } from "../../../src/GlobalStyles";
 import { useThemer, ThemerProvider } from "../../../src/Themer";
 
-const Themed: React.FC = ({ children }) => {
+type ThemedProps = {
+  children: React.ReactNode;
+}
+
+const Themed: React.FC<ThemedProps> = ({ children }) => {
   const { theme } = useThemer();
 
   return (
