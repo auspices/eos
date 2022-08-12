@@ -62,6 +62,11 @@ export const Styles = styled(Box)`
     border-left: 2px solid ${themeGet("colors.hint")};
     padding-left: ${themeGet("space.4")};
   }
+
+  a {
+    color: ${themeGet("colors.primary")};
+    text-decoration: underline;
+  }
 `;
 
 export const HTML: React.FC<HTMLProps> = (props) => {
