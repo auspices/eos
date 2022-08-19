@@ -13,7 +13,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
   color = "secondary",
   ...rest
 }) => {
-  const { colors } = useTheme() as Theme;
+  const { colors } = useTheme();
 
   return (
     <Box {...rest}>
