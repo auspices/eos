@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FC, ReactNode } from "react";
 import { Box, BoxProps } from "../Box";
-import { Clickable } from "../Clickable";
 import { Remove } from "../Remove";
 import { getContrastTIQHex, themeGet } from "../theme";
 import styled, { css } from "styled-components";
@@ -44,7 +43,7 @@ export const Banner: FC<BannerProps> = ({
       </Text>
 
       {dismissable && (
-        <Clickable
+        <Remove
           position="absolute"
           top={0}
           right={0}
@@ -53,9 +52,7 @@ export const Banner: FC<BannerProps> = ({
           display="flex"
           alignItems="center"
           onClick={handleClick}
-        >
-          <Remove />
-        </Clickable>
+        />
       )}
     </Box>
   );
