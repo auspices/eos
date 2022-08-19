@@ -7,7 +7,7 @@ import { getContrastTIQHex, themeGet } from "../theme";
 import styled, { css } from "styled-components";
 
 export type BannerProps = BoxProps & {
-  bg: string;
+  bg?: string;
   children: ReactNode;
   dismissable?: boolean;
 };
