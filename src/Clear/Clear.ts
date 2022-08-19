@@ -30,7 +30,7 @@ export const Clear = styled(Remove)`
   min-height: ${themeGet("space.6")};
   border-radius: 50%;
   background-color: ${themeGet("colors.hint")};
-  transition: background-color 200ms;
+  transition: color 250ms, background-color 250ms;
 
   &::before,
   &::after {
