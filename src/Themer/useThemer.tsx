@@ -6,6 +6,7 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
+import { useUpdateEffect } from "../hooks";
 import { THEME, SCHEMES, Theme, Scheme } from "../theme";
 
 const isServerSide = typeof window === "undefined";
@@ -81,7 +82,9 @@ export const ThemerProvider: React.FC<{
     []
   );
 
-  useEffect(() => backend.set(scheme), [backend, scheme]);
+  useUpdateEffect(() => {
+    backend.set(scheme);
+  }, [backend, scheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, scheme, setScheme, toggleScheme }}>
