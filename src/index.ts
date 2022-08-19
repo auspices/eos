@@ -1,6 +1,7 @@
 export * from "./Alert";
 export * from "./Alerts";
 export * from "./AspectRatioBox";
+export * from "./Banner";
 export * from "./Box";
 export * from "./Button";
 export * from "./Caret";

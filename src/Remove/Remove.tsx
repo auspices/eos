@@ -26,6 +26,7 @@ export const Remove = styled(Clickable)<RemoveProps>`
   min-width: ${themeGet("space.7")};
   min-height: ${themeGet("space.7")};
   cursor: pointer;
+  mix-blend-mode: difference;
 
   &::before,
   &::after {
