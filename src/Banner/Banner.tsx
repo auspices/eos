@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { FC, ReactNode } from "react";
+import React, { useState, FC, ReactNode } from "react";
 import { Box, BoxProps } from "../Box";
-import { Remove } from "../Remove";
-import { getContrastTIQHex, themeGet } from "../theme";
-import styled, { css } from "styled-components";
+import { Ex } from "../Remove";
+import { useContrastingColor } from "../hooks";
+import { Clickable } from "../Clickable";
 
-export type BannerProps = BoxProps & {
+export type BannerProps = Omit<BoxProps, "bg"> & {
   bg?: string;
   children: ReactNode;
   dismissable?: boolean;
@@ -17,6 +16,8 @@ export const Banner: FC<BannerProps> = ({
   dismissable = true,
   ...rest
 }) => {
+  const contrasting = useContrastingColor(bg);
+
   const [dismissed, setDismissed] = useState(false);
 
   const handleClick = () => {
@@ -33,17 +34,18 @@ export const Banner: FC<BannerProps> = ({
       alignItems="center"
       justifyContent="center"
       flex={1}
-      px={6}
+      px={8}
       py={4}
       bg={bg}
       {...rest}
     >
-      <Text fontSize={0} lineHeight={2} bg={bg}>
+      <Box fontSize={0} lineHeight={2} color={contrasting}>
         {children}
-      </Text>
+      </Box>
 
       {dismissable && (
-        <Remove
+        <Clickable
+          onClick={handleClick}
           position="absolute"
           top={0}
           right={0}
@@ -51,19 +53,11 @@ export const Banner: FC<BannerProps> = ({
           p={1}
           display="flex"
           alignItems="center"
-          onClick={handleClick}
-        />
+          cursor="pointer"
+        >
+          <Ex color={contrasting} />
+        </Clickable>
       )}
     </Box>
   );
 };
-
-const Text = styled(Box)<BannerProps>`
-  ${(props) => {
-    const bg = themeGet(`colors.${props.bg}`, props.bg)(props) as string;
-    const color = getContrastTIQHex(bg);
-    return css`
-      color: ${color};
-    `;
-  }}
-`;
