@@ -37,11 +37,12 @@ export const Banner: FC<BannerProps> = ({
       px={8}
       py={4}
       bg={bg}
+      fontSize={1}
+      lineHeight={2}
+      color={contrasting}
       {...rest}
     >
-      <Box fontSize={0} lineHeight={2} color={contrasting}>
-        {children}
-      </Box>
+      <Box>{children}</Box>
 
       {dismissable && (
         <Clickable
