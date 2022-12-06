@@ -1,39 +1,36 @@
 import React from "react";
 import { States } from "storybook-states";
-import { CELL, Cell, CellProps } from "./Cell";
+import { Cell, CellProps } from "./Cell";
 import { Stack } from "../Stack";
 import { Box } from "../Box";
-import { Input } from "../Input";
 
 export default { title: "Cell" };
 
-const EXAMPLES = [
-  <Box key="a" {...CELL} flex="1">
-    &lt;Box /&gt; with CELL
-  </Box>,
-  <Input key="b" {...CELL} placeholder="<Input /> with CELL" flex="1" />,
-  <Box key="c" {...CELL} as="pre" flex="1">
-    {JSON.stringify(CELL, null, 2)}
-  </Box>,
-];
-
-export const _Cell = () => (
-  <States<CellProps> states={[{ variant: "default" }, { variant: "small" }]}>
+export const Default = () => (
+  <States<CellProps>
+    states={[
+      { variant: "default" },
+      { variant: "small" },
+      { textColor: "red", borderColor: "red" },
+      { p: 0, border: 0 },
+    ]}
+  >
     <Cell>ADHD</Cell>
   </States>
 );
 
-export const Styles = () => (
-  <States>
-    <Stack spacing={3}>
-      <Stack spacing={3}>{EXAMPLES}</Stack>
-
-      <Stack spacing={3} direction="horizontal">
-        {EXAMPLES}
-      </Stack>
+export const Stacked = () => {
+  return (
+    <Stack>
+      <Cell>ADHD</Cell>
+      <Cell>ADHD-C</Cell>
+      <Cell>ADHD-HI</Cell>
+      <Cell variant="small">ADHD-I</Cell>
+      <Cell variant="small">ADHD-RS</Cell>
+      <Cell variant="small">ADHD RS-IV</Cell>
     </Stack>
-  </States>
-);
+  );
+};
 
 export const Complex = () => (
   <States>

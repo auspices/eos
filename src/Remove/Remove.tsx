@@ -33,6 +33,8 @@ export const Ex = styled(Box)`
   ${exMixin}
 `;
 
+Ex.displayName = "Ex";
+
 Ex.defaultProps = {
   position: "relative",
   display: "inline-flex",
@@ -57,6 +59,7 @@ export const Remove = styled(Clickable)<RemoveProps>`
   min-height: ${themeGet("space.7")};
   cursor: pointer;
   color: ${themeGet("colors.tertiary")};
+
   ${exMixin}
 
   ${({ hover }) => hover && removeHoverMixin}
@@ -69,6 +72,8 @@ export const Remove = styled(Clickable)<RemoveProps>`
     ${removeFocusMixin}
   }
 `;
+
+Remove.displayName = "Remove";
 
 Remove.defaultProps = {
   position: "relative",

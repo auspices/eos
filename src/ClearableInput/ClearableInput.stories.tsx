@@ -13,7 +13,12 @@ const LONG_EXAMPLE =
 
 export const Default = () => (
   <States<ClearableInputProps>
-    states={[{}, { value: "query" }, { value: LONG_EXAMPLE }]}
+    states={[
+      {},
+      { value: "query" },
+      { value: LONG_EXAMPLE },
+      { variant: "small", value: "query" },
+    ]}
   >
     <ClearableInput
       placeholder="search"
