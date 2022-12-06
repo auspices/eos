@@ -1,3 +1,4 @@
+import themeGet from "@styled-system/theme-get";
 import styled from "styled-components";
 import { compose, ResponsiveValue, system } from "styled-system";
 import { boxMixin, BoxProps } from "../Box";
@@ -16,12 +17,10 @@ export const Clickable = styled.button<ClickableProps>`
   padding: 0;
   border: 0;
   background-color: transparent;
+  font-family: ${themeGet("fonts.body")};
+  font-size: ${themeGet("fontSizes.2")};
+  line-height: ${themeGet("lineHeights.0")};
+  color: ${themeGet("colors.primary")};
+
   ${compose(boxMixin, cursor, textDecoration)}
 `;
-
-Clickable.defaultProps = {
-  fontFamily: "body",
-  fontSize: 2,
-  lineHeight: 0,
-  color: "primary",
-};

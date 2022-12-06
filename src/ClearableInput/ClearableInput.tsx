@@ -3,7 +3,6 @@ import composeRefs from "@seznam/compose-react-refs";
 import { Input, InputProps } from "../Input";
 import { Box, BoxSpatialProps } from "../Box";
 import { Clear } from "../Clear";
-import { CELL } from "../Cell";
 import { space, SPACE_SCALE_UNIT } from "../theme";
 
 const CLEARABLE_BUTTON_WITH_MARGINS = `${
@@ -36,6 +35,7 @@ export const ClearableInput = React.forwardRef(
       value = "",
       onChange,
       onClear,
+      variant,
       ...rest
     }: ClearableInputProps,
     forwardedRef: React.Ref<HTMLInputElement>
@@ -81,16 +81,16 @@ export const ClearableInput = React.forwardRef(
         <Input
           {...rest}
           ref={composeRefs(ref, forwardedRef)}
+          variant={variant}
           width="100%"
           value={controlledValue}
           onChange={handleChange}
-          px={0}
-          pl={CELL.px}
           pr={CLEARABLE_BUTTON_WITH_MARGINS}
         />
 
         {controlledValue && (
           <Clear
+            variant={variant}
             onClick={handleClick}
             position="absolute"
             top="50%"

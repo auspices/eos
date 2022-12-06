@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { variant } from "styled-system";
 import { themeGet } from "@styled-system/theme-get";
-import { Box, BoxProps } from "../Box";
+import { boxMixin, BoxProps } from "../Box";
 
 export const CELL_VARIANTS = {
   default: {
@@ -16,20 +16,6 @@ export const CELL_VARIANTS = {
   },
 };
 
-export const CELL = {
-  ...CELL_VARIANTS.default,
-  alignItems: "center",
-  backgroundColor: "background",
-  borderColor: "border",
-  borderStyle: "solid",
-  borderWidth: "1px",
-  color: "primary",
-  display: "flex",
-  fontFamily: "body",
-  lineHeight: 2,
-  transition: "box-shadow 250ms ease",
-};
-
 type CellVariant = keyof typeof CELL_VARIANTS;
 
 export type CellProps = BoxProps & {
@@ -41,14 +27,30 @@ export const cellFocusMixin = css`
   box-shadow: inset 0 0 0 ${themeGet("space.1")} ${themeGet("colors.accent")};
 `;
 
-export const Cell = styled(Box)<CellProps>`
-  ${variant({ variants: CELL_VARIANTS })};
+export const cellMixin = css`
+  align-items: center;
+  background-color: ${themeGet("colors.background")};
+  border-color: ${themeGet("colors.border")};
+  border-style: solid;
+  border-width: 1px;
+  color: ${themeGet("colors.primary")};
+  display: flex;
+  font-family: ${themeGet("fonts.body")};
+  line-height: ${themeGet("lineHeights.2")};
+  transition: box-shadow 250ms ease;
+
+  ${variant({ variants: CELL_VARIANTS })}
+  ${boxMixin}
+`;
+
+export const Cell = styled.div<CellProps>`
+  ${cellMixin}
 
   &:focus {
     ${cellFocusMixin}
   }
 `;
 
-Cell.defaultProps = { ...CELL, variant: "default" };
+Cell.defaultProps = { variant: "default" };
 
 Cell.displayName = "Cell";

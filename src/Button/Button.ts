@@ -1,15 +1,7 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
-import { CELL, cellFocusMixin, CellProps, CELL_VARIANTS } from "../Cell";
-import { variant } from "styled-system";
-
-export const BUTTON = {
-  ...CELL,
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
+import { cellMixin, cellFocusMixin, CellProps } from "../Cell";
 
 export type ButtonProps = ClickableProps &
   CellProps & {
@@ -60,13 +52,16 @@ export const buttonHighlightedMixin = css<ButtonProps>`
 `;
 
 export const buttonMixin = css<ButtonProps>`
-  ${variant({ variants: CELL_VARIANTS })}
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: ${CELL.transition}, color 200ms ease;
+  transition: box-shadow 250ms ease, color 200ms ease;
   min-width: 0;
   user-select: none;
   font-weight: normal;
+
+  ${cellMixin}
 
   ${({ hover }) => hover && buttonHoverMixin}
   &:hover {
@@ -87,9 +82,11 @@ export const buttonMixin = css<ButtonProps>`
     selected &&
     css`
       ${buttonSelectedMixin}
+
       &:focus {
         ${buttonSelectedMixin}
       }
+
       &:disabled {
         ${buttonSelectedMixin}
       }
@@ -102,6 +99,6 @@ export const Button = styled(Clickable)<ButtonProps>`
   ${buttonMixin}
 `;
 
-Button.defaultProps = { ...BUTTON };
+Button.defaultProps = { variant: "default" };
 
 Button.displayName = "Button";

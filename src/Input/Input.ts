@@ -1,35 +1,11 @@
 import styled, { css } from "styled-components";
-import {
-  border,
-  BorderProps,
-  flexbox,
-  FlexboxProps,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps,
-  layout,
-  LayoutProps,
-  color,
-  ColorProps,
-  compose,
-  variant,
-} from "styled-system";
-import { CELL, cellFocusMixin, CellProps, CELL_VARIANTS } from "../Cell";
+import { cellMixin, cellFocusMixin, CellProps } from "../Cell";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
-  CellProps &
-  BorderProps &
-  FlexboxProps &
-  TypographyProps &
-  LayoutProps &
-  SpaceProps &
-  ColorProps & {
+  CellProps & {
     focus?: boolean;
     hover?: boolean;
   };
-
-const systemProps = compose(border, flexbox, space, typography, layout, color);
 
 export const inputFocusMixin = css`
   ${cellFocusMixin};
@@ -50,11 +26,9 @@ export const inputMixin = css<InputProps>`
   border-radius: 0;
   margin: 0;
   transition: box-shadow 250ms ease;
-  ${systemProps}
-
   background-color: transparent;
 
-  ${variant({ variants: CELL_VARIANTS })}
+  ${cellMixin}
 
   ${({ focus }) => focus && inputFocusMixin}
   &:focus {
@@ -76,5 +50,5 @@ export const Input = styled.input<InputProps>`
 `;
 
 Input.defaultProps = {
-  ...CELL,
+  variant: "default",
 };
