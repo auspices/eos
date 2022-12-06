@@ -18,7 +18,7 @@ const EXAMPLES = [
 ];
 
 export const _Cell = () => (
-  <States<CellProps>>
+  <States<CellProps> states={[{ variant: "default" }, { variant: "small" }]}>
     <Cell>ADHD</Cell>
   </States>
 );

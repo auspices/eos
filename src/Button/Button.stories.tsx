@@ -15,6 +15,12 @@ export const Default = () => (
       { disabled: true },
       { selected: true },
       { highlighted: true },
+      { variant: "small" },
+      { variant: "small", hover: true },
+      { variant: "small", focus: true },
+      { variant: "small", disabled: true },
+      { variant: "small", selected: true },
+      { variant: "small", highlighted: true },
     ]}
   >
     <Button onClick={action("onClick")}>click</Button>
@@ -42,6 +48,23 @@ export const Stacked = () => (
         <Button selected>two</Button>
         <Button selected>three</Button>
         <Button selected>four</Button>
+      </Stack>
+    </States>
+
+    <States<StackProps> states={[{}, { direction: "horizontal" }]}>
+      <Stack>
+        <Button flex="1" variant="small">
+          one
+        </Button>
+        <Button flex="1" variant="small">
+          two
+        </Button>
+        <Button flex="1" variant="small">
+          three
+        </Button>
+        <Button flex="1" variant="small" highlighted>
+          four
+        </Button>
       </Stack>
     </States>
   </>
@@ -81,7 +104,7 @@ export const Link = () => (
 );
 
 const SelectDemo: React.FC = () => {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState<number | null>(0);
 
   return (
     <Stack>

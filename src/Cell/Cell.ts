@@ -1,10 +1,23 @@
 import styled, { css } from "styled-components";
+import { variant } from "styled-system";
 import { themeGet } from "@styled-system/theme-get";
 import { Box, BoxProps } from "../Box";
 
-export type CellProps = BoxProps;
+export const CELL_VARIANTS = {
+  default: {
+    fontSize: [2, 2, 3],
+    px: 6,
+    py: 4,
+  },
+  small: {
+    fontSize: [0, 0, 1],
+    px: 3,
+    py: 2,
+  },
+};
 
 export const CELL = {
+  ...CELL_VARIANTS.default,
   alignItems: "center",
   backgroundColor: "background",
   borderColor: "border",
@@ -13,11 +26,14 @@ export const CELL = {
   color: "primary",
   display: "flex",
   fontFamily: "body",
-  fontSize: [2, 2, 3],
   lineHeight: 2,
-  px: 6,
-  py: 4,
   transition: "box-shadow 250ms ease",
+};
+
+type CellVariant = keyof typeof CELL_VARIANTS;
+
+export type CellProps = BoxProps & {
+  variant?: CellVariant;
 };
 
 export const cellFocusMixin = css`
@@ -26,11 +42,13 @@ export const cellFocusMixin = css`
 `;
 
 export const Cell = styled(Box)<CellProps>`
+  ${variant({ variants: CELL_VARIANTS })};
+
   &:focus {
     ${cellFocusMixin}
   }
 `;
 
-Cell.defaultProps = { ...CELL };
+Cell.defaultProps = { ...CELL, variant: "default" };
 
 Cell.displayName = "Cell";

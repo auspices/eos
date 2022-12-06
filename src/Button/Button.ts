@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
-import { CELL, cellFocusMixin } from "../Cell";
+import { CELL, cellFocusMixin, CellProps, CELL_VARIANTS } from "../Cell";
+import { variant } from "styled-system";
 
 export const BUTTON = {
   ...CELL,
@@ -10,12 +11,13 @@ export const BUTTON = {
   justifyContent: "center",
 };
 
-export type ButtonProps = ClickableProps & {
-  focus?: boolean;
-  hover?: boolean;
-  selected?: boolean;
-  highlighted?: boolean;
-};
+export type ButtonProps = ClickableProps &
+  CellProps & {
+    focus?: boolean;
+    hover?: boolean;
+    selected?: boolean;
+    highlighted?: boolean;
+  };
 
 export const buttonHoverMixin = css`
   color: ${themeGet("colors.secondary")};
@@ -43,14 +45,23 @@ export const buttonDisabledMixin = css`
   z-index: -1;
 `;
 
-export const buttonHighlightedMixin = css`
+export const buttonHighlightedMixin = css<ButtonProps>`
   &::before {
     content: "→\u00A0";
-    margin-left: -${themeGet("space.3")};
+
+    ${({ variant }) => {
+      if (variant !== "small") {
+        return css`
+          margin-left: -${themeGet("space.3")};
+        `;
+      }
+    }})}
   }
 `;
 
 export const buttonMixin = css<ButtonProps>`
+  ${variant({ variants: CELL_VARIANTS })}
+
   cursor: pointer;
   transition: ${CELL.transition}, color 200ms ease;
   min-width: 0;
