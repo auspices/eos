@@ -13,10 +13,12 @@ import {
   color,
   ColorProps,
   compose,
+  variant,
 } from "styled-system";
-import { CELL, cellFocusMixin } from "../Cell";
+import { CELL, cellFocusMixin, CellProps, CELL_VARIANTS } from "../Cell";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
+  CellProps &
   BorderProps &
   FlexboxProps &
   TypographyProps &
@@ -51,6 +53,8 @@ export const inputMixin = css<InputProps>`
   ${systemProps}
 
   background-color: transparent;
+
+  ${variant({ variants: CELL_VARIANTS })}
 
   ${({ focus }) => focus && inputFocusMixin}
   &:focus {
