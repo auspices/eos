@@ -1,5 +1,5 @@
 import React from "react";
-import { scale, paddingBottom } from "proportional-scale";
+import { scale } from "proportional-scale";
 import { Box, BoxProps } from "../Box";
 
 type MaxDimensions = { maxWidth?: number | "100%"; maxHeight?: number };
@@ -15,23 +15,14 @@ export type AspectRatioBoxProps = Omit<BoxProps, "maxWidth" | "maxHeight"> &
 
 const responsiveScale = (args: AspectDimensions & MaxDimensions) => {
   if ("maxWidth" in args && args.maxWidth === "100%") {
-    return {
-      maxWidth: "100%",
-      paddingBottom: paddingBottom({
-        width: args.aspectWidth,
-        height: args.aspectHeight,
-      }),
-    };
+    return { maxWidth: "100%" };
   }
 
   const { aspectWidth: width, aspectHeight: height, ...rest } = args;
   // @ts-ignore
   const scaled = scale({ width, height, ...rest });
 
-  return {
-    maxWidth: `${scaled.width}px`,
-    paddingBottom: scaled.paddingBottom,
-  };
+  return { maxWidth: `${scaled.width}px` };
 };
 
 export const AspectRatioBox: React.FC<AspectRatioBoxProps> = ({
@@ -44,22 +35,14 @@ export const AspectRatioBox: React.FC<AspectRatioBoxProps> = ({
 
   return (
     <Box
-      position="relative"
       width="100%"
-      style={{ maxWidth: scaled.maxWidth }}
+      style={{
+        maxWidth: scaled.maxWidth,
+        aspectRatio: `${aspectWidth} / ${aspectHeight}`,
+      }}
       {...rest}
     >
-      <Box
-        position="relative"
-        width="100%"
-        height={0}
-        overflow="hidden"
-        paddingBottom={scaled.paddingBottom}
-      />
-
-      <Box position="absolute" top={0} left={0} width="100%" height="100%">
-        {children}
-      </Box>
+      {children}
     </Box>
   );
 };
