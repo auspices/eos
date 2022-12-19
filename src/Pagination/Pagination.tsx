@@ -58,7 +58,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           href={href}
           per={per}
         >
-          past
+          ←
         </Page>
       </Stack>
 
@@ -111,7 +111,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           per={per}
           rel="next"
         >
-          next
+          →
         </Page>
 
         <Page pageNumber={totalPages} currentPage={page} href={href} per={per}>
