@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { States } from "storybook-states";
+import { action } from "@storybook/addon-actions";
 import { Pagination, PaginationProps, Page, PageProps } from ".";
 
 export default { title: "Pagination", component: Pagination };
@@ -19,6 +20,7 @@ export const Default = () => (
       { per: 500 },
       { Page: AltPage },
       { variant: "small" },
+      { onChange: action("onChange") },
     ]}
   >
     <Pagination page={1} per={25} total={500} href="#page" />
@@ -32,3 +34,19 @@ export const PageLink = () => (
     </Page>
   </States>
 );
+
+export const Demo = () => {
+  const [page, setPage] = useState(1);
+
+  return (
+    <States>
+      <Pagination
+        page={page}
+        per={25}
+        total={500}
+        href="#page"
+        onChange={setPage}
+      />
+    </States>
+  );
+};

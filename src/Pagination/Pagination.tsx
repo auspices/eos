@@ -11,6 +11,7 @@ export type PaginationProps = StackProps & {
   interval?: number;
   Page?: React.FC<PageProps>;
   variant?: CellVariant;
+  onChange?: (page: number) => void;
 };
 
 export const PAGINATION_DEFAULT_PAGE = 1;
@@ -41,33 +42,34 @@ export const Pagination: React.FC<PaginationProps> = ({
   interval = PAGINATION_DEFAULT_INTERVAL,
   Page = DefaultPage,
   variant,
+  onChange,
   ...rest
 }) => {
   const { totalPages, prevPage, nextPage } = paginate({ page, per, total });
+
+  const handleClick = (page: number) => {
+    if (!onChange) return;
+    onChange(page);
+  };
+
+  const pageProps = {
+    variant,
+    currentPage: page,
+    href,
+    per,
+    onClick: handleClick,
+  };
 
   if (totalPages <= 1) return null;
 
   return (
     <Stack direction="horizontal" {...rest}>
       <Stack direction="horizontal">
-        <Page
-          variant={variant}
-          pageNumber={1}
-          currentPage={page}
-          href={href}
-          per={per}
-        >
+        <Page {...pageProps} pageNumber={1}>
           A
         </Page>
 
-        <Page
-          variant={variant}
-          pageNumber={prevPage}
-          currentPage={page}
-          rel="prev"
-          href={href}
-          per={per}
-        >
+        <Page {...pageProps} pageNumber={prevPage} rel="prev">
           ←
         </Page>
       </Stack>
@@ -77,12 +79,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         .map((i) =>
           page > i + 1 ? (
             <Page
-              variant={variant}
+              {...pageProps}
               key={page - (i + 1)}
               pageNumber={page - (i + 1)}
-              currentPage={page}
-              href={href}
-              per={per}
               display={["none", "none", "block"]}
             >
               {page - (i + 1)}
@@ -92,13 +91,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         .filter(Boolean)
         .reverse()}
 
-      <Page
-        variant={variant}
-        pageNumber={page}
-        currentPage={page}
-        href={href}
-        per={per}
-      >
+      <Page {...pageProps} pageNumber={page}>
         {page}
       </Page>
 
@@ -107,12 +100,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         .map((i) =>
           totalPages - page + 1 > i + 1 ? (
             <Page
-              variant={variant}
+              {...pageProps}
               key={page + (i + 1)}
               pageNumber={page + (i + 1)}
-              currentPage={page}
-              href={href}
-              per={per}
               display={["none", "none", "block"]}
             >
               {page + (i + 1)}
@@ -122,24 +112,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         .filter(Boolean)}
 
       <Stack direction="horizontal">
-        <Page
-          variant={variant}
-          pageNumber={nextPage}
-          currentPage={page}
-          href={href}
-          per={per}
-          rel="next"
-        >
+        <Page {...pageProps} pageNumber={nextPage} rel="next">
           →
         </Page>
 
-        <Page
-          variant={variant}
-          pageNumber={totalPages}
-          currentPage={page}
-          href={href}
-          per={per}
-        >
+        <Page {...pageProps} pageNumber={totalPages}>
           Ω
         </Page>
       </Stack>
