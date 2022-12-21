@@ -16,7 +16,7 @@ export const CELL_VARIANTS = {
   },
 };
 
-type CellVariant = keyof typeof CELL_VARIANTS;
+export type CellVariant = keyof typeof CELL_VARIANTS;
 
 export type CellProps = BoxProps & {
   variant?: CellVariant;

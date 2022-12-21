@@ -1,4 +1,5 @@
 import React from "react";
+import { CellVariant } from "../Cell";
 import { Stack, StackProps } from "../Stack";
 import { Page as DefaultPage, PageProps } from "./Page";
 
@@ -9,6 +10,7 @@ export type PaginationProps = StackProps & {
   href: string;
   interval?: number;
   Page?: React.FC<PageProps>;
+  variant?: CellVariant;
 };
 
 export const PAGINATION_DEFAULT_PAGE = 1;
@@ -38,6 +40,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   href,
   interval = PAGINATION_DEFAULT_INTERVAL,
   Page = DefaultPage,
+  variant,
   ...rest
 }) => {
   const { totalPages, prevPage, nextPage } = paginate({ page, per, total });
@@ -47,11 +50,18 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <Stack direction="horizontal" {...rest}>
       <Stack direction="horizontal">
-        <Page pageNumber={1} currentPage={page} href={href} per={per}>
+        <Page
+          variant={variant}
+          pageNumber={1}
+          currentPage={page}
+          href={href}
+          per={per}
+        >
           A
         </Page>
 
         <Page
+          variant={variant}
           pageNumber={prevPage}
           currentPage={page}
           rel="prev"
@@ -67,6 +77,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         .map((i) =>
           page > i + 1 ? (
             <Page
+              variant={variant}
               key={page - (i + 1)}
               pageNumber={page - (i + 1)}
               currentPage={page}
@@ -81,7 +92,13 @@ export const Pagination: React.FC<PaginationProps> = ({
         .filter(Boolean)
         .reverse()}
 
-      <Page pageNumber={page} currentPage={page} href={href} per={per}>
+      <Page
+        variant={variant}
+        pageNumber={page}
+        currentPage={page}
+        href={href}
+        per={per}
+      >
         {page}
       </Page>
 
@@ -90,6 +107,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         .map((i) =>
           totalPages - page + 1 > i + 1 ? (
             <Page
+              variant={variant}
               key={page + (i + 1)}
               pageNumber={page + (i + 1)}
               currentPage={page}
@@ -105,6 +123,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       <Stack direction="horizontal">
         <Page
+          variant={variant}
           pageNumber={nextPage}
           currentPage={page}
           href={href}
@@ -114,7 +133,13 @@ export const Pagination: React.FC<PaginationProps> = ({
           →
         </Page>
 
-        <Page pageNumber={totalPages} currentPage={page} href={href} per={per}>
+        <Page
+          variant={variant}
+          pageNumber={totalPages}
+          currentPage={page}
+          href={href}
+          per={per}
+        >
           Ω
         </Page>
       </Stack>
