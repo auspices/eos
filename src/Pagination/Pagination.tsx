@@ -1,17 +1,17 @@
 import React from "react";
 import { CellVariant } from "../Cell";
 import { Stack, StackProps } from "../Stack";
-import { Page as DefaultPage, PageProps } from "./Page";
+import { Page as DefaultPage, PageOnClick, PageProps } from "./Page";
 
 export type PaginationProps = StackProps & {
-  page?: number;
-  per?: number;
-  total: number;
   href: string;
   interval?: number;
-  Page?: React.FC<PageProps>;
-  variant?: CellVariant;
   onChange?: (page: number) => void;
+  page?: number;
+  Page?: React.FC<PageProps>;
+  per?: number;
+  total: number;
+  variant?: CellVariant;
 };
 
 export const PAGINATION_DEFAULT_PAGE = 1;
@@ -35,29 +35,32 @@ export const paginate = ({
 };
 
 export const Pagination: React.FC<PaginationProps> = ({
+  href,
+  interval = PAGINATION_DEFAULT_INTERVAL,
+  onChange,
+  Page = DefaultPage,
   page = PAGINATION_DEFAULT_PAGE,
   per = PAGINATION_DEFAULT_PER,
   total,
-  href,
-  interval = PAGINATION_DEFAULT_INTERVAL,
-  Page = DefaultPage,
   variant,
-  onChange,
   ...rest
 }) => {
   const { totalPages, prevPage, nextPage } = paginate({ page, per, total });
 
-  const handleClick = (page: number) => {
+  const handleClick = ({ pageNumber, event }: PageOnClick) => {
     if (!onChange) return;
-    onChange(page);
+
+    event.preventDefault();
+
+    onChange(pageNumber);
   };
 
   const pageProps = {
-    variant,
     currentPage: page,
     href,
-    per,
     onClick: handleClick,
+    per,
+    variant,
   };
 
   if (totalPages <= 1) return null;

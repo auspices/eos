@@ -1,33 +1,35 @@
 import React from "react";
 import { Button, ButtonProps } from "../Button";
 
-export type PageProps = Omit<ButtonProps, "onClick"> & {
+export type PageOnClick = {
+  event: React.MouseEvent<HTMLAnchorElement>;
   pageNumber: number;
-  href: string;
-  per: number;
-  currentPage: number;
-  children: JSX.Element | string | number;
-  rel?: string;
+};
+
+export type PageProps = Omit<ButtonProps, "onClick"> & {
   as?: "a" | React.ElementType;
-  onClick?: (page: number) => void;
+  children: JSX.Element | string | number;
+  currentPage: number;
+  href: string;
+  onClick?: ({ event, pageNumber }: PageOnClick) => void;
+  pageNumber: number;
+  per: number;
+  rel?: string;
 };
 
 export const Page: React.FC<PageProps> = ({
-  pageNumber,
-  href,
-  per,
-  currentPage,
-  children,
   as = "a",
+  children,
+  currentPage,
+  href,
   onClick,
+  pageNumber,
+  per,
   ...rest
 }) => {
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!onClick) return;
-
-    event.preventDefault();
-
-    onClick(pageNumber);
+    onClick({ event, pageNumber });
   };
 
   return (
