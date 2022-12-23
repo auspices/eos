@@ -50,7 +50,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   const handleClick = ({ pageNumber, event }: PageOnClick) => {
     if (!onChange) return;
 
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
 
     onChange(pageNumber);
   };
