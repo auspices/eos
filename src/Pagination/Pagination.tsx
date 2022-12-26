@@ -1,132 +1,87 @@
-import React from "react";
+import React, { FC } from "react";
 import { CellVariant } from "../Cell";
+import { usePagination, PaginationPage } from "../hooks";
 import { Stack, StackProps } from "../Stack";
-import { Page as DefaultPage, PageOnClick, PageProps } from "./Page";
+import { Page, PageProps } from "./Page";
 
 export type PaginationProps = StackProps & {
-  href: string;
   interval?: number;
   onChange?: (page: number) => void;
   page?: number;
-  Page?: React.FC<PageProps>;
   per?: number;
   total: number;
   variant?: CellVariant;
 };
 
-export const PAGINATION_DEFAULT_PAGE = 1;
-export const PAGINATION_DEFAULT_PER = 24;
-export const PAGINATION_DEFAULT_INTERVAL = 3;
-
-export const paginate = ({
-  page = PAGINATION_DEFAULT_PAGE,
-  per = PAGINATION_DEFAULT_PER,
-  total,
-}: {
-  page: number;
-  per: number;
-  total: number;
-}) => {
-  const totalPages = Math.ceil(total / per);
-  const prevPage = page > 1 ? page - 1 : page;
-  const nextPage = page < totalPages ? page + 1 : page;
-
-  return { totalPages, prevPage, nextPage };
-};
-
 export const Pagination: React.FC<PaginationProps> = ({
-  href,
-  interval = PAGINATION_DEFAULT_INTERVAL,
+  interval,
   onChange,
-  Page = DefaultPage,
-  page = PAGINATION_DEFAULT_PAGE,
-  per = PAGINATION_DEFAULT_PER,
+  page: currentPage,
+  per,
   total,
   variant,
   ...rest
 }) => {
-  const { totalPages, prevPage, nextPage } = paginate({ page, per, total });
-
-  const handleClick = ({ pageNumber, event }: PageOnClick) => {
-    if (!onChange) return;
-
-    if (event) {
-      event.preventDefault();
-    }
-
-    onChange(pageNumber);
-  };
-
-  const pageProps = {
-    currentPage: page,
-    href,
-    onClick: handleClick,
+  const { head, center, tail, totalPages } = usePagination({
+    currentPage,
+    interval,
     per,
-    variant,
-  };
+    total,
+  });
 
   if (totalPages <= 1) return null;
 
   return (
     <Stack direction="horizontal" {...rest}>
       <Stack direction="horizontal">
-        <Page {...pageProps} pageNumber={1}>
-          A
-        </Page>
-
-        <Page {...pageProps} pageNumber={prevPage} rel="prev">
-          ←
-        </Page>
+        {head.map((page) => {
+          return <DefaultPage key={page.page} {...page} onClick={onChange} />;
+        })}
       </Stack>
 
-      {/* Left surrounding pages */}
-      {[...Array(interval).keys()]
-        .map((i) =>
-          page > i + 1 ? (
-            <Page
-              {...pageProps}
-              key={page - (i + 1)}
-              pageNumber={page - (i + 1)}
-              display={["none", "none", "block"]}
-            >
-              {page - (i + 1)}
-            </Page>
-          ) : undefined
-        )
-        .filter(Boolean)
-        .reverse()}
-
-      <Page {...pageProps} pageNumber={page}>
-        {page}
-      </Page>
-
-      {/* Right surrounding pages */}
-      {[...Array(interval).keys()]
-        .map((i) =>
-          totalPages - page + 1 > i + 1 ? (
-            <Page
-              {...pageProps}
-              key={page + (i + 1)}
-              pageNumber={page + (i + 1)}
-              display={["none", "none", "block"]}
-            >
-              {page + (i + 1)}
-            </Page>
-          ) : undefined
-        )
-        .filter(Boolean)}
+      {center.map((page) => {
+        return <DefaultPage key={page.page} {...page} onClick={onChange} />;
+      })}
 
       <Stack direction="horizontal">
-        <Page {...pageProps} pageNumber={nextPage} rel="next">
-          →
-        </Page>
-
-        <Page {...pageProps} pageNumber={totalPages}>
-          Ω
-        </Page>
+        {tail.map((page) => {
+          return <DefaultPage key={page.page} {...page} onClick={onChange} />;
+        })}
       </Stack>
     </Stack>
   );
 };
 
 Pagination.displayName = "Pagination";
+
+type DefaultPageProps = PaginationPage &
+  Omit<PageProps, "onClick" | "children"> & {
+    onClick?(page: number): void;
+  };
+
+const DefaultPage: FC<DefaultPageProps> = ({
+  page,
+  label,
+  disabled,
+  tabIndex,
+  onClick,
+  ...rest
+}) => {
+  const handleClick = () => {
+    if (!onClick) return;
+
+    onClick(page);
+  };
+
+  return (
+    <Page
+      key={page}
+      onClick={handleClick}
+      disabled={disabled}
+      tabIndex={tabIndex}
+      {...rest}
+    >
+      {label}
+    </Page>
+  );
+};
