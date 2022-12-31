@@ -7,3 +7,7 @@ A React UI library
 ## Meta
 
 - **State**: production
+
+## Design Goals
+
+Eos is designed for use in situations where it is desirable to minimize visual hierarchy. This results in the creation of user interfaces that rely on intentional structuring for differentiation, rather than solely relying on stylistic differences between components.
