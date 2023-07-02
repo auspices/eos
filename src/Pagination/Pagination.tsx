@@ -35,17 +35,17 @@ export const Pagination: React.FC<PaginationProps> = ({
     <Stack direction="horizontal" {...rest}>
       <Stack direction="horizontal">
         {head.map((page) => {
-          return <DefaultPage key={page.page} {...page} onClick={onChange} />;
+          return <DefaultPage key={page.label} {...page} onClick={onChange} />;
         })}
       </Stack>
 
       {center.map((page) => {
-        return <DefaultPage key={page.page} {...page} onClick={onChange} />;
+        return <DefaultPage key={page.label} {...page} onClick={onChange} />;
       })}
 
       <Stack direction="horizontal">
         {tail.map((page) => {
-          return <DefaultPage key={page.page} {...page} onClick={onChange} />;
+          return <DefaultPage key={page.label} {...page} onClick={onChange} />;
         })}
       </Stack>
     </Stack>
