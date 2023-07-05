@@ -11112,9 +11112,9 @@ react-focus-lock@^2.9.4:
     use-sidecar "^1.1.2"
 
 react-focus-on@^3.6.0:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/react-focus-on/-/react-focus-on-3.8.2.tgz#f62c68fb0a9bc9bde5609c2db38dffa3a1096529"
-  integrity sha512-+JvIRBqvDMnIsEruDSkIWHFBWdpfJ9V9eQPsGaifEUGGm9fw52sZgWqHYa94XJxVMrdxXhdrEwyO6QaUlucEww==
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/react-focus-on/-/react-focus-on-3.9.0.tgz#0e1b7ea898365f1e7b63455c869153426725a9db"
+  integrity sha512-4HA8zeMgK5hzR7ffXr/ser3cY3XJBIU1Z8eZI9r3lunMDxIZ5/m9Q2YaHq1I0NFzev1nFsMERZX/JovTYk+GtQ==
   dependencies:
     aria-hidden "^1.2.2"
     react-focus-lock "^2.9.4"
