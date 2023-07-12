@@ -52,7 +52,7 @@
     "@storybook/addons": "6.5.16",
     "@storybook/react": "6.5.16",
     "@types/node": "18.16.19",
-    "@types/react-dom": "18.2.6",
+    "@types/react-dom": "18.2.7",
     "@types/styled-components": "5.1.26",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
