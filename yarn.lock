@@ -3408,10 +3408,10 @@
   dependencies:
     csstype "^3.0.2"
 
-"@types/styled-system__theme-get@5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@types/styled-system__theme-get/-/styled-system__theme-get-5.0.2.tgz#ebd5bb465f1aaa24c729ebb09fdfa6ead01d2106"
-  integrity sha512-tvGRyzADAn2qQ8Z/fw9YOBTL1EttDQ0zrmHq/N+/K/9tF1l2lsZ9334hls1zie32FCxjPJEhzzXVHxKwqXslog==
+"@types/styled-system__theme-get@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@types/styled-system__theme-get/-/styled-system__theme-get-5.0.3.tgz#9483a1087e61ab5114f73729a2bb6186f9676b7f"
+  integrity sha512-WdJRas6pi1kzom/pfJ115H6Yd3NDvm/3x1D7OKcdd3kcXT9lTZLtJOFroJI3eUKWqvjsaCaazqIgmJq8Ljc1JA==
 
 "@types/tapable@^1", "@types/tapable@^1.0.5":
   version "1.0.8"
