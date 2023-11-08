@@ -3410,10 +3410,10 @@
   dependencies:
     csstype "^3.0.2"
 
-"@types/styled-system__theme-get@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@types/styled-system__theme-get/-/styled-system__theme-get-5.0.3.tgz#9483a1087e61ab5114f73729a2bb6186f9676b7f"
-  integrity sha512-WdJRas6pi1kzom/pfJ115H6Yd3NDvm/3x1D7OKcdd3kcXT9lTZLtJOFroJI3eUKWqvjsaCaazqIgmJq8Ljc1JA==
+"@types/styled-system__theme-get@5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@types/styled-system__theme-get/-/styled-system__theme-get-5.0.4.tgz#46b1ea920fa4de511fbf3ba6064ec6081c85a354"
+  integrity sha512-dbzwxQ+8x6Bo3EKZMo9M3Knzo77ukwoC/isKW+GAuF5TenXlPkvgzx4t4+Lp0+fKs2M4owSef0KO3gtGW3Hpkw==
 
 "@types/tapable@^1", "@types/tapable@^1.0.5":
   version "1.0.8"
