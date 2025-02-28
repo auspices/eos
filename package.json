@@ -38,7 +38,7 @@
     "@types/styled-system__theme-get": "5.0.4",
     "proportional-scale": "^4.0.0",
     "react-focus-on": "^3.6.0",
-    "styled-reset": "^4.4.2",
+    "styled-reset": "^4.5.2",
     "styled-system": "^5.1.5",
     "use-keyboard-list-navigation": "^2.2.0"
   },
@@ -66,7 +66,7 @@
     "semantic-release": "19.0.5",
     "storybook": "^8.5.8",
     "storybook-states": "1.2.0",
-    "styled-components": "5.3.11",
+    "styled-components": "6.1.15",
     "ts-node": "10.9.2",
     "typescript": "4.9.5"
   },

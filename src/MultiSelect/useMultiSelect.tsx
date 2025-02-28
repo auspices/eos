@@ -53,7 +53,7 @@ export const useMultiSelect = ({
   };
 
   const handleClickOutside = useCallback(
-    (event) => {
+    (event: MouseEvent | TouchEvent) => {
       if (!selected || event.metaKey) return;
       deselect();
     },
@@ -62,7 +62,7 @@ export const useMultiSelect = ({
   );
 
   useClickOutside({
-    ref,
+    ref: ref as React.RefObject<HTMLElement>,
     type: "mousedown",
     onClickOutside: handleClickOutside,
     when: selected,

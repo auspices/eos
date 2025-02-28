@@ -40,7 +40,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   aspectHeight,
   maxWidth,
   maxHeight,
-  backgroundColor,
+  backgroundColor = "tertiary",
   indicator,
   placeholder,
   children,
@@ -83,7 +83,3 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
 };
 
 ResponsiveImage.displayName = "ResponsiveImage";
-
-ResponsiveImage.defaultProps = {
-  backgroundColor: "tertiary",
-};

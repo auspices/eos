@@ -28,7 +28,7 @@ export const isDropdownRenderProps = (
   children: DropdownPaneOptions | DropdownRenderProps
 ): children is DropdownRenderProps => typeof children === "function";
 
-export type DropdownProps = BoxProps & {
+export type DropdownProps = Omit<BoxProps, "children"> & {
   label:
     | string
     | JSX.Element

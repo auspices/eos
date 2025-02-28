@@ -16,9 +16,7 @@ const Placeholder = styled(Box)`
   pointer-events: none;
 `;
 
-export const Container: typeof Box = styled(Box)<
-  Omit<BoxProps, "bg"> & { bg?: string }
->`
+export const Container = styled(Box)<{ bg?: string }>`
   position: relative;
   display: inline-block;
   ${overflowEllipsisMixin}

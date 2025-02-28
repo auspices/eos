@@ -23,10 +23,10 @@ const Label = styled(Box)`
 export const Upload: React.FC<UploadProps> = ({
   label,
   progress,
-  borderColor,
-  foregroundColor,
-  backgroundColor,
-  progressBarColor,
+  borderColor = "primary",
+  foregroundColor = "primary",
+  backgroundColor = "background",
+  progressBarColor = "tertiary",
   ...rest
 }) => {
   return (
@@ -54,10 +54,3 @@ export const Upload: React.FC<UploadProps> = ({
 };
 
 Upload.displayName = "Upload";
-
-Upload.defaultProps = {
-  foregroundColor: "primary",
-  borderColor: "primary",
-  backgroundColor: "background",
-  progressBarColor: "tertiary",
-};

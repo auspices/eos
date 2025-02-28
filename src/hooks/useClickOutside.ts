@@ -3,8 +3,8 @@ import { useEffect, useRef, useCallback } from "react";
 export type UseClickOutside = {
   ref: React.RefObject<HTMLElement>;
   when: boolean;
-  type?: keyof DocumentEventMap;
-  onClickOutside: (event: Event) => void;
+  type?: "mousedown" | "click";
+  onClickOutside: (event: MouseEvent | TouchEvent) => void;
 };
 
 export const useClickOutside = ({
@@ -15,7 +15,7 @@ export const useClickOutside = ({
 }: UseClickOutside) => {
   const savedHandler = useRef(onClickOutside);
 
-  const handleClick = useCallback((e: Event) => {
+  const handleClick = useCallback((e: MouseEvent | TouchEvent) => {
     if (ref && ref.current && !ref.current.contains(e.target as Element)) {
       savedHandler.current(e);
     }
