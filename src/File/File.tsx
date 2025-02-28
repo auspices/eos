@@ -42,6 +42,11 @@ export const File: React.FC<FileProps> = ({
   onMouseDown,
   ...rest
 }) => {
+  rest = {
+    ...rest,
+    width: typeof rest.width === "undefined" ? "100%" : rest.width,
+  };
+
   const [mode, setMode] = useState<"Default" | "Focused">("Default");
 
   const {
@@ -118,9 +123,4 @@ export const File: React.FC<FileProps> = ({
       </Box>
     </Container>
   );
-};
-
-File.defaultProps = {
-  width: "100%",
-  selected: false,
 };

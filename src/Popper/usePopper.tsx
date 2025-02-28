@@ -29,7 +29,7 @@ export const usePopper = ({
   const anchorRef = useRef<HTMLButtonElement | null>(null);
 
   useClickOutside({
-    ref: childrenRef,
+    ref: childrenRef as React.RefObject<HTMLElement>,
     onClickOutside: onClose,
     when: open,
     type,

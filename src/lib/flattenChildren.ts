@@ -7,7 +7,9 @@ export const flattenChildren = (
 
   return xs.reduce((acc: React.ReactElement[], child: React.ReactElement) => {
     if (child.type === React.Fragment) {
-      return acc.concat(flattenChildren(child.props.children));
+      return acc.concat(
+        flattenChildren((child.props as { children: React.ReactNode }).children)
+      );
     }
 
     return [...acc, child];

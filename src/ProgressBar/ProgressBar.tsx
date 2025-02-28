@@ -23,7 +23,7 @@ const Bar = styled(Box)<ProgressBarProps>`
 `;
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
-  color,
+  color = "secondary",
   progress,
   ...rest
 }) => {
@@ -40,7 +40,3 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 };
 
 ProgressBar.displayName = "ProgressBar";
-
-ProgressBar.defaultProps = {
-  color: "secondary",
-};

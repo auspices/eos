@@ -15,7 +15,12 @@ export const Stack: React.ForwardRefExoticComponent<
   StackProps & { ref?: React.Ref<HTMLDivElement> }
 > = React.forwardRef(
   (
-    { direction = DEFAULT_STACK_DIRECTION, spacing, children, ...rest },
+    {
+      direction = DEFAULT_STACK_DIRECTION,
+      spacing = DEFAULT_STACK_SPACING,
+      children,
+      ...rest
+    },
     forwardedRef
   ) => {
     const nodes = React.Children.toArray(children).filter(isValidElement);
@@ -49,10 +54,5 @@ export const Stack: React.ForwardRefExoticComponent<
     );
   }
 );
-
-Stack.defaultProps = {
-  spacing: DEFAULT_STACK_SPACING,
-  direction: DEFAULT_STACK_DIRECTION,
-};
 
 Stack.displayName = "Stack";

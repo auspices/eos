@@ -70,6 +70,12 @@ export const Grid: React.FC<GridProps> = ({
   cellGap = 5,
   ...rest
 }) => {
+  rest = {
+    ...rest,
+    width: typeof rest.width === "undefined" ? "100%" : rest.width,
+    height: typeof rest.height === "undefined" ? "100%" : rest.height
+  };
+
   return (
     <Container cellSize={cellSize} cellGap={cellGap} {...rest}>
       {React.Children.map(children, (child, i) => (
@@ -77,11 +83,6 @@ export const Grid: React.FC<GridProps> = ({
       ))}
     </Container>
   );
-};
-
-Grid.defaultProps = {
-  width: "100%",
-  height: "100%",
 };
 
 Grid.displayName = "Grid";
