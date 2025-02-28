@@ -31,14 +31,14 @@ export const isDropdownRenderProps = (
 export type DropdownProps = Omit<BoxProps, "children"> & {
   label:
     | string
-    | JSX.Element
+    | React.JSX.Element
     | ((anchorProps: {
         open: boolean;
         ref: React.MutableRefObject<HTMLButtonElement | null>;
         disabled: boolean;
         onMouseDown: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
         onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-      }) => JSX.Element);
+      }) => React.JSX.Element);
   children: DropdownPaneOptions | DropdownRenderProps;
   open?: boolean;
   placement?: Placement;

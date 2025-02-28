@@ -22,8 +22,8 @@ enum Mode {
 }
 
 export type TooltipProps = BoxProps & {
-  children: JSX.Element;
-  label: JSX.Element | string;
+  children: React.JSX.Element;
+  label: React.JSX.Element | string;
   placement?: Placement;
   distance?: number;
   forceForTouch?: boolean;

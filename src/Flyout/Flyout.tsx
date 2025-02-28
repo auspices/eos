@@ -14,7 +14,7 @@ export type FlyoutPaneOptions =
   | React.ReactElement<PaneOptionProps>[];
 
 export type FlyoutProps = PaneOptionProps & {
-  label: string | JSX.Element;
+  label: string | React.JSX.Element;
   children: FlyoutPaneOptions;
   open?: boolean;
 };

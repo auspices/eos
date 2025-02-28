@@ -2,7 +2,9 @@ import React from "react";
 import { Stack, StackProps } from "../Stack";
 import { Box } from "../Box";
 
-export type SplitProps = StackProps & { children: [JSX.Element, JSX.Element] };
+export type SplitProps = StackProps & {
+  children: [React.JSX.Element, React.JSX.Element];
+};
 
 export const Split: React.FC<SplitProps> = ({
   direction = "horizontal",

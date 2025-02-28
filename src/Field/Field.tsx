@@ -7,7 +7,7 @@ import { Split, SplitProps } from "../Split";
 type RequiredProps = Omit<SplitProps, "children"> & { label: React.ReactNode };
 
 export type FieldProps = RequiredProps &
-  ({ input: InputProps } | { children: JSX.Element | string | null });
+  ({ input: InputProps } | { children: React.JSX.Element | string | null });
 
 const Label = styled(Cell).attrs({ as: "label" })`
   user-select: none;
