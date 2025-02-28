@@ -2,7 +2,7 @@ import React, { ElementType, FC, ReactNode } from "react";
 import { Button, ButtonProps } from "../Button";
 
 export type PageProps = ButtonProps & {
-  as?: ElementType | keyof JSX.IntrinsicElements;
+  as?: ElementType | keyof React.JSX.IntrinsicElements;
   children: ReactNode;
 };
 

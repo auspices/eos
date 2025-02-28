@@ -38,7 +38,7 @@ export const Pane: React.ForwardRefExoticComponent<
 
     const nodes = flattenChildren(children);
 
-    const clickable = nodes.filter((element: JSX.Element) => {
+    const clickable = nodes.filter((element: React.JSX.Element) => {
       const isAnchor = element.type === "a";
       const isButton = element.type === "button";
       const isSystem = element.type === PaneOption || element.type === Flyout;

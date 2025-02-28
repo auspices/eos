@@ -8,7 +8,7 @@ import onlyText from "../lib/onlyText";
 export type TagProps = Omit<BoxProps, "bg" | "backgroundColor" | "children"> & {
   bg?: string;
   backgroundColor?: string;
-  children: string | JSX.Element;
+  children: string | React.JSX.Element;
 };
 
 const Placeholder = styled(Box)`

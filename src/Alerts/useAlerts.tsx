@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { generateId } from "../util/generateId";
 
-type Body = string | JSX.Element;
+type Body = string | React.JSX.Element;
 
 export type TAlert = {
   mode: "notification" | "error";

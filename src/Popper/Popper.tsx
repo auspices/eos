@@ -3,8 +3,8 @@ import { Placement } from "@popperjs/core";
 import { usePopper } from "./usePopper";
 
 export type PopperProps = {
-  anchor: JSX.Element;
-  children: JSX.Element;
+  anchor: React.JSX.Element;
+  children: React.JSX.Element;
   open?: boolean;
   distance?: number;
   placement?: Placement;
