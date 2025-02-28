@@ -43,7 +43,7 @@
     "use-keyboard-list-navigation": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.26.0",
+    "@babel/core": "7.26.9",
     "@storybook/addon-actions": "^8.5.8",
     "@storybook/addon-links": "^8.5.8",
     "@storybook/addon-viewport": "^8.5.8",
