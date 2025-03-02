@@ -4,6 +4,7 @@ import { Image, ImageProps } from "../Image";
 import { AspectRatioBox, AspectRatioBoxProps } from "../AspectRatioBox";
 import { Spinner } from "../Spinner";
 import { useThemer } from "../Themer";
+import { shouldForwardProp } from "../lib/shouldForwardProp";
 
 const Container = styled(AspectRatioBox)`
   overflow: hidden;
@@ -17,7 +18,9 @@ const Loading = styled(Spinner).attrs({ size: 16 })`
   mix-blend-mode: difference;
 `;
 
-const Placeholder = styled.div`
+const Placeholder = styled.div.withConfig({
+  shouldForwardProp,
+})`
   position: absolute;
   top: 0;
   left: 0;

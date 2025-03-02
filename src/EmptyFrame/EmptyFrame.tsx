@@ -2,8 +2,11 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { themeGet } from "../theme";
 import { Box, BoxProps } from "../Box";
+import { shouldForwardProp } from "../lib/shouldForwardProp";
 
-const Svg = styled.svg`
+const Svg = styled.svg.withConfig({
+  shouldForwardProp,
+})`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -12,7 +15,9 @@ const Svg = styled.svg`
   pointer-events: none;
 `;
 
-const Line = styled.line<{ color: string; strokeWidth: number }>`
+const Line = styled.line.withConfig({
+  shouldForwardProp,
+})<{ color: string; strokeWidth: number }>`
   ${({ color, strokeWidth, ...rest }) => css`
     stroke: ${themeGet(`colors.${color}`)(rest)};
     stroke-width: ${strokeWidth};
