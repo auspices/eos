@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { variant } from "styled-system";
 import { themeGet } from "@styled-system/theme-get";
 import { boxMixin, BoxProps } from "../Box";
+import { shouldForwardProp } from "../lib/shouldForwardProp";
 
 export const CELL_VARIANTS = {
   default: {
@@ -43,7 +44,9 @@ export const cellMixin = css`
   ${boxMixin}
 `;
 
-export const Cell = styled.div<CellProps>`
+export const Cell = styled.div.withConfig({
+  shouldForwardProp,
+})<CellProps>`
   ${cellMixin}
 
   &:focus {

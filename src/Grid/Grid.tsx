@@ -7,6 +7,7 @@ import {
 } from "styled-system";
 import { themeGet } from "@styled-system/theme-get";
 import { Box, BoxProps } from "../Box";
+import { shouldForwardProp } from "../lib/shouldForwardProp";
 
 export type GridProps = SystemGridProps &
   BoxProps & {
@@ -58,7 +59,9 @@ const Container = styled(Box)<GridProps>`
   ${grid}
 `;
 
-export const GridCell = styled.div`
+export const GridCell = styled.div.withConfig({
+  shouldForwardProp,
+})`
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -73,7 +76,7 @@ export const Grid: React.FC<GridProps> = ({
   rest = {
     ...rest,
     width: typeof rest.width === "undefined" ? "100%" : rest.width,
-    height: typeof rest.height === "undefined" ? "100%" : rest.height
+    height: typeof rest.height === "undefined" ? "100%" : rest.height,
   };
 
   return (

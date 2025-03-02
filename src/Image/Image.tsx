@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import composeRefs from "@seznam/compose-react-refs";
 import { boxMixin, Box, BoxProps } from "../Box";
+import { shouldForwardProp } from "../lib/shouldForwardProp";
 
 enum Mode {
   Pending,
@@ -22,7 +23,9 @@ const Placeholder = styled(Box)`
   opacity: 1;
 `;
 
-export const Img = styled.img<{ mode: Mode }>`
+export const Img = styled.img.withConfig({
+  shouldForwardProp,
+})<{ mode: Mode }>`
   ${imgMixin}
   ${boxMixin}
 

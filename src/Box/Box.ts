@@ -19,6 +19,7 @@ import {
   ResponsiveValue,
   system,
 } from "styled-system";
+import { shouldForwardProp } from "../lib/shouldForwardProp";
 
 export type BoxSpatialProps = FlexboxProps &
   SpaceProps &
@@ -62,7 +63,9 @@ export const boxMixin = compose(
   transition
 );
 
-export const Box = styled.div<BoxProps>`
+export const Box = styled.div.withConfig({
+  shouldForwardProp,
+})<BoxProps>`
   ${boxMixin}
 `;
 
