@@ -1,3 +1,5 @@
+"use client";
+
 // Aliases to Cell
 import { Cell, cellFocusMixin, CellProps } from "../Cell";
 

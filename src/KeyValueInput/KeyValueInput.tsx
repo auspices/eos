@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Input, InputProps } from "../Input";
 import { Split, SplitProps } from "../Split";

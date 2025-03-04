@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createRef, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";

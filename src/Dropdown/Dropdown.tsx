@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useCallback, useEffect } from "react";
 import { Box, BoxProps } from "../Box";
 import { Button } from "../Button";

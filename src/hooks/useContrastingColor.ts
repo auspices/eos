@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "styled-components";
 import { ColorScheme, getContrastTIQHex } from "../theme";
 

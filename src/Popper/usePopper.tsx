@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useLayoutEffect, useEffect } from "react";
 import {
   createPopper,

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { Dropdown, DropdownProps } from "../Dropdown";
 import { PaneOption } from "../Pane";

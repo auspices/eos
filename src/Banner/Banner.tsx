@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, FC, ReactNode } from "react";
 import { Box, BoxProps } from "../Box";
 import { Ex } from "../Remove";

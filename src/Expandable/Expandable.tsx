@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Button } from "../Button";
 import { Stack, StackProps } from "../Stack";
@@ -22,7 +24,7 @@ export const Expandable: React.FC<ExpandableProps> = ({
   const handleClick = () =>
     setMode(
       (prevMode) =>
-        ({ [Mode.Open]: Mode.Resting, [Mode.Resting]: Mode.Open }[prevMode])
+        ({ [Mode.Open]: Mode.Resting, [Mode.Resting]: Mode.Open })[prevMode]
     );
 
   return (

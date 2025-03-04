@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Stack, StackProps } from "../Stack";
 import { Alert } from "../Alert";

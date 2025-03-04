@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css } from "styled-components";
 import { variant } from "styled-system";
 import { themeGet } from "@styled-system/theme-get";

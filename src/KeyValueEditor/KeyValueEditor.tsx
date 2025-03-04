@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useReducer, useCallback, useEffect } from "react";
 import { Box } from "../Box";
 import { Stack, StackProps } from "../Stack";
@@ -134,20 +136,23 @@ export const KeyValueEditor: React.FC<KeyValueEditorProps> = React.memo(
     });
 
     const handleNameChange = useCallback(
-      ({ name: oldName, index }: { name: string; index: number }) => ({
-        target: { value: newName },
-      }: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch({ type: "UPDATE_NAME", payload: { oldName, newName, index } });
-      },
+      ({ name: oldName, index }: { name: string; index: number }) =>
+        ({
+          target: { value: newName },
+        }: React.ChangeEvent<HTMLInputElement>) => {
+          dispatch({
+            type: "UPDATE_NAME",
+            payload: { oldName, newName, index },
+          });
+        },
       []
     );
 
     const handleValueChange = useCallback(
-      (key: string) => ({
-        target: { value },
-      }: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch({ type: "UPDATE_VALUE", payload: { key, value } });
-      },
+      (key: string) =>
+        ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
+          dispatch({ type: "UPDATE_VALUE", payload: { key, value } });
+        },
       []
     );
 

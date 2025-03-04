@@ -1,3 +1,5 @@
+"use client";
+
 import React, { isValidElement, cloneElement } from "react";
 import { Box, BoxProps } from "../Box";
 
@@ -32,7 +34,7 @@ export const Stack: React.ForwardRefExoticComponent<
     };
 
     const flexDirection = directions.map(
-      (d) => ({ horizontal: "row", vertical: "column" }[d])
+      (d) => ({ horizontal: "row", vertical: "column" })[d]
     );
 
     return (

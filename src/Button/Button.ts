@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
@@ -56,7 +58,9 @@ export const buttonMixin = css<ButtonProps>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: box-shadow 250ms ease, color 200ms ease;
+  transition:
+    box-shadow 250ms ease,
+    color 200ms ease;
   min-width: 0;
   user-select: none;
   font-weight: normal;

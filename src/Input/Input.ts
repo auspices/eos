@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css } from "styled-components";
 import { cellMixin, cellFocusMixin, CellProps } from "../Cell";
 import { shouldForwardProp } from "../lib/shouldForwardProp";
