@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { AspectRatioBox } from "../AspectRatioBox";

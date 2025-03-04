@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 import { boxMixin, BoxProps } from "../Box";
 import { shouldForwardProp } from "../lib/shouldForwardProp";

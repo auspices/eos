@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 
 export const PAGINATION_DEFAULT_PAGE = 1;

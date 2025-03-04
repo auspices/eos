@@ -1,3 +1,5 @@
+"use client";
+
 import { themeGet } from "@styled-system/theme-get";
 import { ColorScheme, SPACE_SCALE } from "./theme";
 

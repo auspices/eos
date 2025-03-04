@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import composeRefs from "@seznam/compose-react-refs";

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useCallback, useRef } from "react";
 import composeRefs from "@seznam/compose-react-refs";
 import { Input, InputProps } from "../Input";

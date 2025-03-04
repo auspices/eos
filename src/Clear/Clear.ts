@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Remove, RemoveProps } from "../Remove";
@@ -28,7 +30,9 @@ export const clearFocusMixin = css`
 export const Clear = styled(Remove)<ClearProps>`
   border-radius: 50%;
   background-color: ${themeGet("colors.hint")};
-  transition: color 250ms, background-color 250ms;
+  transition:
+    color 250ms,
+    background-color 250ms;
 
   &::before,
   &::after {

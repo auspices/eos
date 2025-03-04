@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 import { Box, BoxProps } from "../Box";
 import { overflowEllipsisMixin } from "../mixins";

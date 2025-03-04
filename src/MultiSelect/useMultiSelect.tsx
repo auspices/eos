@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
 import { useClickOutside } from "../hooks";
 import { useUniqueId } from "../hooks/useUniqueId";

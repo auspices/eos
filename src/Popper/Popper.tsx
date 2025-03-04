@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Placement } from "@popperjs/core";
 import { usePopper } from "./usePopper";
