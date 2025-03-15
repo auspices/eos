@@ -4,7 +4,6 @@ import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
 import { cellMixin, cellFocusMixin, CellProps } from "../Cell";
-import React from "react";
 import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type ButtonVariant = "small" | "default";
