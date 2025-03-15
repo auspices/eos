@@ -22,6 +22,7 @@ import {
   system,
 } from "styled-system";
 import { shouldForwardProp } from "../lib/shouldForwardProp";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type BoxSpatialProps = FlexboxProps &
   SpaceProps &
@@ -65,13 +66,19 @@ export const boxMixin = compose(
   transition
 );
 
-export const Box = styled.div.withConfig({
+const StyledBox = styled.div.withConfig({
   shouldForwardProp,
 })<BoxProps>`
   ${boxMixin}
 `;
 
-Box.defaultProps = {
-  fontFamily: "body",
-  lineHeight: 2,
-};
+StyledBox.displayName = "StyledBox";
+
+export const Box = withDefaultProps(
+  StyledBox,
+  {
+    fontFamily: "body",
+    lineHeight: 2,
+  },
+  "Box"
+);

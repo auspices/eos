@@ -5,6 +5,7 @@ import { variant } from "styled-system";
 import { themeGet } from "@styled-system/theme-get";
 import { boxMixin, BoxProps } from "../Box";
 import { shouldForwardProp } from "../lib/shouldForwardProp";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export const CELL_VARIANTS = {
   default: {
@@ -46,7 +47,7 @@ export const cellMixin = css`
   ${boxMixin}
 `;
 
-export const Cell = styled.div.withConfig({
+const StyledCell = styled.div.withConfig({
   shouldForwardProp,
 })<CellProps>`
   ${cellMixin}
@@ -56,6 +57,10 @@ export const Cell = styled.div.withConfig({
   }
 `;
 
-Cell.defaultProps = { variant: "default" };
+StyledCell.displayName = "StyledCell";
 
-Cell.displayName = "Cell";
+export const Cell = withDefaultProps(
+  StyledCell,
+  { variant: "default" as CellVariant },
+  "Cell"
+);

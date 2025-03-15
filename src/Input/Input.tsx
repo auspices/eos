@@ -1,8 +1,9 @@
 "use client";
 
 import styled, { css } from "styled-components";
-import { cellMixin, cellFocusMixin, CellProps } from "../Cell";
+import { cellMixin, cellFocusMixin, CellProps, CellVariant } from "../Cell";
 import { shouldForwardProp } from "../lib/shouldForwardProp";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
   CellProps & {
@@ -48,12 +49,16 @@ export const inputMixin = css<InputProps>`
   }
 `;
 
-export const Input = styled.input.withConfig({
+const StyledInput = styled.input.withConfig({
   shouldForwardProp,
 })<InputProps>`
   ${inputMixin}
 `;
 
-Input.defaultProps = {
-  variant: "default",
-};
+StyledInput.displayName = "StyledInput";
+
+export const Input = withDefaultProps(
+  StyledInput,
+  { variant: "default" as CellVariant },
+  "Input"
+);

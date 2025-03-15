@@ -3,13 +3,14 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Box, BoxProps } from "../Box";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type CaretProps = BoxProps & {
   direction?: "up" | "down" | "left" | "right";
   size?: number;
 };
 
-export const Caret = styled(Box)<CaretProps>`
+const StyledCaret = styled(Box)<CaretProps>`
   position: relative;
   width: ${(props) => themeGet(`space.${props.size}`)(props)};
   height: ${(props) => themeGet(`space.${props.size}`)(props)};
@@ -57,7 +58,13 @@ export const Caret = styled(Box)<CaretProps>`
   }
 `;
 
-Caret.defaultProps = {
-  direction: "down",
-  size: 3,
-};
+StyledCaret.displayName = "StyledCaret";
+
+export const Caret = withDefaultProps(
+  StyledCaret,
+  {
+    direction: "down",
+    size: 3,
+  },
+  "Caret"
+);

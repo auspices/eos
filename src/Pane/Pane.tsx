@@ -9,6 +9,7 @@ import { Stack, StackProps } from "../Stack";
 import { flattenChildren } from "../lib/flattenChildren";
 import { PaneOption } from "./PaneOption";
 import { Flyout } from "../Flyout";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type PaneProps = StackProps &
   React.HTMLAttributes<HTMLDivElement> & {
@@ -20,16 +21,22 @@ export const paneShadowMixin = css`
   box-shadow: 0 0 ${themeGet("space.2")} 0 ${themeGet("colors.tertiary")};
 `;
 
-const Container = styled(Stack)`
+const StyledContainer = styled(Stack)`
   background-color: ${themeGet("colors.background")};
   max-width: ${themeGet("space.10")};
   ${paneShadowMixin}
 `;
 
-Container.defaultProps = {
-  borderRadius: 4,
-  spacing: 0,
-};
+StyledContainer.displayName = "StyledContainer";
+
+const Container = withDefaultProps(
+  StyledContainer,
+  {
+    borderRadius: 4,
+    spacing: 0,
+  },
+  "Container"
+);
 
 export const Pane: React.ForwardRefExoticComponent<
   PaneProps & { ref?: React.Ref<HTMLDivElement> }
