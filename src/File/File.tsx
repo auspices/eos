@@ -7,7 +7,7 @@ import { Box } from "../Box";
 import { Clickable, ClickableProps } from "../Clickable";
 import { useMultiSelect } from "../MultiSelect";
 
-export type FileProps = ClickableProps & {
+export type FileProps = Omit<ClickableProps, "name"> & {
   name?: string | null;
   meta?: string | null;
   selected?: boolean;
@@ -27,6 +27,7 @@ const hyphenate = css`
 `;
 
 const Name = styled(Box)`
+  display: inline;
   box-decoration-break: clone;
   ${hyphenate}
 `;
@@ -105,7 +106,6 @@ export const File: React.FC<FileProps> = ({
         <Box maxWidth="80%" mt={1} mx="auto" lineHeight={0} textAlign="center">
           {name && (
             <Name
-              as="span"
               fontSize={0}
               borderRadius={4}
               px={2}
