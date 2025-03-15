@@ -11,10 +11,6 @@ type RequiredProps = Omit<SplitProps, "children"> & { label: React.ReactNode };
 export type FieldProps = RequiredProps &
   ({ input: InputProps } | { children: React.JSX.Element | string | null });
 
-const Label = styled(Cell).attrs({ as: "label" })`
-  user-select: none;
-`;
-
 export const Field: React.FC<FieldProps> = ({
   label,
   direction = "horizontal",
@@ -25,7 +21,10 @@ export const Field: React.FC<FieldProps> = ({
 
     return (
       <Split direction={direction} {...rest}>
-        <Label>{label}</Label>
+        <Cell as="label" style={{ userSelect: "none" }}>
+          {label}
+        </Cell>
+
         <FieldInput width="100%" {...input} />
       </Split>
     );
@@ -35,7 +34,10 @@ export const Field: React.FC<FieldProps> = ({
 
   return (
     <Split direction={direction} {...rest}>
-      <Label>{label}</Label>
+      <Cell as="label" style={{ userSelect: "none" }}>
+        {label}
+      </Cell>
+
       <>{children}</>
     </Split>
   );
