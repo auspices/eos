@@ -5,6 +5,7 @@ import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
 import { cellFocusMixin } from "../Cell";
 import { overflowEllipsisMixin } from "../mixins";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type PaneOptionProps = ClickableProps & {
   active?: boolean;
@@ -46,7 +47,7 @@ export const paneOptionDisabledMixin = css`
   color: ${themeGet("colors.secondary")};
 `;
 
-export const PaneOption = styled(Clickable)<PaneOptionProps>`
+const StyledPaneOption = styled(Clickable)<PaneOptionProps>`
   text-align: left;
   cursor: pointer;
   text-decoration: none;
@@ -71,6 +72,8 @@ export const PaneOption = styled(Clickable)<PaneOptionProps>`
   }
 `;
 
+StyledPaneOption.displayName = "StyledPaneOption";
+
 export const PANE_OPTION = {
   borderRadius: 4,
   color: "primary",
@@ -80,4 +83,8 @@ export const PANE_OPTION = {
   py: 3,
 };
 
-PaneOption.defaultProps = PANE_OPTION;
+export const PaneOption = withDefaultProps(
+  StyledPaneOption,
+  PANE_OPTION,
+  "PaneOption"
+);

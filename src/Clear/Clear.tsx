@@ -3,6 +3,7 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Remove, RemoveProps } from "../Remove";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type ClearProps = RemoveProps & { variant?: "small" | "default" };
 
@@ -27,7 +28,7 @@ export const clearFocusMixin = css`
   }
 `;
 
-export const Clear = styled(Remove)<ClearProps>`
+const StyledClear = styled(Remove)<ClearProps>`
   border-radius: 50%;
   background-color: ${themeGet("colors.hint")};
   transition:
@@ -76,8 +77,12 @@ export const Clear = styled(Remove)<ClearProps>`
   }
 `;
 
-Clear.displayName = "Clear";
+StyledClear.displayName = "StyledClear";
 
-Clear.defaultProps = {
-  variant: "default",
-};
+export const Clear = withDefaultProps(
+  StyledClear,
+  {
+    variant: "default" as const,
+  },
+  "Clear"
+);

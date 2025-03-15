@@ -3,6 +3,7 @@
 import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Box, BoxProps } from "../Box";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type PlusProps = BoxProps & {
   size: number | string;
@@ -10,7 +11,7 @@ export type PlusProps = BoxProps & {
   axis?: "horizontal" | "vertical" | "both";
 };
 
-export const Plus = styled(Box)<PlusProps>`
+const StyledPlus = styled(Box)<PlusProps>`
   ${({ size }) => css`
     width: ${themeGet(`space.${size}`, size)};
     height: ${themeGet(`space.${size}`, size)};
@@ -48,7 +49,13 @@ export const Plus = styled(Box)<PlusProps>`
   }
 `;
 
-Plus.defaultProps = {
-  position: "relative",
-  axis: "both",
-};
+StyledPlus.displayName = "StyledPlus";
+
+export const Plus = withDefaultProps(
+  StyledPlus,
+  {
+    position: "relative",
+    axis: "both",
+  },
+  "Plus"
+);

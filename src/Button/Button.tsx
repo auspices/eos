@@ -4,6 +4,10 @@ import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { Clickable, ClickableProps } from "../Clickable";
 import { cellMixin, cellFocusMixin, CellProps } from "../Cell";
+import React from "react";
+import { withDefaultProps } from "../lib/withDefaultProps";
+
+export type ButtonVariant = "small" | "default";
 
 export type ButtonProps = ClickableProps &
   CellProps & {
@@ -11,6 +15,7 @@ export type ButtonProps = ClickableProps &
     hover?: boolean;
     selected?: boolean;
     highlighted?: boolean;
+    variant?: ButtonVariant;
   };
 
 export const buttonHoverMixin = css`
@@ -99,10 +104,14 @@ export const buttonMixin = css<ButtonProps>`
   ${({ highlighted }) => highlighted && buttonHighlightedMixin}
 `;
 
-export const Button = styled(Clickable)<ButtonProps>`
+const StyledButton = styled(Clickable)<ButtonProps>`
   ${buttonMixin}
 `;
 
-Button.defaultProps = { variant: "default" };
+StyledButton.displayName = "StyledButton";
 
-Button.displayName = "Button";
+export const Button = withDefaultProps(
+  StyledButton,
+  { variant: "default" as ButtonVariant },
+  "Button"
+);

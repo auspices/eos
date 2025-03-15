@@ -1,10 +1,17 @@
 "use client";
 
 // Aliases to Cell
-import { Cell, cellFocusMixin, CellProps } from "../Cell";
+import { Cell, cellFocusMixin, CellProps, CellVariant } from "../Cell";
+import { withDefaultProps } from "../lib/withDefaultProps";
 
 export type PillProps = CellProps;
 export const pillFocusMixin = cellFocusMixin;
-export const Pill = Cell;
 
-Pill.defaultProps = Cell.defaultProps;
+const StyledPill = Cell;
+StyledPill.displayName = "StyledPill";
+
+export const Pill = withDefaultProps(
+  StyledPill,
+  { variant: "default" as CellVariant },
+  "Pill"
+);
