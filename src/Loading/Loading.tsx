@@ -19,12 +19,12 @@ const incoming = keyframes`
   }
 `;
 
-const Container = styled(Cell)<{ loading: boolean }>`
+const Container = styled(Cell)<{ $loading: boolean }>`
   position: relative;
   overflow: hidden;
 
-  ${({ loading }) =>
-    loading &&
+  ${({ $loading }) =>
+    $loading &&
     css`
       &::after {
         content: "";
@@ -50,7 +50,7 @@ export const Loading: React.FC<LoadingProps> = ({
   ...rest
 }) => {
   return (
-    <Container loading={loading} {...rest}>
+    <Container $loading={loading} {...rest}>
       {children ?? <>&nbsp;</>}
     </Container>
   );
