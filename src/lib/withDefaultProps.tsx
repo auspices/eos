@@ -4,20 +4,10 @@ import React, {
   forwardRef,
 } from "react";
 
-// Simple function to merge default props with provided props
-export function useDefaultProps<P extends object>(
-  props: P,
-  defaultProps: Partial<P>
-): P {
-  return { ...defaultProps, ...props } as P;
-}
-
-// Polymorphic component type helper
 type PolymorphicProps<P extends object, C extends ElementType> = P & {
   as?: C;
 } & Omit<ComponentPropsWithoutRef<C>, keyof P>;
 
-// For backward compatibility - but consider migrating to the hook approach
 export function withDefaultProps<P extends object, D extends Partial<P>>(
   WrappedComponent: React.ComponentType<P>,
   defaultProps: D,
