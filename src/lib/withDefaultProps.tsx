@@ -1,44 +1,54 @@
-import React from "react";
+import React, {
+  ComponentPropsWithoutRef,
+  ElementType,
+  forwardRef,
+} from "react";
 
-type AsProp<C extends React.ElementType> = {
+// Simple function to merge default props with provided props
+export function useDefaultProps<P extends object>(
+  props: P,
+  defaultProps: Partial<P>
+): P {
+  return { ...defaultProps, ...props } as P;
+}
+
+// Polymorphic component type helper
+type PolymorphicProps<P extends object, C extends ElementType> = P & {
   as?: C;
-};
+} & Omit<ComponentPropsWithoutRef<C>, keyof P>;
 
-type PropsWithAsProp<C extends React.ElementType, P = {}> = P &
-  AsProp<C> &
-  Omit<React.ComponentPropsWithRef<C>, keyof (AsProp<C> & P)>;
-
-type PolymorphicRef<C extends React.ElementType> =
-  React.ComponentPropsWithRef<C>["ref"];
-
-type PropsWithRef<P, R, C extends React.ElementType> = PropsWithAsProp<C, P> & {
-  ref?: PolymorphicRef<C> | React.Ref<R>;
-};
-
-export function withDefaultProps<
-  P extends object,
-  R = any,
-  C extends React.ElementType = any,
->(
-  WrappedComponent: React.ComponentType<PropsWithRef<P, R, C>>,
-  defaultProps: Partial<P>,
+// For backward compatibility - but consider migrating to the hook approach
+export function withDefaultProps<P extends object, D extends Partial<P>>(
+  WrappedComponent: React.ComponentType<P>,
+  defaultProps: D,
   displayName?: string
-): React.ForwardRefExoticComponent<
-  React.PropsWithoutRef<PropsWithAsProp<C, P>> & React.RefAttributes<R>
-> {
-  const WithDefaultProps = React.forwardRef<R, PropsWithAsProp<C, P>>(
-    (props, ref) => {
-      const mergedProps = {
-        ...defaultProps,
-        ...props,
-        ref,
-      } as PropsWithRef<P, R, C>;
+) {
+  type WithDefaultPropsComponent = <
+    C extends ElementType = typeof WrappedComponent,
+  >(
+    props: PolymorphicProps<P, C>
+  ) => React.ReactElement | null;
 
-      return <WrappedComponent {...mergedProps} />;
-    }
-  );
+  const WithDefaultPropsFunction = forwardRef(function WithDefaultProps(
+    props: any,
+    ref
+  ) {
+    // Don't destructure 'as' here to ensure it's properly forwarded
+    // to styled-components when WrappedComponent is a styled component
+    const mergedProps = {
+      ...defaultProps,
+      ...props,
+      ref,
+    };
 
-  WithDefaultProps.displayName =
+    return <WrappedComponent {...mergedProps} />;
+  });
+
+  const WithDefaultProps =
+    WithDefaultPropsFunction as unknown as WithDefaultPropsComponent;
+
+  // Apply display name
+  WithDefaultPropsFunction.displayName =
     displayName ||
     `WithDefaultProps(${WrappedComponent.displayName || WrappedComponent.name})`;
 
