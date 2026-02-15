@@ -3,3 +3,13 @@ yarn-error.log
 dist
 .yalc
 yalc.lock
+
+# Next.js
+.next
+out
+.vercel
+
+# Examples
+examples/**/.next
+examples/**/package-lock.json
+examples/**/yarn.lock

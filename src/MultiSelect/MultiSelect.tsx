@@ -32,13 +32,10 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
 
   const select = (id: string, payload: MultiSelectPayload = {}) => {
     setSelection((prev) => {
-      const next = prev.find((item) => item.id === id)
-        ? prev
-        : [...prev, { id, payload }];
-
-      onChange &&
-        JSON.stringify(next) !== JSON.stringify(prev) &&
-        onChange(next, payload);
+      const exists = prev.some((item) => item.id === id);
+      if (exists) return prev;
+      const next = [...prev, { id, payload }];
+      onChange && onChange(next, payload);
       return next;
     });
   };

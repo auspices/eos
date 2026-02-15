@@ -1,5 +1,3 @@
-"use client";
-
 import { createGlobalStyle } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import reset from "styled-reset";

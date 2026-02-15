@@ -1,5 +1,3 @@
-"use client";
-
 import themeGet from "@styled-system/theme-get";
 import styled from "styled-components";
 import { compose, ResponsiveValue, system } from "styled-system";

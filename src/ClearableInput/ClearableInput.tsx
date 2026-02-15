@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import composeRefs from "@seznam/compose-react-refs";
 import { Input, InputProps } from "../Input";
 import { Box, BoxSpatialProps } from "../Box";
@@ -34,7 +34,7 @@ export const ClearableInput = React.forwardRef(
       flexBasis,
       // Above are spatial props for wrapper, remainder
       // is split off into input
-      value = "",
+      value,
       onChange,
       onClear,
       variant,
@@ -44,7 +44,11 @@ export const ClearableInput = React.forwardRef(
   ) => {
     const ref = useRef<HTMLInputElement>(null);
 
-    const [controlledValue, setValue] = useState(value);
+    const [controlledValue, setValue] = useState(value ?? "");
+
+    useEffect(() => {
+      setValue(value ?? "");
+    }, [value]);
 
     const handleClick = useCallback(() => {
       setValue("");

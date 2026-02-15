@@ -1,5 +1,3 @@
-"use client";
-
 import styled, { keyframes } from "styled-components";
 import { Box, BoxProps } from "../Box";
 import { themeGet } from "@styled-system/theme-get";

@@ -103,7 +103,7 @@ export const AlertsProvider: React.FC<AlertsProviderProps> = ({ children }) => {
   useEffect(() => {
     const handles = timeouts.current;
     return () => {
-      handles.map(clearTimeout);
+      handles.forEach(clearTimeout);
     };
   }, []);
 

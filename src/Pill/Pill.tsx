@@ -1,5 +1,3 @@
-"use client";
-
 // Aliases to Cell
 import { Cell, cellFocusMixin, CellProps, CellVariant } from "../Cell";
 import { withDefaultProps } from "../lib/withDefaultProps";

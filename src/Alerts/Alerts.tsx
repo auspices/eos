@@ -23,8 +23,8 @@ export const Alerts: React.FC<AlertsProps> = ({ limit = 5, ...rest }) => {
 
   return (
     <Stack spacing={2} {...rest}>
-      {takeRight(alerts, limit).map((alert, i) => (
-        <Alert key={i} mode={alert.mode}>
+      {takeRight(alerts, limit).map((alert) => (
+        <Alert key={alert.id} mode={alert.mode}>
           {alert.body}
         </Alert>
       ))}

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { scale } from "proportional-scale";
 import { Box, BoxProps } from "../Box";

@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "styled-components";
 import { overflowEllipsisMixin } from "../mixins";
 import { shouldForwardProp } from "../lib/shouldForwardProp";

@@ -24,8 +24,8 @@ export type FlyoutProps = PaneOptionProps & {
 export const Flyout: React.ForwardRefExoticComponent<
   FlyoutProps & { ref?: React.Ref<HTMLButtonElement> }
 > = React.forwardRef(
-  ({ label, children, open: defaultOpen = false, ...rest }, forwardedRef) => {
-    const [mode, setMode] = useState(defaultOpen ? Mode.Active : Mode.Resting);
+  ({ label, children, open = false, ...rest }, forwardedRef) => {
+    const [mode, setMode] = useState(open ? Mode.Active : Mode.Resting);
 
     const keepAlive = useRef(false);
     const mouseEnter = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -57,18 +57,18 @@ export const Flyout: React.ForwardRefExoticComponent<
 
     const handleClick = () => {
       // If flyout happens to be open a click will register as a click outside.
-      // In this case use setImmediate to wait for that to execute,
+      // In this case queue after the current event cycle to wait for that,
       // then immediately re-open.
-      setImmediate(() => {
+      setTimeout(() => {
         setMode(Mode.Active);
-      });
+      }, 0);
     };
 
     const handleClose = () => {
       setMode(Mode.Resting);
     };
 
-    const { anchorRef, childrenRef, open } = usePopper({
+    const { anchorRef, childrenRef, open: isOpen } = usePopper({
       open: mode === Mode.Active,
       onClose: handleClose,
       placement: "right-end",
@@ -107,12 +107,23 @@ export const Flyout: React.ForwardRefExoticComponent<
     );
 
     useEffect(() => {
+      setMode(open ? Mode.Active : Mode.Resting);
+    }, [open]);
+
+    useEffect(() => {
+      return () => {
+        if (mouseEnter.current) clearTimeout(mouseEnter.current);
+        if (mouseLeave.current) clearTimeout(mouseLeave.current);
+      };
+    }, []);
+
+    useEffect(() => {
       window.addEventListener("keydown", handleKeydown);
       const element = anchorRef.current;
       element?.addEventListener("keydown", handleElementKeydown);
       return () => {
         window.removeEventListener("keydown", handleKeydown);
-        element?.addEventListener("keydown", handleElementKeydown);
+        element?.removeEventListener("keydown", handleElementKeydown);
       };
     }, [handleKeydown, handleElementKeydown, anchorRef]);
 
@@ -134,7 +145,7 @@ export const Flyout: React.ForwardRefExoticComponent<
           <Caret ml={3} direction="right" />
         </PaneOption>
 
-        {open && (
+        {isOpen && (
           <Pane
             ref={childrenRef}
             zIndex={1}

@@ -1,8 +1,6 @@
-"use client";
-
 import React, { FC } from "react";
 import { CellVariant } from "../Cell";
-import { usePagination, PaginationPage } from "../hooks";
+import { usePagination, PaginationPage } from "../hooks/usePagination";
 import { Stack, StackProps } from "../Stack";
 import { Page, PageProps } from "./Page";
 

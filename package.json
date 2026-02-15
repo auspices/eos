@@ -1,10 +1,41 @@
 {
   "name": "@auspices/eos",
   "version": "0.0.0-development",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/client.js",
+  "module": "./dist/esm/client.js",
+  "types": "./dist/esm/client.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/client.d.ts",
+      "import": "./dist/esm/client.js",
+      "require": "./dist/cjs/client.js",
+      "default": "./dist/esm/client.js"
+    },
+    "./client": {
+      "types": "./dist/esm/client.d.ts",
+      "import": "./dist/esm/client.js",
+      "require": "./dist/cjs/client.js",
+      "default": "./dist/esm/client.js"
+    },
+    "./server": {
+      "types": "./dist/esm/server.d.ts",
+      "import": "./dist/esm/server.js",
+      "require": "./dist/cjs/server.js",
+      "default": "./dist/esm/server.js"
+    },
+    "./theme": {
+      "types": "./dist/esm/theme/index.d.ts",
+      "import": "./dist/esm/theme/index.js",
+      "require": "./dist/cjs/theme/index.js",
+      "default": "./dist/esm/theme/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
+  ],
+  "workspaces": [
+    "examples/next-minimal"
   ],
   "repository": {
     "type": "git",
@@ -14,15 +45,18 @@
   "license": "MIT",
   "scripts": {
     "build:storybook": "storybook build",
-    "build": "yarn clean && tsc -p .",
+    "build:cjs": "tsc -p tsconfig.build.cjs.json",
+    "build:esm": "tsc -p tsconfig.build.esm.json",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs",
     "clean": "rm -rf dist",
-    "lint": "eslint src --ext .tsx,.ts --fix",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint src --ext .tsx,.ts --fix",
     "format": "prettier --write '**/*'",
     "prepublishOnly": "yarn build",
     "semantic-release": "semantic-release",
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
-    "type:check": "tsc --noEmit",
+    "type:check": "tsc -p tsconfig.json --noEmit",
+    "verify:release": "yarn type:check && yarn lint && yarn build && yarn workspace eos-next-minimal build",
     "unlink-all": "yalc remove --all && yarn --check-files"
   },
   "peerDependencies": {
@@ -81,5 +115,5 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "packageManager": "yarn@1.22.19+sha512.ff4579ab459bb25aa7c0ff75b62acebe576f6084b36aa842971cf250a5d8c6cd3bc9420b22ce63c7f93a0857bc6ef29291db39c3e7a23aab5adfd5a4dd6c5d71"
+  "packageManager": "yarn@4.6.0"
 }

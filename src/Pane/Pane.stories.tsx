@@ -8,6 +8,8 @@ import { Pane, PaneProps, PaneOption, PaneOptionProps, PaneHeader } from ".";
 
 export default { title: "Pane", component: Pane };
 
+const SHOW_FALSE_EXAMPLE = false;
+
 export const Default = () => (
   <States<Partial<PaneProps>>>
     <Pane>
@@ -15,7 +17,7 @@ export const Default = () => (
       <PaneOption onClick={action("onClick")}>is invisible</PaneOption>
       <PaneOption onClick={action("onClick")}>and insidious</PaneOption>
       <Divider />
-      {false && <div>false example</div>}
+      {SHOW_FALSE_EXAMPLE && <div>false example</div>}
       <PaneOption onClick={action("onClick")}>gathering strength</PaneOption>
       <PaneOption onClick={action("onClick")}>from the bonds</PaneOption>
       <PaneOption onClick={action("onClick")}>of human connection</PaneOption>

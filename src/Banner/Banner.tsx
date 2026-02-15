@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, FC, ReactNode } from "react";
+import { useState, FC, ReactNode } from "react";
 import { Box, BoxProps } from "../Box";
 import { Ex } from "../Remove";
-import { useContrastingColor } from "../hooks";
+import { useContrastingColor } from "../hooks/useContrastingColor";
 import { Clickable } from "../Clickable";
 
 export type BannerProps = Omit<BoxProps, "bg"> & {
