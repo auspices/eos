@@ -1,25 +1,8 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["es6", "es2017", "dom"],
-    "module": "commonjs",
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "outDir": "./dist",
-    "sourceMap": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "target": "es5",
-    "types": ["react", "node"],
-    "downlevelIteration": true,
-    "typeRoots": ["./node_modules/@types", "./src/types"]
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "src/**/*.stories.tsx"]
+    "module": "ES2020",
+    "target": "ES2020",
+    "noEmit": true
+  }
 }

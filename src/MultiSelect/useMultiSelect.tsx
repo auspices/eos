@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
-import { useClickOutside } from "../hooks";
+import { useClickOutside } from "../hooks/useClickOutside";
 import { useUniqueId } from "../hooks/useUniqueId";
 import { MultiSelectContext, MultiSelectPayload } from "./MultiSelect";
 

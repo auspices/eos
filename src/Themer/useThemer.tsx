@@ -8,7 +8,7 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
-import { useUpdateEffect } from "../hooks";
+import { useUpdateEffect } from "../hooks/useUpdateEffect";
 import { THEME, SCHEMES, Theme, Scheme } from "../theme";
 
 const isServerSide = typeof window === "undefined";

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { isValidElement, cloneElement } from "react";
 import { Box, BoxProps } from "../Box";
 

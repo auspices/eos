@@ -14,7 +14,7 @@ export type PopperProps = {
 };
 
 export const Popper: React.FC<PopperProps> = ({
-  open: defaultOpen = false,
+  open = false,
   anchor,
   children,
   distance = 8,
@@ -22,8 +22,8 @@ export const Popper: React.FC<PopperProps> = ({
   onClose = () => {},
   ...rest
 }) => {
-  const { anchorRef, childrenRef, open } = usePopper({
-    open: defaultOpen,
+  const { anchorRef, childrenRef, open: isOpen } = usePopper({
+    open,
     distance,
     placement,
     onClose,
@@ -32,7 +32,7 @@ export const Popper: React.FC<PopperProps> = ({
   return (
     <>
       {React.cloneElement(anchor, { ref: anchorRef, ...rest })}
-      {open && React.cloneElement(children, { ref: childrenRef })}
+      {isOpen && React.cloneElement(children, { ref: childrenRef })}
     </>
   );
 };

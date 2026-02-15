@@ -1,5 +1,3 @@
-"use client";
-
 import { themeGet } from "@styled-system/theme-get";
 import { ColorScheme, SPACE_SCALE } from "./theme";
 
@@ -58,9 +56,12 @@ export const getContrastYIQRGB = ({
   return yiq >= 128 ? "black" : "white";
 };
 
-export const getContrastTIQHex = (value: string) => {
+export const getContrastYIQHex = (value: string) => {
   return getContrastYIQRGB({ ...hexToRgb(value) });
 };
+
+// Backwards-compatible alias kept for existing consumers.
+export const getContrastTIQHex = getContrastYIQHex;
 
 export const colorHash = (string: string) => {
   let code = 0;

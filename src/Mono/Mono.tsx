@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "styled-components";
 import { Box, BoxProps } from "../Box";
 import { withDefaultProps } from "../lib/withDefaultProps";

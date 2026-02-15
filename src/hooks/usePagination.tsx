@@ -1,7 +1,3 @@
-"use client";
-
-import { useMemo } from "react";
-
 export const PAGINATION_DEFAULT_PAGE = 1;
 export const PAGINATION_DEFAULT_PER = 24;
 export const PAGINATION_DEFAULT_INTERVAL = 3;
@@ -70,39 +66,30 @@ export const usePagination = ({
     tabIndex: tabIndex(currentPage, currentPage),
   };
 
-  const leftSurrounding: PaginationPage[] = useMemo(
-    () =>
-      [...Array(interval).keys()]
-        .map((i) => {
-          const page = currentPage - (i + 1);
-          return {
-            label: `${page}`,
-            page,
-            disabled: disabled(page, currentPage),
-            tabIndex: tabIndex(page, currentPage),
-          };
-        })
-        .filter((page) => page.page > 0)
-        .reverse(),
-    [currentPage, interval]
-  );
+  const leftSurrounding: PaginationPage[] = [...Array(interval).keys()]
+    .map((i) => {
+      const page = currentPage - (i + 1);
+      return {
+        label: `${page}`,
+        page,
+        disabled: disabled(page, currentPage),
+        tabIndex: tabIndex(page, currentPage),
+      };
+    })
+    .filter((page) => page.page > 0)
+    .reverse();
 
-  const rightSurrounding: PaginationPage[] = useMemo(
-    () =>
-      [...Array(interval).keys()]
-
-        .map((i) => {
-          const page = currentPage + (i + 1);
-          return {
-            label: `${page}`,
-            page,
-            disabled: disabled(page, currentPage),
-            tabIndex: tabIndex(page, currentPage),
-          };
-        })
-        .filter((page) => page.page <= totalPages),
-    [currentPage, interval, totalPages]
-  );
+  const rightSurrounding: PaginationPage[] = [...Array(interval).keys()]
+    .map((i) => {
+      const page = currentPage + (i + 1);
+      return {
+        label: `${page}`,
+        page,
+        disabled: disabled(page, currentPage),
+        tabIndex: tabIndex(page, currentPage),
+      };
+    })
+    .filter((page) => page.page <= totalPages);
 
   const center: PaginationPage[] = [
     ...leftSurrounding,

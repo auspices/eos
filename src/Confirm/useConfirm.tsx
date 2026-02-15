@@ -1,4 +1,6 @@
-import React, { useState, useCallback } from "react";
+"use client";
+
+import { useState, useCallback } from "react";
 import { Modal, ModalProps } from "../Modal";
 import { Confirm, ConfirmProps } from "./Confirm";
 

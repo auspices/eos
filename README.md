@@ -10,4 +10,43 @@ A React UI library
 
 ## Design Goals
 
-Eos is designed for use in situations where it is desirable to minimize visual hierarchy. This results in the creation of user interfaces that rely on  thoughtful composition for differentiation, rather than on the stylistic differences between components.
+Eos is designed for use in situations where it is desirable to minimize visual hierarchy. This results in the creation of user interfaces that rely on thoughtful composition for differentiation, rather than on the stylistic differences between components.
+
+## Usage
+
+- Migration notes for this release: [`MIGRATION.md`](./MIGRATION.md)
+- Release checklist: [`RELEASE.md`](./RELEASE.md)
+
+### Next.js App Router
+
+- Use `@auspices/eos/client` for UI components (including when rendered from Server Components).
+- Use `@auspices/eos/server` for server-safe utilities and theme tokens.
+
+```tsx
+// app/page.tsx (Server Component)
+import { THEME } from "@auspices/eos/server";
+import { Tag } from "@auspices/eos/client";
+```
+
+```tsx
+"use client";
+
+import { Dropdown, Modal, useConfirm } from "@auspices/eos/client";
+```
+
+### Theme Imports
+
+- Import theme primitives from `@auspices/eos/theme`.
+
+### Local Example App
+
+```bash
+yarn install
+yarn workspace eos-next-minimal dev
+```
+
+For production validation:
+
+```bash
+yarn verify:release
+```

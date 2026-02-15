@@ -13,11 +13,12 @@ export function withDefaultProps<P extends object, D extends Partial<P>>(
   defaultProps: D,
   displayName?: string
 ) {
-  type WithDefaultPropsComponent = <
-    C extends ElementType = typeof WrappedComponent,
-  >(
-    props: PolymorphicProps<P, C>
-  ) => React.ReactElement | null;
+  type WithDefaultPropsComponent = {
+    <C extends ElementType = typeof WrappedComponent>(
+      props: PolymorphicProps<P, C>
+    ): React.ReactElement | null;
+    displayName?: string;
+  };
 
   const WithDefaultPropsFunction = forwardRef(function WithDefaultProps(
     props: any,
@@ -37,8 +38,7 @@ export function withDefaultProps<P extends object, D extends Partial<P>>(
   const WithDefaultProps =
     WithDefaultPropsFunction as unknown as WithDefaultPropsComponent;
 
-  // Apply display name
-  WithDefaultPropsFunction.displayName =
+  WithDefaultProps.displayName =
     displayName ||
     `WithDefaultProps(${WrappedComponent.displayName || WrappedComponent.name})`;
 

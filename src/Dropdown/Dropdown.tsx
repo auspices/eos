@@ -51,13 +51,13 @@ export type DropdownProps = Omit<BoxProps, "children"> & {
 export const Dropdown: React.FC<DropdownProps> = ({
   label,
   children,
-  open: defaultOpen = false,
+  open = false,
   placement = "bottom",
   onOpen = () => {},
   onClose = () => {},
   ...rest
 }) => {
-  const [mode, setMode] = useState(defaultOpen ? Mode.Active : Mode.Resting);
+  const [mode, setMode] = useState(open ? Mode.Active : Mode.Resting);
 
   const handleClose = useCallback(() => {
     setMode(Mode.Resting);
@@ -89,11 +89,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
   );
 
   useEffect(() => {
+    setMode(open ? Mode.Active : Mode.Resting);
+  }, [open]);
+
+  useEffect(() => {
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [handleKeydown]);
 
-  const { anchorRef, childrenRef, open } = usePopper({
+  const { anchorRef, childrenRef, open: isOpen } = usePopper({
     open: mode === Mode.Active,
     placement,
     type: "mousedown",
@@ -129,7 +133,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         }
       })()}
 
-      {open && (
+      {isOpen && (
         <Pane ref={childrenRef} zIndex={1} onEnter={handleClose}>
           {isDropdownRenderProps(children)
             ? children({ handleClose })

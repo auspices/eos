@@ -1,5 +1,3 @@
-"use client";
-
 import React, { ElementType, FC, ReactNode } from "react";
 import { Button, ButtonProps } from "../Button";
 
