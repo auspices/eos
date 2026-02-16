@@ -77,3 +77,19 @@ import { Dropdown, Modal } from "@auspices/eos/client";
 2. Move server-only token/util imports to `@auspices/eos/server` (or `@auspices/eos/theme`).
 3. Remove unsupported deep imports.
 4. Run your Next.js production build to validate boundaries (`next build`).
+
+## Theming Update: Controlled Mode
+
+`ThemerProvider` now supports controlled theme state:
+
+```tsx
+<ThemerProvider scheme={scheme} setScheme={setScheme}>
+  ...
+</ThemerProvider>
+```
+
+Migration notes:
+1. Existing uncontrolled usage continues to work with `initialScheme` and storage backend behavior.
+2. If your app already uses an external theme manager (for example `next-themes`), switch to controlled mode so eos follows the same authoritative `light | dark` state on first render.
+3. In controlled mode, eos will not read from or write to local storage for scheme state.
+4. When using `next-themes`, avoid rendering `useTheme()`-derived UI before mount to prevent hydration mismatch.

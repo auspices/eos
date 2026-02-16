@@ -35,7 +35,8 @@
     "dist"
   ],
   "workspaces": [
-    "examples/next-minimal"
+    "examples/next-minimal",
+    "examples/next-pages-next-themes"
   ],
   "repository": {
     "type": "git",
@@ -55,8 +56,9 @@
     "semantic-release": "semantic-release",
     "start": "yarn storybook",
     "storybook": "storybook dev -p 6006",
+    "test": "vitest run",
     "type:check": "tsc -p tsconfig.json --noEmit",
-    "verify:release": "yarn type:check && yarn lint && yarn build && yarn workspace eos-next-minimal build",
+    "verify:release": "yarn type:check && yarn lint && yarn build && yarn workspace eos-next-minimal build && yarn workspace eos-next-pages-next-themes build",
     "unlink-all": "yalc remove --all && yarn --check-files"
   },
   "peerDependencies": {
@@ -85,6 +87,9 @@
     "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
     "@storybook/react": "^8.6.4",
     "@storybook/react-webpack5": "^8.6.4",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "22.13.9",
     "@types/react-dom": "19.0.4",
     "@types/styled-components": "5.1.34",
@@ -96,6 +101,7 @@
     "eslint": "9.21.0",
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-hooks": "5.2.0",
+    "jsdom": "^26.1.0",
     "prettier": "3.5.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -104,7 +110,8 @@
     "storybook-states": "1.2.0",
     "styled-components": "6.1.15",
     "ts-node": "10.9.2",
-    "typescript": "5.8.2"
+    "typescript": "5.8.2",
+    "vitest": "^3.2.4"
   },
   "publishConfig": {
     "access": "public",

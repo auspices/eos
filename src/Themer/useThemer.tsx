@@ -58,21 +58,55 @@ export const ThemeContext = createContext<{
 export const isScheme = (value: string | null): value is Scheme =>
   !!value && Object.keys(SCHEMES).includes(value);
 
-export const ThemerProvider: React.FC<{
+type ThemerProviderBaseProps = {
   key?: string;
   backend?: Backend;
   initialScheme?: Scheme;
   children: React.ReactNode;
-}> = ({
+};
+
+type ThemerProviderControlledProps = ThemerProviderBaseProps & {
+  scheme: Scheme;
+  setScheme(scheme: Scheme): void;
+};
+
+type ThemerProviderUncontrolledProps = ThemerProviderBaseProps & {
+  scheme?: undefined;
+  setScheme?: undefined;
+};
+
+type ThemerProviderProps =
+  | ThemerProviderControlledProps
+  | ThemerProviderUncontrolledProps;
+
+export const ThemerProvider: React.FC<ThemerProviderProps> = ({
   children,
   initialScheme = DEFAULT_SCHEME,
   backend = DEFAULT_BACKEND,
+  scheme: controlledScheme,
+  setScheme: controlledSetScheme,
 }) => {
-  const [scheme, setScheme] = useState<Scheme>(initialScheme);
+  const isControlled = controlledScheme !== undefined;
+
+  const [uncontrolledScheme, setUncontrolledScheme] = useState<Scheme>(initialScheme);
+
+  const scheme = controlledScheme ?? uncontrolledScheme;
 
   useEffect(() => {
-    setScheme(backend.get() ?? initialScheme);
-  }, [backend, initialScheme]);
+    if (isControlled) return;
+    setUncontrolledScheme(backend.get() ?? initialScheme);
+  }, [backend, initialScheme, isControlled]);
+
+  const setScheme = useCallback(
+    (nextScheme: Scheme) => {
+      if (isControlled) {
+        controlledSetScheme?.(nextScheme);
+        return;
+      }
+      setUncontrolledScheme(nextScheme);
+    },
+    [controlledSetScheme, isControlled]
+  );
 
   const theme = useMemo(
     () => ({ ...THEME, scheme, colors: SCHEMES[scheme] }),
@@ -80,13 +114,14 @@ export const ThemerProvider: React.FC<{
   );
 
   const toggleScheme = useCallback(
-    () => setScheme((prevScheme) => (prevScheme === "dark" ? "light" : "dark")),
-    []
+    () => setScheme(scheme === "dark" ? "light" : "dark"),
+    [scheme, setScheme]
   );
 
   useUpdateEffect(() => {
+    if (isControlled) return;
     backend.set(scheme);
-  }, [backend, scheme]);
+  }, [backend, isControlled, scheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, scheme, setScheme, toggleScheme }}>
