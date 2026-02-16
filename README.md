@@ -38,11 +38,103 @@ import { Dropdown, Modal, useConfirm } from "@auspices/eos/client";
 
 - Import theme primitives from `@auspices/eos/theme`.
 
+### Using eos with `next-themes` (controlled mode)
+
+When your app theme is managed by `next-themes`, pass the resolved `light | dark`
+scheme directly into `ThemerProvider`. This keeps eos and your app on the same
+authoritative theme source and avoids mixed first paint.
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from "next/app";
+import React, { useEffect, useMemo, useState } from "react";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
+import { GlobalStyles, ThemerProvider, useThemer } from "@auspices/eos/client";
+import type { Scheme } from "@auspices/eos/theme";
+
+const getSchemeFromDom = (): Scheme => {
+  if (typeof document === "undefined") return "light";
+  const fromAttribute = document.documentElement.getAttribute("data-theme");
+  return fromAttribute === "dark" ? "dark" : "light";
+};
+
+const EosThemeBridge: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [fallbackScheme] = useState<Scheme>(getSchemeFromDom);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const scheme = useMemo<Scheme>(() => {
+    if (resolvedTheme === "dark" || resolvedTheme === "light") return resolvedTheme;
+    return fallbackScheme;
+  }, [fallbackScheme, resolvedTheme]);
+
+  if (!mounted) return null;
+
+  return (
+    <ThemerProvider scheme={scheme} setScheme={(nextScheme) => setTheme(nextScheme)}>
+      <EosStyledThemeProvider>{children}</EosStyledThemeProvider>
+    </ThemerProvider>
+  );
+};
+
+const EosStyledThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { theme } = useThemer();
+  return (
+    <StyledThemeProvider theme={theme}>
+      <GlobalStyles />
+      {children}
+    </StyledThemeProvider>
+  );
+};
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <NextThemesProvider attribute="data-theme" defaultTheme="system" enableSystem>
+      <EosThemeBridge>
+        <Component {...pageProps} />
+      </EosThemeBridge>
+    </NextThemesProvider>
+  );
+}
+```
+
+```tsx
+// pages/_document.tsx
+import Document, { Html, Head, Main, NextScript } from "next/document";
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html suppressHydrationWarning>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+```
+
+Notes:
+- In controlled mode, eos does not read or write local storage for scheme state.
+- `next-themes` remains the only source of truth.
+- Ensure the `scheme` prop is always a concrete `light` or `dark` value.
+- Avoid rendering `useTheme()`-derived UI until client mount to prevent hydration mismatch.
+- See `examples/next-pages-next-themes` for a complete pages-router SSR integration.
+
 ### Local Example App
 
 ```bash
 yarn install
 yarn workspace eos-next-minimal dev
+yarn workspace eos-next-pages-next-themes dev
 ```
 
 For production validation:
